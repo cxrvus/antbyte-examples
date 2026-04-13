@@ -1,0 +1,17 @@
+set size = 8;
+set fps = 12;
+
+ant queen {
+	A0 = -M1;
+	(_, AM1, AM0) = add(T1, T0, 0, 1);
+	M1 = or(M1, and(T2, T1, T0));
+	# AX = and(T1, T0);
+}
+
+ant main {
+	CC = 1;
+	(C3, C2) = buf(M1, M0);
+	# (C1, C0) = buf(T1, T0);
+	D1 = T0;
+	# D0 = RR7;
+}
