@@ -5,13 +5,13 @@ set border = die;
 ant queen {
 	A0 = 1;
 	AX = and(T2, T1, T0);
-	ES0 = -AX;
+	S = -AX;
 	D1 = and(-AX, T0);
 	(AM2, AM1, AM0) = buf(T2, T1, T0);
 }
 
 ant main {
 	 (C2, C1, C0) = buf(M2, M1, M0);
-	 DX = E0;
+	 DX = S;
 	 D1 = -AC;
 }

@@ -9,7 +9,7 @@ ant queen {
 	after_end = T3;
 
 	A0 = -after_end;
-	ES0 = -after_end;
+	S = -after_end;
 
 	D0 = end;
 	(AD2, AD1, AD0) = cpy(end);
@@ -23,7 +23,7 @@ ant main {
 
 	DX = -M3;
 	# DX = and(-M3, R0);
-	M3 = or(M3, -E0);
+	M3 = or(M3, -S);
 
 	D1 = -AC;
 }
