@@ -1,0 +1,22 @@
+set height = 5;
+set width = 29;
+set fps = 24;
+set start = top_left;
+set border = cycle;
+set start = left;
+
+ant main {
+	A1 = -M0;
+	AD2 = 1;
+	M0 = 1;
+
+	CC = 1;
+	C1 = 1;
+}
+
+ant other = 2 {
+	# A1 = 1;
+
+	CC = 1;
+	C2 = 1;
+}
