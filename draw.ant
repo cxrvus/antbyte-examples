@@ -1,0 +1,10 @@
+set keys = " wdce";
+set border = die;
+
+ant main {
+	DX = -K1;
+	AK = K4;
+	D1 = K2;
+	A0 = K3;
+	C1 = 1;
+}
