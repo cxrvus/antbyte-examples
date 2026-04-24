@@ -1,10 +1,11 @@
-set keys = " wdce";
+set keys = " wdcf";
 set border = die;
 
 ant main {
 	DX = -K1;
-	AK = K4;
 	D1 = K2;
 	A0 = K3;
-	C1 = 1;
+
+	M0 = xor(M0, K4);
+	C2 = M0;
 }
