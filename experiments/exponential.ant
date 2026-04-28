@@ -1,8 +1,9 @@
+set ant_limit = 1024;
 set decay = 128;
 set height = 90;
 set width = 180;
 set border = obs;
-set speed = 16;
+set speed = 32;
 set fps = 12;
 
 ant main {
@@ -11,5 +12,5 @@ ant main {
 	(C1, D1) = cpy(R1);
 	(C2, D2) = cpy(R2);
 
-	AX = T3;
+	AX = T7;
 }
