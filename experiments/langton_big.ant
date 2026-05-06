@@ -1,0 +1,21 @@
+set desc = "Langton's Ant, but bigger and with border=wrap and somne decay";
+set height = 100;
+set width = 70;
+set border = wrap;
+set decay = 5000;
+set colors = bin;
+set speed = 64;
+
+fn main = in_color => out_color {
+	CC = 1;
+
+	out_color = -in_color;
+	left = in_color;
+
+	D1 = 1;
+	D2 = left;
+}
+
+ant main {
+	C2 = main(C2);
+}
