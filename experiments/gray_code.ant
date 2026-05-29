@@ -1,7 +1,7 @@
 set start = top_left;
 
 set height = 1;
-set hide_ants = 1;
+set fg = none;
 set ticks = 15;
 set speed = 0;
 

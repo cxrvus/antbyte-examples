@@ -1,7 +1,6 @@
 set ant_limit = 1024;
 set size = 29;
 set fps = 20;
-set hide_ants = 0;
 set start_tick = 32;
 set decay = 64;
 
