@@ -5,7 +5,7 @@ set border = wrap;
 set height = 8;
 set width = 64;
 set start = left;
-set colors = bin;
+set bg_filter = bin;
 
 ant main {
 	# spawn block on step 1 and cursor on step 3, then die

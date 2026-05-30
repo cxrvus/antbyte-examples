@@ -3,7 +3,7 @@ set height = 100;
 set width = 70;
 set border = wrap;
 set decay = 5000;
-set colors = bin;
+set bg_filter = bin;
 set speed = 64;
 
 fn main = in_color => out_color {

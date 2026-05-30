@@ -1,6 +1,6 @@
 set size = 90;
 set start = top_left;
-set colors = bin;
+set bg_filter = bin;
 
 ant main {
 	A1 = 1;

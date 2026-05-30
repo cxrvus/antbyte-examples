@@ -1,7 +1,7 @@
 set size = 64;
 set start = left;
 set border = wrap;
-set colors = bin;
+set bg_filter = bin;
 set speed = 32;
 
 fn dir_change = (mem, clock) => (mem_out, dir) {
