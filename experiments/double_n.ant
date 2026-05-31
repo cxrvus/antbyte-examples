@@ -7,7 +7,7 @@ set width = 9;
 
 ant main {
 	C1 = 1;
-	AX = on(1, 0, 0, 0, 1, 1);
+	Z = on(1, 0, 0, 0, 1, 1);
 
 	turn45 = or(
 		on(0, 0, 0, 0, 1, 0),

@@ -14,5 +14,5 @@ ant main {
 
 ant clone = 2 {
 	() = langton2();
-	AX = AC;
+	Z = V;
 }

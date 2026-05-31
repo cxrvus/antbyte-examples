@@ -11,6 +11,6 @@ ant main {
 
 	(C2, C1, C0) = buf(M2, M1, M0);
 
-	AX = CN3;
+	Z = VC3;
 	C3 = 1;
 }
