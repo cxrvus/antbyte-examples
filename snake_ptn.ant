@@ -1,6 +1,6 @@
 set size = 16;
 set start = top_left;
-set colors = bin;
+set bg_filter = bin;
 set border = die;
 set speed = 4;
 

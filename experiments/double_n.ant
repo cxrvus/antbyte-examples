@@ -1,6 +1,6 @@
 use "../lib/time";
 
-set colors = bin;
+set bg_filter = bin;
 set start = top_left;
 set height = 7;	
 set width = 9;	

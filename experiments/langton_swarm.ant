@@ -3,7 +3,7 @@ use "../langton2";
 set desc = "Langton's Ant, but self-replicating (+other variation)";
 
 set size = 128;
-set colors = bin;
+set bg_filter = bin;
 set speed = 8;
 
 ant main {
