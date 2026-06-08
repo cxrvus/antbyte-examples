@@ -13,7 +13,7 @@ ant main {
 	(A0, Z) = cpy(on(1, 1));
 }
 
-ant block = 2 { W = 1; }
+ant block = 2 { H = 1; }
 
 fn on_unit = (t6, t5, t4, t3, t2) => out {
 	out = and(
@@ -75,7 +75,7 @@ fn symbol = () => () {
 ant dit = 4 {
 	() = symbol();
 	C = ZZ;
-	W = M0;
+	H = M0;
 	M0 = or(M0, ZZ);
 }
 
@@ -84,7 +84,7 @@ ant dah = 8 {
 	(idle, M1, M0) = add(M1, M0, 0, and(M3, -M4));
 	M4 = or(M4, idle);
 	C = and(M3, -M4);
-	W = M4;
+	H = M4;
 }
 
 ant space = 16 {

@@ -8,7 +8,7 @@ ant main {
 
 ant spawner = 3 {
 	A1 = -M1;
-	W = -T0;
+	H = -T0;
 
 	C0 = and(M1, -VC0);
 
@@ -17,6 +17,6 @@ ant spawner = 3 {
 }
 
 ant clone = 2 {
-	W = -TT1;
+	H = -TT1;
 	C1 = T0;
 }

@@ -4,7 +4,7 @@ set size = 80;
 set ant_limit = 2000;
 
 ant main {
-	W = -K1;
+	H = -K1;
 	D1 = K2;
 	A0 = K3;
 

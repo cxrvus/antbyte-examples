@@ -16,7 +16,7 @@ ant queen {
 }
 
 ant spawner = 1 {
-	W = 1;
+	H = 1;
 	AD1 = 1;
 	AD2 = M;
 	A1 = -S;

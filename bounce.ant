@@ -21,7 +21,7 @@ fn bounce_ant = () => () {
 
 	D2 = or(flip, left);
 	D1 = and(-flip, left);
-	W = V;
+	H = V;
 
 	M6 = V;
 }
@@ -30,7 +30,7 @@ ant main {
 	init = on(0, 0, 0, 1);
 	A1 = init;
 	M0 = or(M0, init);
-	W = M0;
+	H = M0;
 	(A2, Z) = cpy(and(T4, on(0, 0, 0, 0)));
 }
 
