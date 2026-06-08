@@ -9,21 +9,20 @@ set speed = 8;
 set ticks = 1500;
 set loop = 1;
 set sleep = 100;
+set start_dir = 1;
 
 # set speed = 0;
 # set height = 65;
 # set width = 187;
 
 fn bounce_ant = () => () {
-	flip = and(M7, V, M6);
-	left = and(M7, V);
+	flip = and(-J, V, M6);
+	left = and(-J, V);
 
 	D2 = or(flip, left);
 	D1 = and(-flip, left);
-	D0 = -M7;
 	W = V;
 
-	M7 = 1;
 	M6 = V;
 }
 

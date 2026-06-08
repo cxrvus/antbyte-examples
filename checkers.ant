@@ -4,16 +4,15 @@ set start = top_left;
 set speed = 8;
 set bg_filter = bin;
 set border = obs;
+set start_dir = 2;
 
 ant main {
 	C0 = -T0;
 
 	# M0: V in previous tick
 	# M1: last direction
-	# M2: initial state
-	D1 = or(M0, V, -M2);
+	D1 = or(M0, V);
 	D2 = and(D1, -M1);
-	M2 = 1;
 
 	# toggle: toggle last direction
 	toggle = and(M0, -V);

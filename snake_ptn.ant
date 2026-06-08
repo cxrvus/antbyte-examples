@@ -9,13 +9,11 @@ ant main {
 
 	D1 = or(
 		and(+T3, +T2, +T1, +T0),
-		and(-T3, -T2, -T1, -T0, M0)
+		and(-T3, -T2, -T1, -T0, -J)
 	);
 
 	D2 = or(
 		and(+T4, +T3, +T2, +T1, +T0),
-		and(-T4, -T3, -T2, -T1, -T0, M0)
+		and(-T4, -T3, -T2, -T1, -T0, -J)
 	);
-
-	M0 = 1;
 }
