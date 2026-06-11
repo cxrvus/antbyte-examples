@@ -1,0 +1,23 @@
+# set keys = " wdcf";
+set border = die;
+set size = 128;
+set ant_limit = 4000;
+
+
+set fg = none;
+# set bg = birth_tick;
+set decay = 64;
+
+ant main {
+	D1 = R2;
+	A0 = R3;
+
+	M0 = or(M0, and(J, R3));
+
+	W6 = and(-J, TT4, M0);
+
+	C0 = 1;
+	C1 = VC20;
+	C2 = VC41;
+	C3 = V6;
+}
