@@ -22,7 +22,6 @@ fn reproduce = () => spawn {
 		T2,
 		T1,
 		# T0,
-		0
 	));
 	Z = and(T7, T4);
 }
