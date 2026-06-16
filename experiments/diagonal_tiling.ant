@@ -2,7 +2,7 @@ set size = 19;
 set speed = 361;
 set fps = 12;
 
-ant main {
+ant main = 1 {
 	paint = and(M1, M0);
 
 	(M1, M0) = buf(

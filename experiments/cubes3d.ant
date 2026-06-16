@@ -6,7 +6,7 @@ set border = wrap;
 # set speed = 00;
 # set ticks = 23424;
 
-ant main {
+ant main = 1 {
 	CC = 1;
 	C1 = -C1;
 	# C2 = -T7;

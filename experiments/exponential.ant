@@ -6,7 +6,7 @@ set border = obs;
 set speed = 32;
 set fps = 12;
 
-ant main {
+ant main = 1 {
 	A0 = 1;
 
 	(C1, D1) = cpy(R1);

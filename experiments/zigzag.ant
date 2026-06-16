@@ -9,7 +9,7 @@ fn dir_change = (mem, clock) => (mem_out, dir) {
 	mem_out = clock;
 }
 
-ant main {
+ant main = 1 {
 	CC = 1;
 	C0 = -C0;
 

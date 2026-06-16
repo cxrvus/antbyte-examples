@@ -2,7 +2,7 @@ set size = 8;
 set start = top_left;
 set border = wrap;
 
-ant main {
+ant main = 1 {
 	(A1, A0, Z) = cpy(T1);
 }
 

@@ -4,7 +4,7 @@ set start = left;
 set size = 16;
 set fps = 4;
 
-ant main {
+ant main = 1 {
 	A1 = on(0, 0, 0, 1);
 	A2 = on(0, 1, 0, 1);
 	Z = on(1, 1, 1, 1);

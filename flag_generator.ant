@@ -4,7 +4,7 @@ set width = 16;
 set height = 12;
 set speed = 16;
 
-ant main {
+ant main = 1 {
 	M0 = mux(TT5, M0, R0);
 	M1 = mux(TT5, M1, R1);
 	M2 = mux(TT5, M2, R2);

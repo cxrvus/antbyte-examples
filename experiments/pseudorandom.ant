@@ -5,7 +5,7 @@ set border = die;
 
 set desc = "randomness through mere conflict resolution";
 
-ant queen {
+ant queen = 0 {
 	left = and(-T1, -T0);
 	right = and(+T1, -T0);
 	A0 = or(left, right);

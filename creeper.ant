@@ -21,7 +21,7 @@ fn in_row = (t5, t4, t3) => out {
 	);
 }
 
-ant main {
+ant main = 1 {
 	black = or(
 		and(
 			or(

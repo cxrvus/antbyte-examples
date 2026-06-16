@@ -7,7 +7,7 @@ set width = 64;
 set start = left;
 set bg_filter = bin;
 
-ant main {
+ant main = 1 {
 	# spawn block on step 1 and cursor on step 3, then die
 	A1 = or(on(0, 1), on(1, 1));
 	(A0, Z) = cpy(on(1, 1));

@@ -4,7 +4,7 @@ set size = 96;
 set speed = 128;
 set start = top_left;
 
-ant main {
+ant main = 1 {
 	color = langton(and(-C1, C3));
 	CC = 1;
 	(_, C1, C3) = add(C1, C3, 1, 0, 1);

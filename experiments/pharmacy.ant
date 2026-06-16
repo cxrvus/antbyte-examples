@@ -35,7 +35,7 @@ ant clone = 2 {
 	A2 = reproduce();
 }
 
-ant main {
+ant main = 1 {
 	() = spike();
 	A1 = reproduce();
 }

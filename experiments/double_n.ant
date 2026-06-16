@@ -5,7 +5,7 @@ set start = top_left;
 set height = 7;	
 set width = 9;	
 
-ant main {
+ant main = 1 {
 	C1 = 1;
 	Z = on(1, 0, 0, 0, 1, 1);
 

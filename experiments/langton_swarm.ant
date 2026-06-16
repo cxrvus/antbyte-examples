@@ -6,7 +6,7 @@ set size = 128;
 set bg_filter = bin;
 set speed = 8;
 
-ant main {
+ant main = 1 {
 	() = langton2();
 
 	A1 = -or(T2, T1, T0);

@@ -5,7 +5,7 @@ set start = top_left;
 set border = cycle;
 set start = left;
 
-ant main {
+ant main = 1 {
 	A1 = J;
 	AD2 = 1;
 

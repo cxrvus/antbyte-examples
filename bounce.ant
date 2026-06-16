@@ -26,7 +26,7 @@ fn bounce_ant = () => () {
 	M6 = V;
 }
 
-ant main {
+ant main = 1 {
 	init = on(0, 0, 0, 1);
 	A1 = init;
 	M0 = or(M0, init);
