@@ -1,0 +1,58 @@
+set size = 64;
+set start = top_left;
+set layers = 2;
+set main_layer = 1;
+
+set { 
+	border_0 = obs;
+	border_1 = die;
+}
+
+set { fg = none; }
+
+ant 0 {
+	spawn_cloud = T0;
+	spawn_rain = -T0;
+
+	A0 = spawn_cloud;
+	AD1 = 1;
+	AD2 = spawn_rain;
+	A1 = spawn_rain;
+
+	Z = V;
+}
+
+ant cloud = 1 {
+	C2 = 0;
+	C3 = 1;
+	Z = T7;
+	D0 = R0;
+	D1 = R1;
+}
+
+ant rain_spawner = 2 {
+	A2 = RR3;
+	AD2 = 1;
+	AA0 = 1;
+
+	C3 = 1;
+}
+
+ant rain_start = 4 {
+	(A0, A2) = cpy(-C3);
+
+	wind = and(-M1, RR4);
+	left = wind;
+	right = M1;
+	(D2, D1) = cpy(left);
+	(D0) = cpy(or(right, left));
+	DD = -wind;
+	M1 = wind;
+}
+
+ant rain_end = 5 {
+	H = 1;
+	W1 = J;
+	C2 = J;
+	Z = -J;
+}
