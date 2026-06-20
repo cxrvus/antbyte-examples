@@ -1,0 +1,45 @@
+set ant_limit = 1024;
+set decay = 128;
+set height = 90;
+set width = 180;
+set speed = 32;
+set fps = 12;
+set start_dir=4;
+
+set layers = 4;
+
+fn spreader = () => c {
+	AD1 = 1;
+
+	AA = RR5;
+
+	(c, D1) = cpy(R1);
+	(C3, D2) = cpy(R2);
+
+	Z = T7;
+}
+
+ant 0 {
+	A0 = 1;
+	_ = spreader();
+	Z = 0;
+}
+
+ant 1 {
+	A1 = 1;
+	C0 = spreader();
+}
+
+ant 2 {
+	A2 = 1;
+	C0 = spreader();
+}
+
+ant 4 {
+	A3 = 1;
+	C0 = spreader();
+}
+
+ant 8 {
+	C0 = spreader();
+}

@@ -1,10 +1,15 @@
 set ant_limit = 1024;
 set decay = 128;
 set height = 90;
-set width = 180;
-set border = obs;
+set width = 280;
+set border = cycle;
 set speed = 32;
 set fps = 12;
+
+set start_dir = 2;
+set start_pos = right;
+set bg = birth_tick;
+set bg_filter = bin;
 
 ant main = 1 {
 	A0 = 1;

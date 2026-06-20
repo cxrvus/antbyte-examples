@@ -7,13 +7,13 @@ set width = 64;
 set start = left;
 set bg_filter = bin;
 
-ant main {
+ant main = 1 {
 	# spawn block on step 1 and cursor on step 3, then die
 	A1 = or(on(0, 1), on(1, 1));
-	(A0, AX) = cpy(on(1, 1));
+	(A0, Z) = cpy(on(1, 1));
 }
 
-ant block = 2 { DX = 1; }
+ant block = 2 { H = 1; }
 
 fn on_unit = (t6, t5, t4, t3, t2) => out {
 	out = and(
@@ -62,22 +62,21 @@ ant cursor = 3 {
 		0
 	);
 
-	AX = on_unit(1, 0, 1, 0, 1);
+	Z = on_unit(1, 0, 1, 0, 1);
 }
 
 fn symbol = () => () {
-	AK = and(-M3, AC); # kill target (if first target)
-	D2 = or(-M2, AK); # flip on first tick and after killing target
-	M2 = 1;
-	M3 = or(M3, AK);
-	AX = T6;
+	ZZ = and(-M3, V); # kill target (if first target)
+	D2 = or(J, ZZ); # flip on first tick and after killing target
+	M3 = or(M3, ZZ);
+	Z = T6;
 }
 
 ant dit = 4 {
 	() = symbol();
-	C = AK;
-	DX = M0;
-	M0 = or(M0, AK);
+	C = ZZ;
+	H = M0;
+	M0 = or(M0, ZZ);
 }
 
 ant dah = 8 { 
@@ -85,7 +84,7 @@ ant dah = 8 {
 	(idle, M1, M0) = add(M1, M0, 0, and(M3, -M4));
 	M4 = or(M4, idle);
 	C = and(M3, -M4);
-	DX = M4;
+	H = M4;
 }
 
 ant space = 16 {

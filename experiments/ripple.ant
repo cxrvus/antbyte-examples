@@ -1,7 +1,7 @@
 set size = 44;
 set speed = 2200;
 
-ant main {
-	DX = and(T3, T2, T1, T0);
+ant main = 1 {
+	H = and(T3, T2, T1, T0);
 	(C3, C2, C1, C0) = buf(T3, T2, T1, T0);
 }

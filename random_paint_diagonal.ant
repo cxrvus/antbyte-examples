@@ -5,10 +5,9 @@ set loop = 1;
 set sleep = 50;
 set border = die;
 set bg_filter = bin;
+set start_dir = 1;
 
-ant main {
-	D0 = -M0;
+ant main = 1 {
 	(D2, D1) = buf(R2, R1);
 	C0 = 1;
-	M0 = 1;
 }

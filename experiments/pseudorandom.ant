@@ -5,18 +5,18 @@ set border = die;
 
 set desc = "randomness through mere conflict resolution";
 
-ant queen {
+ant queen = 0 {
 	left = and(-T1, -T0);
 	right = and(+T1, -T0);
 	A0 = or(left, right);
 	(AD2, AM) = cpy(left);
 
-	AX = and(T2, -T1, T0);
-	S = -AX;
+	Z = and(T2, -T1, T0);
+	S = -Z;
 }
 
 ant spawner = 1 {
-	DX = 1;
+	H = 1;
 	AD1 = 1;
 	AD2 = M;
 	A1 = -S;

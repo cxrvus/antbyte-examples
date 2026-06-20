@@ -2,7 +2,7 @@ set size = 90;
 set start = top_left;
 set bg_filter = bin;
 
-ant main {
+ant main = 1 {
 	A1 = 1;
 	D0 = T0;
 }
@@ -10,5 +10,5 @@ ant main {
 ant dummy = 2 {
 	CC = 1;
 	C0 = T6;
-	AX = T7;
+	Z = T7;
 }

@@ -1,9 +1,9 @@
 set start = top_left;
 set speed = 00;
 
-ant main {
-	DX = and(R2, R1, R0);
+ant main = 1 {
+	H = and(R2, R1, R0);
 	CC = 1;
 	(C1, C0) = -buf(C1, C0);
-	AX = CN0;
+	Z = VC0;
 }
