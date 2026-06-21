@@ -1,0 +1,19 @@
+set start = top_left;
+set border = collide;
+set fps = 12;
+set bg = birth_tick;
+
+ant 0b0000 {
+	Z = VA3;
+	S0 = 1;
+
+	A3 = TT0;
+	D1 = V;
+}
+
+ant 0b1000 {
+	W0 = RR6;
+	W1 = or(VA3, RR7);
+	H = S0;
+	D1 = and(-VA3, -J, V);
+}
