@@ -2,17 +2,23 @@ use "../lib/time";
 
 set start = top_left;
 set size = 64;
+set layers = 2;
+set main_layer = 1;
 set start_dir = 1;
-set border = die;
-set speed = 8;
+# set speed = 8;
+set fg = layers;
 
 ant queen = 0 {
-	A0 = and(-J, TT3);
+	(A4, A1) = cpy(J);
+	(A0, AA0) = cpy(and(-J, TT3));
 	(AD2, AD1, AD0) = cpy(1);
 	Z = A0;
 }
 
+##### Layer 0
+
 ant shell = 1 {
+	CC = 1;
 	C5 = 1;
 	C0 = 1;
 
@@ -27,6 +33,8 @@ ant core = 2 {
 
 	C0 = -C4;
 	C1 = and(-C4, -J);
+	C2 = 0;
+	C3 = 0;
 
 	M2 = M1;
 	M1 = M0;
@@ -107,6 +115,15 @@ ant lense = 3 {
 		on(0, 1, 0, 1),
 	));
 	Z = on(0, 1, 1, 0);
+}
+
+##### Layer 1
+
+ant sky = 18 {
+	Z = C2;
+
+	C2 = 1;
+	C3 = R3;
 }
 
 # TODO:
