@@ -2,11 +2,18 @@ use "../lib/time";
 
 set start = top_left;
 set size = 64;
-set layers = 2;
-set main_layer = 1;
+set layers = 3;
 set start_dir = 1;
-# set speed = 8;
-set fg = layers;
+
+# set start_tick = 4000;
+# set fg = id;
+set speed = 16;
+set main_layer = 1;
+
+set {
+	border_0 = wrap;
+	border_2 = die;
+}
 
 ant queen = 0 {
 	(A4, A1) = cpy(J);
@@ -15,20 +22,37 @@ ant queen = 0 {
 	Z = A0;
 }
 
-##### Layer 0
+fn slow = () => () {
+	W3 = 1;
+}
+
+##### Layer 1
 
 ant shell = 1 {
+	() = slow();
+
+	spawn_ray = TT2;
+	turn = and(-J, spawn_ray);
+	spawn_core = VC0;
+
+	D0 = turn;
+	A0 = spawn_ray;
+	A1 = or(spawn_ray, spawn_core);
+	A2 = spawn_core;
+	AD0 = spawn_core;
+	AD1 = spawn_ray;
+	AD2 = spawn_core;
+	AA0 = spawn_ray;
+	Z = spawn_core;
+
 	CC = 1;
 	C5 = 1;
 	C0 = 1;
-
-	D0 = and(-J, TT2);
-
-	(A2, A1, AD2, AD0,) = cpy(VC0);
-	Z = VC0;
 }
 
 ant core = 2 {
+	() = slow();
+
 	C5 = 1;
 
 	C0 = -C4;
@@ -99,7 +123,7 @@ ant queen2 = 6 {
 
 ant shades = 7 {
 	C4 = 1;
-	(A1, A0, AD1) = cpy(or(
+	(A3, AD1) = cpy(or(
 		on(0, 1, 0, 0),
 		on(1, 1, 0, 0),
 	));
@@ -107,7 +131,7 @@ ant shades = 7 {
 	Z = on(1, 1, 1, 1);
 }
 
-ant lense = 3 {
+ant lense = 8 {
 	C4 = 1;
 	(D2, D1) = cpy(or(
 		on(0, 0, 1, 0),
@@ -117,15 +141,46 @@ ant lense = 3 {
 	Z = on(0, 1, 1, 0);
 }
 
-##### Layer 1
+##### Layer 0
 
 ant sky = 18 {
+	S0 = 1;
 	Z = C2;
 
-	C2 = 1;
-	C3 = R3;
+	keep = or(C4, C5);
+	C2 = -keep;
+	C3 = and(-keep, M3);
+	M3 = xor(M3, RR5);
+}
+
+##### Layer 2
+
+ant ray_spawner = 3 {
+	active = -S0;
+
+	H = 1;
+	AD2 = 1;
+	(A3, A0) = cpy(and(active, TT5));
+	W3 = 1;
+}
+
+ant ray_head = 9 {
+	(A3, A1) = cpy(T2);
+	W5 = 1;
+}
+
+ant ray_tail = 10 {
+	c3 = C3;
+	C3 = mux(J, M3, 0);
+	M3 = c3;
+
+	(C0, C1) = cpy(J);
+	C2 = -J;
+
+	H = 1;
+	W7 = 1;
+	Z = -J;
 }
 
 # TODO:
-# smile
-# ray
+# rays
