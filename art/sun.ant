@@ -1,0 +1,114 @@
+use "../lib/time";
+
+set start = top_left;
+set size = 64;
+set start_dir = 1;
+set border = die;
+set speed = 8;
+
+ant queen = 0 {
+	A0 = and(-J, TT3);
+	(AD2, AD1, AD0) = cpy(1);
+	Z = A0;
+}
+
+ant shell = 1 {
+	C5 = 1;
+	C0 = 1;
+
+	D0 = and(-J, TT2);
+
+	(A2, A1, AD2, AD0,) = cpy(VC0);
+	Z = VC0;
+}
+
+ant core = 2 {
+	C5 = 1;
+
+	C0 = -C4;
+	C1 = and(-C4, -J);
+
+	M2 = M1;
+	M1 = M0;
+
+	(D0, H, M0) = cpy(VC5);
+	Z = and(M2, M1, M0);
+}
+
+ant face = 4 {
+	spawn_smile = and(T4, T2);
+	spawn_shades = on(1, 1, 0, 0);
+
+	A2 = or(spawn_smile, spawn_shades);
+	A1 = spawn_shades;
+	A0 = or(spawn_smile, spawn_shades);
+
+	(AD2, AD1) = cpy(1);
+
+	D1 = or(
+		on(1, 0, 0, 0),
+		spawn_shades,
+	);
+
+	D2 = or(
+		spawn_shades,
+	);
+
+	Z = spawn_smile;
+}
+
+ant smile = 5 {
+	right = or(
+		on(0, 1, 0, 0),
+		on(1, 1, 1, 0),
+	);
+	left = or(
+		on(0, 1, 0, 1),
+		on(1, 1, 0, 1),
+	);
+
+	M4 = or(M4, on(0, 0, 1, 0));
+	C4 = M4;
+
+	D0 = or(left, right);
+	D1 = left;
+	D2 = left;
+
+	Z = T4;
+}
+
+ant queen2 = 6 {
+	H = 1;
+
+	A1 = -T0;
+	A2 = T0;
+
+	AD2 = 1;
+	AD1 = A2;
+
+	Z = A2;
+}
+
+ant shades = 7 {
+	C4 = 1;
+	(A1, A0, AD1) = cpy(or(
+		on(0, 1, 0, 0),
+		on(1, 1, 0, 0),
+	));
+
+	Z = on(1, 1, 1, 1);
+}
+
+ant lense = 3 {
+	C4 = 1;
+	(D2, D1) = cpy(or(
+		on(0, 0, 1, 0),
+		on(0, 1, 0, 0),
+		on(0, 1, 0, 1),
+	));
+	Z = on(0, 1, 1, 0);
+}
+
+# TODO:
+# smile
+# ray
