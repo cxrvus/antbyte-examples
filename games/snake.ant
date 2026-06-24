@@ -1,22 +1,25 @@
-set fps = 4;
+set size = 32;
+set fps = 6;
 # set fps = 1;
 set layers = 2;
-set border_0 = cycle;
+set border_0 = wrap;
 set border_1 = cycle;
 set keys = "wasd";
 
-set fg = mem;
+# set fg = none;
 
 ant queen = 0 {
 	S0 = 1;
-	# A2 = J;
+	C1 = 1;
+
+	A2 = J;
 	A1 = T2;
 	Z = A1;
 }
 
 ant head = 2 {
 	H = S0;
-	# C1 = 1;
+	C1 = 1;
 
 	w0 = and(+M2, +M1);
 	a0 = and(+M2, -M1);
@@ -43,4 +46,13 @@ ant head = 2 {
 ant tail = 4 {
 	H = S0;
 	C1 = 0;
+
+	turn = and(-VC01, -H);
+	right = and(turn, VC21);
+	left =  and(turn, VC61);
+
+	# Error
+	(C0, Z) = cpy(and(turn, -VC21, -VC61));
+
+	D1 = or(right, left); D2 = left;
 }
