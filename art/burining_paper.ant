@@ -1,7 +1,7 @@
-# set keys = " wdcf";
+# set keys = "wdcf";
 set border = die;
 set size = 128;
-set ant_limit = 4000;
+set ant_limit = 1000;
 
 
 set fg = none;
