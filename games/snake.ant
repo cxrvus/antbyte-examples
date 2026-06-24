@@ -1,28 +1,27 @@
 set fps = 4;
 # set fps = 1;
 set layers = 2;
-set border_0 = wrap;
+set border_0 = cycle;
 set border_1 = cycle;
 set keys = "wasd";
 
-set fg = id;
+set fg = mem;
 
 ant queen = 0 {
 	S0 = 1;
-	A2 = J;
+	# A2 = J;
 	A1 = T2;
 	Z = A1;
 }
 
 ant head = 2 {
 	H = S0;
-	C1 = 1;
+	# C1 = 1;
 
-
-	w0 = and(-M2, -M1);
-	a0 = and(-M2, +M1);
-	s0 = and(+M2, -M1);
-	d0 = and(+M2, +M1);
+	w0 = and(+M2, +M1);
+	a0 = and(+M2, -M1);
+	s0 = and(-M2, +M1);
+	d0 = and(-M2, -M1);
 
 	w1 = K0; a1 = K1; s1 = K2; d1 = K3;
 	# todo: ensure uniqueness
@@ -36,9 +35,9 @@ ant head = 2 {
 
 	D1 = or(right, left); D2 = left;
 
-	(M2, M1) = buf(D2, D1);
-
 	# remember direction
+	(cout, M1) = add(M1, D1);
+	(cout, M2) = add(cout, M2, D2);
 }
 
 ant tail = 4 {
