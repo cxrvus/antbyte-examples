@@ -1,0 +1,38 @@
+use "../creeper";
+
+set speed = 16;
+set size = 64;
+set decay = 0x400;
+set fps = 24;
+
+set layers = 2;
+set border_0 = cycle;
+set border_1 = die;
+set fg = none;
+
+# set { fps = 12; speed = 1; fg = mem; }
+
+ant queen = 0 {
+	D1 = or(VC4, RR2);
+
+	(_, M1, M0) = add(M1, M0, 0, D1);
+
+	A0 = and(-M1, -M0, CC, RR1);
+	A0 = or(A0, J);
+
+	AD0 = RR4;
+	AA = 1; AD1 = 1;
+}
+
+ant column = 1 {
+	Z = and(T2, T1, T0);
+
+	(A1, AD2, AD1) = cpy(1);
+	(AM2, AM1, AM0) = buf(T2, T1, T0);
+}
+
+ant rows = 2 {
+	Z = and(T2, T1, T0);
+	CC = 1;
+	() = creeper(M2, M1, M0, T2, T1, T0);
+}
