@@ -1,18 +1,22 @@
-set fps = 24;
-set speed = 4;
-# set size = 32;
 set start = top_left;
 set start_dir = 4;
 set layers = 2;
 set main_layer = 1;
-
-## Debug
-# set { fps = 1; speed = 1; }
-set start_tick = 256;
 set fg = id;
 
 ## Release
-# set { bg_filter = bin; }
+set fps = 24;
+set bg_filter = one;
+
+# @settings: start_tick = speed = w*h+[?]
+set { size = 64; start_tick = 0x1000; speed = 0x1003; }
+# set { size = 32; start_tick = 0x408; speed = 0x408; }
+# set { size = 16; start_tick = 0x102; speed = 0x102; }
+
+## Debug
+# set { fps = 8; speed = 1; }
+# set { fps = 16; bg_filter = lsb; fg = tile; }
+
 
 ant queen = 0 {
 	H = 1; C4 = 1;
@@ -21,6 +25,7 @@ ant queen = 0 {
 	A4 = J;
 	A1 = and(-J, -S0, -M0);
 	A2 = and(-J, -S0, +M0);
+
 	M0 = and(-J, xor(M0, -S0));
 
 	# signal delay
@@ -31,17 +36,60 @@ fn worker = () => () { S0 = 1; Z = C4; }
 
 ant randomizer = 0b10000 {
 	() = worker();
-	C1 = RR1;
+	C0 = RR1;
 } 
 
+# uses 8 input pins
+fn neighbors = () => (eq0, eq1, eq2, eq3, eq4, eq5, eq6, eq7, eq8) {
+	(w3, w2, w1, w0) = hw(
+		VC00, VC10, VC20, VC30,
+		VC40, VC50, VC60, VC70,
+	);
+
+	(eq0, eq1, eq2, eq3, eq4, eq5, eq6, eq7) = dec(w2, w1, w0);
+
+	eq8 = w3;
+}
+
+# RULES:
+#	cond	action	cases
+#1  <2  =>  die     0 1
+#2  2|3 =>  live    2 3
+#3  >3  =>  die     _
+#4  =3  =>  spawn   3   (dead only)
+
 # TODO
-ant cell_marker = 2 {
-	() = worker();
-	C2 = -C2;
+ant cell_counter = 2 {
+	S0 = 1; # can't use worker() due to bit limit
+
+	(eq0, eq1, eq2, eq3, eq4, eq5, eq6, eq7, eq8) = neighbors();
+
+	lt2 = or(eq0, eq1);
+	gt3 = or(eq4, eq5, eq6, eq7, eq8);
+
+	(C6, C5) = enc(lt2, eq2, eq3, gt3);
+
+	(A1, A0) = cpy(1);
+}
+
+ant cell_marker = 3 {
+	H = 1;
+	(alive, -dead) = cpy(C0);
+	(lt2, eq2, eq3, gt3) = dec(C6, C5);
+
+	C3 = and(alive, or(lt2, gt3)); # @C3: die
+	C2 = and(dead, eq3); # @C2: spawn
+
+	Z = 1;
+	ZZ = C4;
 }
 
 # TODO
 ant cell_handler = 4 {
 	() = worker();
-	C3 = -C3;
+	(alive, -dead) = cpy(C0);
+	
+	C0 = or(and(alive, -C3), and(dead, C2));
+
+	(C2, C3) = cpy(0);
 }
