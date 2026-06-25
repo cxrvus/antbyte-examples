@@ -1,0 +1,27 @@
+set start = top_left;
+set fg = tile;
+set ticks = 800;
+# set start_tick = 0x100;
+
+ant main = 0 {
+	(w3, w2, w1, w0) = hw(T7, T6, T5, T4, T3, T2, T1, T0);
+	(C3, C2, C1, C0) = buf(w3, w2, w1, w0);
+	(C7, C6, C5, C4) = buf(w3, w2, w1, w0);
+
+	A0 = w3;
+	Z = w3;
+}
+
+ant 1 {
+	(w3, w2, w1, w0) = hw(C7, C6, C5, C4, C3, C2, C1, C0);
+	(C3, C2, C1, C0) = buf(w3, w2, w1, w0);
+	(C7, C6, C5, C4) = buf(w3, w2, w1, w0);
+
+	A1 = w3;
+	Z = w3;
+}
+
+ant 2 {
+	() = _ant_0x01();
+	(C6, C5, C3, C2) = cpy(1);
+}
