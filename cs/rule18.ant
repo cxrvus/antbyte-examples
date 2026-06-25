@@ -1,0 +1,7 @@
+set { size = 127; speed = 0x800; }
+set { start = top_left; bg_filter = one; }
+
+ant 0 {
+	C = or(J, xor(VC50, VC60));
+	C1 = J; Z =VC01;
+}
