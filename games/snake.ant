@@ -88,6 +88,7 @@ ant head = 2 {
 	);
 
 	D1 = or(right, left); D2 = left;
+	(C7, C6) = buf(D2, D1);
 
 	# remember direction
 	(cout, M1) = add(M1, D1);
@@ -95,22 +96,15 @@ ant head = 2 {
 }
 
 ant tail = 4 {
+	Z = S7;
+
 	H = or(C3, S0);
 	W3 = -S0;
-	C1 = H;
-	C5 = H;
+	(C5, C1) = cpy(H);
 	C3 = 0;
 
-	turn =  and(-VC05, -H);
-	right = and(turn, VC25);
-	left =  and(turn, VC65);
-
-	# Error
-	(C2, Z) = cpy(and(turn, -VC25, -VC65));
-
-	Z = or(Z, S7);
-
-	D1 = or(right, left); D2 = left;
+	(D2, D1) = buf(C7, C6);
+	(C7, C6) = cpy(0);
 }
 
 ant food_spawner = 8 { # @layer = 1
