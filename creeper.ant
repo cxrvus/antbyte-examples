@@ -9,52 +9,52 @@ fn main = (y2, y1, y0, x2, x1, x0) => () {
 	black = or(
 		and(
 			or(
-				pair_eq(y2, y1, y0, 0, 0, 1),
-				pair_eq(y2, y1, y0, 0, 1, 0)
+				p_eq(y2, y1, y0, 0, 0, 1),
+				p_eq(y2, y1, y0, 0, 1, 0)
 			),
 			or(
-				pair_eq(x2, x1, x0, 0, 0, 1),
-				pair_eq(x2, x1, x0, 0, 1, 0),
-				pair_eq(x2, x1, x0, 1, 0, 1),
-				pair_eq(x2, x1, x0, 1, 1, 0)
+				p_eq(x2, x1, x0, 0, 0, 1),
+				p_eq(x2, x1, x0, 0, 1, 0),
+				p_eq(x2, x1, x0, 1, 0, 1),
+				p_eq(x2, x1, x0, 1, 1, 0)
 			)
 		),
 
 		and(
-			pair_eq(y2, y1, y0, 0, 1, 1),
+			p_eq(y2, y1, y0, 0, 1, 1),
 			or(
-				pair_eq(x2, x1, x0, 0, 1, 1),
-				pair_eq(x2, x1, x0, 1, 0, 0)
+				p_eq(x2, x1, x0, 0, 1, 1),
+				p_eq(x2, x1, x0, 1, 0, 0)
 			)
 		),
 
 		and(
 			or(
-				pair_eq(y2, y1, y0, 1, 0, 0),
-				pair_eq(y2, y1, y0, 1, 0, 1)
+				p_eq(y2, y1, y0, 1, 0, 0),
+				p_eq(y2, y1, y0, 1, 0, 1)
 			),
 			or(
-				pair_eq(x2, x1, x0, 0, 1, 0),
-				pair_eq(x2, x1, x0, 0, 1, 1),
-				pair_eq(x2, x1, x0, 1, 0, 0),
-				pair_eq(x2, x1, x0, 1, 0, 1)
+				p_eq(x2, x1, x0, 0, 1, 0),
+				p_eq(x2, x1, x0, 0, 1, 1),
+				p_eq(x2, x1, x0, 1, 0, 0),
+				p_eq(x2, x1, x0, 1, 0, 1)
 			)
 		),
 
 		and(
-			pair_eq(y2, y1, y0, 1, 1, 0),
+			p_eq(y2, y1, y0, 1, 1, 0),
 			or(
-				pair_eq(x2, x1, x0, 0, 1, 0),
-				pair_eq(x2, x1, x0, 1, 0, 1)
+				p_eq(x2, x1, x0, 0, 1, 0),
+				p_eq(x2, x1, x0, 1, 0, 1)
 			)
 		)
 	);
 
 	red = and(
-		pair_eq(y2, y1, y0, 0, 1, 0), 
+		p_eq(y2, y1, y0, 0, 1, 0), 
 		or(
-			pair_eq(x2, x1, x0, 0, 1, 0),
-			pair_eq(x2, x1, x0, 1, 0, 1),
+			p_eq(x2, x1, x0, 0, 1, 0),
+			p_eq(x2, x1, x0, 1, 0, 1),
 		),
 	);
 
