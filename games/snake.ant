@@ -9,6 +9,7 @@ set start_tick = 64;
 set fg = none;
 
 # set fg = layers;
+# set fg = id;
 # set main_layer = 0;
 # set fps = 1;
 
@@ -20,16 +21,23 @@ ant queen = 0 {
 	A1 = on(1, 1, 0); # head
 	A3 = on(1, 1, 1); # food spawner
 
-	# score (x2)
+	# score
 	A4 = or(on(0, 0, 1), on(0, 1, 0));
-	A0 = on(0, 1, 0);
+	A0 = and(A4, on(0, 1, 0));
 
-	AA1 = A4;
-	AA0 = or(A4, A3);
-	Z = A3;
+	# stop spawning after A3
+	(A4, A3, A2, A1, A0) = enb(-M0, A4, A3, A2, A1, A0);
+	H = M0;
+	M0 = or(M0, A3);
 
-	paint = and(-A1, -A3);
+	# stop painting after A1
+	M1 = or(M1, A1);
+	paint = -M1;
 	(C5, C1) = cpy(paint);
+
+	AA0 = or(A4, A3); AA1 = A4;
+
+	Z = T6;	# head start for food spawner
 }
 
 fn score = (incr, m3i, m2i, m1i, m0i) => (cout, m3o, m2o, m1o, m0o, x3, x2, x1, x0) {
@@ -118,13 +126,7 @@ ant food_spawner = 8 { # @layer = 1
 	D1 = and(turn, or(right, left));
 	D2 = and(turn, left);
 
-	# head start
-	M1 = or(M1, T6); 	# initialized
-	S0 = -M1; 			# uninitialized
-
-	# todo: check if occupied
-
-	spawn = and(+M1, -M0, -S1);
+	spawn = and(-S1, -S0, -M0, -C5);
 	(A3, A0, AA0) = cpy(spawn);
 	M0 = spawn;	# signal delay
 }
