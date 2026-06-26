@@ -52,7 +52,7 @@ fn score = (incr, m3i, m2i, m1i, m0i) => (cout, m3o, m2o, m1o, m0o, x3, x2, x1, 
 
 	S7 = S7; 	# game over
 	(A4, A1, AD2) = cpy(S7);
-	Z = K4;		# restart by pressing R
+	Z = and(S7, K4);		# restart by pressing R
 }
 
 ant score_lsb = 16 { # @layer = 3
@@ -66,7 +66,7 @@ ant score_msb = 17 { # @layer = 3
 	(_win, M7, M6, M5, M4, X7, X6, X5, X4) = score(incr, M7, M6, M5, M4);
 }
 
-ant game_over = 18 { Z = K4; C0 = xor(C0, RR2); }
+ant game_over = 18 { Z = K4; C0 = and(CC, xor(C0, T3)); }
 
 ant head = 2 {
 	Z = and(-S0, C5);	# die on intersection
