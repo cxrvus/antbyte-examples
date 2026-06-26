@@ -1,26 +1,71 @@
-set size = 32;
-set fps = 6;
+set size = 16;
 # set fps = 1;
-set layers = 2;
+# set fps = 0;
+set layers = 3;
 set border_0 = wrap;
-set border_1 = cycle;
+set border_1 = wrap;
 set keys = "wasd";
 
-# set fg = none;
+set main_layer = 2;
+set start_tick = 64;
+set fg = id;
 
 ant queen = 0 {
-	S0 = 1;
+	S0 = 1; # initialization phase
 	C1 = 1;
+	C5 = 1;
 
-	A2 = J;
-	A1 = T2;
-	Z = A1;
+	A2 = on(0, 0, 0, 0);
+	A4 = on(0, 0, 0, 1);
+	A1 = on(0, 1, 0, 0);
+	A3 = on(0, 1, 0, 1);
+
+	AA0 = A3;
+	AA1 = A4;
+
+	Z = A3;
 }
+
+ant score = 16 {
+	H = 1;
+
+	# scoring
+	incr = and(S2, -S0);
+	(cout, M0) = add(M0, incr);
+	(cout, M1) = add(cout, M1);
+	(cout, M2) = add(cout, M2);
+	(cwin, M3) = add(cout, M3);
+	(X3, X2, X1, X0) = buf(M3, M2, M1, M0);
+
+	# latch
+	(D0, A4, A0) = cpy(incr);
+
+	# todo: win state
+}
+
+ant score_latch = 17 {
+	# H = 1;
+	A5 = J;
+
+	S3 = -J;
+	C3 = S3;
+	(W2, W1, W0) = enb(J, 1, 1, 0);
+	Z = -J;
+}
+
+ant test = 32 { C7 = 1; M = or(M, S3); H = M; }
 
 ant head = 2 {
 	H = S0;
+	W3 = -S0;
 	C1 = 1;
+	C5 = 1;
 
+	C4 = 0; # eat food
+
+	# todo: remember dir in separate and to fix
+	## WASD movement
+	# todo: extract to module
 	w0 = and(+M2, +M1);
 	a0 = and(+M2, -M1);
 	s0 = and(-M2, +M1);
@@ -44,15 +89,45 @@ ant head = 2 {
 }
 
 ant tail = 4 {
-	H = S0;
-	C1 = 0;
+	H = or(S3, S0);
+	C3 = S3;
+	W3 = -S0;
+	C1 = H;
+	C5 = H;
 
-	turn = and(-VC01, -H);
-	right = and(turn, VC21);
-	left =  and(turn, VC61);
+	turn =  and(-VC05, -H);
+	right = and(turn, VC25);
+	left =  and(turn, VC65);
 
 	# Error
-	(C0, Z) = cpy(and(turn, -VC21, -VC61));
+	(C3, Z) = cpy(and(turn, -VC25, -VC65));
 
 	D1 = or(right, left); D2 = left;
+}
+
+ant food_spawner = 8 {
+	# random movement
+	H = RR2;
+	turn = RR3;
+	M2 = xor(M2, turn);
+	(right, -left) = cpy(M2);
+	D1 = and(turn, or(right, left));
+	D2 = and(turn, left);
+
+	# head start
+	M1 = or(M1, T6); 	# initialized
+	S0 = -M1; 			# uninitialized
+
+	spawn = and(+M1, -M0, -J, -S1);
+	(A3, A0) = cpy(spawn);
+	M0 = spawn;	# signal delay
+}
+
+ant food = 9 {
+	H = 1;
+	S1 = 1;
+	Z = and(-J, -C4);
+	S2 = Z; # score upon dying
+	C1 = 1;
+	(C4, C0) = cpy(-Z);
 }
