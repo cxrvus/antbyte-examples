@@ -37,23 +37,8 @@ ant score = 16 {
 	(cwin, M3) = add(cout, M3);
 	(X3, X2, X1, X0) = buf(M3, M2, M1, M0);
 
-	# latch
-	(D0, A4, A0) = cpy(incr);
-
 	# todo: win state
 }
-
-ant score_latch = 17 {
-	# H = 1;
-	A5 = J;
-
-	S3 = -J;
-	C3 = S3;
-	(W2, W1, W0) = enb(J, 1, 1, 0);
-	Z = -J;
-}
-
-ant test = 32 { C7 = 1; M = or(M, S3); H = M; }
 
 ant head = 2 {
 	H = S0;
@@ -72,7 +57,7 @@ ant head = 2 {
 	d0 = and(-M2, -M1);
 
 	w1 = K0; a1 = K1; s1 = K2; d1 = K3;
-	# todo: ensure uniqueness
+	# todo: assert uniqueness
 
 	right = or(
 		and(w0, d1), and(d0, s1), and(s0, a1), and(a0, w1),
@@ -89,18 +74,18 @@ ant head = 2 {
 }
 
 ant tail = 4 {
-	H = or(S3, S0);
-	C3 = S3;
+	H = or(C3, S0);
 	W3 = -S0;
 	C1 = H;
 	C5 = H;
+	C3 = 0;
 
 	turn =  and(-VC05, -H);
 	right = and(turn, VC25);
 	left =  and(turn, VC65);
 
 	# Error
-	(C3, Z) = cpy(and(turn, -VC25, -VC65));
+	(C2, Z) = cpy(and(turn, -VC25, -VC65));
 
 	D1 = or(right, left); D2 = left;
 }
@@ -127,7 +112,7 @@ ant food = 9 {
 	H = 1;
 	S1 = 1;
 	Z = and(-J, -C4);
-	S2 = Z; # score upon dying
-	C1 = 1;
+	(S2, C3) = cpy(+Z); # score upon dying
 	(C4, C0) = cpy(-Z);
+	C1 = 1;
 }
