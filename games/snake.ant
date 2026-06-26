@@ -1,14 +1,16 @@
 set size = 16;
-# set fps = 1;
-# set fps = 0;
-set layers = 3;
+set layers = 4;
 set border_0 = cycle;
 set border_1 = wrap;
-set keys = "wasd";
 
-set main_layer = 0;
+set keys = "wasdr";
+set looping = 1;
 set start_tick = 64;
-set fg = id;
+set fg = none;
+
+# set fg = layers;
+# set main_layer = 0;
+# set fps = 1;
 
 ant queen = 0 {
 	S0 = 1; # initialization phase
@@ -17,15 +19,15 @@ ant queen = 0 {
 	A4 = on(0, 0, 1);
 	A1 = on(1, 0, 0);
 	A3 = on(1, 0, 1);
-	AA0 = A3;
 	AA1 = A4;
+	AA0 = or(A4, A3);
 	Z = A3;
 
 	paint = and(-A1, -A3);
 	(C5, C1) = cpy(paint);
 }
 
-ant score = 16 {
+ant score = 16 { # on layer 3
 	H = 1;
 
 	# scoring
@@ -36,11 +38,18 @@ ant score = 16 {
 	(cwin, M3) = add(cout, M3);
 	(X3, X2, X1, X0) = buf(M3, M2, M1, M0);
 
+	S7 = S7; 	# game over
+	(A4, A0, AD2) = cpy(S7);
+	Z = K4;		# restart by pressing R
+
 	# todo: win state
 }
 
+ant game_over = 17 { Z = K4; C0 = xor(C0, RR2); }
+
 ant head = 2 {
-	Z = and(-S0, C5); # die on intersection
+	Z = and(-S0, C5);	# die on intersection
+	S7 = Z;				# game over on death
 
 	H = S0;
 	W3 = -S0;
@@ -87,10 +96,14 @@ ant tail = 4 {
 	# Error
 	(C2, Z) = cpy(and(turn, -VC25, -VC65));
 
+	Z = or(Z, S7);
+
 	D1 = or(right, left); D2 = left;
 }
 
 ant food_spawner = 8 {
+	Z = S7;
+
 	# random movement
 	H = RR2;
 	turn = RR3;
@@ -103,16 +116,17 @@ ant food_spawner = 8 {
 	M1 = or(M1, T6); 	# initialized
 	S0 = -M1; 			# uninitialized
 
-	spawn = and(+M1, -M0, -J, -S1);
-	(A3, A0) = cpy(spawn);
+	spawn = and(+M1, -M0, -S1);
+	(A3, A0, AA0) = cpy(spawn);
 	M0 = spawn;	# signal delay
 }
 
 ant food = 9 {
 	H = 1;
 	S1 = 1;
-	Z = and(-J, -C4);
-	(S2, C3) = cpy(+Z); # score upon dying
-	(C4, C0) = cpy(-Z);
+	score = and(-J, -C4);
+	(S2, C3) = cpy(+score); # score upon being eaten
+	(C4, C0) = cpy(-score);
+	Z = or(score, S7);
 	C1 = 1;
 }
