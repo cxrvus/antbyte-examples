@@ -17,8 +17,8 @@ ant queen = 0 {
 	S0 = 1; # initialization phase
 
 	A2 = on(0, 0, 0); # tail
-	A1 = on(1, 0, 0); # head
-	A3 = on(1, 0, 1); # food spawner
+	A1 = on(1, 1, 0); # head
+	A3 = on(1, 1, 1); # food spawner
 
 	# score (x2)
 	A4 = or(on(0, 0, 1), on(0, 1, 0));
@@ -70,7 +70,6 @@ ant head = 2 {
 
 	C4 = 0; # eat food
 
-	# todo: remember dir in separate and to fix
 	## WASD movement
 	# todo: extract to module
 	w0 = and(+M2, +M1);
@@ -128,6 +127,8 @@ ant food_spawner = 8 { # @layer = 1
 	# head start
 	M1 = or(M1, T6); 	# initialized
 	S0 = -M1; 			# uninitialized
+
+	# todo: check if occupied
 
 	spawn = and(+M1, -M0, -S1);
 	(A3, A0, AA0) = cpy(spawn);
