@@ -2,28 +2,27 @@ set size = 16;
 # set fps = 1;
 # set fps = 0;
 set layers = 3;
-set border_0 = wrap;
+set border_0 = cycle;
 set border_1 = wrap;
 set keys = "wasd";
 
-set main_layer = 2;
+set main_layer = 0;
 set start_tick = 64;
 set fg = id;
 
 ant queen = 0 {
 	S0 = 1; # initialization phase
-	C1 = 1;
-	C5 = 1;
 
-	A2 = on(0, 0, 0, 0);
-	A4 = on(0, 0, 0, 1);
-	A1 = on(0, 1, 0, 0);
-	A3 = on(0, 1, 0, 1);
-
+	A2 = on(0, 0, 0);
+	A4 = on(0, 0, 1);
+	A1 = on(1, 0, 0);
+	A3 = on(1, 0, 1);
 	AA0 = A3;
 	AA1 = A4;
-
 	Z = A3;
+
+	paint = and(-A1, -A3);
+	(C5, C1) = cpy(paint);
 }
 
 ant score = 16 {
@@ -41,10 +40,11 @@ ant score = 16 {
 }
 
 ant head = 2 {
+	Z = and(-S0, C5); # die on intersection
+
 	H = S0;
 	W3 = -S0;
-	C1 = 1;
-	C5 = 1;
+	(C5, C1) = cpy(-S0);
 
 	C4 = 0; # eat food
 
