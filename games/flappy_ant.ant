@@ -1,0 +1,80 @@
+set start = left;
+set keys = " ";
+set fps = 24;
+set { height = 32; width = 64; }
+
+set bg = id;
+set fg = id;
+set fg = none;
+set start_tick = 100;
+
+set layers = 2;
+set border = obs;
+
+ant queen = 0x00 {
+	S0 = 1; # init
+
+	(obs0, obs1, obs2, obs3) = dec(M1, M0);
+	last = M2;
+
+	(A1, A0) = cpy(J);
+	(A6, AD2) = cpy(and(V, obs0));	# blockade_spawner
+	(A7, AA) = cpy(and(V, obs2));	# god
+	(A5) = cpy(last);				# pipe_spawner
+	A4 = or(A6, A5);
+	AD1 = 1;
+
+	Z = and(last, VM47);
+
+	D1 = and(V, or(obs1, obs2));
+	H = or(last, and(V, obs0));
+	
+	# state
+	(cout, M1, M0) = add(M1, M0, 0, V);
+	last = or(last, and(M1, M0));
+	M2 = last;
+}
+
+ant bird = 0x03 {
+	S7 = 1;
+
+	H = or(S0, T0);
+	Z = V;
+
+	D2 = and(-S0, xor(M0, K0));
+	M0 = K0;
+	# M1 = xor(M1, D2);
+}
+
+ant pipe = 0x22 { (Z, ZZ) = cpy(and(S7, V, -VA5)); }
+
+ant pipe2 = 0x2a { () = pipe(); }
+
+ant pipe_spawner = 0x30 {
+	spawn = and(-S0, S3);
+	(A5, A1, AD2) = cpy(spawn);
+	A3 = and(spawn, or(VA36, VA56));
+
+	D1 = and(-M0, -S0);
+	M0 = -S0;
+	# M1 = or(M1, and(J, ));
+	M7 = 1; 		# for queen
+}
+
+ant blockade = 0x40 {
+	D2 = S1;
+	H = or(S0, S2, S3);
+}
+
+ant blockade_spawner = 0x50 {
+	A6 = 1;
+	H = -T3;
+	Z = T4;
+}
+
+ant god = 0x80 {
+	H = 1;
+	S1 = R1;
+	S2 = RR2;
+	S3 = and(T4, T3, T2);
+}
