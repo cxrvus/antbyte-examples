@@ -1,6 +1,6 @@
 set start = left;
 set keys = " ";
-set fps = 24;
+set fps = 20;
 set { height = 32; width = 64; }
 
 set bg = id;
@@ -37,31 +37,47 @@ ant queen = 0x00 {
 
 ant bird = 0x03 {
 	S7 = 1;
+	DD = 1;
 
 	H = or(S0, T0);
-	Z = V;
+	Z = or(and(V, -M1)VA5);		# die when hitting floor or pipe
+	(A4, A1, A0) = cpy(Z);		# spawn ghost
 
 	D2 = and(-S0, xor(M0, K0));
-	M0 = K0;
-	# M1 = xor(M1, D2);
+	M0 = and(-S0, K0);
+	M1 = xor(M1, D2);
 }
 
-ant pipe = 0x22 { (Z, ZZ) = cpy(and(S7, V, -VA5)); }
+ant bird_ghost = 0x13 {
+	ZZ = R; DD = 1;
+	D1 = or(RR3, and(V, -VA5, M0));
+	(A4, A1, A0) = cpy(or(K0, RR5));
+	M0 = V;
+}
+
+ant pipe = 0x22 { 
+	(Z, ZZ) = cpy(and(S7, V, -VA5));
+	ZZ = 0;
+	D1 = and(-S7, RR3, TT3);		# random movement after bird death
+}
 
 ant pipe2 = 0x2a { () = pipe(); }
 
 ant pipe_spawner = 0x30 {
-	spawn = and(-S0, S3);
+	Z = -S7;
+
+	spawn = and(S7, -S0, S3);
 	(A5, A1, AD2) = cpy(spawn);
 	A3 = and(spawn, or(VA36, VA56));
 
 	D1 = and(-M0, -S0);
 	M0 = -S0;
-	# M1 = or(M1, and(J, ));
+	
 	M7 = 1; 		# for queen
 }
 
 ant blockade = 0x40 {
+	Z = -S7;
 	D2 = S1;
 	H = or(S0, S2, S3);
 }
@@ -74,7 +90,7 @@ ant blockade_spawner = 0x50 {
 
 ant god = 0x80 {
 	H = 1;
-	S1 = R1;
-	S2 = RR2;
+	S1 = RR3;
+	S2 = RR1;
 	S3 = and(T4, T3, T2);
 }
