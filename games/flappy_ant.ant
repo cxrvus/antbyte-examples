@@ -40,7 +40,7 @@ ant bird = 0x03 {
 	DD = 1;
 
 	H = or(S0, T0);
-	Z = or(and(V, -M1)VA5);		# die when hitting floor or pipe
+	Z = or(and(V, -M1), VA5);	# die when hitting floor or pipe
 	(A4, A1, A0) = cpy(Z);		# spawn ghost
 
 	D2 = and(-S0, xor(M0, K0));
