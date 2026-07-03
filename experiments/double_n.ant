@@ -1,5 +1,3 @@
-use "../lib/time";
-
 set bg_filter = bin;
 set start = top_left;
 set height = 7;	

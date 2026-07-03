@@ -1,5 +1,3 @@
-use "lib/time";
-
 set start = left;
 set size = 16;
 set fps = 4;

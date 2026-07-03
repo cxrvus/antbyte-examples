@@ -1,5 +1,3 @@
-use "../lib/time";
-
 set start = top_left;
 set size = 64;
 set layers = 3;

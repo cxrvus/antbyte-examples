@@ -1,5 +1,3 @@
-use "lib/time";
-
 set fps = 16;
 set border = wrap;
 set height = 8;
