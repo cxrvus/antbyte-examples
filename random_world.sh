@@ -4,7 +4,7 @@ should_exit=0
 child_pid=""
 gif_enabled=0
 
-world_script="./random_world.mjs"
+world_script="./js/random_world.mjs"
 world_settings_normal="speed=4;fps=12"
 world_settings_gif="size=256;speed=8;fps=24;dur=25"
 

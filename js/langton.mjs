@@ -1,6 +1,6 @@
 // @ts-check
 
-import { ant, run } from "../antbyte-js/lib.mjs"
+import { ant, run } from "../../antbyte-js/lib.mjs"
 
 run({
 	cfg: {
@@ -8,9 +8,9 @@ run({
 		width: 64,
 		height: 64,
 		speed: 64,
-		border_mode: "despawn",
-		starting_pos: "center",
-		color_mode: "binary",
+		border: { 0: "despawn" },
+		start_pos: "center",
+		bg_filter: "bin",
 	},
 	ants: {
 		1: ant("main", (C2) => ({
