@@ -19,7 +19,7 @@ function generateWorld() {
 	return world
 }
 
-const EXCLUDE = ['X', 'R', 'RR', 'VM']
+const EXCLUDE = ['R', 'RR', 'VM']
 
 const PINS = ALL_PINS.filter(pin => !EXCLUDE.includes(pin.code));
 const INPUTS = PINS.filter(pin => pin.io_type === "Input" || pin.io_type === null);
@@ -49,11 +49,11 @@ function distinct(array) {
 /** @param {number} index @returns {AntByte.Behavior} */
 function generateAnt(index) {
 	let filteredInputs = includeRange(INPUTS, [
-		['K', 0, 7],
-		// ['C', 0, 3],
-		// ['S', 0, 3],
-		// ['T', 4, 7],
+		['K', 0, 3],
+		['C', 0, 3],
+		['T', 4, 7],
 		// ['V', 0, 7],
+		// ['S', 0, 3],
 	]);
 
 	let filteredOutputs = includeRange(OUTPUTS, [
@@ -63,6 +63,7 @@ function generateAnt(index) {
 		['D', 0, 0],
 		['D', 2, 2],
 		['A', 0, 3],
+		['X', 0, 6],
 		['W', 0, 1],
 		['AA', 0, 0],
 		['Z', 0, 0],
@@ -109,8 +110,9 @@ function getSubset(superSet, amount) {
 
 const world = generateWorld()
 
-world.cfg = { height: 128, width: 255, speed: 16, fps: 12, keys: "asdfghjk", decay: 64, layers: 3, fg: 'layers', looping: true }
+world.cfg = { height: 128, width: 255, speed: 2, fps: 6, keys: "asdfghjk", decay: 32, layers: 3, fg: 'layers', looping: true }
 world.cfg.border = { 0: 'collide', 1: 'wrap', 2: 'despawn' };
+world.cfg.midi = { out_ch: 4 };
 // world.cfg.keys = "asdfghj"
 
 if (KEEP_FILES) {

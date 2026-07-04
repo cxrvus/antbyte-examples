@@ -33,7 +33,7 @@ run_antbyte() {
 		echo "Creating GIF: $gif_name"
 		antbyte --gif "$gif_name" "$world_script" -Tc "$world_settings_gif" &
 	else
-		antbyte-gui "$world_script" -Tc "$world_settings_normal" &
+		echo 1 | antbyte-gui "$world_script" &
 	fi
 	child_pid=$!
 }
