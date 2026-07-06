@@ -1,0 +1,77 @@
+set start = top;
+set keys = "ad e";
+set speed = 2;
+set start_tick = 1;
+set fg = none;
+set decay = 64;
+
+set desc = "modified sand.ant";
+
+# set fps = 32;
+set height = 64;
+set width = 128;
+
+# set size = 16;
+# set { size = 8; fps = 1; speed = 1; }
+
+set layers = 3;
+set main_layer = 1;
+set border_0 = cycle;
+set border_1 = obs;
+set border_2 = die;
+
+ant queen = 1 {
+	S0 = T;
+
+	(right, left) = buf(1, 0);
+	(last_right, -last_left) = cpy(M0);
+	D2 = or(and(left, last_right), and(right, last_left));
+	M0 = xor(M0, D2);
+
+	H = or(S0, and(-right, -left));
+
+	A1 = 1; AD1 = 1;
+	AD2 = or(J, left);
+	ZZ = 1;
+}
+
+ant sand_spawner = 2 {
+	H = 1;
+	Z = and(-VA20, -VA60);
+	C2 = and(-Z, T4);
+	A2 = and(-Z, 1);
+	AA = 1; AD2 = 1;
+
+	S1 = and(K3, RR2);
+}
+
+ant sand = 4 {
+	move = S0;
+	H = -move;
+
+	(last_right, last_left) = buf(M1, M0);
+
+	# using R0 as a tie breaker
+	(_, right1, left1, left2, _, right2, left3, right3) = dec(R0, -V7, -V1);
+	right = or(right1, right2, right3);
+	left = or(left1, left2, left3);
+
+	(right, left) = enb(V0, right, left);
+	right = mux(move, last_left, right);
+	left = mux(move, last_right, left);
+
+	D0 = or(left, right);
+	(D2, D1) = cpy(left);
+	(M1, M0) = enb(move, right, left);
+
+	ZZ = and(S1, R0, -move, -right, -left);
+
+	(AA, A2, A0) = cpy(and(-ZZ, move));
+}
+
+ant sand_color = 5 {
+	H = -RR1;
+	Z = T7;
+	C3 = -Z;
+	(C2, C1, C0) = buf(T6, T5, T4);
+}
