@@ -3,7 +3,7 @@ set keys = "ad e";
 set speed = 2;
 set fg = none;
 
-set fps = 32;
+# set fps = 32;
 set height = 64;
 set width = 128;
 
@@ -14,6 +14,7 @@ set layers = 3;
 set main_layer = 1;
 set border_0 = cycle;
 set border_1 = obs;
+set border_2 = die;
 
 ant queen = 1 {
 	S0 = T;
