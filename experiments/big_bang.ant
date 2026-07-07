@@ -1,0 +1,46 @@
+set ant_limit = 0x1000;
+set decay = 128;
+set height = 0xff;
+set width = 0xff;
+set border = obs;
+set speed = 4;
+set fg = tile;
+set bg = layers;
+
+set layers = 3;
+set border_1 = cycle;
+set border_2 = die;
+
+ant 0 {
+	A = -or(S2, S1, S0);
+	H = 1; AD2 = 1; D0 = 1;
+}
+
+ant 1 {
+	(A1, AA) = cpy(TT2);
+	A0 = -A1;
+
+	D1 = cpy(T1);
+	D2 = cpy(T2);
+
+	(C2, C1, C0) = buf(T2, T1, T0);
+
+	Z = T7;
+
+	S0 = 1;
+}
+
+ant 2 {
+	C3 = T;
+	Z = T7;
+	(A2, AA) = cpy(RR1);
+
+	S1 = 1;
+}
+
+ant 4 {
+	CC = T;
+	Z = T2;
+
+	S2 = 1;
+}
