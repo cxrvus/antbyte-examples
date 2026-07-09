@@ -1,11 +1,13 @@
 set start_pos = top_left;
 set start_dir = 2;
 set start_tick = 48;
-set midi_out_ch = 1;
 set width = 16;
 set height = 4;
 
-set fps = 4;
+set midi_out_ch = 2;
+set midi_out_offset = 36;
+
+set fps = 6;
 
 set layers = 3;
 set main_layer = 2;
@@ -32,7 +34,7 @@ ant queen = 0 {
 
 fn play = (x1, x0) => () {
 	H = or(S0, S1);
-	(X3, X2) = enb(and(-S0, -S1, -CC), x1, x0);
+	(X1, X0) = enb(and(-S0, -S1, -CC), x1, x0);
 }
 
 ant kick = 		0b1010 { () = play(0, 1); }
