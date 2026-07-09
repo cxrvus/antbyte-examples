@@ -1,0 +1,76 @@
+set start_pos = top_left;
+set start_dir = 2;
+set start_tick = 48;
+set midi_out_ch = 1;
+set width = 16;
+set height = 4;
+
+set fps = 4;
+
+set layers = 3;
+set main_layer = 2;
+set border_0 = die;
+set border_1 = wrap;
+set border_2 = cycle;
+
+ant queen = 0 {
+	spawn_song = 	on(0, 0, 0, 1);
+	spawn_kick = 	on(0, 0, 1, 0);
+	spawn_snare = 	on(0, 0, 1, 1);
+	spawn_hi_hat = 	on(0, 1, 0, 0);
+
+	H = or(spawn_song, spawn_kick);
+
+	(A1, A0) = enc(spawn_song, spawn_kick, spawn_snare, spawn_hi_hat);
+	(A2, A1, A0) = add(A1, A0, 0, 1);
+	(A2, A1, A0) = enb(-J, A2, A1, A0);
+	(AA0, -AA1) = cpy(spawn_song);
+	(A3, AD2, AD1) = cpy(1);
+
+	Z = spawn_hi_hat;
+}
+
+fn play = (x1, x0) => () {
+	H = or(S0, S1);
+	(X3, X2) = enb(and(-S0, -S1, -CC), x1, x0);
+}
+
+ant kick = 		0b1010 { () = play(0, 1); }
+ant snare = 	0b1011 { () = play(1, 0); }
+ant hi_hat = 	0b1100 { () = play(1, 1); }
+
+ant song = 0b1001 {
+
+	end = on(1, 1, 0, 0, 0, 0);
+	M0 = or(M0, end);
+	H = M0;
+
+	S0 = -M0;			# init
+	S1 = and(-S0, -T0);	# note-on
+
+	kick = or(
+		on(0, 0, 0, 0, 0, 0),
+		on(0, 0, 0, 1, 0, 1),
+		on(0, 0, 1, 0, 0, 0),
+		on(0, 0, 1, 0, 0, 0),
+		on(0, 0, 1, 1, 0, 1),
+		on(0, 0, 1, 1, 1, 1),
+	);
+	snare = or(
+		on(0, 1, 0, 0, 1, 0),
+		on(0, 1, 0, 1, 1, 0),
+		on(0, 1, 1, 0, 1, 0),
+		on(0, 1, 1, 1, 1, 0),
+	);
+	hi_hat = or(
+		on(1, 0, 0, 0, 0, 1),
+		on(1, 0, 0, 0, 1, 1),
+		on(1, 0, 0, 1, 0, 0),
+		on(1, 0, 0, 1, 1, 1),
+		on(1, 0, 1, 0, 0, 1),
+		on(1, 0, 1, 0, 1, 1),
+		on(1, 0, 1, 1, 0, 0),
+	);
+
+	(C0, C1, C2) = enb(S0, kick, snare, hi_hat);
+}

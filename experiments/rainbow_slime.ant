@@ -1,6 +1,7 @@
 set start = top;
 set keys = "ad e";
-set speed = 2;
+set speed = 8;
+set ant_limit = 0x1000;
 set start_tick = 1;
 set fg = none;
 set decay = 64;

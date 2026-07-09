@@ -1,17 +1,16 @@
 set start = top;
 set keys = "ad e";
-set speed = 2;
+set speed = 4;
+set start_tick = 1;
 set fg = none;
 
-# set fps = 32;
-set height = 64;
+set height = 128;
 set width = 128;
 
-# set size = 16;
 # set { size = 8; fps = 1; speed = 1; }
 
 set layers = 3;
-set main_layer = 1;
+set main_layer = 0;
 set border_0 = cycle;
 set border_1 = obs;
 set border_2 = die;
@@ -25,6 +24,7 @@ ant queen = 1 {
 	M0 = xor(M0, D2);
 
 	H = or(S0, and(-right, -left));
+	(C3, C2) = cpy(-H);
 
 	A1 = 1; AD1 = 1;
 	AD2 = or(J, left);
@@ -34,11 +34,13 @@ ant queen = 1 {
 ant sand_spawner = 2 {
 	H = 1;
 	Z = and(-VA20, -VA60);
-	C2 = and(-Z, T4);
+	(C3, C2) = cpy(and(-Z, T4));
 	A2 = and(-Z, K2);
 	AA = 1; AD2 = 1;
 
 	S1 = and(K3, RR2);
+
+	CC = J;
 }
 
 ant sand = 4 {
@@ -68,6 +70,6 @@ ant sand = 4 {
 ant sand_color = 5 {
 	H = 1;
 	Z = T7;
-	C3 = -Z;
+	C3 = and(-J, -Z);
 	(C2, C1, C0) = buf(T6, T5, T4);
 }
