@@ -1,11 +1,10 @@
+use_cfg sp404_cfg;
+
 set start_pos = top_left;
 set start_dir = 2;
 set start_tick = 48;
 set width = 16;
 set height = 4;
-
-set midi_out_ch = 2;
-set midi_out_offset = 36;
 
 set fps = 6;
 

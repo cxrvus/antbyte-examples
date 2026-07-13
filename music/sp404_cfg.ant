@@ -1,0 +1,2 @@
+set midi_out_ch = 2;
+set midi_out_offset = 36;
