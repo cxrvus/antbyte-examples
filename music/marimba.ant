@@ -1,17 +1,36 @@
-set midi_out_ch = 13;
-set fps = 3;
-set speed = 3;
+use_cfg sp404_cfg;
 
-ant main = 1
-{
+set midi_out_ch_1 = 13;
+set midi_out_ch_0 = 0;
+
+set fps = 4;
+set speed = 2;
+
+set layers = 2;
+set fg = layers;
+
+ant 1 {
+	(AA, A1) = cpy(J);
+
+	X6 = 1;
 	X0 = R0;
 	X2 = R3;
 	X3 = and (RR1, -X2);
 	X4 = RR2;
 
-	X13 = R7;
-	X12 = R6;
+	X11 = R7;
+	X10 = R6;
 
 	(C0, C1, C2, C3) = buf(X0, X2, X3, X4);
 }
 
+ant 2 {
+	X0 = TT1;
+	A2 = and(X0, RR3);
+	H = 1;
+}
+
+ant 4 {
+	(X1, X0) = cpy(TT1);
+	Z = RR3;
+}
