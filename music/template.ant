@@ -1,0 +1,3 @@
+set fps = 3;
+set midi_out_ch = 1;
+

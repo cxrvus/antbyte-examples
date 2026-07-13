@@ -1,0 +1,17 @@
+use_cfg template;
+set keys = "asdf";
+
+ant 0 {
+	(AM3, AM2, AM1, AM0) = buf(K3, K2, K1, K0);
+	A0 = or(K3, K2, K1, K0);
+}
+
+ant 1 {
+	H = 1;
+
+	(X3, X2, X1, X0) = buf(M3, M2, M1, M0);
+	(C3, C2, C1, C0) = buf(X3, X2, X1, X0);
+	(X13, X12) = buf(T1, T0);
+	W0 = 1;
+	Z = and(T1, T0);
+}
