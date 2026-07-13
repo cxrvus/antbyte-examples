@@ -41,7 +41,7 @@ ant snare = 	0b1011 { () = play(-CC, 1, 0); }
 
 ant hi_hat = 	0b1100 {
 	() = play(or(-CC, R0, R1), 1, 1);
-	X12 = T1;
+	(X13, X10) = cpy(T1);
 }
 
 ant song = 0b1001 {
