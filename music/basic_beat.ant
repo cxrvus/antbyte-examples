@@ -37,9 +37,13 @@ fn play = (note_on, x1, x0) => () {
 	(X1, X0) = enb(and(-S0, -S1, note_on), x1, x0);
 }
 
-ant kick = 		0b1010 { () = play(-CC, 0, 1); }
+ant kick = 	0b1010 { () = play(-CC, 0, 1); }
 ant snare = 	0b1011 { () = play(-CC, 1, 0); }
-ant hi_hat = 	0b1100 { () = play(or(-CC, R0, R1), 1, 1); }
+
+ant hi_hat = 	0b1100 {
+	() = play(or(-CC, R0, R1), 1, 1);
+	X12 = T1;
+}
 
 ant song = 0b1001 {
 

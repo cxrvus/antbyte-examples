@@ -5,10 +5,13 @@ set speed = 3;
 ant main = 1
 {
 	X0 = R0;
-    X2 = R3;
+	X2 = R3;
 	X3 = and (RR1, -X2);
 	X4 = RR2;
 
-	(C0, C1, C2, C3) = buf(X0, X2, X3, X4);
+	X13 = R7;
+	X12 = R6;
 
+	(C0, C1, C2, C3) = buf(X0, X2, X3, X4);
 }
+
