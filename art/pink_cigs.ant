@@ -1,0 +1,87 @@
+set start_pos = left;
+set start_dir = 2;
+set height = 32;
+set width = 40;
+set border = obs;
+set fps = 12;
+set loop = 1;
+set speed = 8;
+set layers = 2;
+set main_layer = 1;
+set fg = none;
+
+# set start_tick = 500;
+# set fps = 1;
+# set fg = layers;
+
+ant queen = 0 {
+	H = M0;
+	M0 = or(M0, T1);
+	(A1, AA, AD1, AD2) = cpy(-M0);
+
+	S0 = -M0;
+	S1 = and(M0, RR4);
+	S2 = -T0;
+
+	Z = and(M0, -S3);
+}
+
+ant queen2 = 2 {
+	S3 = 1;
+	H = S0;
+	(Z, A1, A0) = cpy(-S0);
+}
+
+ant cig_spawner = 3 {
+	S3 = 1;
+	A2 = -M0;
+	A3 = +M0;
+	M0 = or(M0, T2);
+	Z = on(0, 1, 1, 0, 0, 0);
+}
+
+ant filter = 4 {
+	S3 = 1;
+
+	Z = and(V, -VA3, -VA2, -VA1);
+	H = or(-M0, S2);
+	(C1, C0) = cpy(and(H, -Z));
+
+	D1 = and(-M0, S4);
+	M0 = or(M0, S4);
+	S4 = -V;
+}
+
+ant cig = 8 {
+	H = 1;
+			
+	D2 = -V;
+	M0 = or(M0, -V);
+	lit = M0;
+
+	(A3, A2, AD2) = cpy(lit);
+
+	M1 = xor(M1, RR2);
+	AM1 = M1;
+
+	(C3, C0) = cpy(1);
+	C2 = -lit;
+	C1 = and(lit, RR2);
+
+	Z = or(and(lit, S1), VA2);
+	(C3, C2, C1, C0) = enb(-Z, C3, C2, C1, C0);
+}
+
+ant smoke = 12 {
+	S3 = 1;
+
+	Z = and(V, -VA3);
+	paint = and(-Z, S2);
+	H = paint;
+	(C3, C2, C1, C0) = enb(paint, -M1, M1, M1, M1);
+
+	turn = R0;
+	D1 = turn;
+	D2 = and(-M0, turn);
+	M0 = xor(M0, turn);
+}
