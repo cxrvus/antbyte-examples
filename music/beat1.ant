@@ -1,0 +1,30 @@
+use_cfg sp404_cfg;
+
+set start = top_left;
+set fps = 3;
+
+set layers = 2;
+set main_layer = 1;
+
+ant queen = 0 {
+	H = 1;
+	AA = 1;
+	A0 = J;
+	A1 = and(-A0, RR3);
+}
+
+ant 1 {
+	# (X3, X2, X1, X0) = buf(T3, T2, T1, T0);
+	(X3, X2, X1, X0) = buf(R3, 0, 0, R0);
+	X4 = R4;
+	X6 = 1;
+	W0 = 1;
+}
+
+ant 2 {
+	X0 = and(-S1, T0);
+	X1 = M0;
+	M0 = X0;
+	S1 = or(X1, X0);
+	Z = T6;
+}
