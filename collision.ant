@@ -1,0 +1,54 @@
+set border = cycle;
+set start_dir = 2;
+set keys = "wd";
+set fps = 12;
+set size = 32;
+set start_tick = 0x100;
+set speed = 2;
+
+set layers = 2;
+set main_layer = 1;
+# set fg = layers;
+set bg = id;
+
+ant queen = 0 {
+	S0 = -M1;
+	S1 = -T0;
+
+	H = -M0;
+	M0 = J;
+
+	A1 = J;
+	A2 = and(-M1, T6);
+	M1 = or(M1, T6);
+	AD2 = 1;
+}
+
+ant player_spawner = 2 {
+	AA = 1;
+	(A1, A0) = cpy(1);
+	Z = T3;
+	AD1 = 1;
+}
+
+ant player_spawner2 = 3 {
+	A3 = 1;
+	Z = T3;
+}
+
+ant obstacle_spawner = 4 {
+	AA = 1;
+	D0 = R0;
+	D1 = R1;
+	(A2, A0) = cpy(RR2);
+	Z = and(T7, T6);
+}
+
+ant obstacle = 5 { H = 1; }
+
+ant player = 8 {
+	obs = VA2;
+	H =   or(+S0, -S1, +K1, -K0, S2, VM20, VM60);
+	D1 = and(-S0, +S1, +K1);
+	S2 = obs;
+}
