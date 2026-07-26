@@ -1,0 +1,95 @@
+set width = 80;
+set height = 32;
+set looping = 1;
+set sleep = 5000;
+# set size = 24;
+
+set start = bottom_right;
+set start_dir = 4;
+set fps = 16;
+# set fps = 4;
+
+set layers = 2;
+set main_layer = 0;
+set border = die;
+# set border = wrap;
+# set fg = layers;
+
+ant queen = 0 {
+	spawn_sky = J;
+	spawn_grass = and(-spawn_sky, or(R1, R2));
+	spawn_flower = and(-spawn_grass, M0, R0);
+
+	A1 = spawn_sky;
+	A2 = spawn_grass;
+	A3 = spawn_flower;
+
+	(AA, -AD1) = cpy(spawn_sky);
+
+	M0 = spawn_grass;
+
+	# D1 = RR1;
+}
+
+ant sky_spawner = 2 {
+	W4 = J;
+	(A1, A0, AD1) = cpy(-J);
+	AM1 = R1;
+}
+
+ant sky = 3 {
+	keep = C4;
+	C2 = or(C2, -keep);
+	C3 = mux(keep, or(RR1, xor(M1, M0)), C3);
+	M0 = xor(M0, RR3);
+}
+
+ant grass_spawner = 4 {
+	(AM3, AM2, AM1, AM0) = buf(R3, R2, R1, R0);
+	(Z, H, A2, A0) = cpy(-J);
+}
+
+
+ant grass = 5 {
+	C4 = 1;
+	C1 = 1;
+
+	# min value
+	(t1, t0) = buf(M1, M0);
+	(cout, t3, t2) = add(M3, M2, 0, 1);
+	(t3, t2) = buf(or(cout, t3), or(cout, t2));
+
+	Z = on(t3, t2, t1, t0);
+	C3 = -and(Z, M1, M0);
+}
+
+
+ant flower_spawner = 0b1000 {
+	(Z, H, A3, A0) = cpy(-J);
+	AM4 = RR1;
+}
+
+ant flower_rose = 0b1001 {
+	C4 = 1;
+
+	(tx0, tx1, tx2, tx3, tx4, tx5, tx6, tx7,
+	 tx8, tx9, txa, txb, txc, txd, txe, txf)
+	= dec(T3, T2, T1, T0);
+
+	(C0, -C1) = cpy(M0);
+	C2 = and(C0, M4);
+
+	d1 = or(tx0);
+	d2 = or(tx4, txc, txd, txe);
+	d3 = or(txf);
+	d4 = or(tx2, tx6);
+	d5 = 0;
+	d6 = or(tx8);
+	d7 = or(tx7, txb);
+
+	(D2, D1, D0) = enc(0, d1, d2, d3, d4, d5, d6, d7);
+
+	M0 = or(M0, txb);
+	Z = T4;
+	C3 = Z;
+}
