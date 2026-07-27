@@ -17,7 +17,7 @@ main();
 function main() {
 	const [_0, _1, path, cmd, countStr] = process.argv;
 	if (!path || !cmd) {
-		console.error("usage: mutate.mjs <PATH> <PATH2>|add|pop|apply|view [count]");
+		console.error("usage: mutate.mjs <PATH> <PATH2>|add|pop|apply|clean|view [count]");
 		return;
 	}
 
@@ -34,8 +34,9 @@ function main() {
 	let func = {
 		"add": () => { addMutation(world, count) },
 		"pop": () => { popMutation(world, count) },
-		"apply": () => { applyMut(world) },
-		"view": () => { viewMut(world) },
+		"clean": () => { cleanMutations(world) },
+		"apply": () => { applyMutations(world) },
+		"view": () => { viewMutations(world) },
 	}[cmd];
 
 	if (func) { 
@@ -51,7 +52,7 @@ function main() {
 		return;
 	}
 
-	if (["add", "pop"].includes(cmd)) {
+	if (["add", "pop", "clean"].includes(cmd)) {
 		const content = JSON.stringify(world, null, 2);
 		fs.writeFileSync(path, content);
 	}
@@ -90,7 +91,7 @@ function addMutation(world, count) {
 }
 
 /** @param {MutWorld} world */
-function applyMut(world) {
+function applyMutations(world) {
 	world.mutations?.forEach(({ antID, input, bit }) => {
 		world.ants[antID].logic[input] ^= 1 << bit;
 	})
@@ -115,7 +116,13 @@ function popMutation(world, count) {
 }
 
 /** @param {MutWorld} world */
-function viewMut(world) {
+function cleanMutations(world) {
+	delete world.mutations;
+	console.log("removed all mutations");
+}
+
+/** @param {MutWorld} world */
+function viewMutations(world) {
 	console.log(JSON.stringify(world.mutations, null, 2));
 }
 
