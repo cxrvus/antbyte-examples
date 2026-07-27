@@ -21,10 +21,37 @@ fn eq  = (a, b, c, d) => out { out = or(and(a, b, c, d), -or(a, b, c, d)); }
 
 fn imply = (a, b) => c { c = or(-a, b); }
 
+
+## Multiplexer
+
 fn mux = (s, a, b) => out { out = or(and(-s, a), and(s, b)); }
 
 fn mux = (s1, s0, a, b, c, d) => out {
 	out = mux(s1, mux(s0, a, b), mux(s0, c, d));
+}
+
+fn mux = (s2, s1, s0, o0, o1, o2, o3, o4, o5, o6, o7) => out {
+	out = mux(s2,
+		mux(s1, mux(s0, o0, o1), mux(s0, o2, o3)),
+		mux(s1, mux(s0, o4, o5), mux(s0, o6, o7)),
+	);
+}
+
+fn mux = (
+		s3, s2, s1, s0,
+		o00, o01, o02, o03, o04, o05, o06, o07,
+		o08, o09, o10, o11, o12, o13, o14, o15
+	) => out {
+	out = mux(s3,
+		mux(s2,
+			mux(s1, mux(s0, o00, o01), mux(s0, o02, o03)),
+			mux(s1, mux(s0, o04, o05), mux(s0, o06, o07)),
+		),
+		mux(s2,
+			mux(s1, mux(s0, o08, o09), mux(s0, o10, o11)),
+			mux(s1, mux(s0, o12, o13), mux(s0, o14, o15)),
+		),
+	);
 }
 
 
@@ -60,13 +87,71 @@ fn cpy = in => (o0, o1, o2) { o0 = in; o1 = in; o2 = in; }
 fn cpy = in => (o0, o1, o2, o3) { o0 = in; o1 = in; o2 = in; o3 = in; }
 
 
-## Buffer: passes multiple parameters to multiple assignees
+## Forward: passes multiple parameters to multiple assignees
 
-fn buf = (i0) => (o0) { o0 = i0; }
-fn buf = (i0, i1) => (o0, o1) { o0 = i0; o1 = i1; }
-fn buf = (i0, i1, i2) => (o0, o1, o2) { o0 = i0; o1 = i1; o2 = i2; }
-fn buf = (i0, i1, i2, i3) => (o0, o1, o2, o3) {
+fn fwd = (i0) => (o0) { o0 = i0; }
+fn fwd = (i0, i1) => (o0, o1) { o0 = i0; o1 = i1; }
+fn fwd = (i0, i1, i2) => (o0, o1, o2) { o0 = i0; o1 = i1; o2 = i2; }
+fn fwd = (i0, i1, i2, i3) => (o0, o1, o2, o3) {
 	o0 = i0; o1 = i1; o2 = i2; o3 = i3;
+}
+
+
+## Forward (AND)
+
+fn fwd_and = (e, i1, i0) => (o1, o0) {
+	o1 = and(e, i1); o0 = and(e, i0);
+}
+
+fn fwd_and = (e, i2, i1, i0) => (o2, o1, o0) {
+	o2 = and(e, i2); o1 = and(e, i1); o0 = and(e, i0);
+}
+
+fn fwd_and = (e, i3, i2, i1, i0) => (o3, o2, o1, o0) {
+	o3 = and(e, i3); o2 = and(e, i2); o1 = and(e, i1);
+	o0 = and(e, i0);
+}
+
+fn fwd_and = (e, i4, i3, i2, i1, i0) => (o4, o3, o2, o1, o0) {
+	o4 = and(e, i4); o3 = and(e, i3); o2 = and(e, i2);
+	o1 = and(e, i1); o0 = and(e, i0);
+}
+
+fn fwd_and = (e, i5, i4, i3, i2, i1, i0) => (o5, o4, o3, o2, o1, o0) {
+	o5 = and(e, i5); o4 = and(e, i4); o3 = and(e, i3);
+	o2 = and(e, i2); o1 = and(e, i1); o0 = and(e, i0);
+}
+
+
+## Forward (OR)
+
+fn fwd_or = (e, i1, i0) => (o1, o0) {
+	o1 = or(e, i1); o0 = or(e, i0);
+}
+
+fn fwd_or = (e, i2, i1, i0) => (o2, o1, o0) {
+	o2 = or(e, i2); o1 = or(e, i1); o0 = or(e, i0);
+}
+
+fn fwd_or = (e, i3, i2, i1, i0) => (o3, o2, o1, o0) {
+	o3 = or(e, i3); o2 = or(e, i2); o1 = or(e, i1);
+	o0 = or(e, i0);
+}
+
+
+## Forward (XOR)
+
+fn fwd_xor = (e, i1, i0) => (o1, o0) {
+	o1 = xor(e, i1); o0 = xor(e, i0);
+}
+
+fn fwd_xor = (e, i2, i1, i0) => (o2, o1, o0) {
+	o2 = xor(e, i2); o1 = xor(e, i1); o0 = xor(e, i0);
+}
+
+fn fwd_xor = (e, i3, i2, i1, i0) => (o3, o2, o1, o0) {
+	o3 = xor(e, i3); o2 = xor(e, i2); o1 = xor(e, i1);
+	o0 = xor(e, i0);
 }
 
 
@@ -112,32 +197,6 @@ fn p_eq = (a5, a4, a3, a2, a1, a0, b5, b4, b3, b2, b1, b0) => out {
 		eq(a5, b5), eq(a4, b4), eq(a3, b3),
 		eq(a2, b2), eq(a1, b1), eq(a0, b0),
 	);
-}
-
-
-## Enabler
-
-fn enb = (e, i1, i0) => (o1, o0) {
-	o1 = and(e, i1); o0 = and(e, i0);
-}
-
-fn enb = (e, i2, i1, i0) => (o2, o1, o0) {
-	o2 = and(e, i2); o1 = and(e, i1); o0 = and(e, i0);
-}
-
-fn enb = (e, i3, i2, i1, i0) => (o3, o2, o1, o0) {
-	o3 = and(e, i3); o2 = and(e, i2); o1 = and(e, i1);
-	o0 = and(e, i0);
-}
-
-fn enb = (e, i4, i3, i2, i1, i0) => (o4, o3, o2, o1, o0) {
-	o4 = and(e, i4); o3 = and(e, i3); o2 = and(e, i2);
-	o1 = and(e, i1); o0 = and(e, i0);
-}
-
-fn enb = (e, i5, i4, i3, i2, i1, i0) => (o5, o4, o3, o2, o1, o0) {
-	o5 = and(e, i5); o4 = and(e, i4); o3 = and(e, i3);
-	o2 = and(e, i2); o1 = and(e, i1); o0 = and(e, i0);
 }
 
 
