@@ -1,4 +1,0 @@
-bounce: ON overload
-cheese: speed = 0
-gray_code: size too low
-green_lines: unexpected main
