@@ -1,5 +1,5 @@
 set start = top_left;
-set speed = 00;
+set speed = 1000;
 
 ant main = 1 {
 	H = and(R2, R1, R0);

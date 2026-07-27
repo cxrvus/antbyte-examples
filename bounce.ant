@@ -1,5 +1,3 @@
-use "lib/time";
-
 set height = 31;
 set width = 69;
 set border = obs;

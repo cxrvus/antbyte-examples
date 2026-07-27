@@ -1,9 +1,9 @@
-set start = top_left;
+set start = left;
 
-set height = 1;
+set height = 3;
 set fg = none;
 set ticks = 15;
-set speed = 0;
+set speed = 15;
 
 fn gray_code = (n3, n2, n1, n0) => (o3, o2, o1, o0) {
 	(m3, m2, m1, m0) = buf(0, n3, n2, n1); # rsh
