@@ -26,8 +26,8 @@ function main() {
 
 	const count = !countStr ? 1 : parseInt(countStr);
 
-	if (count < 1 || count > 16) {
-		console.error("count must be between 1 and 16");
+	if (count < 1 || count > 100) {
+		console.error("count must be between 1 and 100");
 		return;
 	}
 
