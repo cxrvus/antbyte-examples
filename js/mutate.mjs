@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // @ts-check
-/** @import * as AntByte from "../../antbyte-js/lib" AntByte */
+/** @import { World } from "../../antbyte-js/lib" AntByte */
 
 import process from 'node:process';
 import * as fs from 'fs';
@@ -9,7 +9,7 @@ import { randomInt } from "../../antbyte-js/lib.mjs"
 
 /**
  * @typedef {{ antID: number, input: number, bit: number }} Mutation
- * @typedef { AntByte.World & { mutations?: Mutation[] } } MutWorld
+ * @typedef { World & { mutations?: Mutation[] } } MutWorld
 */
 
 main();
@@ -122,7 +122,7 @@ function viewMut(world) {
 /**
  * @param {MutWorld} world1
  * @param {MutWorld} world2
- * @returns {AntByte.World}
+ * @returns {World}
  */
 function crossWorlds(world1, world2) {
 	const cfg = crossObjects(world1.cfg, world2.cfg);
