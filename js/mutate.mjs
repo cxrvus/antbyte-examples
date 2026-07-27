@@ -17,7 +17,7 @@ main();
 function main() {
 	const [_0, _1, path, cmd, countStr] = process.argv;
 	if (!path || !cmd) {
-		console.error("usage: mutate.mjs <PATH> <add|run|pop|show> [count]");
+		console.error("usage: mutate.mjs <PATH> <PATH2>|add|run|pop|show [count]");
 		return;
 	}
 
@@ -40,6 +40,12 @@ function main() {
 
 	if (func) { 
 		func();
+	} else if (fs.readFileSync(cmd, 'utf-8')) {
+		const path2 = cmd;
+		const world2 = parseWorld(path2);
+		const crossed = crossWorlds(world, world2);
+		const content = JSON.stringify(crossed, null, 2);
+		console.log(content);
 	} else {
 		console.error("unknown mutation command: " + cmd);
 		return;
@@ -111,4 +117,39 @@ function popMutation(world, count) {
 /** @param {MutWorld} world */
 function showMutations(world) {
 	console.log(JSON.stringify(world.mutations, null, 2));
+}
+
+/**
+ * @param {MutWorld} world1
+ * @param {MutWorld} world2
+ * @returns {AntByte.World}
+ */
+function crossWorlds(world1, world2) {
+	const cfg = crossObjects(world1.cfg, world2.cfg);
+	const ants = crossObjects(world1.ants, world2.ants);
+	return { ants, cfg }
+}
+
+/**
+ * @param {Object} obj1
+ * @param {Object} obj2
+ */
+function crossObjects(obj1, obj2) {
+	const keys = [...new Set([...Object.keys(obj1), ...Object.keys(obj2)])];
+
+	const resolutionEntries = keys
+		// @ts-ignore
+		.map(key => [obj1[key], obj2[key], key])
+		.filter(([val1, val2, _key]) => val1 && val2)
+		.map(([val1, val2, key]) => {
+			const coin_flip = randomInt(2);
+			const val = [val1, val2][coin_flip];
+			console.error(`taking ${key} from world ${coin_flip + 1}`);
+			return [key, val]
+		})
+	;
+
+	const resolution = Object.fromEntries(resolutionEntries);
+	
+	return { ...obj1, ...obj2, ...resolution };
 }
