@@ -26,7 +26,7 @@ ant queen = 0 {
 	A0 = and(A4, on(0, 1, 0));
 
 	# stop spawning after A3
-	(A4, A3, A2, A1, A0) = enb(-M0, A4, A3, A2, A1, A0);
+	(A4, A3, A2, A1, A0) = fwd_and(-M0, A4, A3, A2, A1, A0);
 	H = M0;
 	M0 = or(M0, A3);
 
@@ -48,7 +48,7 @@ fn score = (incr, m3i, m2i, m1i, m0i) => (cout, m3o, m2o, m1o, m0o, x3, x2, x1, 
 	(cout, m1o) = add(cout, m1i);
 	(cout, m2o) = add(cout, m2i);
 	(cout, m3o) = add(cout, m3i);
-	(x3, x2, x1, x0) = buf(m3o, m2o, m1o, m0o);
+	(x3, x2, x1, x0) = fwd(m3o, m2o, m1o, m0o);
 
 	S7 = S7; 	# game over
 	(A4, A1, AD2) = cpy(S7);
@@ -96,7 +96,7 @@ ant head = 2 {
 	);
 
 	D1 = or(right, left); D2 = left;
-	(C7, C6) = buf(D2, D1);
+	(C7, C6) = fwd(D2, D1);
 
 	# remember direction
 	(cout, M1) = add(M1, D1);
@@ -111,7 +111,7 @@ ant tail = 4 {
 	(C5, C1) = cpy(H);
 	C3 = 0;
 
-	(D2, D1) = buf(C7, C6);
+	(D2, D1) = fwd(C7, C6);
 	(C7, C6) = cpy(0);
 }
 

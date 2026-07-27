@@ -24,7 +24,7 @@ ant queen = 0 {
 
 	(A1, A0) = enc(spawn_song, spawn_kick, spawn_snare, spawn_hi_hat);
 	(A2, A1, A0) = add(A1, A0, 0, 1);
-	(A2, A1, A0) = enb(-J, A2, A1, A0);
+	(A2, A1, A0) = fwd_and(-J, A2, A1, A0);
 	(AA0, -AA1) = cpy(spawn_song);
 	(A3, AD2, AD1) = cpy(1);
 
@@ -33,7 +33,7 @@ ant queen = 0 {
 
 fn play = (note_on, x1, x0) => () {
 	H = or(S0, S1);
-	(X1, X0) = enb(and(-S0, -S1, note_on), x1, x0);
+	(X1, X0) = fwd_and(and(-S0, -S1, note_on), x1, x0);
 }
 
 ant kick = 	0b1010 { () = play(-CC, 0, 1); }
@@ -77,5 +77,5 @@ ant song = 0b1001 {
 		on(1, 0, 1, 1, 0, 0),
 	);
 
-	(C0, C1, C2) = enb(S0, kick, snare, hi_hat);
+	(C0, C1, C2) = fwd_and(S0, kick, snare, hi_hat);
 }

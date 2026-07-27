@@ -7,11 +7,11 @@ ant queen = 0 {
 	Z = and(T2, T1, T0);
 	S = -Z;
 	D1 = and(-Z, T0);
-	(AM2, AM1, AM0) = buf(T2, T1, T0);
+	(AM2, AM1, AM0) = fwd(T2, T1, T0);
 }
 
 ant main = 1 {
-	 (C2, C1, C0) = buf(M2, M1, M0);
+	 (C2, C1, C0) = fwd(M2, M1, M0);
 	 H = S;
 	 D1 = -V;
 }

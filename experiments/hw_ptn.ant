@@ -8,7 +8,7 @@ set speed = 16;
 
 ant main = 0 {
 	(w3, w2, w1, w0) = hw(T7, T6, T5, T4, T3, T2, T1, T0);
-	(C3, C2, C1, C0) = buf(w3, w2, w1, w0);
+	(C3, C2, C1, C0) = fwd(w3, w2, w1, w0);
 	A0 = w3;
 }
 

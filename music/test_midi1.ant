@@ -3,6 +3,6 @@ set fps = 16;
 set midi_out_ch = 5;
 
 ant 0 {
-	(X3, X2, X1, X0) = buf(T3, T2, T1, T0);
-	(C3, C2, C1, C0) = buf(X3, X2, X1, X0);
+	(X3, X2, X1, X0) = fwd(T3, T2, T1, T0);
+	(C3, C2, C1, C0) = fwd(X3, X2, X1, X0);
 }

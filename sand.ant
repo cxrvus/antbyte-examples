@@ -47,20 +47,20 @@ ant sand = 4 {
 	move = S0;
 	H = -move;
 
-	(last_right, last_left) = buf(M1, M0);
+	(last_right, last_left) = fwd(M1, M0);
 
 	# using R0 as a tie breaker
 	(_, right1, left1, left2, _, right2, left3, right3) = dec(R0, -V7, -V1);
 	right = or(right1, right2, right3);
 	left = or(left1, left2, left3);
 
-	(right, left) = enb(V0, right, left);
+	(right, left) = fwd_and(V0, right, left);
 	right = mux(move, last_left, right);
 	left = mux(move, last_right, left);
 
 	D0 = or(left, right);
 	(D2, D1) = cpy(left);
-	(M1, M0) = enb(move, right, left);
+	(M1, M0) = fwd_and(move, right, left);
 
 	ZZ = and(S1, R0, -move, -right, -left);
 
@@ -71,5 +71,5 @@ ant sand_color = 5 {
 	H = 1;
 	Z = T7;
 	C3 = and(-J, -Z);
-	(C2, C1, C0) = buf(T6, T5, T4);
+	(C2, C1, C0) = fwd(T6, T5, T4);
 }

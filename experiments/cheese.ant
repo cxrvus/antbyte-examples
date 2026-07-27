@@ -4,6 +4,6 @@ set speed = 1000;
 ant main = 1 {
 	H = and(R2, R1, R0);
 	CC = 1;
-	(C1, C0) = -buf(C1, C0);
+	(C1, C0) = -fwd(C1, C0);
 	Z = VC0;
 }

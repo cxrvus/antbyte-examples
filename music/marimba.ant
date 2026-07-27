@@ -21,7 +21,7 @@ ant 1 {
 	X11 = R7;
 	X10 = R6;
 
-	(C0, C1, C2, C3) = buf(X0, X2, X3, X4);
+	(C0, C1, C2, C3) = fwd(X0, X2, X3, X4);
 }
 
 ant 2 {

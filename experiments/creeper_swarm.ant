@@ -28,7 +28,7 @@ ant column = 1 {
 	Z = and(T2, T1, T0);
 
 	(A1, AD2, AD1) = cpy(1);
-	(AM2, AM1, AM0) = buf(T2, T1, T0);
+	(AM2, AM1, AM0) = fwd(T2, T1, T0);
 }
 
 ant rows = 2 {

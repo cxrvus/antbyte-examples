@@ -14,8 +14,8 @@ ant queen = 0 {
 }
 
 ant 1 {
-	# (X3, X2, X1, X0) = buf(T3, T2, T1, T0);
-	(X3, X2, X1, X0) = buf(R3, 0, 0, R0);
+	# (X3, X2, X1, X0) = fwd(T3, T2, T1, T0);
+	(X3, X2, X1, X0) = fwd(R3, 0, 0, R0);
 	X4 = R4;
 	X6 = 1;
 	W0 = 1;

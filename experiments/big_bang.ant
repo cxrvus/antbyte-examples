@@ -23,7 +23,7 @@ ant 1 {
 	D1 = cpy(T1);
 	D2 = cpy(T2);
 
-	(C2, C1, C0) = buf(T2, T1, T0);
+	(C2, C1, C0) = fwd(T2, T1, T0);
 
 	Z = T7;
 
