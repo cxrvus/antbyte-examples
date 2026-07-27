@@ -17,7 +17,7 @@ main();
 function main() {
 	const [_0, _1, path, cmd, countStr] = process.argv;
 	if (!path || !cmd) {
-		console.error("usage: mutate.mjs <PATH> <PATH2>|add|run|pop|show [count]");
+		console.error("usage: mutate.mjs <PATH> <PATH2>|add|pop|apply|view [count]");
 		return;
 	}
 
@@ -34,8 +34,8 @@ function main() {
 	let func = {
 		"add": () => { addMutation(world, count) },
 		"pop": () => { popMutation(world, count) },
-		"run": () => { runWorld(world) },
-		"show": () => { showMutations(world) },
+		"apply": () => { applyMut(world) },
+		"view": () => { viewMut(world) },
 	}[cmd];
 
 	if (func) { 
@@ -90,7 +90,7 @@ function addMutation(world, count) {
 }
 
 /** @param {MutWorld} world */
-function runWorld(world) {
+function applyMut(world) {
 	world.mutations?.forEach(({ antID, input, bit }) => {
 		world.ants[antID].logic[input] ^= 1 << bit;
 	})
@@ -115,7 +115,7 @@ function popMutation(world, count) {
 }
 
 /** @param {MutWorld} world */
-function showMutations(world) {
+function viewMut(world) {
 	console.log(JSON.stringify(world.mutations, null, 2));
 }
 
