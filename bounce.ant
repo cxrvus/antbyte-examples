@@ -5,7 +5,7 @@ set start = top_left;
 set fps = 24;
 set speed = 8;
 set ticks = 1500;
-set loop = 1;
+set loop;
 set sleep = 100;
 set start_dir = 1;
 

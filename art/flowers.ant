@@ -1,6 +1,6 @@
 set width = 80;
 set height = 32;
-set looping = 1;
+set loop;
 set sleep = 5000;
 # set size = 24;
 

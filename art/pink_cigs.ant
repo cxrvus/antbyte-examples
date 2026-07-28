@@ -4,7 +4,7 @@ set height = 32;
 set width = 40;
 set border = obs;
 set fps = 12;
-set loop = 1;
+set loop;
 set speed = 8;
 set layers = 2;
 set main_layer = 1;
