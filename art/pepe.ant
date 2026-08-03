@@ -1,16 +1,57 @@
 set start = bottom_left;
-set size = 16;
-set border = die;
+set height = 12;
+set width = 20;
+set border = obs;
+set layers = 2;
+set fg = layers;
+set speed = 2;
 set fps = 6;
 # set fps = 2;
 
 ant queen = 0 {
-	A3 = on(0, 1, 1);
-	(AD2, AD1) = cpy(1);
-	Z = A3;
+	(A3, AD2, AD1) = cpy(on(0, 0, 1, 1));
+	(A1, A0, Z, ) = cpy(on(1, 1, 1, 0));
 }
 
-ant frog = 0b1000 {
+ant clk = 3 { H = 1; S0 = T0; S1 = TT4; }
+
+ant cig = 1 {
+	AM0 = J; AM2 = T2; AM1 = -or(AM0, AM2); Z = AM2;
+	(A1, AD2, AD1) = cpy(1);
+}
+
+ant cig_part = 2 {
+	DD = 1;
+
+	(move, -H, D2) = cpy(S1);
+	(is_up, M3) = cpy(xor(M3, S1));
+
+	filter = M0;
+	core = M1;
+	(brown, white, gray) = fwd_and(-move, M0, M1, M2);
+
+	C3 = white; C2 = or(white, gray); C1 = or(white, brown, gray);
+	C0 = or(C1, and(move, filter, is_up));
+	C4 = or(C3, C2, C1, C0);
+
+	(A2, AA, AD2, AD1) = cpy(and(core, is_up, -move));
+}
+
+ant smoke = 4 {
+	Z = or(S2, and(V, -VA2));
+	keep = C4;
+	paint = and(-Z, S0, -keep);
+
+	H = S0;
+	C3 = or(paint, and(keep, C0));
+
+	turn = R0;
+	D1 = turn;
+	D2 = and(-M0, turn);
+	M0 = xor(M0, turn);
+}
+
+ant frog = 0x8 {
 	H = J;
 	Z = T3;
 
@@ -25,7 +66,7 @@ ant frog = 0b1000 {
 	D0 = or(right, left);
 }
 
-fn line = (t2, t1, t0) => color { color = 1; Z = on(t2, t1, t0); }
+fn line = (t2, t1, t0) => color { color = 1; C4 = 1; Z = on(t2, t1, t0); }
 
 ant 0x9 { C2 = line(1, 1, 0); }
 ant 0xa { C1 = line(1, 1, 0); }
@@ -33,10 +74,13 @@ ant 0xc { C1 = line(1, 1, 0); }
 ant 0xe { C1 = line(1, 1, 0); }
 
 ant mouth = 0xb {
-	M0 = or(M0, T2); (C0, -C1) = cpy(M0); Z = on(1, 1, 1);
+	C4 = 1;
+	(M0, C0, -C1) = cpy(or(M0, T2));
+	(A0, Z) = cpy(on(1, 1, 1));
 }
 
 ant eyes = 0xd {
+	C4 = 1;
 	(t0, t1, t2, t3, t4, t5, t6, t7) = dec(T2, T1, T0);
 	green = or(t0, t1, t7);
 	white = or(t2, t4, t5);
@@ -46,9 +90,9 @@ ant eyes = 0xd {
 }
 
 ant ears = 0xf {
-	C1 = and(
+	(C4, C1) = cpy(and(
 		-J,
 		line(1, 1, 1),
 		or(one(T2, T1, T0), on(1, 0, 1))
-	);
+	));
 }
