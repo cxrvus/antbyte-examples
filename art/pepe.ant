@@ -1,0 +1,54 @@
+set start = bottom_left;
+set size = 16;
+set border = die;
+set fps = 6;
+# set fps = 2;
+
+ant queen = 0 {
+	A3 = on(0, 1, 1);
+	(AD2, AD1) = cpy(1);
+	Z = A3;
+}
+
+ant frog = 0b1000 {
+	H = J;
+	Z = T3;
+
+	right = or(on(0, 1, 1), on(1, 0, 1));
+	left =  or(on(1, 0, 0), on(1, 1, 0));
+	
+	A3 = and(-J, -Z);
+	(A2, A1, A0) = fwd_and(A3, T2, T1, T0);
+	(AD0, -AD1) = cpy(right);
+
+	(D2, D1) = cpy(left);
+	D0 = or(right, left);
+}
+
+fn line = (t2, t1, t0) => color { color = 1; Z = on(t2, t1, t0); }
+
+ant 0x9 { C2 = line(1, 1, 0); }
+ant 0xa { C1 = line(1, 1, 0); }
+ant 0xc { C1 = line(1, 1, 0); }
+ant 0xe { C1 = line(1, 1, 0); }
+
+ant mouth = 0xb {
+	M0 = or(M0, T2); (C0, -C1) = cpy(M0); Z = on(1, 1, 1);
+}
+
+ant eyes = 0xd {
+	(t0, t1, t2, t3, t4, t5, t6, t7) = dec(T2, T1, T0);
+	green = or(t0, t1, t7);
+	white = or(t2, t4, t5);
+	C1 = or(white, green);
+	(C3, C2, C0) = cpy(white);
+	Z = t7;
+}
+
+ant ears = 0xf {
+	C1 = and(
+		-J,
+		line(1, 1, 1),
+		or(one(T2, T1, T0), on(1, 0, 1))
+	);
+}
