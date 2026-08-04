@@ -1,4 +1,4 @@
-use "langton";
+use "../cs/langton";
 
 set desc = "Langton's Ant, but with D0 instead of D1";
 

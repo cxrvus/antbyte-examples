@@ -1,4 +1,4 @@
-use "../langton";
+use "../../cs/langton";
 
 set size = 96;
 set speed = 128;

@@ -1,4 +1,4 @@
-use "../creeper";
+use "../art/creeper";
 
 set speed = 16;
 set size = 64;

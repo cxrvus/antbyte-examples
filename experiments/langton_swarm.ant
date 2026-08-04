@@ -1,4 +1,4 @@
-use "../langton2";
+use "langton2";
 
 set desc = "Langton's Ant, but self-replicating (+other variation)";
 
