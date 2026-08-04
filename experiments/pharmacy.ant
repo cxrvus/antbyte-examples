@@ -6,7 +6,7 @@ set start = top_left;
 set border = cycle;
 # set border = die;
 
-fn spike = () => () {
+fn spike {
 	CC = 1;
 	C1 = -C1;
 	# C3 = T7;

@@ -63,7 +63,7 @@ ant cursor = 3 {
 	Z = on_unit(1, 0, 1, 0, 1);
 }
 
-fn symbol = () => () {
+fn symbol {
 	ZZ = and(-M3, V); # kill target (if first target)
 	D2 = or(J, ZZ); # flip on first tick and after killing target
 	M3 = or(M3, ZZ);

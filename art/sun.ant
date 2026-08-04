@@ -20,9 +20,7 @@ ant queen = 0 {
 	Z = A0;
 }
 
-fn slow = () => () {
-	W3 = 1;
-}
+fn slow { W3 = 1; }
 
 ##### Layer 1
 

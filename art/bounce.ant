@@ -13,7 +13,7 @@ set start_dir = 1;
 # set height = 65;
 # set width = 187;
 
-fn bounce_ant = () => () {
+fn bounce_ant {
 	flip = and(-J, V, M6);
 	left = and(-J, V);
 
