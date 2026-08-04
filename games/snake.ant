@@ -95,12 +95,12 @@ ant head = 2 {
 		and(w0, a1), and(a0, s1), and(s0, d1), and(d0, w1),
 	);
 
-	D1 = or(right, left); D2 = left;
-	(C7, C6) = fwd(D2, D1);
+	(d2, d1) = rot(left, right);
+	(C7, C6) = fwd(d2, d1);
 
 	# remember direction
-	(cout, M1) = add(M1, D1);
-	(cout, M2) = add(cout, M2, D2);
+	(cout, M1) = add(M1, d1);
+	(cout, M2) = add(cout, M2, d2);
 }
 
 ant tail = 4 {

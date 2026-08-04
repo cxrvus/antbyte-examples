@@ -98,9 +98,7 @@ ant smile = 5 {
 	M4 = or(M4, on(0, 0, 1, 0));
 	C4 = M4;
 
-	D0 = or(left, right);
-	D1 = left;
-	D2 = left;
+	() = rotd(left, right);
 
 	Z = T4;
 }
