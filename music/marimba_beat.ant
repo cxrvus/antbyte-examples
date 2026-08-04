@@ -6,7 +6,6 @@ set fps = 4;
 set speed = 2;
 
 set layers = 2;
-set fg = layers;
 
 set keys = "q";
 

@@ -3,7 +3,6 @@ set height = 12;
 set width = 20;
 set border = obs;
 set layers = 2;
-set fg = layers;
 set speed = 2;
 set fps = 6;
 # set fps = 2;

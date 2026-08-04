@@ -12,7 +12,6 @@ set fg = none;
 
 # set start_tick = 500;
 # set fps = 1;
-# set fg = layers;
 
 ant queen = 0 {
 	H = M0;

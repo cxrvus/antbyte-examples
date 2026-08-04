@@ -13,7 +13,6 @@ set layers = 2;
 set layer_filter = 0b1;
 set border = die;
 # set border = wrap;
-# set fg = layers;
 
 ant queen = 0 {
 	spawn_sky = J;
