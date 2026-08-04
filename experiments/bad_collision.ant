@@ -5,7 +5,7 @@ set fps = 8;
 set size = 32;
 
 set layers = 2;
-set main_layer = 1;
+set layer_filter = 0b10;
 # set fg = layers;
 
 ant queen = 0 {

@@ -10,7 +10,7 @@ set fg = none;
 
 # set fg = layers;
 # set fg = id;
-# set main_layer = 0;
+# set layer_filter = 0b1;
 # set fps = 1;
 
 

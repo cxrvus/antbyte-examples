@@ -1,7 +1,7 @@
 set size = 64;
 set start = top_left;
 set layers = 2;
-set main_layer = 1;
+set layer_filter = 0b10;
 
 set { 
 	border_0 = obs;

@@ -4,7 +4,7 @@ set start = top_left;
 set fps = 3;
 
 set layers = 2;
-set main_layer = 1;
+set layer_filter = 0b10;
 
 ant queen = 0 {
 	H = 1;

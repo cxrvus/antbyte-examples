@@ -10,7 +10,7 @@ set width = 128;
 # set { size = 8; fps = 1; speed = 1; }
 
 set layers = 3;
-set main_layer = 0;
+set layer_filter = 0b1;
 set border_0 = cycle;
 set border_1 = obs;
 set border_2 = die;

@@ -6,7 +6,7 @@ set start_dir = 1;
 # set start_tick = 4000;
 # set fg = id;
 set speed = 16;
-set main_layer = 1;
+set layer_filter = 0b10;
 
 set {
 	border_0 = wrap;

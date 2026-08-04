@@ -7,7 +7,7 @@ set fps = 12;
 set loop;
 set speed = 8;
 set layers = 2;
-set main_layer = 1;
+set layer_filter = 0b10;
 set fg = none;
 
 # set start_tick = 500;

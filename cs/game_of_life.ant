@@ -1,7 +1,7 @@
 set start = top_left;
 set start_dir = 4;
 set layers = 2;
-set main_layer = 1;
+set layer_filter = 0b10;
 set fg = id;
 
 ## Release

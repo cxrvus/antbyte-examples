@@ -10,7 +10,7 @@ set fps = 16;
 # set fps = 4;
 
 set layers = 2;
-set main_layer = 0;
+set layer_filter = 0b1;
 set border = die;
 # set border = wrap;
 # set fg = layers;

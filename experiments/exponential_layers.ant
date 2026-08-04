@@ -2,12 +2,11 @@ set ant_limit = 1024;
 set decay = 128;
 set height = 90;
 set width = 180;
-# set speed = 32;
+set speed = 32;
 set fps = 24;
 set start_dir=4;
 
 set layers = 4;
-set main_layer = 3;
 
 fn spreader = () => c {
 	AD1 = 1;
