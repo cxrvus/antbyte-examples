@@ -7,7 +7,8 @@ set speed = 8;
 set ticks = 1500;
 set loop;
 set sleep = 100;
-set start_dir = 1;
+set start_dir = 5;
+set layers = 2;
 
 # set speed = 0;
 # set height = 65;
@@ -24,15 +25,13 @@ fn bounce_ant {
 	M6 = V;
 }
 
-ant main = 1 {
-	init = on(0, 0, 0, 1);
-	A1 = init;
-	M0 = or(M0, init);
-	H = M0;
-	(A2, Z) = cpy(and(T4, on(0, 0, 0, 0)));
+ant queen = 0 {
+	(H, AD2, AA) = cpy(1);
+	A0 = J;
+	(A1, Z) = cpy(T4);
 }
 
-ant color = 2 {
+ant color = 1 {
 	() = bounce_ant();
 
 	change0 = or(V, -or(M2, M1, M0));
@@ -47,7 +46,7 @@ ant color = 2 {
 	C3 = 1;
 }
 
-ant darken = 4 {
+ant darken = 2 {
 	() = bounce_ant();
 
 	(C2, C1, C0) = fwd(C2, C1, C0);
