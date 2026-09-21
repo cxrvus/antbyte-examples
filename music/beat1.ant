@@ -9,22 +9,22 @@ set layer_filter = 0b10;
 ant queen = 0 {
 	H = 1;
 	AA = 1;
-	A0 = J;
-	A1 = and(-A0, RR3);
+	A0 = B;
+	A1 = and(-A0, N13);
 }
 
 ant 1 {
-	# (X3, X2, X1, X0) = fwd(T3, T2, T1, T0);
-	(X3, X2, X1, X0) = fwd(R3, 0, 0, R0);
-	X4 = R4;
-	X6 = 1;
+	# (Y3, Y2, Y1, Y0) = fwd(C3, C2, C1, C0);
+	(Y3, Y2, Y1, Y0) = fwd(N3, 0, 0, N0);
+	Y4 = N4;
+	Y6 = 1;
 	W0 = 1;
 }
 
 ant 2 {
-	X0 = and(-S1, T0);
-	X1 = M0;
-	M0 = X0;
-	S1 = or(X1, X0);
-	Z = T6;
+	Y0 = and(-S1, C0);
+	Y1 = M0;
+	M0 = Y0;
+	S1 = or(Y1, Y0);
+	Z = C6;
 }

@@ -4,14 +4,14 @@ set border = die;
 
 ant queen = 0 {
 	A0 = 1;
-	Z = and(T2, T1, T0);
+	Z = and(C2, C1, C0);
 	S = -Z;
-	D1 = and(-Z, T0);
-	(AM2, AM1, AM0) = fwd(T2, T1, T0);
+	R1 = and(-Z, C0);
+	(AM2, AM1, AM0) = fwd(C2, C1, C0);
 }
 
 ant main = 1 {
-	 (C2, C1, C0) = fwd(M2, M1, M0);
+	 (T2, T1, T0) = fwd(M2, M1, M0);
 	 H = S;
-	 D1 = -V;
+	 R1 = -V;
 }

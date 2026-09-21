@@ -10,40 +10,40 @@ set layers = 2;
 set keys = "q";
 
 ant 1 {
-	(AA, A1) = cpy(J);
+	(AA, A1) = cpy(B);
 
-	X6 = 1;
-	X0 = R0;
-	X2 = R3;
-	X3 = and (RR1, -X2);
-	X4 = RR2;
+	Y6 = 1;
+	Y0 = N0;
+	Y2 = N3;
+	Y3 = and (N11, -Y2);
+	Y4 = N12;
 
-	X11 = R7;
-	X10 = R6;
+	Y11 = N7;
+	Y10 = N6;
 
-	(C0, C1, C2, C3) = fwd(X0, X2, X3, X4);
+	(T0, T1, T2, T3) = fwd(Y0, Y2, Y3, Y4);
 
-	Z = K;
+	Z = X;
 }
 
 ant 2 {
-	X0 = TT1;
-	A2 = and(X0, RR3);
+	Y0 = C11;
+	A2 = and(Y0, N13);
 	H = 1;
 
-	Z = K;
+	Z = X;
 }
 
 ant 4 {
-	(X1, X0) = cpy(TT1);
-	A3 = and(M, -TT1, RR3);
-	Z = and(M, RR5);
-	M = or(M, RR3);
+	(Y1, Y0) = cpy(C11);
+	A3 = and(M, -C11, N13);
+	Z = and(M, N15);
+	M = or(M, N13);
 	H = 1;
 }
 
 ant 8 {
-	X1 = TT2;
+	Y1 = C12;
 	Z = -V;
 	H = 1;
 }

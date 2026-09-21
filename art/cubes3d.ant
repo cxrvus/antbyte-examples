@@ -7,12 +7,12 @@ set border = wrap;
 # set ticks = 23424;
 
 ant main = 1 {
-	CC = 1;
-	C1 = -C1;
-	# C2 = -T7;
-	# C3 = T7;
+	E = 1;
+	T1 = -T1;
+	# T2 = -C7;
+	# T3 = C7;
 
-	D1 = T2;
-	D2 = T3;
-	D0 = T7;
+	R1 = C2;
+	R0 = C3;
+	R2 = C7;
 }

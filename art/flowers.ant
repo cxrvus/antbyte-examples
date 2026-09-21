@@ -15,80 +15,80 @@ set border = die;
 # set border = wrap;
 
 ant queen = 0 {
-	spawn_sky = J;
-	spawn_grass = and(-spawn_sky, or(R1, R2));
-	spawn_flower = and(-spawn_grass, M0, R0);
+	spawn_sky = B;
+	spawn_grass = and(-spawn_sky, or(N1, N2));
+	spawn_flower = and(-spawn_grass, M0, N0);
 
 	A1 = spawn_sky;
 	A2 = spawn_grass;
 	A3 = spawn_flower;
 
-	(AA, -AD1) = cpy(spawn_sky);
+	(AA, -AR1) = cpy(spawn_sky);
 
 	M0 = spawn_grass;
 
-	# D1 = RR1;
+	# R1 = N11;
 }
 
 ant sky_spawner = 2 {
-	W4 = J;
-	(A1, A0, AD1) = cpy(-J);
-	AM1 = R1;
+	W4 = B;
+	(A1, A0, AR1) = cpy(-B);
+	AM1 = N1;
 }
 
 ant sky = 3 {
-	keep = C4;
-	C2 = or(C2, -keep);
-	C3 = mux(keep, or(RR1, xor(M1, M0)), C3);
-	M0 = xor(M0, RR3);
+	keep = T4;
+	T2 = or(T2, -keep);
+	T3 = mux(keep, or(N11, xor(M1, M0)), T3);
+	M0 = xor(M0, N13);
 }
 
 ant grass_spawner = 4 {
-	(AM3, AM2, AM1, AM0) = fwd(R3, R2, R1, R0);
-	(Z, H, A2, A0) = cpy(-J);
+	(AM3, AM2, AM1, AM0) = fwd(N3, N2, N1, N0);
+	(Z, H, A2, A0) = cpy(-B);
 }
 
 
 ant grass = 5 {
-	C4 = 1;
-	C1 = 1;
+	T4 = 1;
+	T1 = 1;
 
 	# min value
-	(t1, t0) = fwd(M1, M0);
-	(cout, t3, t2) = add(M3, M2, 0, 1);
-	(t3, t2) = fwd(or(cout, t3), or(cout, t2));
+	(c1, c0) = fwd(M1, M0);
+	(cout, c3, c2) = add(M3, M2, 0, 1);
+	(c3, c2) = fwd(or(cout, c3), or(cout, c2));
 
-	Z = on(t3, t2, t1, t0);
-	C3 = -and(Z, M1, M0);
+	Z = on(c3, c2, c1, c0);
+	T3 = -and(Z, M1, M0);
 }
 
 
 ant flower_spawner = 0b1000 {
-	(Z, H, A3, A0) = cpy(-J);
-	AM4 = RR1;
+	(Z, H, A3, A0) = cpy(-B);
+	AM4 = N11;
 }
 
 ant flower_rose = 0b1001 {
-	C4 = 1;
+	T4 = 1;
 
 	(tx0, tx1, tx2, tx3, tx4, tx5, tx6, tx7,
 	 tx8, tx9, txa, txb, txc, txd, txe, txf)
-	= dec(T3, T2, T1, T0);
+	= dec(C3, C2, C1, C0);
 
-	(C0, -C1) = cpy(M0);
-	C2 = and(C0, M4);
+	(T0, -T1) = cpy(M0);
+	T2 = and(T0, M4);
 
-	d1 = or(tx0);
-	d2 = or(tx4, txc, txd, txe);
-	d3 = or(txf);
-	d4 = or(tx2, tx6);
-	d5 = 0;
-	d6 = or(tx8);
-	d7 = or(tx7, txb);
+	r1 = or(tx0);
+	r2 = or(tx4, txc, txd, txe);
+	r3 = or(txf);
+	r4 = or(tx2, tx6);
+	r5 = 0;
+	r6 = or(tx8);
+	r7 = or(tx7, txb);
 
-	(D2, D1, D0) = enc(0, d1, d2, d3, d4, d5, d6, d7);
+	(R0, R1, R2) = enc(0, r1, r2, r3, r4, r5, r6, r7);
 
 	M0 = or(M0, txb);
-	Z = T4;
-	C3 = Z;
+	Z = C4;
+	T3 = Z;
 }

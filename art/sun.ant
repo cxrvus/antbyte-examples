@@ -14,9 +14,9 @@ set {
 }
 
 ant queen = 0 {
-	(A4, A1) = cpy(J);
-	(A0, AA0) = cpy(and(-J, TT3));
-	(AD2, AD1, AD0) = cpy(1);
+	(A4, A1) = cpy(B);
+	(A0, AA0) = cpy(and(-B, C13));
+	(AR0, AR1, AR2) = cpy(1);
 	Z = A0;
 }
 
@@ -27,58 +27,58 @@ fn slow { W3 = 1; }
 ant shell = 1 {
 	() = slow();
 
-	spawn_ray = TT2;
-	turn = and(-J, spawn_ray);
-	spawn_core = VC0;
+	spawn_ray = C12;
+	turn = and(-B, spawn_ray);
+	spawn_core = VT0;
 
-	D0 = turn;
+	R2 = turn;
 	A0 = spawn_ray;
 	A1 = or(spawn_ray, spawn_core);
 	A2 = spawn_core;
-	AD0 = spawn_core;
-	AD1 = spawn_ray;
-	AD2 = spawn_core;
+	AR2 = spawn_core;
+	AR1 = spawn_ray;
+	AR0 = spawn_core;
 	AA0 = spawn_ray;
 	Z = spawn_core;
 
-	CC = 1;
-	C5 = 1;
-	C0 = 1;
+	E = 1;
+	T5 = 1;
+	T0 = 1;
 }
 
 ant core = 2 {
 	() = slow();
 
-	C5 = 1;
+	T5 = 1;
 
-	C0 = -C4;
-	C1 = and(-C4, -J);
-	C2 = 0;
-	C3 = 0;
+	T0 = -T4;
+	T1 = and(-T4, -B);
+	T2 = 0;
+	T3 = 0;
 
 	M2 = M1;
 	M1 = M0;
 
-	(D0, H, M0) = cpy(VC5);
+	(R2, H, M0) = cpy(VT5);
 	Z = and(M2, M1, M0);
 }
 
 ant face = 4 {
-	spawn_smile = and(T4, T2);
+	spawn_smile = and(C4, C2);
 	spawn_shades = on(1, 1, 0, 0);
 
 	A2 = or(spawn_smile, spawn_shades);
 	A1 = spawn_shades;
 	A0 = or(spawn_smile, spawn_shades);
 
-	(AD2, AD1) = cpy(1);
+	(AR0, AR1) = cpy(1);
 
-	D1 = or(
+	R1 = or(
 		on(1, 0, 0, 0),
 		spawn_shades,
 	);
 
-	D2 = or(
+	R0 = or(
 		spawn_shades,
 	);
 
@@ -96,28 +96,28 @@ ant smile = 5 {
 	);
 
 	M4 = or(M4, on(0, 0, 1, 0));
-	C4 = M4;
+	T4 = M4;
 
 	() = rotd(left, right);
 
-	Z = T4;
+	Z = C4;
 }
 
 ant queen2 = 6 {
 	H = 1;
 
-	A1 = -T0;
-	A2 = T0;
+	A1 = -C0;
+	A2 = C0;
 
-	AD2 = 1;
-	AD1 = A2;
+	AR0 = 1;
+	AR1 = A2;
 
 	Z = A2;
 }
 
 ant shades = 7 {
-	C4 = 1;
-	(A3, AD1) = cpy(or(
+	T4 = 1;
+	(A3, AR1) = cpy(or(
 		on(0, 1, 0, 0),
 		on(1, 1, 0, 0),
 	));
@@ -126,8 +126,8 @@ ant shades = 7 {
 }
 
 ant lense = 8 {
-	C4 = 1;
-	(D2, D1) = cpy(or(
+	T4 = 1;
+	(R0, R1) = cpy(or(
 		on(0, 0, 1, 0),
 		on(0, 1, 0, 0),
 		on(0, 1, 0, 1),
@@ -139,12 +139,12 @@ ant lense = 8 {
 
 ant sky = 18 {
 	S0 = 1;
-	Z = C2;
+	Z = T2;
 
-	keep = or(C4, C5);
-	C2 = -keep;
-	C3 = and(-keep, M3);
-	M3 = xor(M3, RR5);
+	keep = or(T4, T5);
+	T2 = -keep;
+	T3 = and(-keep, M3);
+	M3 = xor(M3, N15);
 }
 
 ##### Layer 2
@@ -153,27 +153,27 @@ ant ray_spawner = 3 {
 	active = -S0;
 
 	H = 1;
-	AD2 = 1;
-	(A3, A0) = cpy(and(active, TT5));
+	AR0 = 1;
+	(A3, A0) = cpy(and(active, C15));
 	W3 = 1;
 }
 
 ant ray_head = 9 {
-	(A3, A1) = cpy(T2);
+	(A3, A1) = cpy(C2);
 	W5 = 1;
 }
 
 ant ray_tail = 10 {
-	c3 = C3;
-	C3 = mux(J, M3, 0);
-	M3 = c3;
+	t3 = T3;
+	T3 = mux(B, M3, 0);
+	M3 = t3;
 
-	(C0, C1) = cpy(J);
-	C2 = -J;
+	(T0, T1) = cpy(B);
+	T2 = -B;
 
 	H = 1;
 	W7 = 1;
-	Z = -J;
+	Z = -B;
 }
 
 # TODO:

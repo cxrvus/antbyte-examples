@@ -4,7 +4,7 @@ set height = 7;
 set width = 9;	
 
 ant main = 1 {
-	C1 = 1;
+	T1 = 1;
 	Z = on(1, 0, 0, 0, 1, 1);
 
 	turn45 = or(
@@ -25,7 +25,7 @@ ant main = 1 {
 		on(0, 1, 1, 0, 0, 0)
 	);
 
-	D0 = or(turn45, turn295);
-	D1 = turn90;
-	D2 = turn295;
+	R2 = or(turn45, turn295);
+	R1 = turn90;
+	R0 = turn295;
 }

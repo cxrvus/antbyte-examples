@@ -4,7 +4,7 @@ set layers = 2;
 set layer_filter = 0b10;
 set fg = id;
 
-## Release
+## Nelease
 set fps = 24;
 set bg_filter = one;
 
@@ -19,31 +19,31 @@ set { size = 64; start_tick = 0x1000; speed = 0x1003; }
 
 
 ant queen = 0 {
-	H = 1; C4 = 1;
-	AA = 1; AD2 = 1;
+	H = 1; T4 = 1;
+	AA = 1; AR0 = 1;
 
-	A4 = J;
-	A1 = and(-J, -S0, -M0);
-	A2 = and(-J, -S0, +M0);
+	A4 = B;
+	A1 = and(-B, -S0, -M0);
+	A2 = and(-B, -S0, +M0);
 
-	M0 = and(-J, xor(M0, -S0));
+	M0 = and(-B, xor(M0, -S0));
 
 	# signal delay
 	W0 = or(A1, A2, A4);
 }
 
-fn worker { S0 = 1; Z = C4; }
+fn worker { S0 = 1; Z = T4; }
 
 ant randomizer = 0b10000 {
 	() = worker();
-	C0 = RR1;
+	T0 = N11;
 } 
 
 # uses 8 input pins
 fn neighbors = () => (eq0, eq1, eq2, eq3, eq4, eq5, eq6, eq7, eq8) {
 	(w3, w2, w1, w0) = hw(
-		VC00, VC10, VC20, VC30,
-		VC40, VC50, VC60, VC70,
+		VT00, VT10, VT20, VT30,
+		VT40, VT50, VT60, VT70,
 	);
 
 	(eq0, eq1, eq2, eq3, eq4, eq5, eq6, eq7) = dec(w2, w1, w0);
@@ -51,7 +51,7 @@ fn neighbors = () => (eq0, eq1, eq2, eq3, eq4, eq5, eq6, eq7, eq8) {
 	eq8 = w3;
 }
 
-# RULES:
+# NULES:
 #	cond	action	cases
 #1  <2  =>  die     0 1
 #2  2|3 =>  live    2 3
@@ -67,29 +67,29 @@ ant cell_counter = 2 {
 	lt2 = or(eq0, eq1);
 	gt3 = or(eq4, eq5, eq6, eq7, eq8);
 
-	(C6, C5) = enc(lt2, eq2, eq3, gt3);
+	(T6, T5) = enc(lt2, eq2, eq3, gt3);
 
 	(A1, A0) = cpy(1);
 }
 
 ant cell_marker = 3 {
 	H = 1;
-	(alive, -dead) = cpy(C0);
-	(lt2, eq2, eq3, gt3) = dec(C6, C5);
+	(alive, -dead) = cpy(T0);
+	(lt2, eq2, eq3, gt3) = dec(T6, T5);
 
-	C3 = and(alive, or(lt2, gt3)); # @C3: die
-	C2 = and(dead, eq3); # @C2: spawn
+	T3 = and(alive, or(lt2, gt3)); # @T3: die
+	T2 = and(dead, eq3); # @T2: spawn
 
 	Z = 1;
-	ZZ = C4;
+	K = T4;
 }
 
 # TODO
 ant cell_handler = 4 {
 	() = worker();
-	(alive, -dead) = cpy(C0);
+	(alive, -dead) = cpy(T0);
 	
-	C0 = or(and(alive, -C3), and(dead, C2));
+	T0 = or(and(alive, -T3), and(dead, T2));
 
-	(C2, C3) = cpy(0);
+	(T2, T3) = cpy(0);
 }

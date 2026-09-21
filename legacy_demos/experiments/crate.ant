@@ -4,11 +4,11 @@ set bg_filter = bin;
 
 ant main = 1 {
 	A1 = 1;
-	D0 = T0;
+	R2 = C0;
 }
 
 ant dummy = 2 {
-	CC = 1;
-	C0 = T6;
-	Z = T7;
+	E = 1;
+	T0 = C6;
+	Z = C7;
 }

@@ -1,6 +1,6 @@
 use "../cs/langton";
 
-set desc = "Langton's Ant, but with D0 instead of D1";
+set desc = "Langton's Ant, but with R2 instead of R1";
 
 set size = 128;
 set border = cycle;
@@ -8,10 +8,10 @@ set speed = 32;
 
 fn main = in_color => out_color {
 	out_color = langton(in_color);
-	D0 = D1;
-	D1 = 0;
+	R2 = R1;
+	R1 = 0;
 }
 
 ant main = 1 {
-	C0 = main(C0);
+	T0 = main(T0);
 }

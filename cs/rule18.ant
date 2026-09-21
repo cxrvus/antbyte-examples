@@ -2,6 +2,6 @@ set { size = 0x7f; speed = 0x800; }
 set { start = top_left; bg_filter = one; }
 
 ant 0 {
-	C = or(J, xor(VC50, VC60));
-	C1 = J; Z = VC01;
+	T0 = or(B, xor(VT50, VT60));
+	T1 = B; Z = VT01;
 }

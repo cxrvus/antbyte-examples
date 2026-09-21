@@ -13,34 +13,34 @@ set border_2 = die;
 
 ant 0 {
 	A = -or(S2, S1, S0);
-	H = 1; AD2 = 1; D0 = 1;
+	H = 1; AR0 = 1; R2 = 1;
 }
 
 ant 1 {
-	(A1, AA) = cpy(TT2);
+	(A1, AA) = cpy(C12);
 	A0 = -A1;
 
-	D1 = cpy(T1);
-	D2 = cpy(T2);
+	R1 = cpy(C1);
+	R0 = cpy(C2);
 
-	(C2, C1, C0) = fwd(T2, T1, T0);
+	(T2, T1, T0) = fwd(C2, C1, C0);
 
-	Z = T7;
+	Z = C7;
 
 	S0 = 1;
 }
 
 ant 2 {
-	C3 = T;
-	Z = T7;
-	(A2, AA) = cpy(RR1);
+	T3 = C;
+	Z = C7;
+	(A2, AA) = cpy(N11);
 
 	S1 = 1;
 }
 
 ant 4 {
-	CC = T;
-	Z = T2;
+	E = C;
+	Z = C2;
 
 	S2 = 1;
 }

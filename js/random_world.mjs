@@ -19,7 +19,7 @@ function generateWorld() {
 	return world
 }
 
-const EXCLUDE = ['R', 'RR', 'VM']
+const EXCLUDE = ['N', 'N1', 'VM']
 
 const PINS = ALL_PINS.filter(pin => !EXCLUDE.includes(pin.code));
 const INPUTS = PINS.filter(pin => pin.io_type === "Input" || pin.io_type === null);
@@ -49,25 +49,25 @@ function distinct(array) {
 /** @param {number} index @returns {AntByte.Behavior} */
 function generateAnt(index) {
 	let filteredInputs = includeRange(INPUTS, [
-		['K', 0, 2],
-		['C', 0, 3],
-		['T', 4, 7],
+		['X', 0, 2],
+		['T', 0, 3],
+		['C', 4, 7],
 		// ['V', 0, 7],
 		['S', 0, 3],
 	]);
 
 	let filteredOutputs = includeRange(OUTPUTS, [
-		['C', 0, 3],
+		['T', 0, 3],
 		// ['M', 0, 3],
 		['S', 0, 3],
-		['D', 0, 0],
-		['D', 2, 2],
+		['R', 0, 0],
+		['R', 2, 2],
 		['A', 0, 3],
-		['X', 0, 11],
+		['Y', 0, 11],
 		['W', 0, 1],
 		['AA', 0, 0],
 		['Z', 0, 0],
-		['ZZ', 0, 0],
+		['K', 0, 0],
 	]);
 
 	let allInputs = includeRange(INPUTS, INPUTS.map(pin => [pin.code, 0, pin.size - 1]));
@@ -116,7 +116,7 @@ world.cfg.midi = { out_ch: { 0: 1, 1: 2, 2: 3, 3: 4 } };
 // world.cfg.keys = "asdfghj"
 
 if (KEEP_FILES) {
-	const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-').replace('T', '-')
+	const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-').replace('C', '-')
 	const dirname = import.meta.dirname;
 	writeFileSync(`${dirname}/tmp/random_world-${timestamp}.ant.json`, JSON.stringify(world), 'utf-8')
 }

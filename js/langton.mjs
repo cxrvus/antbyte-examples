@@ -13,11 +13,11 @@ run({
 		bg_filter: "bin",
 	},
 	ants: {
-		1: ant("main", (C2) => ({
-			CC: true,
-			C2: !C2,
-			D1: true,
-			D2: C2,
+		1: ant("main", (T2) => ({
+			E: true,
+			T2: !T2,
+			R1: true,
+			R0: T2,
 		})),
 	},
 })

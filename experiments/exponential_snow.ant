@@ -14,8 +14,8 @@ set bg_filter = bin;
 ant main = 1 {
 	A0 = 1;
 
-	(C1, D1) = cpy(R1);
-	(C2, D2) = cpy(R2);
+	(T1, R1) = cpy(N1);
+	(T2, R0) = cpy(N2);
 
-	Z = T7;
+	Z = C7;
 }

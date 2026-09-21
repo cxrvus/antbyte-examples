@@ -15,40 +15,40 @@ set layers = 2;
 # set width = 187;
 
 fn bounce_ant {
-	flip = and(-J, V, M6);
-	left = and(-J, V);
+	flip = and(-B, V, M6);
+	left = and(-B, V);
 
-	D2 = or(flip, left);
-	D1 = and(-flip, left);
+	R0 = or(flip, left);
+	R1 = and(-flip, left);
 	H = V;
 
 	M6 = V;
 }
 
 ant queen = 0 {
-	(H, AD2, AA) = cpy(1);
-	A0 = J;
-	(A1, Z) = cpy(T4);
+	(H, AR0, AA) = cpy(1);
+	A0 = B;
+	(A1, Z) = cpy(C4);
 }
 
 ant color = 1 {
 	() = bounce_ant();
 
 	change0 = or(V, -or(M2, M1, M0));
-	change1 = and(change0, R0);
-	change2 = and(change0, R1);
+	change1 = and(change0, N0);
+	change2 = and(change0, N1);
 
 	(cout, M0) = add(M0, change0);
 	(cout, M1) = add(M1, change1, cout);
 	(_, M2) = add(M2, change2, cout);
 
-	(C2, C1, C0) = fwd(M2, M1, M0);
-	C3 = 1;
+	(T2, T1, T0) = fwd(M2, M1, M0);
+	T3 = 1;
 }
 
 ant darken = 2 {
 	() = bounce_ant();
 
-	(C2, C1, C0) = fwd(C2, C1, C0);
-	C3 = 0;
+	(T2, T1, T0) = fwd(T2, T1, T0);
+	T3 = 0;
 }

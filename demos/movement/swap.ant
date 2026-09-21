@@ -6,15 +6,15 @@ set border = cycle;
 set start = left;
 
 ant main = 1 {
-	A1 = J;
-	AD2 = 1;
+	A1 = B;
+	AR0 = 1;
 
-	CC = 1;
-	C1 = 1;
+	E = 1;
+	T1 = 1;
 }
 
 ant other = 2 {
 
-	CC = 1;
-	C2 = 1;
+	E = 1;
+	T2 = 1;
 }

@@ -5,27 +5,27 @@ set start_tick = 32;
 set decay = 64;
 
 ant queen = 0 {
-	(AM2, AM1, AM0) = fwd(T2, T1, T0);
+	(AM2, AM1, AM0) = fwd(C2, C1, C0);
 
-	end = and(T2, T1, T0);
-	after_end = T3;
+	end = and(C2, C1, C0);
+	after_end = C3;
 
 	A0 = -after_end;
 	S = -after_end;
 
-	D0 = end;
-	(AD2, AD1, AD0) = cpy(end);
-	D1 = and(-after_end, -end, T0);
+	R2 = end;
+	(AR0, AR1, AR2) = cpy(end);
+	R1 = and(-after_end, -end, C0);
 }
 
 ant main = 1 {
-	C3 = 1;
-	(C2, C1, C0) = fwd(M2, M1, M0);
+	T3 = 1;
+	(T2, T1, T0) = fwd(M2, M1, M0);
 	(M2, M1, M0) = fwd(M2, M1, M0);
 
 	H = -M3;
-	# H = and(-M3, R0);
+	# H = and(-M3, N0);
 	M3 = or(M3, -S);
 
-	D1 = -V;
+	R1 = -V;
 }

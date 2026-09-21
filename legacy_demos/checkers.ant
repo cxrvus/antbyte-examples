@@ -7,18 +7,18 @@ set border = obs;
 set start_dir = 2;
 
 ant main = 1 {
-	C0 = -T0;
+	T0 = -C0;
 
 	# M0: V in previous tick
-	# M1: last direction
-	D1 = or(M0, V);
-	D2 = and(D1, -M1);
+	# M1: last rotation
+	R1 = or(M0, V);
+	R0 = and(R1, -M1);
 
-	# toggle: toggle last direction
+	# toggle: toggle last rotation
 	toggle = and(M0, -V);
 	M1 = xor(M1, toggle);
 
 	M0 = and(-M0, V);
 
-	Z = VC0;
+	Z = VT0;
 }

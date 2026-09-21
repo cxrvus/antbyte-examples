@@ -13,15 +13,15 @@ ant main = 1 {
 
 ant block = 2 { H = 1; }
 
-fn on_unit = (t6, t5, t4, t3, t2) => out {
+fn on_unit = (c6, c5, c4, c3, c2) => out {
 	out = and(
-		eq(T6, t6),
-		eq(T5, t5),
-		eq(T4, t4),
-		eq(T3, t3),
-		eq(T2, t2),
+		eq(C6, c6),
+		eq(C5, c5),
+		eq(C4, c4),
+		eq(C3, c3),
+		eq(C2, c2),
 
-		and(-T1, T0)
+		and(-C1, C0)
 	);
 }
 
@@ -64,28 +64,28 @@ ant cursor = 3 {
 }
 
 fn symbol {
-	ZZ = and(-M3, V); # kill target (if first target)
-	D2 = or(J, ZZ); # flip on first tick and after killing target
-	M3 = or(M3, ZZ);
-	Z = T6;
+	K = and(-M3, V); # kill target (if first target)
+	R0 = or(B, K); # flip on first tick and after killing target
+	M3 = or(M3, K);
+	Z = C6;
 }
 
 ant dit = 4 {
 	() = symbol();
-	C = ZZ;
+	T = K;
 	H = M0;
-	M0 = or(M0, ZZ);
+	M0 = or(M0, K);
 }
 
 ant dah = 8 { 
 	() = symbol();
 	(idle, M1, M0) = add(M1, M0, 0, and(M3, -M4));
 	M4 = or(M4, idle);
-	C = and(M3, -M4);
+	T = and(M3, -M4);
 	H = M4;
 }
 
 ant space = 16 {
 	() = dit();
-	C = 0;
+	T = 0;
 }

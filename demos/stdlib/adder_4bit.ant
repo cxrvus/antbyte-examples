@@ -6,11 +6,11 @@ set {
 	fg = tile; bg = id;
 }
 
-ant queen = 1 { (H, D0, A2, AD2) = cpy(1); (Z, A1, A0) = fwd(T2, T1, T0); }
+ant queen = 1 { (H, R2, A2, AR0) = cpy(1); (Z, A1, A0) = fwd(C2, C1, C0); }
 
-ant adder_spawner = 5 { (W0, -A3, -Z) = cpy(J); }
-ant adder = 8 { (C4, C3, C2, C1, C0) = add(VC23, VC22, VC21, VC20,, VC63, VC62, VC61, VC60); }
+ant adder_spawner = 5 { (W0, -A3, -Z) = cpy(B); }
+ant adder = 8 { (T4, T3, T2, T1, T0) = add(VT23, VT22, VT21, VT20,, VT63, VT62, VT61, VT60); }
 
-fn rand { (C3, C2, C1, C0) = fwd_and(-J, R3, R2, R1, R0); }
-ant rhs = 4 { () = rand(); () = rotd(0, J); W1 = J; }
-ant lhs = 6 { () = rand(); () = rotd(J, 0); }
+fn rand { (T3, T2, T1, T0) = fwd_and(-B, N3, N2, N1, N0); }
+ant rhs = 4 { () = rand(); () = rotd(0, B); W1 = B; }
+ant lhs = 6 { () = rand(); () = rotd(B, 0); }

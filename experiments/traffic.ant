@@ -7,13 +7,13 @@ ant 0b0000 {
 	Z = VA3;
 	S0 = 1;
 
-	A3 = TT0;
-	D1 = V;
+	A3 = C10;
+	R1 = V;
 }
 
 ant 0b1000 {
-	W0 = RR6;
-	W1 = or(VA3, RR7);
+	W0 = N16;
+	W1 = or(VA3, N17);
 	H = S0;
-	D1 = and(-VA3, -J, V);
+	R1 = and(-VA3, -B, V);
 }
