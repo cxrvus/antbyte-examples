@@ -37,7 +37,7 @@ ant queen = 0x00 {
 
 ant bird = 0x03 {
 	S7 = 1;
-	F = 1;
+	TB = 1;
 
 	H = or(S0, C0);
 	D = or(and(V, -M1), VA5);	# die when hitting floor or pipe
@@ -49,7 +49,7 @@ ant bird = 0x03 {
 }
 
 ant bird_ghost = 0x13 {
-	K = N; F = 1;
+	K = N; TB = 1;
 	R1 = or(N13, and(V, -VA5, M0));
 	(A4, A1, A0) = cpy(or(X0, N15));
 	M0 = V;

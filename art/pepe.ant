@@ -20,7 +20,7 @@ ant cig = 1 {
 }
 
 ant cig_part = 2 {
-	F = 1;
+	TB = 1;
 
 	(move, -H, R0) = cpy(S1);
 	(is_up, M3) = cpy(xor(M3, S1));
