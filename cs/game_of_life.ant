@@ -32,7 +32,7 @@ ant queen = 0 {
 	W0 = or(A1, A2, A4);
 }
 
-fn worker { S0 = 1; Z = T4; }
+fn worker { S0 = 1; D = T4; }
 
 ant randomizer = 0b10000 {
 	() = worker();
@@ -80,7 +80,7 @@ ant cell_marker = 3 {
 	T3 = and(alive, or(lt2, gt3)); # @T3: die
 	T2 = and(dead, eq3); # @T2: spawn
 
-	Z = 1;
+	D = 1;
 	K = T4;
 }
 

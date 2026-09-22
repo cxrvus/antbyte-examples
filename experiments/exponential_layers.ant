@@ -17,13 +17,13 @@ fn spreader = () => c {
 	(c, R1) = cpy(N1);
 	(T3, R0) = cpy(N2);
 
-	Z = C7;
+	D = C7;
 }
 
 ant 0 {
 	A0 = C0;
 	W7 = 1;
-	Z = 0;
+	D = 0;
 	_ = spreader();
 }
 

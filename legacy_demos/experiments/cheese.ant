@@ -5,5 +5,5 @@ ant main = 1 {
 	H = and(N2, N1, N0);
 	E = 1;
 	(T1, T0) = -fwd(T1, T0);
-	Z = VT0;
+	D = VT0;
 }

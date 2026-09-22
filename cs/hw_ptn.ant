@@ -15,5 +15,5 @@ ant main = 0 {
 
 ant 1 {
 	(cout, M1, M0) = add(M1, M0, 0, T3);
-	(Z, K) = cpy(cout);
+	(D, K) = cpy(cout);
 }

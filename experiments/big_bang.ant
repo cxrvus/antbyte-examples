@@ -25,14 +25,14 @@ ant 1 {
 
 	(T2, T1, T0) = fwd(C2, C1, C0);
 
-	Z = C7;
+	D = C7;
 
 	S0 = 1;
 }
 
 ant 2 {
 	T3 = C;
-	Z = C7;
+	D = C7;
 	(A2, AA) = cpy(N11);
 
 	S1 = 1;
@@ -40,7 +40,7 @@ ant 2 {
 
 ant 4 {
 	E = C;
-	Z = C2;
+	D = C2;
 
 	S2 = 1;
 }

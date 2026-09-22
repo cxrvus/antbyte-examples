@@ -22,13 +22,13 @@ ant queen = 0 {
 	S1 = and(M0, N14);
 	S2 = -C0;
 
-	Z = and(M0, -S3);
+	D = and(M0, -S3);
 }
 
 ant queen2 = 2 {
 	S3 = 1;
 	H = S0;
-	(Z, A1, A0) = cpy(-S0);
+	(D, A1, A0) = cpy(-S0);
 }
 
 ant cig_spawner = 3 {
@@ -36,15 +36,15 @@ ant cig_spawner = 3 {
 	A2 = -M0;
 	A3 = +M0;
 	M0 = or(M0, C2);
-	Z = on(0, 1, 1, 0, 0, 0);
+	D = on(0, 1, 1, 0, 0, 0);
 }
 
 ant filter = 4 {
 	S3 = 1;
 
-	Z = and(V, -VA3, -VA2, -VA1);
+	D = and(V, -VA3, -VA2, -VA1);
 	H = or(-M0, S2);
-	(T1, T0) = cpy(and(H, -Z));
+	(T1, T0) = cpy(and(H, -D));
 
 	R1 = and(-M0, S4);
 	M0 = or(M0, S4);
@@ -67,15 +67,15 @@ ant cig = 8 {
 	T2 = -lit;
 	T1 = or(-lit, and(lit, N12));
 
-	Z = or(and(lit, S1), VA2);
-	(T3, T2, T1, T0) = fwd_and(-Z, T3, T2, T1, T0);
+	D = or(and(lit, S1), VA2);
+	(T3, T2, T1, T0) = fwd_and(-D, T3, T2, T1, T0);
 }
 
 ant smoke = 12 {
 	S3 = 1;
 
-	Z = and(V, -VA3);
-	paint = and(-Z, S2);
+	D = and(V, -VA3);
+	paint = and(-D, S2);
 	H = paint;
 	(T3, T2, T1, T0) = fwd_and(paint, -M1, M1, M1, M1);
 

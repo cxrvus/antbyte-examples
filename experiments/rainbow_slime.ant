@@ -38,9 +38,9 @@ ant queen = 1 {
 
 ant sand_spawner = 2 {
 	H = 1;
-	Z = and(-VA20, -VA60);
-	T2 = and(-Z, C4);
-	A2 = and(-Z, 1);
+	D = and(-VA20, -VA60);
+	T2 = and(-D, C4);
+	A2 = and(-D, 1);
 	AA = 1; AR0 = 1;
 
 	S1 = and(X3, N12);
@@ -72,7 +72,7 @@ ant sand = 4 {
 
 ant sand_color = 5 {
 	H = -N11;
-	Z = C7;
-	T3 = -Z;
+	D = C7;
+	T3 = -D;
 	(T2, T1, T0) = fwd(C6, C5, C4);
 }

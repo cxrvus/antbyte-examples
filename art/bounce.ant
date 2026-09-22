@@ -28,7 +28,7 @@ fn bounce_ant {
 ant queen = 0 {
 	(H, AR0, AA) = cpy(1);
 	A0 = B;
-	(A1, Z) = cpy(C4);
+	(A1, D) = cpy(C4);
 }
 
 ant color = 1 {

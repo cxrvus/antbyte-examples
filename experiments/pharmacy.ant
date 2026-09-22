@@ -23,7 +23,7 @@ fn reproduce = () => spawn {
 		C1,
 		# C0,
 	));
-	Z = and(C7, C4);
+	D = and(C7, C4);
 }
 
 ant clone2 = 4 {

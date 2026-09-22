@@ -23,7 +23,7 @@ ant 1 {
 
 	(T0, T1, T2, T3) = fwd(Y0, Y2, Y3, Y4);
 
-	Z = X;
+	D = X;
 }
 
 ant 2 {
@@ -31,19 +31,19 @@ ant 2 {
 	A2 = and(Y0, N13);
 	H = 1;
 
-	Z = X;
+	D = X;
 }
 
 ant 4 {
 	(Y1, Y0) = cpy(C11);
 	A3 = and(M, -C11, N13);
-	Z = and(M, N15);
+	D = and(M, N15);
 	M = or(M, N13);
 	H = 1;
 }
 
 ant 8 {
 	Y1 = C12;
-	Z = -V;
+	D = -V;
 	H = 1;
 }

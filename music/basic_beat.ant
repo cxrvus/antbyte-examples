@@ -28,7 +28,7 @@ ant queen = 0 {
 	(AA0, -AA1) = cpy(spawn_song);
 	(A3, AR0, AR1) = cpy(1);
 
-	Z = spawn_hi_hat;
+	D = spawn_hi_hat;
 }
 
 fn play = (note_on, y1, y0) => () {

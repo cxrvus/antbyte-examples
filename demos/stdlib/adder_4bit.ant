@@ -6,9 +6,9 @@ set {
 	fg = tile; bg = id;
 }
 
-ant queen = 1 { (H, R2, A2, AR0) = cpy(1); (Z, A1, A0) = fwd(C2, C1, C0); }
+ant queen = 1 { (H, R2, A2, AR0) = cpy(1); (D, A1, A0) = fwd(C2, C1, C0); }
 
-ant adder_spawner = 5 { (W0, -A3, -Z) = cpy(B); }
+ant adder_spawner = 5 { (W0, -A3, -D) = cpy(B); }
 ant adder = 8 { (T4, T3, T2, T1, T0) = add(VT23, VT22, VT21, VT20,, VT63, VT62, VT61, VT60); }
 
 fn rand { (T3, T2, T1, T0) = fwd_and(-B, N3, N2, N1, N0); }

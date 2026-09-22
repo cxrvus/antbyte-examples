@@ -3,5 +3,5 @@ set { start = top_left; bg_filter = one; }
 
 ant 0 {
 	T0 = or(B, xor(VT50, VT60));
-	T1 = B; Z = VT01;
+	T1 = B; D = VT01;
 }

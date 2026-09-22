@@ -20,5 +20,5 @@ ant main = 1 {
 
 	M0 = and(-M0, V);
 
-	Z = VT0;
+	D = VT0;
 }

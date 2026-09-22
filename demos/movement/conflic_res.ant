@@ -11,8 +11,8 @@ ant queen = 0 {
 	A0 = or(left, right);
 	(AR0, AM) = cpy(left);
 
-	Z = and(C2, -C1, C0);
-	S = -Z;
+	D = and(C2, -C1, C0);
+	S = -D;
 }
 
 ant spawner = 1 {

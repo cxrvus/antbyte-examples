@@ -12,5 +12,5 @@ ant 0 {
 ant 1 {
 	(Y3, Y2, Y1, Y0) = fwd(T3, T2, T1, T0);
 	W1 = B;
-	Z = -B;
+	D = -B;
 }

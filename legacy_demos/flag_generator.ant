@@ -11,6 +11,6 @@ ant main = 1 {
 
 	(T2, T1, T0) = fwd(M2, M1, M0);
 
-	Z = VT3;
+	D = VT3;
 	T3 = 1;
 }

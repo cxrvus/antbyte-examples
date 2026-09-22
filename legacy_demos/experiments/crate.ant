@@ -10,5 +10,5 @@ ant main = 1 {
 ant dummy = 2 {
 	E = 1;
 	T0 = C6;
-	Z = C7;
+	D = C7;
 }

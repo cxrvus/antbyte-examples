@@ -9,13 +9,13 @@ set fps = 6;
 
 ant queen = 0 {
 	(A3, AR0, AR1) = cpy(on(0, 0, 1, 1));
-	(A1, A0, Z, ) = cpy(on(1, 1, 1, 0));
+	(A1, A0, D, ) = cpy(on(1, 1, 1, 0));
 }
 
 ant clk = 3 { H = 1; S0 = C0; S1 = C14; }
 
 ant cig = 1 {
-	AM0 = B; AM2 = C2; AM1 = -or(AM0, AM2); Z = AM2;
+	AM0 = B; AM2 = C2; AM1 = -or(AM0, AM2); D = AM2;
 	(A1, AR0, AR1) = cpy(1);
 }
 
@@ -37,9 +37,9 @@ ant cig_part = 2 {
 }
 
 ant smoke = 4 {
-	Z = or(S2, and(V, -VA2));
+	D = or(S2, and(V, -VA2));
 	keep = T4;
-	paint = and(-Z, S0, -keep);
+	paint = and(-D, S0, -keep);
 
 	H = S0;
 	T3 = or(paint, and(keep, T0));
@@ -52,19 +52,19 @@ ant smoke = 4 {
 
 ant frog = 0x8 {
 	H = B;
-	Z = C3;
+	D = C3;
 
 	right = or(on(0, 1, 1), on(1, 0, 1));
 	left =  or(on(1, 0, 0), on(1, 1, 0));
 	
-	A3 = and(-B, -Z);
+	A3 = and(-B, -D);
 	(A2, A1, A0) = fwd_and(A3, C2, C1, C0);
 	(AR2, -AR1) = cpy(right);
 
 	() = rotd(left, right);
 }
 
-fn line = (c2, c1, c0) => color { color = 1; T4 = 1; Z = on(c2, c1, c0); }
+fn line = (c2, c1, c0) => color { color = 1; T4 = 1; D = on(c2, c1, c0); }
 
 ant 0x9 { T2 = line(1, 1, 0); }
 ant 0xa { T1 = line(1, 1, 0); }
@@ -74,7 +74,7 @@ ant 0xe { T1 = line(1, 1, 0); }
 ant mouth = 0xb {
 	T4 = 1;
 	(M0, T0, -T1) = cpy(or(M0, C2));
-	(A0, Z) = cpy(on(1, 1, 1));
+	(A0, D) = cpy(on(1, 1, 1));
 }
 
 ant eyes = 0xd {
@@ -84,7 +84,7 @@ ant eyes = 0xd {
 	white = or(c2, c4, c5);
 	T1 = or(white, green);
 	(T3, T2, T0) = cpy(white);
-	Z = c7;
+	D = c7;
 }
 
 ant ears = 0xf {

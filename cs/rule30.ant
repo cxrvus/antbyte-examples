@@ -7,5 +7,5 @@ ant 0 {
 	T = or(x1, x2, x3, x4);
 	T = or(B, T);
 
-	T1 = B; Z = VT01;
+	T1 = B; D = VT01;
 }

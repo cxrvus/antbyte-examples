@@ -8,5 +8,5 @@ set start_dir = 2;
 ant main = 1 {
 	(T2, T1, T0) = fwd(C2, C1, C0);
 	T3 = 1;
-	Z = VT0;
+	D = VT0;
 }

@@ -17,7 +17,7 @@ ant queen = 0 {
 	(A4, A1) = cpy(B);
 	(A0, AA0) = cpy(and(-B, C13));
 	(AR0, AR1, AR2) = cpy(1);
-	Z = A0;
+	D = A0;
 }
 
 fn slow { W3 = 1; }
@@ -39,7 +39,7 @@ ant shell = 1 {
 	AR1 = spawn_ray;
 	AR0 = spawn_core;
 	AA0 = spawn_ray;
-	Z = spawn_core;
+	D = spawn_core;
 
 	E = 1;
 	T5 = 1;
@@ -60,7 +60,7 @@ ant core = 2 {
 	M1 = M0;
 
 	(R2, H, M0) = cpy(VT5);
-	Z = and(M2, M1, M0);
+	D = and(M2, M1, M0);
 }
 
 ant face = 4 {
@@ -82,7 +82,7 @@ ant face = 4 {
 		spawn_shades,
 	);
 
-	Z = spawn_smile;
+	D = spawn_smile;
 }
 
 ant smile = 5 {
@@ -100,7 +100,7 @@ ant smile = 5 {
 
 	() = rotd(left, right);
 
-	Z = C4;
+	D = C4;
 }
 
 ant queen2 = 6 {
@@ -112,7 +112,7 @@ ant queen2 = 6 {
 	AR0 = 1;
 	AR1 = A2;
 
-	Z = A2;
+	D = A2;
 }
 
 ant shades = 7 {
@@ -122,7 +122,7 @@ ant shades = 7 {
 		on(1, 1, 0, 0),
 	));
 
-	Z = on(1, 1, 1, 1);
+	D = on(1, 1, 1, 1);
 }
 
 ant lense = 8 {
@@ -132,14 +132,14 @@ ant lense = 8 {
 		on(0, 1, 0, 0),
 		on(0, 1, 0, 1),
 	));
-	Z = on(0, 1, 1, 0);
+	D = on(0, 1, 1, 0);
 }
 
 ##### Layer 0
 
 ant sky = 18 {
 	S0 = 1;
-	Z = T2;
+	D = T2;
 
 	keep = or(T4, T5);
 	T2 = -keep;
@@ -173,7 +173,7 @@ ant ray_tail = 10 {
 
 	H = 1;
 	W7 = 1;
-	Z = -B;
+	D = -B;
 }
 
 # TODO:

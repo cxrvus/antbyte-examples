@@ -19,13 +19,13 @@ ant 0 {
 	AR0 = spawn_rain;
 	A1 = spawn_rain;
 
-	Z = V;
+	D = V;
 }
 
 ant cloud = 1 {
 	T2 = 0;
 	T3 = 1;
-	Z = C7;
+	D = C7;
 	R2 = N0;
 	R1 = N1;
 }
@@ -53,5 +53,5 @@ ant rain_end = 5 {
 	H = 1;
 	W1 = B;
 	T2 = B;
-	Z = -B;
+	D = -B;
 }

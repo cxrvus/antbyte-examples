@@ -45,7 +45,7 @@ ant sky = 3 {
 
 ant grass_spawner = 4 {
 	(AM3, AM2, AM1, AM0) = fwd(N3, N2, N1, N0);
-	(Z, H, A2, A0) = cpy(-B);
+	(D, H, A2, A0) = cpy(-B);
 }
 
 
@@ -58,13 +58,13 @@ ant grass = 5 {
 	(cout, c3, c2) = add(M3, M2, 0, 1);
 	(c3, c2) = fwd(or(cout, c3), or(cout, c2));
 
-	Z = on(c3, c2, c1, c0);
-	T3 = -and(Z, M1, M0);
+	D = on(c3, c2, c1, c0);
+	T3 = -and(D, M1, M0);
 }
 
 
 ant flower_spawner = 0b1000 {
-	(Z, H, A3, A0) = cpy(-B);
+	(D, H, A3, A0) = cpy(-B);
 	AM4 = N11;
 }
 
@@ -89,6 +89,6 @@ ant flower_rose = 0b1001 {
 	(R0, R1, R2) = enc(0, r1, r2, r3, r4, r5, r6, r7);
 
 	M0 = or(M0, txb);
-	Z = C4;
-	T3 = Z;
+	D = C4;
+	T3 = D;
 }

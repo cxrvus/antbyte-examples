@@ -37,7 +37,7 @@ ant queen = 0 {
 
 	AA0 = or(A4, A3); AA1 = A4;
 
-	Z = C6;	# head start for food spawner
+	D = C6;	# head start for food spawner
 }
 
 fn score = (incr, m3i, m2i, m1i, m0i) => (cout, m3o, m2o, m1o, m0o, y3, y2, y1, y0) {
@@ -52,7 +52,7 @@ fn score = (incr, m3i, m2i, m1i, m0i) => (cout, m3o, m2o, m1o, m0o, y3, y2, y1, 
 
 	S7 = S7; 	# game over
 	(A4, A1, AR0) = cpy(S7);
-	Z = and(S7, X4);		# restart by pressing N
+	D = and(S7, X4);		# restart by pressing N
 }
 
 ant score_lsb = 16 { # @layer = 3
@@ -66,11 +66,11 @@ ant score_msb = 17 { # @layer = 3
 	(_win, M7, M6, M5, M4, Y7, Y6, Y5, Y4) = score(incr, M7, M6, M5, M4);
 }
 
-ant game_over = 18 { Z = X4; T0 = and(E, xor(T0, C3)); }
+ant game_over = 18 { D = X4; T0 = and(E, xor(T0, C3)); }
 
 ant head = 2 {
-	Z = and(-S0, T5);	# die on intersection
-	S7 = Z;				# game over on death
+	D = and(-S0, T5);	# die on intersection
+	S7 = D;				# game over on death
 
 	H = S0;
 	W3 = -S0;
@@ -104,7 +104,7 @@ ant head = 2 {
 }
 
 ant tail = 4 {
-	Z = S7;
+	D = S7;
 
 	H = or(T3, S0);
 	W3 = -S0;
@@ -116,7 +116,7 @@ ant tail = 4 {
 }
 
 ant food_spawner = 8 { # @layer = 1
-	Z = S7;
+	D = S7;
 
 	# random movement
 	H = N12;
@@ -137,6 +137,6 @@ ant food = 9 { # @layer = 2;
 	score = and(-B, -T4);
 	(S2, T3) = cpy(+score); # score upon being eaten
 	(T4, T0) = cpy(-score);
-	Z = or(score, S7);
+	D = or(score, S7);
 	T1 = 1;
 }
