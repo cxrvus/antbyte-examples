@@ -61,7 +61,7 @@ ant frog = 0x8 {
 	(A2, A1, A0) = fwd_and(A3, C2, C1, C0);
 	(AR2, -AR1) = cpy(right);
 
-	() = rotd(left, right);
+	() = rot_32(left, right);
 }
 
 fn line = (c2, c1, c0) => color { color = 1; T4 = 1; D = on(c2, c1, c0); }

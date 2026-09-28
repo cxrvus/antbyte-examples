@@ -12,5 +12,5 @@ ant adder_spawner = 5 { (W0, -A3, -D) = cpy(B); }
 ant adder = 8 { (T4, T3, T2, T1, T0) = add(VT23, VT22, VT21, VT20,, VT63, VT62, VT61, VT60); }
 
 fn rand { (T3, T2, T1, T0) = fwd_and(-B, N3, N2, N1, N0); }
-ant rhs = 4 { () = rand(); () = rotd(0, B); W1 = B; }
-ant lhs = 6 { () = rand(); () = rotd(B, 0); }
+ant rhs = 4 { () = rand(); () = rot_32(0, B); W1 = B; }
+ant lhs = 6 { () = rand(); () = rot_32(B, 0); }

@@ -95,7 +95,7 @@ ant head = 2 {
 		and(w0, a1), and(a0, s1), and(s0, d1), and(d0, w1),
 	);
 
-	(r0, r1) = rot(left, right);
+	(r0, r1) = rot_64(left, right);
 	(T7, T6) = fwd(r0, r1);
 
 	# remember rotation

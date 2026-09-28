@@ -44,7 +44,7 @@ ant rain_start = 4 {
 	wind = and(-M1, N14);
 	left = wind;
 	right = M1;
-	() = rotd(left, right);
+	() = rot_32(left, right);
 	TB = -wind;
 	M1 = wind;
 }
