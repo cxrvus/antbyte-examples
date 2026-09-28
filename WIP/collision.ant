@@ -1,5 +1,5 @@
 set border = cycle;
-set start_dir = 2;
+set start_dir = "S";
 set keys = "wd";
 set fps = 12;
 set size = 32;

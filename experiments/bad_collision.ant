@@ -1,5 +1,5 @@
 set border = obs;
-set start_dir = 2;
+set start_dir = "S";
 set keys = "wd";
 set fps = 8;
 set size = 32;

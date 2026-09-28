@@ -3,7 +3,7 @@ set width = 32;
 set speed = 8;
 set start = top_left;
 set border = wrap;
-set start_dir = 2;
+set start_dir = "S";
 
 ant main = 1 {
 	(T2, T1, T0) = fwd(C2, C1, C0);

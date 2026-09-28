@@ -6,7 +6,7 @@ set border = cycle;
 set speed = 32;
 set fps = 12;
 
-set start_dir = 2;
+set start_dir = "S";
 set start_pos = right;
 set bg = birth_tick;
 set bg_filter = bin;

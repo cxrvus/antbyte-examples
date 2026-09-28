@@ -7,7 +7,7 @@ set speed = 8;
 set ticks = 1500;
 set loop;
 set sleep = 100;
-set start_dir = 5;
+set start_dir = "NW";
 set layers = 2;
 
 # set speed = 0;

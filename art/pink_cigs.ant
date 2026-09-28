@@ -1,5 +1,5 @@
 set start_pos = left;
-set start_dir = 2;
+set start_dir = "S";
 set height = 32;
 set width = 40;
 set border = obs;
