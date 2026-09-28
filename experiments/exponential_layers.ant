@@ -11,7 +11,7 @@ set layers = 4;
 fn spreader = () => c {
 	AR1 = 1;
 
-	# AA = N15;
+	# AA = P5;
 	AA = 1;
 
 	(c, R1) = cpy(N1);

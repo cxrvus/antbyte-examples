@@ -6,6 +6,6 @@ set start = top_left;
 
 ant main = 1 {
 	color = langton(and(-T1, T3));
-	E = 1;
+	TZ = 1;
 	(_, T1, T3) = add(T1, T3, 1, 0, 1);
 }

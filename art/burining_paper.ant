@@ -14,7 +14,7 @@ ant main = 1 {
 
 	M0 = or(M0, and(B, N3));
 
-	W6 = and(-B, C14, M0);
+	W6 = and(-B, E4, M0);
 
 	T0 = 1;
 	T1 = VT20;

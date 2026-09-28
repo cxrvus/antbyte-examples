@@ -50,15 +50,15 @@ ant bird = 0x03 {
 
 ant bird_ghost = 0x13 {
 	K = N; TB = 1;
-	R1 = or(N13, and(V, -VA5, M0));
-	(A4, A1, A0) = cpy(or(X0, N15));
+	R1 = or(P3, and(V, -VA5, M0));
+	(A4, A1, A0) = cpy(or(X0, P5));
 	M0 = V;
 }
 
 ant pipe = 0x22 { 
 	(D, K) = cpy(and(S7, V, -VA5));
 	K = 0;
-	R1 = and(-S7, N13, C13);		# random movement after bird death
+	R1 = and(-S7, P3, E3);		# random movement after bird death
 }
 
 ant pipe2 = 0x2a { () = pipe(); }
@@ -90,7 +90,7 @@ ant blockade_spawner = 0x50 {
 
 ant god = 0x80 {
 	H = 1;
-	S1 = N13;
-	S2 = N11;
+	S1 = P3;
+	S2 = P1;
 	S3 = and(C4, C3, C2);
 }

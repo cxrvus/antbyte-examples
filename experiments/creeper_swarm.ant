@@ -13,14 +13,14 @@ set fg = none;
 # set { fps = 12; speed = 1; fg = mem; }
 
 ant queen = 0 {
-	R1 = or(VT4, N12);
+	R1 = or(VT4, P2);
 
 	(_, M1, M0) = add(M1, M0, 0, R1);
 
-	A0 = and(-M1, -M0, E, N11);
+	A0 = and(-M1, -M0, TZ, P1);
 	A0 = or(A0, B);
 
-	AR2 = N14;
+	AR2 = P4;
 	AA = 1; AR1 = 1;
 }
 
@@ -33,6 +33,6 @@ ant column = 1 {
 
 ant rows = 2 {
 	D = and(C2, C1, C0);
-	E = 1;
+	TZ = 1;
 	() = creeper(M2, M1, M0, C2, C1, C0);
 }

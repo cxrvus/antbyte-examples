@@ -14,7 +14,7 @@ run({
 	},
 	ants: {
 		1: ant("main", (T2) => ({
-			E: true,
+			TZ: true,
 			T2: !T2,
 			R1: true,
 			R0: T2,

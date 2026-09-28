@@ -15,8 +15,8 @@ ant 1 {
 	Y6 = 1;
 	Y0 = N0;
 	Y2 = N3;
-	Y3 = and (N11, -Y2);
-	Y4 = N12;
+	Y3 = and (P1, -Y2);
+	Y4 = P2;
 
 	Y11 = N7;
 	Y10 = N6;
@@ -27,23 +27,23 @@ ant 1 {
 }
 
 ant 2 {
-	Y0 = C11;
-	A2 = and(Y0, N13);
+	Y0 = E1;
+	A2 = and(Y0, P3);
 	H = 1;
 
 	D = X;
 }
 
 ant 4 {
-	(Y1, Y0) = cpy(C11);
-	A3 = and(M, -C11, N13);
-	D = and(M, N15);
-	M = or(M, N13);
+	(Y1, Y0) = cpy(E1);
+	A3 = and(M, -E1, P3);
+	D = and(M, P5);
+	M = or(M, P3);
 	H = 1;
 }
 
 ant 8 {
-	Y1 = C12;
+	Y1 = E2;
 	D = -V;
 	H = 1;
 }

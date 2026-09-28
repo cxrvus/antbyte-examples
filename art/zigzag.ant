@@ -10,7 +10,7 @@ fn dir_change = (mem, clock) => (mem_out, dir) {
 }
 
 ant main = 1 {
-	E = 1;
+	TZ = 1;
 	T0 = -T0;
 
 	(M2, R1) = dir_change(M2, C2);

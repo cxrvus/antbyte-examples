@@ -15,7 +15,7 @@ set {
 
 ant queen = 0 {
 	(A4, A1) = cpy(B);
-	(A0, AA0) = cpy(and(-B, C13));
+	(A0, AA0) = cpy(and(-B, E3));
 	(AR0, AR1, AR2) = cpy(1);
 	D = A0;
 }
@@ -27,7 +27,7 @@ fn slow { W3 = 1; }
 ant shell = 1 {
 	() = slow();
 
-	spawn_ray = C12;
+	spawn_ray = E2;
 	turn = and(-B, spawn_ray);
 	spawn_core = VT0;
 
@@ -41,7 +41,7 @@ ant shell = 1 {
 	AA0 = spawn_ray;
 	D = spawn_core;
 
-	E = 1;
+	TZ = 1;
 	T5 = 1;
 	T0 = 1;
 }
@@ -144,7 +144,7 @@ ant sky = 18 {
 	keep = or(T4, T5);
 	T2 = -keep;
 	T3 = and(-keep, M3);
-	M3 = xor(M3, N15);
+	M3 = xor(M3, P5);
 }
 
 ##### Layer 2
@@ -154,7 +154,7 @@ ant ray_spawner = 3 {
 
 	H = 1;
 	AR0 = 1;
-	(A3, A0) = cpy(and(active, C15));
+	(A3, A0) = cpy(and(active, E5));
 	W3 = 1;
 }
 

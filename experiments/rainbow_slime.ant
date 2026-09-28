@@ -43,7 +43,7 @@ ant sand_spawner = 2 {
 	A2 = and(-D, 1);
 	AA = 1; AR0 = 1;
 
-	S1 = and(X3, N12);
+	S1 = and(X3, P2);
 }
 
 ant sand = 4 {
@@ -71,7 +71,7 @@ ant sand = 4 {
 }
 
 ant sand_color = 5 {
-	H = -N11;
+	H = -P1;
 	D = C7;
 	T3 = -D;
 	(T2, T1, T0) = fwd(C6, C5, C4);

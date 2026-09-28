@@ -10,7 +10,7 @@ ant queen = 0 {
 	H = 1;
 	AA = 1;
 	A0 = B;
-	A1 = and(-A0, N13);
+	A1 = and(-A0, P3);
 }
 
 ant 1 {

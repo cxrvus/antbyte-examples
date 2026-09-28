@@ -36,11 +36,11 @@ fn play = (note_on, y1, y0) => () {
 	(Y1, Y0) = fwd_and(and(-S0, -S1, note_on), y1, y0);
 }
 
-ant kick = 	0b1010 { () = play(-E, 0, 1); }
-ant snare = 	0b1011 { () = play(-E, 1, 0); }
+ant kick = 	0b1010 { () = play(-TZ, 0, 1); }
+ant snare = 	0b1011 { () = play(-TZ, 1, 0); }
 
 ant hi_hat = 	0b1100 {
-	() = play(or(-E, N0, N1), 1, 1);
+	() = play(or(-TZ, N0, N1), 1, 1);
 	(Y13, Y10) = cpy(C1);
 }
 

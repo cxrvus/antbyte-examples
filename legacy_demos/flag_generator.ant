@@ -5,9 +5,9 @@ set height = 12;
 set speed = 16;
 
 ant main = 1 {
-	M0 = mux(C15, M0, N0);
-	M1 = mux(C15, M1, N1);
-	M2 = mux(C15, M2, N2);
+	M0 = mux(E5, M0, N0);
+	M1 = mux(E5, M1, N1);
+	M2 = mux(E5, M2, N2);
 
 	(T2, T1, T0) = fwd(M2, M1, M0);
 

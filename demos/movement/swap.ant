@@ -9,12 +9,12 @@ ant main = 1 {
 	A1 = B;
 	AR0 = 1;
 
-	E = 1;
+	TZ = 1;
 	T1 = 1;
 }
 
 ant other = 2 {
 
-	E = 1;
+	TZ = 1;
 	T2 = 1;
 }

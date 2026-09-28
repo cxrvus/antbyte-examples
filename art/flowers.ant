@@ -27,7 +27,7 @@ ant queen = 0 {
 
 	M0 = spawn_grass;
 
-	# R1 = N11;
+	# R1 = P1;
 }
 
 ant sky_spawner = 2 {
@@ -39,8 +39,8 @@ ant sky_spawner = 2 {
 ant sky = 3 {
 	keep = T4;
 	T2 = or(T2, -keep);
-	T3 = mux(keep, or(N11, xor(M1, M0)), T3);
-	M0 = xor(M0, N13);
+	T3 = mux(keep, or(P1, xor(M1, M0)), T3);
+	M0 = xor(M0, P3);
 }
 
 ant grass_spawner = 4 {
@@ -65,7 +65,7 @@ ant grass = 5 {
 
 ant flower_spawner = 0b1000 {
 	(D, H, A3, A0) = cpy(-B);
-	AM4 = N11;
+	AM4 = P1;
 }
 
 ant flower_rose = 0b1001 {

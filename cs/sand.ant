@@ -38,9 +38,9 @@ ant sand_spawner = 2 {
 	A2 = and(-D, X2);
 	AA = 1; AR0 = 1;
 
-	S1 = and(X3, N12);
+	S1 = and(X3, P2);
 
-	E = B;
+	TZ = B;
 }
 
 ant sand = 4 {

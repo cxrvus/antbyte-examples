@@ -19,7 +19,7 @@ ant queen = 0 {
 	M0 = or(M0, C1);
 
 	S0 = -M0;
-	S1 = and(M0, N14);
+	S1 = and(M0, P4);
 	S2 = -C0;
 
 	D = and(M0, -S3);
@@ -60,12 +60,12 @@ ant cig = 8 {
 
 	(A3, A2, AR0) = cpy(lit);
 
-	M1 = xor(M1, N12);
+	M1 = xor(M1, P2);
 	AM1 = M1;
 
 	(T3, T0) = cpy(1);
 	T2 = -lit;
-	T1 = or(-lit, and(lit, N12));
+	T1 = or(-lit, and(lit, P2));
 
 	D = or(and(lit, S1), VA2);
 	(T3, T2, T1, T0) = fwd_and(-D, T3, T2, T1, T0);

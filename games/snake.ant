@@ -66,7 +66,7 @@ ant score_msb = 17 { # @layer = 3
 	(_win, M7, M6, M5, M4, Y7, Y6, Y5, Y4) = score(incr, M7, M6, M5, M4);
 }
 
-ant game_over = 18 { D = X4; T0 = and(E, xor(T0, C3)); }
+ant game_over = 18 { D = X4; T0 = and(TZ, xor(T0, C3)); }
 
 ant head = 2 {
 	D = and(-S0, T5);	# die on intersection
@@ -119,8 +119,8 @@ ant food_spawner = 8 { # @layer = 1
 	D = S7;
 
 	# random movement
-	H = N12;
-	turn = N13;
+	H = P2;
+	turn = P3;
 	M2 = xor(M2, turn);
 	(right, -left) = cpy(M2);
 	R1 = and(turn, or(right, left));

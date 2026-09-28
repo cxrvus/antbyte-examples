@@ -31,7 +31,7 @@ ant cloud = 1 {
 }
 
 ant rain_spawner = 2 {
-	A2 = N13;
+	A2 = P3;
 	AR0 = 1;
 	AA0 = 1;
 
@@ -41,7 +41,7 @@ ant rain_spawner = 2 {
 ant rain_start = 4 {
 	(A0, A2) = cpy(-T3);
 
-	wind = and(-M1, N14);
+	wind = and(-M1, P4);
 	left = wind;
 	right = M1;
 	() = rot_32(left, right);

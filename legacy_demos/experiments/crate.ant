@@ -8,7 +8,7 @@ ant main = 1 {
 }
 
 ant dummy = 2 {
-	E = 1;
+	TZ = 1;
 	T0 = C6;
 	D = C7;
 }

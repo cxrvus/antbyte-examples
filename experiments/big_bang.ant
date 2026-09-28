@@ -17,7 +17,7 @@ ant 0 {
 }
 
 ant 1 {
-	(A1, AA) = cpy(C12);
+	(A1, AA) = cpy(E2);
 	A0 = -A1;
 
 	R1 = cpy(C1);
@@ -33,13 +33,13 @@ ant 1 {
 ant 2 {
 	T3 = C;
 	D = C7;
-	(A2, AA) = cpy(N11);
+	(A2, AA) = cpy(P1);
 
 	S1 = 1;
 }
 
 ant 4 {
-	E = C;
+	TZ = C;
 	D = C2;
 
 	S2 = 1;

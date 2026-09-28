@@ -7,7 +7,7 @@ set border = cycle;
 # set border = die;
 
 fn spike {
-	E = 1;
+	TZ = 1;
 	T1 = -T1;
 	# T3 = C7;
 

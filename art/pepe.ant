@@ -12,7 +12,7 @@ ant queen = 0 {
 	(A1, A0, D, ) = cpy(on(1, 1, 1, 0));
 }
 
-ant clk = 3 { H = 1; S0 = C0; S1 = C14; }
+ant clk = 3 { H = 1; S0 = C0; S1 = E4; }
 
 ant cig = 1 {
 	AM0 = B; AM2 = C2; AM1 = -or(AM0, AM2); D = AM2;

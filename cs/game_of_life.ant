@@ -36,7 +36,7 @@ fn worker { S0 = 1; D = T4; }
 
 ant randomizer = 0b10000 {
 	() = worker();
-	T0 = N11;
+	T0 = P1;
 } 
 
 # uses 8 input pins

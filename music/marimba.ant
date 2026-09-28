@@ -14,8 +14,8 @@ ant 1 {
 	Y6 = 1;
 	Y0 = N0;
 	Y2 = N3;
-	Y3 = and (N11, -Y2);
-	Y4 = N12;
+	Y3 = and (P1, -Y2);
+	Y4 = P2;
 
 	Y11 = N7;
 	Y10 = N6;
@@ -24,12 +24,12 @@ ant 1 {
 }
 
 ant 2 {
-	Y0 = C11;
-	A2 = and(Y0, N13);
+	Y0 = E1;
+	A2 = and(Y0, P3);
 	H = 1;
 }
 
 ant 4 {
-	(Y1, Y0) = cpy(C11);
-	D = N13;
+	(Y1, Y0) = cpy(E1);
+	D = P3;
 }
