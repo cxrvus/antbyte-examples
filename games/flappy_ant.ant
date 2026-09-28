@@ -8,7 +8,7 @@ set fg = id;
 set fg = none;
 set start_tick = 100;
 
-set layers = 2;
+set layer_limit = 2;
 set border = obs;
 
 ant queen = 0x00 {

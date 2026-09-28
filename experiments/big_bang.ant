@@ -7,7 +7,7 @@ set speed = 4;
 set fg = tile;
 set bg = layers;
 
-set layers = 3;
+set layer_limit = 3;
 set border_1 = cycle;
 set border_2 = die;
 

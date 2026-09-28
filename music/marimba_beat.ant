@@ -5,7 +5,7 @@ set midi_out_ch_1 = 4;
 set fps = 4;
 set speed = 2;
 
-set layers = 2;
+set layer_limit = 2;
 
 set keys = "q";
 

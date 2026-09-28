@@ -6,7 +6,7 @@ set border = obs;
 set fps = 12;
 set loop;
 set speed = 4;
-set layers = 2;
+set layer_limit = 2;
 set layer_filter = 0b10;
 set fg = none;
 

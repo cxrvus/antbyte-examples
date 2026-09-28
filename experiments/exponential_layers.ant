@@ -6,7 +6,7 @@ set speed = 32;
 set fps = 24;
 set start_dir = "W";
 
-set layers = 4;
+set layer_limit = 4;
 
 fn spreader = () => c {
 	AR1 = 1;

@@ -1,6 +1,6 @@
 set start = top_left;
 set size = 64;
-set layers = 3;
+set layer_limit = 3;
 set start_dir = "SE";
 
 # set start_tick = 4000;

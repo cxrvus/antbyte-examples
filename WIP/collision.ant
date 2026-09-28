@@ -6,7 +6,7 @@ set size = 32;
 set start_tick = 0x100;
 set speed = 2;
 
-set layers = 2;
+set layer_limit = 2;
 set layer_filter = 0b10;
 # set fg = layers;
 set bg = id;

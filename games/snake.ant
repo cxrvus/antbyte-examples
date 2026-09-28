@@ -1,5 +1,5 @@
 set size = 16;
-set layers = 4;
+set layer_limit = 4;
 set border_0 = cycle;
 set border_1 = wrap;
 

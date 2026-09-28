@@ -4,7 +4,7 @@ set keys = "wd";
 set fps = 8;
 set size = 32;
 
-set layers = 2;
+set layer_limit = 2;
 set layer_filter = 0b10;
 # set fg = layers;
 

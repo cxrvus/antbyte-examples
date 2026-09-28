@@ -3,7 +3,7 @@ set size = 64;
 set start_pos = top_left;
 set decay = 0x10;
 
-set layers = 3;
+set layer_limit = 3;
 set sldn_1 = 8;
 set sldn_2 = 4;
 set bg = layers;
