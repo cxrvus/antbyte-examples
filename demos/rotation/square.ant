@@ -1,0 +1,15 @@
+set size = 96;
+set bg_filter = one;
+
+ant 0 {
+	H = 1;
+	R7 = 1;
+	AR = 1;
+	AA = T;
+	A = 1;
+}
+
+ant 1 {
+	D = T5;
+	C = D;
+}
