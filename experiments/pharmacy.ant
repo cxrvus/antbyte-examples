@@ -7,23 +7,23 @@ set border = cycle;
 # set border = die;
 
 fn spike {
-	TZ = 1;
-	T1 = -T1;
-	# T3 = C7;
+	CZ = 1;
+	C1 = -C1;
+	# C3 = T7;
 
-	R1 = C2;
-	R0 = C3;
-	R2 = C7;
+	R1 = T2;
+	R0 = T3;
+	R2 = T7;
 }
 
 fn reproduce = () => spawn {
-	spawn = and(C7, -or(
-		C3,
-		C2,
-		C1,
-		# C0,
+	spawn = and(T7, -or(
+		T3,
+		T2,
+		T1,
+		# T0,
 	));
-	D = and(C7, C4);
+	D = and(T7, T4);
 }
 
 ant clone2 = 4 {

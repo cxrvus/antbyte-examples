@@ -9,8 +9,8 @@ set fps = 12;
 ant main = 1 {
 	A0 = 1;
 
-	(T1, R1) = cpy(N1);
-	(T2, R0) = cpy(N2);
+	(C1, R1) = cpy(N1);
+	(C2, R0) = cpy(N2);
 
-	D = C7;
+	D = T7;
 }

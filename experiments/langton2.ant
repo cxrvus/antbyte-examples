@@ -13,5 +13,5 @@ fn main = in_color => out_color {
 }
 
 ant main = 1 {
-	T0 = main(T0);
+	C0 = main(C0);
 }

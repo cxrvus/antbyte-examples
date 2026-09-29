@@ -12,10 +12,10 @@ ant queen = 0 {
 	(A1, A0, D, ) = cpy(on(1, 1, 1, 0));
 }
 
-ant clk = 3 { H = 1; S0 = C0; S1 = E4; }
+ant clk = 3 { H = 1; S0 = T0; S1 = E4; }
 
 ant cig = 1 {
-	AM0 = B; AM2 = C2; AM1 = -or(AM0, AM2); D = AM2;
+	AM0 = B; AM2 = T2; AM1 = -or(AM0, AM2); D = AM2;
 	(A1, AR0, AR1) = cpy(1);
 }
 
@@ -29,20 +29,20 @@ ant cig_part = 2 {
 	core = M1;
 	(brown, white, gray) = fwd_and(-move, M0, M1, M2);
 
-	T3 = white; T2 = or(white, gray); T1 = or(white, brown, gray);
-	T0 = or(T1, and(move, filter, is_up));
-	T4 = or(T3, T2, T1, T0);
+	C3 = white; C2 = or(white, gray); C1 = or(white, brown, gray);
+	C0 = or(C1, and(move, filter, is_up));
+	C4 = or(C3, C2, C1, C0);
 
 	(A2, AA, AR0, AR1) = cpy(and(core, is_up, -move));
 }
 
 ant smoke = 4 {
 	D = or(S2, and(V, -VA2));
-	keep = T4;
+	keep = C4;
 	paint = and(-D, S0, -keep);
 
 	H = S0;
-	T3 = or(paint, and(keep, T0));
+	C3 = or(paint, and(keep, C0));
 
 	turn = N0;
 	R1 = turn;
@@ -52,45 +52,45 @@ ant smoke = 4 {
 
 ant frog = 0x8 {
 	H = B;
-	D = C3;
+	D = T3;
 
 	right = or(on(0, 1, 1), on(1, 0, 1));
 	left =  or(on(1, 0, 0), on(1, 1, 0));
 	
 	A3 = and(-B, -D);
-	(A2, A1, A0) = fwd_and(A3, C2, C1, C0);
+	(A2, A1, A0) = fwd_and(A3, T2, T1, T0);
 	(AR2, -AR1) = cpy(right);
 
 	rot_32(left, right);
 }
 
-fn line = (c2, c1, c0) => color { color = 1; T4 = 1; D = on(c2, c1, c0); }
+fn line = (t2, t1, t0) => color { color = 1; C4 = 1; D = on(t2, t1, t0); }
 
-ant 0x9 { T2 = line(1, 1, 0); }
-ant 0xa { T1 = line(1, 1, 0); }
-ant 0xc { T1 = line(1, 1, 0); }
-ant 0xe { T1 = line(1, 1, 0); }
+ant 0x9 { C2 = line(1, 1, 0); }
+ant 0xa { C1 = line(1, 1, 0); }
+ant 0xc { C1 = line(1, 1, 0); }
+ant 0xe { C1 = line(1, 1, 0); }
 
 ant mouth = 0xb {
-	T4 = 1;
-	(M0, T0, -T1) = cpy(or(M0, C2));
+	C4 = 1;
+	(M0, C0, -C1) = cpy(or(M0, T2));
 	(A0, D) = cpy(on(1, 1, 1));
 }
 
 ant eyes = 0xd {
-	T4 = 1;
-	(c0, c1, c2, c3, c4, c5, c6, c7) = dec(C2, C1, C0);
-	green = or(c0, c1, c7);
-	white = or(c2, c4, c5);
-	T1 = or(white, green);
-	(T3, T2, T0) = cpy(white);
-	D = c7;
+	C4 = 1;
+	(t0, t1, t2, t3, t4, t5, t6, t7) = dec(T2, T1, T0);
+	green = or(t0, t1, t7);
+	white = or(t2, t4, t5);
+	C1 = or(white, green);
+	(C3, C2, C0) = cpy(white);
+	D = t7;
 }
 
 ant ears = 0xf {
-	(T4, T1) = cpy(and(
+	(C4, C1) = cpy(and(
 		-B,
 		line(1, 1, 1),
-		or(one(C2, C1, C0), on(1, 0, 1))
+		or(one(T2, T1, T0), on(1, 0, 1))
 	));
 }

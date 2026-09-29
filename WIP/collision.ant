@@ -13,27 +13,27 @@ set bg = id;
 
 ant queen = 0 {
 	S0 = -M1;
-	S1 = -C0;
+	S1 = -T0;
 
 	H = -M0;
 	M0 = B;
 
 	A1 = B;
-	A2 = and(-M1, C6);
-	M1 = or(M1, C6);
+	A2 = and(-M1, T6);
+	M1 = or(M1, T6);
 	AR0 = 1;
 }
 
 ant player_spawner = 2 {
 	AA = 1;
 	(A1, A0) = cpy(1);
-	D = C3;
+	D = T3;
 	AR1 = 1;
 }
 
 ant player_spawner2 = 3 {
 	A3 = 1;
-	D = C3;
+	D = T3;
 }
 
 ant obstacle_spawner = 4 {
@@ -41,7 +41,7 @@ ant obstacle_spawner = 4 {
 	R2 = N0;
 	R1 = N1;
 	(A2, A0) = cpy(P2);
-	D = and(C7, C6);
+	D = and(T7, T6);
 }
 
 ant obstacle = 5 { H = 1; }

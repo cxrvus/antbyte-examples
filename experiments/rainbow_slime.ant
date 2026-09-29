@@ -22,7 +22,7 @@ set border_1 = obs;
 set border_2 = die;
 
 ant queen = 1 {
-	S0 = C;
+	S0 = T;
 
 	(right, left) = fwd(1, 0);
 	(last_right, -last_left) = cpy(M0);
@@ -39,7 +39,7 @@ ant queen = 1 {
 ant sand_spawner = 2 {
 	H = 1;
 	D = and(-VA20, -VA60);
-	T2 = and(-D, C4);
+	C2 = and(-D, T4);
 	A2 = and(-D, 1);
 	AA = 1; AR0 = 1;
 
@@ -72,7 +72,7 @@ ant sand = 4 {
 
 ant sand_color = 5 {
 	H = -P1;
-	D = C7;
-	T3 = -D;
-	(T2, T1, T0) = fwd(C6, C5, C4);
+	D = T7;
+	C3 = -D;
+	(C2, C1, C0) = fwd(T6, T5, T4);
 }

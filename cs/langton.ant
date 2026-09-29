@@ -5,7 +5,7 @@ set bg_filter = bin;
 set speed = 64;
 
 fn main = in_color => out_color {
-	TZ = 1;
+	CZ = 1;
 
 	out_color = -in_color;
 	left = in_color;
@@ -15,5 +15,5 @@ fn main = in_color => out_color {
 }
 
 ant main = 1 {
-	T2 = main(T2);
+	C2 = main(C2);
 }

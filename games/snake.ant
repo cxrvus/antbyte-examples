@@ -33,11 +33,11 @@ ant queen = 0 {
 	# stop painting after A1
 	M1 = or(M1, A1);
 	paint = -M1;
-	(T5, T1) = cpy(paint);
+	(C5, C1) = cpy(paint);
 
 	AA0 = or(A4, A3); AA1 = A4;
 
-	D = C6;	# head start for food spawner
+	D = T6;	# head start for food spawner
 }
 
 fn score = (incr, m3i, m2i, m1i, m0i) => (cout, m3o, m2o, m1o, m0o, y3, y2, y1, y0) {
@@ -66,17 +66,17 @@ ant score_msb = 17 { # @layer = 3
 	(_win, M7, M6, M5, M4, Y7, Y6, Y5, Y4) = score(incr, M7, M6, M5, M4);
 }
 
-ant game_over = 18 { D = X4; T0 = and(TZ, xor(T0, C3)); }
+ant game_over = 18 { D = X4; C0 = and(CZ, xor(C0, T3)); }
 
 ant head = 2 {
-	D = and(-S0, T5);	# die on intersection
+	D = and(-S0, C5);	# die on intersection
 	S7 = D;				# game over on death
 
 	H = S0;
 	W3 = -S0;
-	(T5, T1) = cpy(-S0);
+	(C5, C1) = cpy(-S0);
 
-	T4 = 0; # eat food
+	C4 = 0; # eat food
 
 	## WASD movement
 	# todo: extract to module
@@ -96,7 +96,7 @@ ant head = 2 {
 	);
 
 	(r0, r1) = rot_64(left, right);
-	(T7, T6) = fwd(r0, r1);
+	(C7, C6) = fwd(r0, r1);
 
 	# remember rotation
 	(cout, M1) = add(M1, r1);
@@ -106,13 +106,13 @@ ant head = 2 {
 ant tail = 4 {
 	D = S7;
 
-	H = or(T3, S0);
+	H = or(C3, S0);
 	W3 = -S0;
-	(T5, T1) = cpy(H);
-	T3 = 0;
+	(C5, C1) = cpy(H);
+	C3 = 0;
 
-	(R0, R1) = fwd(T7, T6);
-	(T7, T6) = cpy(0);
+	(R0, R1) = fwd(C7, C6);
+	(C7, C6) = cpy(0);
 }
 
 ant food_spawner = 8 { # @layer = 1
@@ -126,7 +126,7 @@ ant food_spawner = 8 { # @layer = 1
 	R1 = and(turn, or(right, left));
 	R0 = and(turn, left);
 
-	spawn = and(-S1, -S0, -M0, -T5);
+	spawn = and(-S1, -S0, -M0, -C5);
 	(A3, A0, AA0) = cpy(spawn);
 	M0 = spawn;	# signal delay
 }
@@ -134,9 +134,9 @@ ant food_spawner = 8 { # @layer = 1
 ant food = 9 { # @layer = 2;
 	H = 1;
 	S1 = 1;
-	score = and(-B, -T4);
-	(S2, T3) = cpy(+score); # score upon being eaten
-	(T4, T0) = cpy(-score);
+	score = and(-B, -C4);
+	(S2, C3) = cpy(+score); # score upon being eaten
+	(C4, C0) = cpy(-score);
 	D = or(score, S7);
-	T1 = 1;
+	C1 = 1;
 }

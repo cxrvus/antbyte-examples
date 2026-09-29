@@ -2,9 +2,9 @@ set fps = 2;
 set midi_out_ch = 6;
 
 ant 0 { 
-	M = or(M, C1);
-	A0 = and(-M, -C);
-	A1 = and(-M, C);
+	M = or(M, T1);
+	A0 = and(-M, -T);
+	A1 = and(-M, T);
 	S = M;
 	Y1 = N;
 	Y3 = Y1;

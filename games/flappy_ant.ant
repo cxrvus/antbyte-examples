@@ -39,7 +39,7 @@ ant bird = 0x03 {
 	S7 = 1;
 	TB = 1;
 
-	H = or(S0, C0);
+	H = or(S0, T0);
 	D = or(and(V, -M1), VA5);	# die when hitting floor or pipe
 	(A4, A1, A0) = cpy(D);		# spawn ghost
 
@@ -84,13 +84,13 @@ ant blockade = 0x40 {
 
 ant blockade_spawner = 0x50 {
 	A6 = 1;
-	H = -C3;
-	D = C4;
+	H = -T3;
+	D = T4;
 }
 
 ant god = 0x80 {
 	H = 1;
 	S1 = P3;
 	S2 = P1;
-	S3 = and(C4, C3, C2);
+	S3 = and(T4, T3, T2);
 }

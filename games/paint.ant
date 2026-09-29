@@ -9,5 +9,5 @@ ant main = 1 {
 	A0 = X2;
 
 	M0 = xor(M0, X3);
-	T2 = M0;
+	C2 = M0;
 }

@@ -10,6 +10,6 @@ ant queen = 0 {
 }
 
 ant ray = 1 {
-	M = or(M, C1);
-	T = M;
+	M = or(M, T1);
+	C = M;
 }

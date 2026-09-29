@@ -36,12 +36,12 @@ fn play = (note_on, y1, y0) => () {
 	(Y1, Y0) = fwd_and(and(-S0, -S1, note_on), y1, y0);
 }
 
-ant kick = 	0b1010 { play(-TZ, 0, 1); }
-ant snare = 	0b1011 { play(-TZ, 1, 0); }
+ant kick = 	0b1010 { play(-CZ, 0, 1); }
+ant snare = 	0b1011 { play(-CZ, 1, 0); }
 
 ant hi_hat = 	0b1100 {
-	play(or(-TZ, N0, N1), 1, 1);
-	(Y13, Y10) = cpy(C1);
+	play(or(-CZ, N0, N1), 1, 1);
+	(Y13, Y10) = cpy(T1);
 }
 
 ant song = 0b1001 {
@@ -51,7 +51,7 @@ ant song = 0b1001 {
 	H = M0;
 
 	S0 = -M0;			# init
-	S1 = and(-S0, -C0);	# note-on
+	S1 = and(-S0, -T0);	# note-on
 
 	kick = or(
 		on(0, 0, 0, 0, 0, 0),
@@ -77,5 +77,5 @@ ant song = 0b1001 {
 		on(1, 0, 1, 1, 0, 0),
 	);
 
-	(T0, T1, T2) = fwd_and(S0, kick, snare, hi_hat);
+	(C0, C1, C2) = fwd_and(S0, kick, snare, hi_hat);
 }

@@ -2,4 +2,4 @@ set size = 96;
 set start = top;
 set bg_filter = one;
 
-ant 0 { R7 = 1; D = T; T = 1; }
+ant 0 { R7 = 1; D = T; C = 1; }

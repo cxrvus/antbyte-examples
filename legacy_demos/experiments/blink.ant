@@ -3,14 +3,14 @@ set start = top_left;
 set border = wrap;
 
 ant main = 1 {
-	(A1, A0, D) = cpy(C1);
+	(A1, A0, D) = cpy(T1);
 }
 
 ant spawner = 3 {
 	A1 = -M1;
-	H = -C0;
+	H = -T0;
 
-	T0 = and(M1, -VT0);
+	C0 = and(M1, -VC0);
 
 	M1 = M0;
 	M0 = V;
@@ -18,5 +18,5 @@ ant spawner = 3 {
 
 ant clone = 2 {
 	H = -E1;
-	T1 = C0;
+	C1 = T0;
 }

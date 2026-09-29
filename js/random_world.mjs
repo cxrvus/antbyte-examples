@@ -50,14 +50,14 @@ function distinct(array) {
 function generateAnt(index) {
 	let filteredInputs = includeRange(INPUTS, [
 		['X', 0, 2],
-		['T', 0, 3],
+		['C', 0, 3],
 		['C', 4, 7],
 		// ['V', 0, 7],
 		['S', 0, 3],
 	]);
 
 	let filteredOutputs = includeRange(OUTPUTS, [
-		['T', 0, 3],
+		['C', 0, 3],
 		// ['M', 0, 3],
 		['S', 0, 3],
 		['R', 0, 0],

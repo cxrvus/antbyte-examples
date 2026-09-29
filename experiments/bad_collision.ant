@@ -15,7 +15,7 @@ ant queen = 0 {
 	M0 = B;
 
 	A1 = B;
-	D = C6;
+	D = T6;
 	A2 = D;
 	AR0 = 1;
 }
@@ -23,13 +23,13 @@ ant queen = 0 {
 ant player_spawner = 2 {
 	AA = 1;
 	(A1, A0) = cpy(1);
-	D = C3;
+	D = T3;
 	AR1 = 1;
 }
 
 ant player_spawner2 = 3 {
 	A3 = 1;
-	D = C3;
+	D = T3;
 }
 
 ant obstacle_spawner = 4 {
@@ -37,7 +37,7 @@ ant obstacle_spawner = 4 {
 	R2 = N0;
 	R1 = N1;
 	(A2, A0) = cpy(P2);
-	D = C7;
+	D = T7;
 }
 
 ant obstacle = 5 { H = 1; }

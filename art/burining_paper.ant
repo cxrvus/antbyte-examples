@@ -16,8 +16,8 @@ ant main = 1 {
 
 	W6 = and(-B, E4, M0);
 
-	T0 = 1;
-	T1 = VT20;
-	T2 = VT41;
-	T3 = V6;
+	C0 = 1;
+	C1 = VC20;
+	C2 = VC41;
+	C3 = V6;
 }

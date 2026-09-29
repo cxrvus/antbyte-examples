@@ -37,9 +37,9 @@ ant sky_spawner = 2 {
 }
 
 ant sky = 3 {
-	keep = T4;
-	T2 = or(T2, -keep);
-	T3 = mux(keep, or(P1, xor(M1, M0)), T3);
+	keep = C4;
+	C2 = or(C2, -keep);
+	C3 = mux(keep, or(P1, xor(M1, M0)), C3);
 	M0 = xor(M0, P3);
 }
 
@@ -50,16 +50,16 @@ ant grass_spawner = 4 {
 
 
 ant grass = 5 {
-	T4 = 1;
-	T1 = 1;
+	C4 = 1;
+	C1 = 1;
 
 	# min value
-	(c1, c0) = fwd(M1, M0);
-	(cout, c3, c2) = add(M3, M2, 0, 1);
-	(c3, c2) = fwd(or(cout, c3), or(cout, c2));
+	(t1, t0) = fwd(M1, M0);
+	(cout, t3, t2) = add(M3, M2, 0, 1);
+	(t3, t2) = fwd(or(cout, t3), or(cout, t2));
 
-	D = on(c3, c2, c1, c0);
-	T3 = -and(D, M1, M0);
+	D = on(t3, t2, t1, t0);
+	C3 = -and(D, M1, M0);
 }
 
 
@@ -69,14 +69,14 @@ ant flower_spawner = 0b1000 {
 }
 
 ant flower_rose = 0b1001 {
-	T4 = 1;
+	C4 = 1;
 
 	(tx0, tx1, tx2, tx3, tx4, tx5, tx6, tx7,
 	 tx8, tx9, txa, txb, txc, txd, txe, txf)
-	= dec(C3, C2, C1, C0);
+	= dec(T3, T2, T1, T0);
 
-	(T0, -T1) = cpy(M0);
-	T2 = and(T0, M4);
+	(C0, -C1) = cpy(M0);
+	C2 = and(C0, M4);
 
 	r1 = or(tx0);
 	r2 = or(tx4, txc, txd, txe);
@@ -89,6 +89,6 @@ ant flower_rose = 0b1001 {
 	(R0, R1, R2) = enc(0, r1, r2, r3, r4, r5, r6, r7);
 
 	M0 = or(M0, txb);
-	D = C4;
-	T3 = D;
+	D = T4;
+	C3 = D;
 }

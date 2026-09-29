@@ -3,7 +3,7 @@ set speed = 200;
 set decay = 800;
 
 ant main = 1 {
-	H = and(C3, C2, C1, C0);
-	(T3, T2, T1, T0) = fwd(C3, C2, C1, C0);
+	H = and(T3, T2, T1, T0);
+	(C3, C2, C1, C0) = fwd(T3, T2, T1, T0);
 	R7 =  E5;
 }
