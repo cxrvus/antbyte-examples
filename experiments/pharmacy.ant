@@ -27,15 +27,15 @@ fn reproduce = () => spawn {
 }
 
 ant clone2 = 4 {
-	() = spike();
+	spike();
 }
 
 ant clone = 2 {
-	() = spike();
+	spike();
 	A2 = reproduce();
 }
 
 ant main = 1 {
-	() = spike();
+	spike();
 	A1 = reproduce();
 }

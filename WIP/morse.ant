@@ -71,14 +71,14 @@ fn symbol {
 }
 
 ant dit = 4 {
-	() = symbol();
+	symbol();
 	T = K;
 	H = M0;
 	M0 = or(M0, K);
 }
 
 ant dah = 8 { 
-	() = symbol();
+	symbol();
 	(idle, M1, M0) = add(M1, M0, 0, and(M3, -M4));
 	M4 = or(M4, idle);
 	T = and(M3, -M4);
@@ -86,6 +86,6 @@ ant dah = 8 {
 }
 
 ant space = 16 {
-	() = dit();
+	dit();
 	T = 0;
 }

@@ -35,7 +35,7 @@ ant queen = 0 {
 fn worker { S0 = 1; D = T4; }
 
 ant randomizer = 0b10000 {
-	() = worker();
+	worker();
 	T0 = P1;
 } 
 
@@ -86,7 +86,7 @@ ant cell_marker = 3 {
 
 # TODO
 ant cell_handler = 4 {
-	() = worker();
+	worker();
 	(alive, -dead) = cpy(T0);
 	
 	T0 = or(and(alive, -T3), and(dead, T2));

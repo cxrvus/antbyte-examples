@@ -61,7 +61,7 @@ ant pipe = 0x22 {
 	R1 = and(-S7, P3, E3);		# random movement after bird death
 }
 
-ant pipe2 = 0x2a { () = pipe(); }
+ant pipe2 = 0x2a { pipe(); }
 
 ant pipe_spawner = 0x30 {
 	D = -S7;

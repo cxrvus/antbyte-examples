@@ -32,7 +32,7 @@ ant queen = 0 {
 }
 
 ant color = 1 {
-	() = bounce_ant();
+	bounce_ant();
 
 	change0 = or(V, -or(M2, M1, M0));
 	change1 = and(change0, N0);
@@ -47,7 +47,7 @@ ant color = 1 {
 }
 
 ant darken = 2 {
-	() = bounce_ant();
+	bounce_ant();
 
 	(T2, T1, T0) = fwd(T2, T1, T0);
 	T3 = 0;
