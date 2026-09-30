@@ -1,0 +1,21 @@
+set size = 255;
+# set bg_filter = one;
+set speed = 4;
+set border = cycle;
+set bg = id;
+set fg = tile;
+
+ant 1 {
+	(-H, A0, AR, AA) = cpy(1);
+	A1 = -P3;
+	R7 = E1;
+	L = N;
+}
+
+ant 3 {
+	D = and(-B, E4);
+	A2 = D;
+	AA = 1;
+}
+
+# ant 4 { H = 1; }
