@@ -88,5 +88,5 @@ while (( !should_exit )); do
 		continue
 	fi
 
-	sleep 2
+	sleep 1
 done

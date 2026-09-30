@@ -19,7 +19,7 @@ function generateWorld() {
 	return world
 }
 
-const EXCLUDE = ['N', 'N1', 'VM']
+const EXCLUDE = ['Y', 'VM', 'VA'];
 
 const PINS = ALL_PINS.filter(pin => !EXCLUDE.includes(pin.code));
 const INPUTS = PINS.filter(pin => pin.io_type === "Input" || pin.io_type === null);
@@ -49,25 +49,31 @@ function distinct(array) {
 /** @param {number} index @returns {AntByte.Behavior} */
 function generateAnt(index) {
 	let filteredInputs = includeRange(INPUTS, [
-		['X', 0, 2],
+		['M', 0, 3],
+		['X', 0, 3],
 		['C', 0, 3],
-		['C', 4, 7],
-		// ['V', 0, 7],
+		['T', 4, 7],
+		['E', 4, 7],
 		['S', 0, 3],
+		['R', 1, 3],
+		['V', 0, 7],
 	]);
 
 	let filteredOutputs = includeRange(OUTPUTS, [
+		['M', 0, 3],
+		// ['Y', 0, 11],
 		['C', 0, 3],
-		// ['M', 0, 3],
 		['S', 0, 3],
-		['R', 0, 0],
-		['R', 2, 2],
+		['R', 0, 2],
+		['R', 5, 7],
+		['L', 0, 0],
+		['Z', 0, 0],
 		['A', 0, 3],
-		['Y', 0, 11],
-		['W', 0, 1],
+		['AR', 0, 3],
 		['AA', 0, 0],
 		['D', 0, 0],
 		['K', 0, 0],
+		['W', 0, 1],
 	]);
 
 	let allInputs = includeRange(INPUTS, INPUTS.map(pin => [pin.code, 0, pin.size - 1]));
@@ -79,7 +85,7 @@ function generateAnt(index) {
 	let selectedInputs = distinct(getSubset(filteredInputs, 4).concat(randomInputs));
 	let selectedOutputs = distinct(getSubset(filteredOutputs, 16).concat(randomOutputs));
 
-	if (selectedInputs.length > 8) selectedInputs = selectedInputs.slice(0, 8);
+	if (selectedInputs.length > 12) selectedInputs = selectedInputs.slice(0, 12);
 
 	const inputCount = selectedInputs.length;
 	const outputCount = selectedOutputs.length;
@@ -110,9 +116,9 @@ function getSubset(superSet, amount) {
 
 const world = generateWorld()
 
-world.cfg = { height: 128, width: 255, speed: 2, fps: 6, keys: "asdfghjk", decay: 32, ant_limit: 0x200, layer_limit: 3, fg: 'layers', looping: true }
+world.cfg = { height: 192, width: 255, speed: 8, fps: 30, keys: "asdfghjk", decay: 0x80, ant_limit: 0x400, layer_limit: 5, fg: 'layers', looping: true }
 world.cfg.border = { 0: 'collide', 1: 'wrap', 2: 'despawn' };
-world.cfg.midi = { out_ch: { 0: 1, 1: 2, 2: 3, 3: 4 } };
+// world.cfg.midi = { out_ch: { 0: 1, 1: 2, 2: 3, 3: 4 } };
 // world.cfg.keys = "asdfghj"
 
 if (KEEP_FILES) {
