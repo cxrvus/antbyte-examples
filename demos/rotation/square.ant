@@ -1,15 +1,17 @@
-set size = 96;
-set bg_filter = one;
-
-ant 0 {
-	H = 1;
-	R7 = 1;
-	AR = 1;
-	AA = T;
-	A = 1;
-}
+set size = 0xc0;
+set speed = 4;
+set border = cycle;
+set bg = id;
 
 ant 1 {
-	D = T5;
-	C = D;
+	(H, AR, AA) = cpy(1);
+	(R7, A1, A0) = cpy(E1);
 }
+
+ant 3 {
+	D = and(-B, E5);
+	A2 = D;
+	AA = 1;
+}
+
+ant 4 { H = 1; }
