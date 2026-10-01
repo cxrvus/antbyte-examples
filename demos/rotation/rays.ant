@@ -6,7 +6,7 @@ set fg = none;
 
 ant queen = 0 {
 	(HLT, A_ID, A_ROT) = cpy(1);
-	(ROT2, ROT3, ROT4, ROT5) = fwd(RND3, RND2, RND1, RND0);
+	(ROT2:5) = fwd(RND3:0);
 }
 
 ant ray = 1 {
