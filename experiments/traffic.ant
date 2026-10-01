@@ -1,5 +1,5 @@
 set start = top_left;
-set border = collide;
+set border = obs;
 set fps = 12;
 set bg = birth_tick;
 
