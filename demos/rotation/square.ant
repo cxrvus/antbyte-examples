@@ -5,12 +5,12 @@ set bg = id;
 
 ant 1 {
 	(HLT, A_ROT, A_LYR) = cpy(1);
-	(ROT7, A_ID1, A_ID0) = cpy(EVR1);
+	(ROT_7, A_ID_1, A_ID_0) = cpy(EVR_1);
 }
 
 ant 3 {
-	DIE = and(-INL, EVR5);
-	A_ID2 = DIE;
+	DIE = and(-INL, EVR_5);
+	A_ID_2 = DIE;
 	A_LYR = 1;
 }
 

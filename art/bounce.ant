@@ -15,40 +15,40 @@ set layer_limit = 2;
 # set width = 187;
 
 fn bounce_ant {
-	flip = and(-INL, OBS, MEM6);
+	flip = and(-INL, OBS, MEM_6);
 	left = and(-INL, OBS);
 
-	ROT0 = or(flip, left);
-	ROT1 = and(-flip, left);
+	ROT_0 = or(flip, left);
+	ROT_1 = and(-flip, left);
 	HLT = OBS;
 
-	MEM6 = OBS;
+	MEM_6 = OBS;
 }
 
 ant queen = 0 {
-	(HLT, A_ROT0, A_LYR) = cpy(1);
-	A_ID0 = INL;
-	(A_ID1, DIE) = cpy(CTR4);
+	(HLT, A_ROT_0, A_LYR) = cpy(1);
+	A_ID_0 = INL;
+	(A_ID_1, DIE) = cpy(CTR_4);
 }
 
 ant color = 1 {
 	bounce_ant();
 
-	change0 = or(OBS, -or(MEM2, MEM1, MEM0));
-	change1 = and(change0, RND0);
-	change2 = and(change0, RND1);
+	change0 = or(OBS, -or(MEM_2, MEM_1, MEM_0));
+	change1 = and(change0, RND_0);
+	change2 = and(change0, RND_1);
 
-	(cout, MEM0) = add(MEM0, change0);
-	(cout, MEM1) = add(MEM1, change1, cout);
-	(_, MEM2) = add(MEM2, change2, cout);
+	(cout, MEM_0) = add(MEM_0, change0);
+	(cout, MEM_1) = add(MEM_1, change1, cout);
+	(_, MEM_2) = add(MEM_2, change2, cout);
 
-	(COL2, COL1, COL0) = fwd(MEM2, MEM1, MEM0);
-	COL3 = 1;
+	(COL_2, COL_1, COL_0) = fwd(MEM_2, MEM_1, MEM_0);
+	COL_3 = 1;
 }
 
 ant darken = 2 {
 	bounce_ant();
 
-	(COL2, COL1, COL0) = fwd(COL2, COL1, COL0);
-	COL3 = 0;
+	(COL_2, COL_1, COL_0) = fwd(COL_2, COL_1, COL_0);
+	COL_3 = 0;
 }

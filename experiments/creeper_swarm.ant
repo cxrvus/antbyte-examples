@@ -13,26 +13,26 @@ set fg = none;
 # set { fps = 12; speed = 1; fg = mem; }
 
 ant queen = 0 {
-	ROT1 = or(N_COL4, PRB2);
+	ROT_1 = or(N_COL_4, PRB_2);
 
-	(_, MEM1, MEM0) = add(MEM1, MEM0, 0, ROT1);
+	(_, MEM_1, MEM_0) = add(MEM_1, MEM_0, 0, ROT_1);
 
-	A_ID0 = and(-MEM1, -MEM0, CLR, PRB1);
-	A_ID0 = or(A_ID0, INL);
+	A_ID_0 = and(-MEM_1, -MEM_0, CLR, PRB_1);
+	A_ID_0 = or(A_ID_0, INL);
 
-	A_ROT2 = PRB4;
-	A_LYR = 1; A_ROT1 = 1;
+	A_ROT_2 = PRB_4;
+	A_LYR = 1; A_ROT_1 = 1;
 }
 
 ant column = 1 {
-	DIE = and(CTR2, CTR1, CTR0);
+	DIE = and(CTR_2, CTR_1, CTR_0);
 
-	(A_ID1, A_ROT0, A_ROT1) = cpy(1);
-	(A_MEM2, A_MEM1, A_MEM0) = fwd(CTR2, CTR1, CTR0);
+	(A_ID_1, A_ROT_0, A_ROT_1) = cpy(1);
+	(A_MEM_2, A_MEM_1, A_MEM_0) = fwd(CTR_2, CTR_1, CTR_0);
 }
 
 ant rows = 2 {
-	DIE = and(CTR2, CTR1, CTR0);
+	DIE = and(CTR_2, CTR_1, CTR_0);
 	CLR = 1;
-	creeper(MEM2, MEM1, MEM0, CTR2, CTR1, CTR0);
+	creeper(MEM_2, MEM_1, MEM_0, CTR_2, CTR_1, CTR_0);
 }

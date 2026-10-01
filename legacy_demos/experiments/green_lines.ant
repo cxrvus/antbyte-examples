@@ -3,11 +3,11 @@ set speed = 16;
 set dur = 3;
 
 ant main = 1 {
-	A_ID0 = and(CTR3, CTR2, CTR1, CTR0, RND3, RND2, RND1, COL1);
+	A_ID_0 = and(CTR_3, CTR_2, CTR_1, CTR_0, RND_3, RND_2, RND_1, COL_1);
 
 	CLR = 1;
-	COL1 = -COL1;
+	COL_1 = -COL_1;
 
-	ROT1 = and(RND1, RND2);
-	ROT0 = and(ROT1, RND3);
+	ROT_1 = and(RND_1, RND_2);
+	ROT_0 = and(ROT_1, RND_3);
 }

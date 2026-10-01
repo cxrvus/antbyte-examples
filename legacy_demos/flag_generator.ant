@@ -5,12 +5,12 @@ set height = 12;
 set speed = 16;
 
 ant main = 1 {
-	MEM0 = mux(EVR5, MEM0, RND0);
-	MEM1 = mux(EVR5, MEM1, RND1);
-	MEM2 = mux(EVR5, MEM2, RND2);
+	MEM_0 = mux(EVR_5, MEM_0, RND_0);
+	MEM_1 = mux(EVR_5, MEM_1, RND_1);
+	MEM_2 = mux(EVR_5, MEM_2, RND_2);
 
-	(COL2, COL1, COL0) = fwd(MEM2, MEM1, MEM0);
+	(COL_2, COL_1, COL_0) = fwd(MEM_2, MEM_1, MEM_0);
 
-	DIE = N_COL3;
-	COL3 = 1;
+	DIE = N_COL_3;
+	COL_3 = 1;
 }

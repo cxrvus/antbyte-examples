@@ -16,60 +16,60 @@ set border_1 = obs;
 set border_2 = die;
 
 ant queen = 1 {
-	SIG0 = CTR;
+	SIG_0 = CTR;
 
-	(_, right, left, _) = dec(X_IN1, X_IN0);
-	(last_right, -last_left) = cpy(MEM0);
-	ROT0 = or(and(left, last_right), and(right, last_left));
-	MEM0 = xor(MEM0, ROT0);
+	(_, right, left, _) = dec(X_IN_1, X_IN_0);
+	(last_right, -last_left) = cpy(MEM_0);
+	ROT_0 = or(and(left, last_right), and(right, last_left));
+	MEM_0 = xor(MEM_0, ROT_0);
 
-	HLT = or(SIG0, and(-right, -left));
-	(COL3, COL2) = cpy(-HLT);
+	HLT = or(SIG_0, and(-right, -left));
+	(COL_3, COL_2) = cpy(-HLT);
 
-	A_ID1 = 1; A_ROT1 = 1;
-	A_ROT0 = or(INL, left);
+	A_ID_1 = 1; A_ROT_1 = 1;
+	A_ROT_0 = or(INL, left);
 	KLL = 1;
 }
 
 ant sand_spawner = 2 {
 	HLT = 1;
-	DIE = and(-N_ID20, -N_ID60);
-	(COL3, COL2) = cpy(and(-DIE, CTR4));
-	A_ID2 = and(-DIE, X_IN2);
-	A_LYR = 1; A_ROT0 = 1;
+	DIE = and(-N_ID_20, -N_ID_60);
+	(COL_3, COL_2) = cpy(and(-DIE, CTR_4));
+	A_ID_2 = and(-DIE, X_IN_2);
+	A_LYR = 1; A_ROT_0 = 1;
 
-	SIG1 = and(X_IN3, PRB2);
+	SIG_1 = and(X_IN_3, PRB_2);
 
 	CLR = INL;
 }
 
 ant sand = 4 {
-	move = SIG0;
+	move = SIG_0;
 	HLT = -move;
 
-	(last_right, last_left) = fwd(MEM1, MEM0);
+	(last_right, last_left) = fwd(MEM_1, MEM_0);
 
-	# using RND0 as a tie breaker
-	(_, right1, left1, left2, _, right2, left3, right3) = dec(RND0, -OBS7, -OBS1);
+	# using RND_0 as a tie breaker
+	(_, right1, left1, left2, _, right2, left3, right3) = dec(RND_0, -OBS_7, -OBS_1);
 	right = or(right1, right2, right3);
 	left = or(left1, left2, left3);
 
-	(right, left) = fwd_and(OBS0, right, left);
+	(right, left) = fwd_and(OBS_0, right, left);
 	right = mux(move, last_left, right);
 	left = mux(move, last_right, left);
 
-	ROT2 = or(left, right);
-	(ROT0, ROT1) = cpy(left);
-	(MEM1, MEM0) = fwd_and(move, right, left);
+	ROT_2 = or(left, right);
+	(ROT_0, ROT_1) = cpy(left);
+	(MEM_1, MEM_0) = fwd_and(move, right, left);
 
-	KLL = and(SIG1, RND0, -move, -right, -left);
+	KLL = and(SIG_1, RND_0, -move, -right, -left);
 
-	(A_LYR, A_ID2, A_ID0) = cpy(and(-KLL, move));
+	(A_LYR, A_ID_2, A_ID_0) = cpy(and(-KLL, move));
 }
 
 ant sand_color = 5 {
 	HLT = 1;
-	DIE = CTR7;
-	COL3 = and(-INL, -DIE);
-	(COL2, COL1, COL0) = fwd(CTR6, CTR5, CTR4);
+	DIE = CTR_7;
+	COL_3 = and(-INL, -DIE);
+	(COL_2, COL_1, COL_0) = fwd(CTR_6, CTR_5, CTR_4);
 }

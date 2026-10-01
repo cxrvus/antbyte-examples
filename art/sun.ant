@@ -14,71 +14,71 @@ set {
 }
 
 ant queen = 0 {
-	(A_ID4, A_ID1) = cpy(INL);
-	(A_ID0, A_LYR0) = cpy(and(-INL, EVR3));
-	(A_ROT0, A_ROT1, A_ROT2) = cpy(1);
-	DIE = A_ID0;
+	(A_ID_4, A_ID_1) = cpy(INL);
+	(A_ID_0, A_LYR_0) = cpy(and(-INL, EVR_3));
+	(A_ROT_0, A_ROT_1, A_ROT_2) = cpy(1);
+	DIE = A_ID_0;
 }
 
-fn slow { SLP3 = 1; }
+fn slow { SLP_3 = 1; }
 
 ##### Layer 1
 
 ant shell = 1 {
 	slow();
 
-	spawn_ray = EVR2;
+	spawn_ray = EVR_2;
 	turn = and(-INL, spawn_ray);
-	spawn_core = N_COL0;
+	spawn_core = N_COL_0;
 
-	ROT2 = turn;
-	A_ID0 = spawn_ray;
-	A_ID1 = or(spawn_ray, spawn_core);
-	A_ID2 = spawn_core;
-	A_ROT2 = spawn_core;
-	A_ROT1 = spawn_ray;
-	A_ROT0 = spawn_core;
-	A_LYR0 = spawn_ray;
+	ROT_2 = turn;
+	A_ID_0 = spawn_ray;
+	A_ID_1 = or(spawn_ray, spawn_core);
+	A_ID_2 = spawn_core;
+	A_ROT_2 = spawn_core;
+	A_ROT_1 = spawn_ray;
+	A_ROT_0 = spawn_core;
+	A_LYR_0 = spawn_ray;
 	DIE = spawn_core;
 
 	CLR = 1;
-	COL5 = 1;
-	COL0 = 1;
+	COL_5 = 1;
+	COL_0 = 1;
 }
 
 ant core = 2 {
 	slow();
 
-	COL5 = 1;
+	COL_5 = 1;
 
-	COL0 = -COL4;
-	COL1 = and(-COL4, -INL);
-	COL2 = 0;
-	COL3 = 0;
+	COL_0 = -COL_4;
+	COL_1 = and(-COL_4, -INL);
+	COL_2 = 0;
+	COL_3 = 0;
 
-	MEM2 = MEM1;
-	MEM1 = MEM0;
+	MEM_2 = MEM_1;
+	MEM_1 = MEM_0;
 
-	(ROT2, HLT, MEM0) = cpy(N_COL5);
-	DIE = and(MEM2, MEM1, MEM0);
+	(ROT_2, HLT, MEM_0) = cpy(N_COL_5);
+	DIE = and(MEM_2, MEM_1, MEM_0);
 }
 
 ant face = 4 {
-	spawn_smile = and(CTR4, CTR2);
+	spawn_smile = and(CTR_4, CTR_2);
 	spawn_shades = on(1, 1, 0, 0);
 
-	A_ID2 = or(spawn_smile, spawn_shades);
-	A_ID1 = spawn_shades;
-	A_ID0 = or(spawn_smile, spawn_shades);
+	A_ID_2 = or(spawn_smile, spawn_shades);
+	A_ID_1 = spawn_shades;
+	A_ID_0 = or(spawn_smile, spawn_shades);
 
-	(A_ROT0, A_ROT1) = cpy(1);
+	(A_ROT_0, A_ROT_1) = cpy(1);
 
-	ROT1 = or(
+	ROT_1 = or(
 		on(1, 0, 0, 0),
 		spawn_shades,
 	);
 
-	ROT0 = or(
+	ROT_0 = or(
 		spawn_shades,
 	);
 
@@ -95,29 +95,29 @@ ant smile = 5 {
 		on(1, 1, 0, 1),
 	);
 
-	MEM4 = or(MEM4, on(0, 0, 1, 0));
-	COL4 = MEM4;
+	MEM_4 = or(MEM_4, on(0, 0, 1, 0));
+	COL_4 = MEM_4;
 
 	rot_32(left, right);
 
-	DIE = CTR4;
+	DIE = CTR_4;
 }
 
 ant queen2 = 6 {
 	HLT = 1;
 
-	A_ID1 = -CTR0;
-	A_ID2 = CTR0;
+	A_ID_1 = -CTR_0;
+	A_ID_2 = CTR_0;
 
-	A_ROT0 = 1;
-	A_ROT1 = A_ID2;
+	A_ROT_0 = 1;
+	A_ROT_1 = A_ID_2;
 
-	DIE = A_ID2;
+	DIE = A_ID_2;
 }
 
 ant shades = 7 {
-	COL4 = 1;
-	(A_ID3, A_ROT1) = cpy(or(
+	COL_4 = 1;
+	(A_ID_3, A_ROT_1) = cpy(or(
 		on(0, 1, 0, 0),
 		on(1, 1, 0, 0),
 	));
@@ -126,8 +126,8 @@ ant shades = 7 {
 }
 
 ant lense = 8 {
-	COL4 = 1;
-	(ROT0, ROT1) = cpy(or(
+	COL_4 = 1;
+	(ROT_0, ROT_1) = cpy(or(
 		on(0, 0, 1, 0),
 		on(0, 1, 0, 0),
 		on(0, 1, 0, 1),
@@ -138,41 +138,41 @@ ant lense = 8 {
 ##### Layer 0
 
 ant sky = 18 {
-	SIG0 = 1;
-	DIE = COL2;
+	SIG_0 = 1;
+	DIE = COL_2;
 
-	keep = or(COL4, COL5);
-	COL2 = -keep;
-	COL3 = and(-keep, MEM3);
-	MEM3 = xor(MEM3, PRB5);
+	keep = or(COL_4, COL_5);
+	COL_2 = -keep;
+	COL_3 = and(-keep, MEM_3);
+	MEM_3 = xor(MEM_3, PRB_5);
 }
 
 ##### Layer 2
 
 ant ray_spawner = 3 {
-	active = -SIG0;
+	active = -SIG_0;
 
 	HLT = 1;
-	A_ROT0 = 1;
-	(A_ID3, A_ID0) = cpy(and(active, EVR5));
-	SLP3 = 1;
+	A_ROT_0 = 1;
+	(A_ID_3, A_ID_0) = cpy(and(active, EVR_5));
+	SLP_3 = 1;
 }
 
 ant ray_head = 9 {
-	(A_ID3, A_ID1) = cpy(CTR2);
-	SLP5 = 1;
+	(A_ID_3, A_ID_1) = cpy(CTR_2);
+	SLP_5 = 1;
 }
 
 ant ray_tail = 10 {
-	c3 = COL3;
-	COL3 = mux(INL, MEM3, 0);
-	MEM3 = c3;
+	c3 = COL_3;
+	COL_3 = mux(INL, MEM_3, 0);
+	MEM_3 = c3;
 
-	(COL0, COL1) = cpy(INL);
-	COL2 = -INL;
+	(COL_0, COL_1) = cpy(INL);
+	COL_2 = -INL;
 
 	HLT = 1;
-	SLP7 = 1;
+	SLP_7 = 1;
 	DIE = -INL;
 }
 

@@ -58,13 +58,13 @@ fn main = (y2, y1, y0, x2, x1, x0) => () {
 		),
 	);
 
-	COL0 = red;
-	COL1 = -or(red, black);
-	COL3 = or(red, and(-black, RND0));
+	COL_0 = red;
+	COL_1 = -or(red, black);
+	COL_3 = or(red, and(-black, RND_0));
 
-	COL4 = black;
+	COL_4 = black;
 }
 
 ant 0 {
-	main(CTR5, CTR4, CTR3, CTR2, CTR1, CTR0);
+	main(CTR_5, CTR_4, CTR_3, CTR_2, CTR_1, CTR_0);
 }

@@ -16,67 +16,67 @@ set border = die;
 
 ant queen = 0 {
 	spawn_sky = INL;
-	spawn_grass = and(-spawn_sky, or(RND1, RND2));
-	spawn_flower = and(-spawn_grass, MEM0, RND0);
+	spawn_grass = and(-spawn_sky, or(RND_1, RND_2));
+	spawn_flower = and(-spawn_grass, MEM_0, RND_0);
 
-	A_ID1 = spawn_sky;
-	A_ID2 = spawn_grass;
-	A_ID3 = spawn_flower;
+	A_ID_1 = spawn_sky;
+	A_ID_2 = spawn_grass;
+	A_ID_3 = spawn_flower;
 
-	(A_LYR, -A_ROT1) = cpy(spawn_sky);
+	(A_LYR, -A_ROT_1) = cpy(spawn_sky);
 
-	MEM0 = spawn_grass;
+	MEM_0 = spawn_grass;
 
-	# ROT1 = PRB1;
+	# ROT_1 = PRB_1;
 }
 
 ant sky_spawner = 2 {
-	SLP4 = INL;
-	(A_ID1, A_ID0, A_ROT1) = cpy(-INL);
-	A_MEM1 = RND1;
+	SLP_4 = INL;
+	(A_ID_1, A_ID_0, A_ROT_1) = cpy(-INL);
+	A_MEM_1 = RND_1;
 }
 
 ant sky = 3 {
-	keep = COL4;
-	COL2 = or(COL2, -keep);
-	COL3 = mux(keep, or(PRB1, xor(MEM1, MEM0)), COL3);
-	MEM0 = xor(MEM0, PRB3);
+	keep = COL_4;
+	COL_2 = or(COL_2, -keep);
+	COL_3 = mux(keep, or(PRB_1, xor(MEM_1, MEM_0)), COL_3);
+	MEM_0 = xor(MEM_0, PRB_3);
 }
 
 ant grass_spawner = 4 {
-	(A_MEM3, A_MEM2, A_MEM1, A_MEM0) = fwd(RND3, RND2, RND1, RND0);
-	(DIE, HLT, A_ID2, A_ID0) = cpy(-INL);
+	(A_MEM_3, A_MEM_2, A_MEM_1, A_MEM_0) = fwd(RND_3, RND_2, RND_1, RND_0);
+	(DIE, HLT, A_ID_2, A_ID_0) = cpy(-INL);
 }
 
 
 ant grass = 5 {
-	COL4 = 1;
-	COL1 = 1;
+	COL_4 = 1;
+	COL_1 = 1;
 
 	# min value
-	(t1, t0) = fwd(MEM1, MEM0);
-	(cout, t3, t2) = add(MEM3, MEM2, 0, 1);
+	(t1, t0) = fwd(MEM_1, MEM_0);
+	(cout, t3, t2) = add(MEM_3, MEM_2, 0, 1);
 	(t3, t2) = fwd(or(cout, t3), or(cout, t2));
 
 	DIE = on(t3, t2, t1, t0);
-	COL3 = -and(DIE, MEM1, MEM0);
+	COL_3 = -and(DIE, MEM_1, MEM_0);
 }
 
 
 ant flower_spawner = 0b1000 {
-	(DIE, HLT, A_ID3, A_ID0) = cpy(-INL);
-	A_MEM4 = PRB1;
+	(DIE, HLT, A_ID_3, A_ID_0) = cpy(-INL);
+	A_MEM_4 = PRB_1;
 }
 
 ant flower_rose = 0b1001 {
-	COL4 = 1;
+	COL_4 = 1;
 
 	(tx0, tx1, tx2, tx3, tx4, tx5, tx6, tx7,
 	 tx8, tx9, txa, txb, txc, txd, txe, txf)
-	= dec(CTR3, CTR2, CTR1, CTR0);
+	= dec(CTR_3, CTR_2, CTR_1, CTR_0);
 
-	(COL0, -COL1) = cpy(MEM0);
-	COL2 = and(COL0, MEM4);
+	(COL_0, -COL_1) = cpy(MEM_0);
+	COL_2 = and(COL_0, MEM_4);
 
 	r1 = or(tx0);
 	r2 = or(tx4, txc, txd, txe);
@@ -86,9 +86,9 @@ ant flower_rose = 0b1001 {
 	r6 = or(tx8);
 	r7 = or(tx7, txb);
 
-	(ROT0, ROT1, ROT2) = enc(0, r1, r2, r3, r4, r5, r6, r7);
+	(ROT_0, ROT_1, ROT_2) = enc(0, r1, r2, r3, r4, r5, r6, r7);
 
-	MEM0 = or(MEM0, txb);
-	DIE = CTR4;
-	COL3 = DIE;
+	MEM_0 = or(MEM_0, txb);
+	DIE = CTR_4;
+	COL_3 = DIE;
 }

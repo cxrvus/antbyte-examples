@@ -3,14 +3,14 @@ set fps = 4;
 set midi_out_ch = 5;
 
 ant 0 {
-	(X_OUT3, X_OUT2, X_OUT1, X_OUT0) = fwd(RND3, RND2, RND1, RND0);
-	(COL3, COL2, COL1, COL0) = fwd(X_OUT3, X_OUT2, X_OUT1, X_OUT0);
-	SLP = RND4;
-	A_ID = RND5;
+	(X_OUT_3, X_OUT_2, X_OUT_1, X_OUT_0) = fwd(RND_3, RND_2, RND_1, RND_0);
+	(COL_3, COL_2, COL_1, COL_0) = fwd(X_OUT_3, X_OUT_2, X_OUT_1, X_OUT_0);
+	SLP = RND_4;
+	A_ID = RND_5;
 }
 
 ant 1 {
-	(X_OUT3, X_OUT2, X_OUT1, X_OUT0) = fwd(COL3, COL2, COL1, COL0);
-	SLP1 = INL;
+	(X_OUT_3, X_OUT_2, X_OUT_1, X_OUT_0) = fwd(COL_3, COL_2, COL_1, COL_0);
+	SLP_1 = INL;
 	DIE = -INL;
 }

@@ -6,22 +6,22 @@ set border = die;
 set desc = "randomness through mere conflict resolution";
 
 ant queen = 0 {
-	left = and(-CTR1, -CTR0);
-	right = and(+CTR1, -CTR0);
-	A_ID0 = or(left, right);
-	(A_ROT0, A_MEM) = cpy(left);
+	left = and(-CTR_1, -CTR_0);
+	right = and(+CTR_1, -CTR_0);
+	A_ID_0 = or(left, right);
+	(A_ROT_0, A_MEM) = cpy(left);
 
-	DIE = and(CTR2, -CTR1, CTR0);
+	DIE = and(CTR_2, -CTR_1, CTR_0);
 	SIG = -DIE;
 }
 
 ant spawner = 1 {
 	HLT = 1;
-	A_ROT1 = 1;
-	A_ROT0 = MEM;
-	A_ID1 = -SIG;
+	A_ROT_1 = 1;
+	A_ROT_0 = MEM;
+	A_ID_1 = -SIG;
 	A_MEM = MEM;
 }
 
-ant value = 2 { COL1 = MEM; }
+ant value = 2 { COL_1 = MEM; }
 

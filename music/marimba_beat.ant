@@ -10,40 +10,40 @@ set layer_limit = 2;
 set keys = "q";
 
 ant 1 {
-	(A_LYR, A_ID1) = cpy(INL);
+	(A_LYR, A_ID_1) = cpy(INL);
 
-	X_OUT6 = 1;
-	X_OUT0 = RND0;
-	X_OUT2 = RND3;
-	X_OUT3 = and (PRB1, -X_OUT2);
-	X_OUT4 = PRB2;
+	X_OUT_6 = 1;
+	X_OUT_0 = RND_0;
+	X_OUT_2 = RND_3;
+	X_OUT_3 = and (PRB_1, -X_OUT_2);
+	X_OUT_4 = PRB_2;
 
-	X_OUT11 = RND7;
-	X_OUT10 = RND6;
+	X_OUT_11 = RND_7;
+	X_OUT_10 = RND_6;
 
-	(COL0, COL1, COL2, COL3) = fwd(X_OUT0, X_OUT2, X_OUT3, X_OUT4);
+	(COL_0, COL_1, COL_2, COL_3) = fwd(X_OUT_0, X_OUT_2, X_OUT_3, X_OUT_4);
 
 	DIE = X_IN;
 }
 
 ant 2 {
-	X_OUT0 = EVR1;
-	A_ID2 = and(X_OUT0, PRB3);
+	X_OUT_0 = EVR_1;
+	A_ID_2 = and(X_OUT_0, PRB_3);
 	HLT = 1;
 
 	DIE = X_IN;
 }
 
 ant 4 {
-	(X_OUT1, X_OUT0) = cpy(EVR1);
-	A_ID3 = and(MEM, -EVR1, PRB3);
-	DIE = and(MEM, PRB5);
-	MEM = or(MEM, PRB3);
+	(X_OUT_1, X_OUT_0) = cpy(EVR_1);
+	A_ID_3 = and(MEM, -EVR_1, PRB_3);
+	DIE = and(MEM, PRB_5);
+	MEM = or(MEM, PRB_3);
 	HLT = 1;
 }
 
 ant 8 {
-	X_OUT1 = EVR2;
+	X_OUT_1 = EVR_2;
 	DIE = -OBS;
 	HLT = 1;
 }

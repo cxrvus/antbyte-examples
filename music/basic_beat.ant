@@ -22,36 +22,36 @@ ant queen = 0 {
 
 	HLT = or(spawn_song, spawn_kick);
 
-	(A_ID1, A_ID0) = enc(spawn_song, spawn_kick, spawn_snare, spawn_hi_hat);
-	(A_ID2, A_ID1, A_ID0) = add(A_ID1, A_ID0, 0, 1);
-	(A_ID2, A_ID1, A_ID0) = fwd_and(-INL, A_ID2, A_ID1, A_ID0);
-	(A_LYR0, -A_LYR1) = cpy(spawn_song);
-	(A_ID3, A_ROT0, A_ROT1) = cpy(1);
+	(A_ID_1, A_ID_0) = enc(spawn_song, spawn_kick, spawn_snare, spawn_hi_hat);
+	(A_ID_2, A_ID_1, A_ID_0) = add(A_ID_1, A_ID_0, 0, 1);
+	(A_ID_2, A_ID_1, A_ID_0) = fwd_and(-INL, A_ID_2, A_ID_1, A_ID_0);
+	(A_LYR_0, -A_LYR_1) = cpy(spawn_song);
+	(A_ID_3, A_ROT_0, A_ROT_1) = cpy(1);
 
 	DIE = spawn_hi_hat;
 }
 
 fn play = (note_on, y1, y0) => () {
-	HLT = or(SIG0, SIG1);
-	(X_OUT1, X_OUT0) = fwd_and(and(-SIG0, -SIG1, note_on), y1, y0);
+	HLT = or(SIG_0, SIG_1);
+	(X_OUT_1, X_OUT_0) = fwd_and(and(-SIG_0, -SIG_1, note_on), y1, y0);
 }
 
 ant kick = 	0b1010 { play(-CLR, 0, 1); }
 ant snare = 	0b1011 { play(-CLR, 1, 0); }
 
 ant hi_hat = 	0b1100 {
-	play(or(-CLR, RND0, RND1), 1, 1);
-	(X_OUT13, X_OUT10) = cpy(CTR1);
+	play(or(-CLR, RND_0, RND_1), 1, 1);
+	(X_OUT_13, X_OUT_10) = cpy(CTR_1);
 }
 
 ant song = 0b1001 {
 
 	end = on(1, 1, 0, 0, 0, 0);
-	MEM0 = or(MEM0, end);
-	HLT = MEM0;
+	MEM_0 = or(MEM_0, end);
+	HLT = MEM_0;
 
-	SIG0 = -MEM0;			# init
-	SIG1 = and(-SIG0, -CTR0);	# note-on
+	SIG_0 = -MEM_0;			# init
+	SIG_1 = and(-SIG_0, -CTR_0);	# note-on
 
 	kick = or(
 		on(0, 0, 0, 0, 0, 0),
@@ -77,5 +77,5 @@ ant song = 0b1001 {
 		on(1, 0, 1, 1, 0, 0),
 	);
 
-	(COL0, COL1, COL2) = fwd_and(SIG0, kick, snare, hi_hat);
+	(COL_0, COL_1, COL_2) = fwd_and(SIG_0, kick, snare, hi_hat);
 }

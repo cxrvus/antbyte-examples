@@ -3,15 +3,15 @@ set speed = 361;
 set fps = 12;
 
 ant main = 1 {
-	paint = and(MEM1, MEM0);
+	paint = and(MEM_1, MEM_0);
 
-	(MEM1, MEM0) = fwd(
-		and(-paint, MEM1),
-		and(-paint, MEM0)
+	(MEM_1, MEM_0) = fwd(
+		and(-paint, MEM_1),
+		and(-paint, MEM_0)
 	);
 
-	(cout, MEM0) = add(MEM0, CTR0);
-	(_, MEM1) = add(MEM1, 0, cout);
+	(cout, MEM_0) = add(MEM_0, CTR_0);
+	(_, MEM_1) = add(MEM_1, 0, cout);
 
-	(COL2, COL1) = fwd(MEM1, MEM0);
+	(COL_2, COL_1) = fwd(MEM_1, MEM_0);
 }

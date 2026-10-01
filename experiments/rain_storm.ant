@@ -10,15 +10,15 @@ set bg = layers;
 set fg = none;
 
 ant 0 {
-	A_ID = PRB2;
+	A_ID = PRB_2;
 	A_LYR = 1;
-	A_ROT3 = 1;
+	A_ROT_3 = 1;
 }
 
 ant 1 {
-	A_ID = PRB3;
+	A_ID = PRB_3;
 	A_LYR = 1;
-	A_ROT2 = 1;
+	A_ROT_2 = 1;
 }
 
 ant 2 {}

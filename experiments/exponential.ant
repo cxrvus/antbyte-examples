@@ -7,10 +7,10 @@ set speed = 32;
 set fps = 12;
 
 ant main = 1 {
-	A_ID0 = 1;
+	A_ID_0 = 1;
 
-	(COL1, ROT1) = cpy(RND1);
-	(COL2, ROT0) = cpy(RND2);
+	(COL_1, ROT_1) = cpy(RND_1);
+	(COL_2, ROT_0) = cpy(RND_2);
 
-	DIE = CTR7;
+	DIE = CTR_7;
 }

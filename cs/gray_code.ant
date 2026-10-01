@@ -17,5 +17,5 @@ fn gray_code = (n3, n2, n1, n0) => (o3, o2, o1, o0) {
 }
 
 ant main = 1 {
-	(COL3, COL2, COL1, COL0) = gray_code(CTR3, CTR2, CTR1, CTR0);
+	(COL_3, COL_2, COL_1, COL_0) = gray_code(CTR_3, CTR_2, CTR_1, CTR_0);
 }

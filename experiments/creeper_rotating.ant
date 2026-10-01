@@ -14,20 +14,20 @@ set fg = none;
 
 ant queen = 0 {
 	HLT = 1;
-	A_ID0 = EVR5;
-	A_LYR = 1; A_ROT1 = 1;
-	ROT7 = A_ID0;
+	A_ID_0 = EVR_5;
+	A_LYR = 1; A_ROT_1 = 1;
+	ROT_7 = A_ID_0;
 }
 
 ant column = 1 {
-	DIE = and(CTR2, CTR1, CTR0);
+	DIE = and(CTR_2, CTR_1, CTR_0);
 
-	(A_ID1, A_ROT0, A_ROT1) = cpy(1);
-	(A_MEM2, A_MEM1, A_MEM0) = fwd(CTR2, CTR1, CTR0);
+	(A_ID_1, A_ROT_0, A_ROT_1) = cpy(1);
+	(A_MEM_2, A_MEM_1, A_MEM_0) = fwd(CTR_2, CTR_1, CTR_0);
 }
 
 ant rows = 2 {
-	DIE = and(CTR2, CTR1, CTR0);
+	DIE = and(CTR_2, CTR_1, CTR_0);
 	CLR = 1;
-	creeper(MEM2, MEM1, MEM0, CTR2, CTR1, CTR0);
+	creeper(MEM_2, MEM_1, MEM_0, CTR_2, CTR_1, CTR_0);
 }

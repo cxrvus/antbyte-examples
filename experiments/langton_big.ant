@@ -12,10 +12,10 @@ fn main = in_color => out_color {
 	out_color = -in_color;
 	left = in_color;
 
-	ROT1 = 1;
-	ROT0 = left;
+	ROT_1 = 1;
+	ROT_0 = left;
 }
 
 ant main = 1 {
-	COL2 = main(COL2);
+	COL_2 = main(COL_2);
 }

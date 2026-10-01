@@ -17,7 +17,7 @@ main();
 function main() {
 	const [_0, _1, path, cmd, countStr] = process.argv;
 	if (!path || !cmd) {
-		console.error("usage: mutate.mjs <PATH> <PATH2>|add|pop|apply|clean|view [count]");
+		console.error("usage: mutate.mjs <PATH> <PATH_2>|add|pop|apply|clean|view [count]");
 		return;
 	}
 

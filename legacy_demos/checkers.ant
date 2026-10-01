@@ -7,18 +7,18 @@ set border = obs;
 set start_dir = "S";
 
 ant main = 1 {
-	COL0 = -CTR0;
+	COL_0 = -CTR_0;
 
-	# MEM0: OBS in previous tick
-	# MEM1: last rotation
-	ROT1 = or(MEM0, OBS);
-	ROT0 = and(ROT1, -MEM1);
+	# MEM_0: OBS in previous tick
+	# MEM_1: last rotation
+	ROT_1 = or(MEM_0, OBS);
+	ROT_0 = and(ROT_1, -MEM_1);
 
 	# toggle: toggle last rotation
-	toggle = and(MEM0, -OBS);
-	MEM1 = xor(MEM1, toggle);
+	toggle = and(MEM_0, -OBS);
+	MEM_1 = xor(MEM_1, toggle);
 
-	MEM0 = and(-MEM0, OBS);
+	MEM_0 = and(-MEM_0, OBS);
 
-	DIE = N_COL0;
+	DIE = N_COL_0;
 }

@@ -9,7 +9,7 @@ set speed = 8;
 ant main = 1 {
 	langton2();
 
-	A_ID1 = -or(CTR2, CTR1, CTR0);
+	A_ID_1 = -or(CTR_2, CTR_1, CTR_0);
 }
 
 ant clone = 2 {

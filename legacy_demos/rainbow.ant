@@ -6,7 +6,7 @@ set border = wrap;
 set start_dir = "S";
 
 ant main = 1 {
-	(COL2, COL1, COL0) = fwd(CTR2, CTR1, CTR0);
-	COL3 = 1;
-	DIE = N_COL0;
+	(COL_2, COL_1, COL_0) = fwd(CTR_2, CTR_1, CTR_0);
+	COL_3 = 1;
+	DIE = N_COL_0;
 }

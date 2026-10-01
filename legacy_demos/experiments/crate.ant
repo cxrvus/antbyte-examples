@@ -3,12 +3,12 @@ set start = top_left;
 set bg_filter = bin;
 
 ant main = 1 {
-	A_ID1 = 1;
-	ROT2 = CTR0;
+	A_ID_1 = 1;
+	ROT_2 = CTR_0;
 }
 
 ant dummy = 2 {
 	CLR = 1;
-	COL0 = CTR6;
-	DIE = CTR7;
+	COL_0 = CTR_6;
+	DIE = CTR_7;
 }

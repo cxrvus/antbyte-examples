@@ -8,11 +8,11 @@ set border = wrap;
 
 ant main = 1 {
 	CLR = 1;
-	COL1 = -COL1;
-	# COL2 = -CTR7;
-	# COL3 = CTR7;
+	COL_1 = -COL_1;
+	# COL_2 = -CTR_7;
+	# COL_3 = CTR_7;
 
-	ROT1 = CTR2;
-	ROT0 = CTR3;
-	ROT2 = CTR7;
+	ROT_1 = CTR_2;
+	ROT_0 = CTR_3;
+	ROT_2 = CTR_7;
 }

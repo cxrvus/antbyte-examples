@@ -7,6 +7,6 @@ set border = die;
 set bg_filter = bin;
 
 ant main = 1 {
-	(ROT0, ROT1) = fwd(RND2, RND1);
-	COL0 = 1;
+	(ROT_0, ROT_1) = fwd(RND_2, RND_1);
+	COL_0 = 1;
 }

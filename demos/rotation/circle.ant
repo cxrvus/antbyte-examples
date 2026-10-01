@@ -3,4 +3,4 @@ set start = top;
 set bg_filter = one;
 set speed = 4;
 
-ant 0 { ROT7 = 1; DIE = 0; COL = 1; }
+ant 0 { ROT_7 = 1; DIE = 0; COL = 1; }

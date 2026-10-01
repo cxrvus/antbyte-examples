@@ -2,16 +2,16 @@ use_cfg template;
 set keys = "asdf";
 
 ant 0 {
-	(A_MEM3, A_MEM2, A_MEM1, A_MEM0) = fwd(X_IN3, X_IN2, X_IN1, X_IN0);
-	A_ID0 = or(X_IN3, X_IN2, X_IN1, X_IN0);
+	(A_MEM_3, A_MEM_2, A_MEM_1, A_MEM_0) = fwd(X_IN_3, X_IN_2, X_IN_1, X_IN_0);
+	A_ID_0 = or(X_IN_3, X_IN_2, X_IN_1, X_IN_0);
 }
 
 ant 1 {
 	HLT = 1;
 
-	(X_OUT3, X_OUT2, X_OUT1, X_OUT0) = fwd(MEM3, MEM2, MEM1, MEM0);
-	(COL3, COL2, COL1, COL0) = fwd(X_OUT3, X_OUT2, X_OUT1, X_OUT0);
-	(X_OUT13, X_OUT12) = fwd(CTR1, CTR0);
-	SLP0 = 1;
-	DIE = and(CTR1, CTR0);
+	(X_OUT_3, X_OUT_2, X_OUT_1, X_OUT_0) = fwd(MEM_3, MEM_2, MEM_1, MEM_0);
+	(COL_3, COL_2, COL_1, COL_0) = fwd(X_OUT_3, X_OUT_2, X_OUT_1, X_OUT_0);
+	(X_OUT_13, X_OUT_12) = fwd(CTR_1, CTR_0);
+	SLP_0 = 1;
+	DIE = and(CTR_1, CTR_0);
 }

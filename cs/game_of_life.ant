@@ -19,31 +19,31 @@ set { size = 64; start_tick = 0x1000; speed = 0x1003; }
 
 
 ant queen = 0 {
-	HLT = 1; COL4 = 1;
-	A_LYR = 1; A_ROT0 = 1;
+	HLT = 1; COL_4 = 1;
+	A_LYR = 1; A_ROT_0 = 1;
 
-	A_ID4 = INL;
-	A_ID1 = and(-INL, -SIG0, -MEM0);
-	A_ID2 = and(-INL, -SIG0, +MEM0);
+	A_ID_4 = INL;
+	A_ID_1 = and(-INL, -SIG_0, -MEM_0);
+	A_ID_2 = and(-INL, -SIG_0, +MEM_0);
 
-	MEM0 = and(-INL, xor(MEM0, -SIG0));
+	MEM_0 = and(-INL, xor(MEM_0, -SIG_0));
 
 	# signal delay
-	SLP0 = or(A_ID1, A_ID2, A_ID4);
+	SLP_0 = or(A_ID_1, A_ID_2, A_ID_4);
 }
 
-fn worker { SIG0 = 1; DIE = COL4; }
+fn worker { SIG_0 = 1; DIE = COL_4; }
 
 ant randomizer = 0b10000 {
 	worker();
-	COL0 = PRB1;
+	COL_0 = PRB_1;
 } 
 
 # uses 8 input pins
 fn neighbors = () => (eq0, eq1, eq2, eq3, eq4, eq5, eq6, eq7, eq8) {
 	(w3, w2, w1, w0) = hw(
-		N_COL00, N_COL10, N_COL20, N_COL30,
-		N_COL40, N_COL50, N_COL60, N_COL70,
+		N_COL_00, N_COL_10, N_COL_20, N_COL_30,
+		N_COL_40, N_COL_50, N_COL_60, N_COL_70,
 	);
 
 	(eq0, eq1, eq2, eq3, eq4, eq5, eq6, eq7) = dec(w2, w1, w0);
@@ -60,36 +60,36 @@ fn neighbors = () => (eq0, eq1, eq2, eq3, eq4, eq5, eq6, eq7, eq8) {
 
 # TODO
 ant cell_counter = 2 {
-	SIG0 = 1; # can't use worker() due to bit limit
+	SIG_0 = 1; # can't use worker() due to bit limit
 
 	(eq0, eq1, eq2, eq3, eq4, eq5, eq6, eq7, eq8) = neighbors();
 
 	lt2 = or(eq0, eq1);
 	gt3 = or(eq4, eq5, eq6, eq7, eq8);
 
-	(COL6, COL5) = enc(lt2, eq2, eq3, gt3);
+	(COL_6, COL_5) = enc(lt2, eq2, eq3, gt3);
 
-	(A_ID1, A_ID0) = cpy(1);
+	(A_ID_1, A_ID_0) = cpy(1);
 }
 
 ant cell_marker = 3 {
 	HLT = 1;
-	(alive, -dead) = cpy(COL0);
-	(lt2, eq2, eq3, gt3) = dec(COL6, COL5);
+	(alive, -dead) = cpy(COL_0);
+	(lt2, eq2, eq3, gt3) = dec(COL_6, COL_5);
 
-	COL3 = and(alive, or(lt2, gt3)); # @COL3: die
-	COL2 = and(dead, eq3); # @COL2: spawn
+	COL_3 = and(alive, or(lt2, gt3)); # @COL_3: die
+	COL_2 = and(dead, eq3); # @COL_2: spawn
 
 	DIE = 1;
-	KLL = COL4;
+	KLL = COL_4;
 }
 
 # TODO
 ant cell_handler = 4 {
 	worker();
-	(alive, -dead) = cpy(COL0);
+	(alive, -dead) = cpy(COL_0);
 	
-	COL0 = or(and(alive, -COL3), and(dead, COL2));
+	COL_0 = or(and(alive, -COL_3), and(dead, COL_2));
 
-	(COL2, COL3) = cpy(0);
+	(COL_2, COL_3) = cpy(0);
 }

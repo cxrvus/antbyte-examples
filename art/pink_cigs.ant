@@ -14,73 +14,73 @@ set fg = none;
 # set fps = 1;
 
 ant queen = 0 {
-	HLT = MEM0;
-	MEM0 = or(MEM0, CTR1);
-	(A_ID1, A_LYR, A_ROT1, A_ROT0) = cpy(-MEM0);
+	HLT = MEM_0;
+	MEM_0 = or(MEM_0, CTR_1);
+	(A_ID_1, A_LYR, A_ROT_1, A_ROT_0) = cpy(-MEM_0);
 
-	SIG0 = -MEM0;
-	SIG1 = and(MEM0, PRB4);
-	SIG2 = -CTR0;
+	SIG_0 = -MEM_0;
+	SIG_1 = and(MEM_0, PRB_4);
+	SIG_2 = -CTR_0;
 
-	DIE = and(MEM0, -SIG3);
+	DIE = and(MEM_0, -SIG_3);
 }
 
 ant queen2 = 2 {
-	SIG3 = 1;
-	HLT = SIG0;
-	(DIE, A_ID1, A_ID0) = cpy(-SIG0);
+	SIG_3 = 1;
+	HLT = SIG_0;
+	(DIE, A_ID_1, A_ID_0) = cpy(-SIG_0);
 }
 
 ant cig_spawner = 3 {
-	SIG3 = 1;
-	A_ID2 = -MEM0;
-	A_ID3 = +MEM0;
-	MEM0 = or(MEM0, CTR2);
+	SIG_3 = 1;
+	A_ID_2 = -MEM_0;
+	A_ID_3 = +MEM_0;
+	MEM_0 = or(MEM_0, CTR_2);
 	DIE = on(0, 1, 1, 0, 0, 0);
 }
 
 ant filter = 4 {
-	SIG3 = 1;
+	SIG_3 = 1;
 
-	DIE = and(OBS, -N_ID3, -N_ID2, -N_ID1);
-	HLT = or(-MEM0, SIG2);
-	(COL1, COL0) = cpy(and(HLT, -DIE));
+	DIE = and(OBS, -N_ID_3, -N_ID_2, -N_ID_1);
+	HLT = or(-MEM_0, SIG_2);
+	(COL_1, COL_0) = cpy(and(HLT, -DIE));
 
-	ROT1 = and(-MEM0, SIG4);
-	MEM0 = or(MEM0, SIG4);
-	SIG4 = -OBS;
+	ROT_1 = and(-MEM_0, SIG_4);
+	MEM_0 = or(MEM_0, SIG_4);
+	SIG_4 = -OBS;
 }
 
 ant cig = 8 {
 	HLT = 1;
 			
-	ROT0 = -OBS;
-	MEM0 = or(MEM0, -OBS);
-	lit = MEM0;
+	ROT_0 = -OBS;
+	MEM_0 = or(MEM_0, -OBS);
+	lit = MEM_0;
 
-	(A_ID3, A_ID2, A_ROT0) = cpy(lit);
+	(A_ID_3, A_ID_2, A_ROT_0) = cpy(lit);
 
-	MEM1 = xor(MEM1, PRB2);
-	A_MEM1 = MEM1;
+	MEM_1 = xor(MEM_1, PRB_2);
+	A_MEM_1 = MEM_1;
 
-	(COL3, COL0) = cpy(1);
-	COL2 = -lit;
-	COL1 = and(lit, PRB2);
+	(COL_3, COL_0) = cpy(1);
+	COL_2 = -lit;
+	COL_1 = and(lit, PRB_2);
 
-	DIE = or(and(lit, SIG1), N_ID2);
-	(COL3, COL2, COL1, COL0) = fwd_and(-DIE, COL3, COL2, COL1, COL0);
+	DIE = or(and(lit, SIG_1), N_ID_2);
+	(COL_3, COL_2, COL_1, COL_0) = fwd_and(-DIE, COL_3, COL_2, COL_1, COL_0);
 }
 
 ant smoke = 12 {
-	SIG3 = 1;
+	SIG_3 = 1;
 
-	DIE = and(OBS, -N_ID3);
-	paint = and(-DIE, SIG2);
+	DIE = and(OBS, -N_ID_3);
+	paint = and(-DIE, SIG_2);
 	HLT = paint;
-	(COL3, COL2, COL1, COL0) = fwd_and(paint, -MEM1, MEM1, MEM1, MEM1);
+	(COL_3, COL_2, COL_1, COL_0) = fwd_and(paint, -MEM_1, MEM_1, MEM_1, MEM_1);
 
-	turn = RND0;
-	ROT1 = turn;
-	ROT0 = and(-MEM0, turn);
-	MEM0 = xor(MEM0, turn);
+	turn = RND_0;
+	ROT_1 = turn;
+	ROT_0 = and(-MEM_0, turn);
+	MEM_0 = xor(MEM_0, turn);
 }

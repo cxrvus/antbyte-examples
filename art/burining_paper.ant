@@ -9,15 +9,15 @@ set fg = none;
 set decay = 64;
 
 ant main = 1 {
-	ROT1 = RND2;
-	A_ID0 = RND3;
+	ROT_1 = RND_2;
+	A_ID_0 = RND_3;
 
-	MEM0 = or(MEM0, and(INL, RND3));
+	MEM_0 = or(MEM_0, and(INL, RND_3));
 
-	SLP6 = and(-INL, EVR4, MEM0);
+	SLP_6 = and(-INL, EVR_4, MEM_0);
 
-	COL0 = 1;
-	COL1 = N_COL20;
-	COL2 = N_COL41;
-	COL3 = OBS6;
+	COL_0 = 1;
+	COL_1 = N_COL_20;
+	COL_2 = N_COL_41;
+	COL_3 = OBS_6;
 }

@@ -9,22 +9,22 @@ set layer_filter = 0b10;
 ant queen = 0 {
 	HLT = 1;
 	A_LYR = 1;
-	A_ID0 = INL;
-	A_ID1 = and(-A_ID0, PRB3);
+	A_ID_0 = INL;
+	A_ID_1 = and(-A_ID_0, PRB_3);
 }
 
 ant 1 {
-	# (X_OUT3, X_OUT2, X_OUT1, X_OUT0) = fwd(CTR3, CTR2, CTR1, CTR0);
-	(X_OUT3, X_OUT2, X_OUT1, X_OUT0) = fwd(RND3, 0, 0, RND0);
-	X_OUT4 = RND4;
-	X_OUT6 = 1;
-	SLP0 = 1;
+	# (X_OUT_3, X_OUT_2, X_OUT_1, X_OUT_0) = fwd(CTR_3, CTR_2, CTR_1, CTR_0);
+	(X_OUT_3, X_OUT_2, X_OUT_1, X_OUT_0) = fwd(RND_3, 0, 0, RND_0);
+	X_OUT_4 = RND_4;
+	X_OUT_6 = 1;
+	SLP_0 = 1;
 }
 
 ant 2 {
-	X_OUT0 = and(-SIG1, CTR0);
-	X_OUT1 = MEM0;
-	MEM0 = X_OUT0;
-	SIG1 = or(X_OUT1, X_OUT0);
-	DIE = CTR6;
+	X_OUT_0 = and(-SIG_1, CTR_0);
+	X_OUT_1 = MEM_0;
+	MEM_0 = X_OUT_0;
+	SIG_1 = or(X_OUT_1, X_OUT_0);
+	DIE = CTR_6;
 }

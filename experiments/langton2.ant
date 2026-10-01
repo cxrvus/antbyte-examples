@@ -1,6 +1,6 @@
 use "../cs/langton";
 
-set desc = "Langton's Ant, but with ROT2 instead of ROT1";
+set desc = "Langton's Ant, but with ROT_2 instead of ROT_1";
 
 set size = 128;
 set border = cycle;
@@ -8,10 +8,10 @@ set speed = 32;
 
 fn main = in_color => out_color {
 	out_color = langton(in_color);
-	ROT2 = ROT1;
-	ROT1 = 0;
+	ROT_2 = ROT_1;
+	ROT_1 = 0;
 }
 
 ant main = 1 {
-	COL0 = main(COL0);
+	COL_0 = main(COL_0);
 }

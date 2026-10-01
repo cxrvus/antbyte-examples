@@ -4,16 +4,16 @@ set fps = 12;
 set bg = birth_tick;
 
 ant 0b0000 {
-	DIE = N_ID3;
-	SIG0 = 1;
+	DIE = N_ID_3;
+	SIG_0 = 1;
 
-	A_ID3 = EVR0;
-	ROT1 = OBS;
+	A_ID_3 = EVR_0;
+	ROT_1 = OBS;
 }
 
 ant 0b1000 {
-	SLP0 = PRB6;
-	SLP1 = or(N_ID3, PRB7);
-	HLT = SIG0;
-	ROT1 = and(-N_ID3, -INL, OBS);
+	SLP_0 = PRB_6;
+	SLP_1 = or(N_ID_3, PRB_7);
+	HLT = SIG_0;
+	ROT_1 = and(-N_ID_3, -INL, OBS);
 }

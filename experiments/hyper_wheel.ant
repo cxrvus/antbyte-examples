@@ -5,27 +5,27 @@ set start_tick = 32;
 set decay = 64;
 
 ant queen = 0 {
-	(A_MEM2, A_MEM1, A_MEM0) = fwd(CTR2, CTR1, CTR0);
+	(A_MEM_2, A_MEM_1, A_MEM_0) = fwd(CTR_2, CTR_1, CTR_0);
 
-	end = and(CTR2, CTR1, CTR0);
-	after_end = CTR3;
+	end = and(CTR_2, CTR_1, CTR_0);
+	after_end = CTR_3;
 
-	A_ID0 = -after_end;
+	A_ID_0 = -after_end;
 	SIG = -after_end;
 
-	ROT2 = end;
-	(A_ROT0, A_ROT1, A_ROT2) = cpy(end);
-	ROT1 = and(-after_end, -end, CTR0);
+	ROT_2 = end;
+	(A_ROT_0, A_ROT_1, A_ROT_2) = cpy(end);
+	ROT_1 = and(-after_end, -end, CTR_0);
 }
 
 ant main = 1 {
-	COL3 = 1;
-	(COL2, COL1, COL0) = fwd(MEM2, MEM1, MEM0);
-	(MEM2, MEM1, MEM0) = fwd(MEM2, MEM1, MEM0);
+	COL_3 = 1;
+	(COL_2, COL_1, COL_0) = fwd(MEM_2, MEM_1, MEM_0);
+	(MEM_2, MEM_1, MEM_0) = fwd(MEM_2, MEM_1, MEM_0);
 
-	HLT = -MEM3;
-	# HLT = and(-MEM3, RND0);
-	MEM3 = or(MEM3, -SIG);
+	HLT = -MEM_3;
+	# HLT = and(-MEM_3, RND_0);
+	MEM_3 = or(MEM_3, -SIG);
 
-	ROT1 = -OBS;
+	ROT_1 = -OBS;
 }

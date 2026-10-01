@@ -5,7 +5,7 @@ set speed = 128;
 set start = top_left;
 
 ant main = 1 {
-	color = langton(and(-COL1, COL3));
+	color = langton(and(-COL_1, COL_3));
 	CLR = 1;
-	(_, COL1, COL3) = add(COL1, COL3, 1, 0, 1);
+	(_, COL_1, COL_3) = add(COL_1, COL_3, 1, 0, 1);
 }

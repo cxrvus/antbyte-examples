@@ -6,10 +6,10 @@ set fg = none;
 
 ant queen = 0 {
 	(HLT, A_ID, A_ROT) = cpy(1);
-	(ROT2:5) = fwd(RND3:0);
+	(ROT_2:5) = fwd(RND_3:0);
 }
 
 ant ray = 1 {
-	MEM = or(MEM, CTR1);
+	MEM = or(MEM, CTR_1);
 	COL = MEM;
 }

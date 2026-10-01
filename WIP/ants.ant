@@ -3,26 +3,26 @@ set size = 16;
 set fps = 4;
 
 ant main = 1 {
-	A_ID1 = on(0, 0, 0, 1);
-	A_ID2 = on(0, 1, 0, 1);
+	A_ID_1 = on(0, 0, 0, 1);
+	A_ID_2 = on(0, 1, 0, 1);
 	DIE = on(1, 1, 1, 1);
 }
 
 ant letter_a = 2 {
-	COL1 = 1;
-	COL3 = 1;
+	COL_1 = 1;
+	COL_3 = 1;
 
-	ROT2 = or(
+	ROT_2 = or(
 		on(0, 0, 1, 1),
 		on(0, 1, 1, 0),
 	);
-	ROT1 = or(
+	ROT_1 = or(
 		on(0, 0, 0, 0),
 		on(0, 1, 0, 0),
 		on(0, 1, 0, 1),
 		on(0, 1, 1, 1),
 	);
-	ROT0 = or(
+	ROT_0 = or(
 		on(0, 0, 0, 0),
 		on(0, 1, 1, 0),
 	);
@@ -31,17 +31,17 @@ ant letter_a = 2 {
 }
 
 ant letter_n = 4 {
-	COL1 = 1;
+	COL_1 = 1;
 
-	ROT2 = or(
+	ROT_2 = or(
 		on(0, 0, 1, 0),
 		on(0, 1, 0, 0)
 	);
-	ROT1 = or(
+	ROT_1 = or(
 		on(0, 0, 0, 0),
 		on(0, 0, 1, 1)
 	);
-	ROT0 = on(0, 0, 0, 0);
+	ROT_0 = on(0, 0, 0, 0);
 
 	DIE = on(0, 1, 1, 0);
 }
