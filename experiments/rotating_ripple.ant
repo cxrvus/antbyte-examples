@@ -5,5 +5,5 @@ set decay = 800;
 ant main = 1 {
 	HLT = and(CTR_3, CTR_2, CTR_1, CTR_0);
 	(COL_3, COL_2, COL_1, COL_0) = fwd(CTR_3, CTR_2, CTR_1, CTR_0);
-	ROT_7 =  EVR_5;
+	ROT_7 =  CLK_5;
 }

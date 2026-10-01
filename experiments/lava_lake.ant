@@ -8,12 +8,12 @@ set fg = tile;
 ant 1 {
 	(-HLT, A_ID_0, A_ROT, A_LYR) = cpy(1);
 	A_ID_1 = -PRB_3;
-	ROT_7 = EVR_1;
+	ROT_7 = CLK_1;
 	LFT = RND;
 }
 
 ant 3 {
-	DIE = and(-INL, EVR_4);
+	DIE = and(-INL, CLK_4);
 	A_ID_2 = DIE;
 	A_LYR = 1;
 }

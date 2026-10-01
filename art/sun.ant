@@ -15,7 +15,7 @@ set {
 
 ant queen = 0 {
 	(A_ID_4, A_ID_1) = cpy(INL);
-	(A_ID_0, A_LYR_0) = cpy(and(-INL, EVR_3));
+	(A_ID_0, A_LYR_0) = cpy(and(-INL, CLK_3));
 	(A_ROT_0, A_ROT_1, A_ROT_2) = cpy(1);
 	DIE = A_ID_0;
 }
@@ -27,7 +27,7 @@ fn slow { SLP_3 = 1; }
 ant shell = 1 {
 	slow();
 
-	spawn_ray = EVR_2;
+	spawn_ray = CLK_2;
 	turn = and(-INL, spawn_ray);
 	spawn_core = N_COL_0;
 
@@ -154,7 +154,7 @@ ant ray_spawner = 3 {
 
 	HLT = 1;
 	A_ROT_0 = 1;
-	(A_ID_3, A_ID_0) = cpy(and(active, EVR_5));
+	(A_ID_3, A_ID_0) = cpy(and(active, CLK_5));
 	SLP_3 = 1;
 }
 

@@ -24,12 +24,12 @@ ant 1 {
 }
 
 ant 2 {
-	X_OUT_0 = EVR_1;
+	X_OUT_0 = CLK_1;
 	A_ID_2 = and(X_OUT_0, PRB_3);
 	HLT = 1;
 }
 
 ant 4 {
-	(X_OUT_1, X_OUT_0) = cpy(EVR_1);
+	(X_OUT_1, X_OUT_0) = cpy(CLK_1);
 	DIE = PRB_3;
 }

@@ -14,7 +14,7 @@ set fg = none;
 
 ant queen = 0 {
 	HLT = 1;
-	A_ID_0 = EVR_5;
+	A_ID_0 = CLK_5;
 	A_LYR = 1; A_ROT_1 = 1;
 	ROT_7 = A_ID_0;
 }

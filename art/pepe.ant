@@ -12,7 +12,7 @@ ant queen = 0 {
 	(A_ID_1, A_ID_0, DIE, ) = cpy(on(1, 1, 1, 0));
 }
 
-ant clk = 3 { HLT = 1; SIG_0 = CTR_0; SIG_1 = EVR_4; }
+ant clk = 3 { HLT = 1; SIG_0 = CTR_0; SIG_1 = CLK_4; }
 
 ant cig = 1 {
 	A_MEM_0 = INL; A_MEM_2 = CTR_2; A_MEM_1 = -or(A_MEM_0, A_MEM_2); DIE = A_MEM_2;

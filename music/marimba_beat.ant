@@ -27,7 +27,7 @@ ant 1 {
 }
 
 ant 2 {
-	X_OUT_0 = EVR_1;
+	X_OUT_0 = CLK_1;
 	A_ID_2 = and(X_OUT_0, PRB_3);
 	HLT = 1;
 
@@ -35,15 +35,15 @@ ant 2 {
 }
 
 ant 4 {
-	(X_OUT_1, X_OUT_0) = cpy(EVR_1);
-	A_ID_3 = and(MEM, -EVR_1, PRB_3);
+	(X_OUT_1, X_OUT_0) = cpy(CLK_1);
+	A_ID_3 = and(MEM, -CLK_1, PRB_3);
 	DIE = and(MEM, PRB_5);
 	MEM = or(MEM, PRB_3);
 	HLT = 1;
 }
 
 ant 8 {
-	X_OUT_1 = EVR_2;
+	X_OUT_1 = CLK_2;
 	DIE = -OBS;
 	HLT = 1;
 }

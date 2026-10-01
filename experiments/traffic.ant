@@ -7,7 +7,7 @@ ant 0b0000 {
 	DIE = N_ID_3;
 	SIG_0 = 1;
 
-	A_ID_3 = EVR_0;
+	A_ID_3 = CLK_0;
 	ROT_1 = OBS;
 }
 

@@ -14,7 +14,7 @@ ant main = 1 {
 
 	MEM_0 = or(MEM_0, and(INL, RND_3));
 
-	SLP_6 = and(-INL, EVR_4, MEM_0);
+	SLP_6 = and(-INL, CLK_4, MEM_0);
 
 	COL_0 = 1;
 	COL_1 = N_COL_20;

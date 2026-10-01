@@ -17,6 +17,6 @@ ant spawner = 3 {
 }
 
 ant clone = 2 {
-	HLT = -EVR_1;
+	HLT = -CLK_1;
 	COL_1 = CTR_0;
 }

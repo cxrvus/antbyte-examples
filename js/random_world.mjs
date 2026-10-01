@@ -53,7 +53,7 @@ function generateAnt(index) {
 		['X_IN', 0, 3],
 		['COL', 0, 3],
 		['CTR', 4, 7],
-		['EVR', 4, 7],
+		['CLK', 4, 7],
 		['SIG', 0, 3],
 		['ROT', 1, 3],
 		['OBS', 0, 7],
