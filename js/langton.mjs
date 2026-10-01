@@ -8,7 +8,7 @@ run({
 		width: 64,
 		height: 64,
 		speed: 64,
-		border: { 0: "despawn" },
+		border: { 0: "die" },
 		start_pos: "center",
 		bg_filter: "bin",
 	},
