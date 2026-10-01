@@ -19,5 +19,5 @@ ant main = 1 {
 	COL0 = 1;
 	COL1 = N_COL20;
 	COL2 = N_COL41;
-	COL3 = N_OBS6;
+	COL3 = OBS6;
 }

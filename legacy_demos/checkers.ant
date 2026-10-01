@@ -9,16 +9,16 @@ set start_dir = "S";
 ant main = 1 {
 	COL0 = -CTR0;
 
-	# MEM0: N_OBS in previous tick
+	# MEM0: OBS in previous tick
 	# MEM1: last rotation
-	ROT1 = or(MEM0, N_OBS);
+	ROT1 = or(MEM0, OBS);
 	ROT0 = and(ROT1, -MEM1);
 
 	# toggle: toggle last rotation
-	toggle = and(MEM0, -N_OBS);
+	toggle = and(MEM0, -OBS);
 	MEM1 = xor(MEM1, toggle);
 
-	MEM0 = and(-MEM0, N_OBS);
+	MEM0 = and(-MEM0, OBS);
 
 	DIE = N_COL0;
 }

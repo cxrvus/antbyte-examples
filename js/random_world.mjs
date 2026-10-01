@@ -56,7 +56,7 @@ function generateAnt(index) {
 		['EVR', 4, 7],
 		['SIG', 0, 3],
 		['ROT', 1, 3],
-		['N_OBS', 0, 7],
+		['OBS', 0, 7],
 	]);
 
 	let filteredOutputs = includeRange(OUTPUTS, [

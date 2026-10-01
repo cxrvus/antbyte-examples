@@ -42,20 +42,20 @@ ant cig_spawner = 3 {
 ant filter = 4 {
 	SIG3 = 1;
 
-	DIE = and(N_OBS, -N_ID3, -N_ID2, -N_ID1);
+	DIE = and(OBS, -N_ID3, -N_ID2, -N_ID1);
 	HLT = or(-MEM0, SIG2);
 	(COL1, COL0) = cpy(and(HLT, -DIE));
 
 	ROT1 = and(-MEM0, SIG4);
 	MEM0 = or(MEM0, SIG4);
-	SIG4 = -N_OBS;
+	SIG4 = -OBS;
 }
 
 ant cig = 8 {
 	HLT = 1;
 			
-	ROT0 = -N_OBS;
-	MEM0 = or(MEM0, -N_OBS);
+	ROT0 = -OBS;
+	MEM0 = or(MEM0, -OBS);
 	lit = MEM0;
 
 	(A_ID3, A_ID2, A_ROT0) = cpy(lit);
@@ -74,7 +74,7 @@ ant cig = 8 {
 ant smoke = 12 {
 	SIG3 = 1;
 
-	DIE = and(N_OBS, -N_ID3);
+	DIE = and(OBS, -N_ID3);
 	paint = and(-DIE, SIG2);
 	HLT = paint;
 	(COL3, COL2, COL1, COL0) = fwd_and(paint, -MEM1, MEM1, MEM1, MEM1);

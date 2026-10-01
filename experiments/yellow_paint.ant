@@ -8,9 +8,9 @@ ant main = 1 {
 	ROT1 = X_IN2;
 	A_ID0 = X_IN3;
 
-	COL0 = N_OBS0;
-	COL1 = N_OBS2;
-	COL2 = N_OBS4;
-	COL3 = N_OBS6;
+	COL0 = OBS0;
+	COL1 = OBS2;
+	COL2 = OBS4;
+	COL3 = OBS6;
 	COL0 = 1;
 }

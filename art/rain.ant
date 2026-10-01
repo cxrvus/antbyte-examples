@@ -19,7 +19,7 @@ ant 0 {
 	A_ROT0 = spawn_rain;
 	A_ID1 = spawn_rain;
 
-	DIE = N_OBS;
+	DIE = OBS;
 }
 
 ant cloud = 1 {

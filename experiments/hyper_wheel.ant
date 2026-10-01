@@ -27,5 +27,5 @@ ant main = 1 {
 	# HLT = and(-MEM3, RND0);
 	MEM3 = or(MEM3, -SIG);
 
-	ROT1 = -N_OBS;
+	ROT1 = -OBS;
 }

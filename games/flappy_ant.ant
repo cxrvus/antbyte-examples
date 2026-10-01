@@ -18,19 +18,19 @@ ant queen = 0x00 {
 	last = MEM2;
 
 	(A_ID1, A_ID0) = cpy(INL);
-	(A_ID6, A_ROT0) = cpy(and(N_OBS, obs0));	# blockade_spawner
-	(A_ID7, A_LYR) = cpy(and(N_OBS, obs2));	# god
+	(A_ID6, A_ROT0) = cpy(and(OBS, obs0));	# blockade_spawner
+	(A_ID7, A_LYR) = cpy(and(OBS, obs2));	# god
 	(A_ID5) = cpy(last);				# pipe_spawner
 	A_ID4 = or(A_ID6, A_ID5);
 	A_ROT1 = 1;
 
 	DIE = and(last, N_MEM47);
 
-	ROT1 = and(N_OBS, or(obs1, obs2));
-	HLT = or(last, and(N_OBS, obs0));
+	ROT1 = and(OBS, or(obs1, obs2));
+	HLT = or(last, and(OBS, obs0));
 	
 	# state
-	(cout, MEM1, MEM0) = add(MEM1, MEM0, 0, N_OBS);
+	(cout, MEM1, MEM0) = add(MEM1, MEM0, 0, OBS);
 	last = or(last, and(MEM1, MEM0));
 	MEM2 = last;
 }
@@ -40,7 +40,7 @@ ant bird = 0x03 {
 	TBK = 1;
 
 	HLT = or(SIG0, CTR0);
-	DIE = or(and(N_OBS, -MEM1), N_ID5);	# die when hitting floor or pipe
+	DIE = or(and(OBS, -MEM1), N_ID5);	# die when hitting floor or pipe
 	(A_ID4, A_ID1, A_ID0) = cpy(DIE);		# spawn ghost
 
 	ROT0 = and(-SIG0, xor(MEM0, X_IN0));
@@ -50,13 +50,13 @@ ant bird = 0x03 {
 
 ant bird_ghost = 0x13 {
 	KLL = RND; TBK = 1;
-	ROT1 = or(PRB3, and(N_OBS, -N_ID5, MEM0));
+	ROT1 = or(PRB3, and(OBS, -N_ID5, MEM0));
 	(A_ID4, A_ID1, A_ID0) = cpy(or(X_IN0, PRB5));
-	MEM0 = N_OBS;
+	MEM0 = OBS;
 }
 
 ant pipe = 0x22 { 
-	(DIE, KLL) = cpy(and(SIG7, N_OBS, -N_ID5));
+	(DIE, KLL) = cpy(and(SIG7, OBS, -N_ID5));
 	KLL = 0;
 	ROT1 = and(-SIG7, PRB3, EVR3);		# random movement after bird death
 }

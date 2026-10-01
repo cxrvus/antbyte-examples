@@ -44,6 +44,6 @@ ant 4 {
 
 ant 8 {
 	X_OUT1 = EVR2;
-	DIE = -N_OBS;
+	DIE = -OBS;
 	HLT = 1;
 }

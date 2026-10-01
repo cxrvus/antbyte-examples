@@ -64,7 +64,7 @@ ant cursor = 3 {
 }
 
 fn symbol {
-	KLL = and(-MEM3, N_OBS); # kill target (if first target)
+	KLL = and(-MEM3, OBS); # kill target (if first target)
 	ROT0 = or(INL, KLL); # flip on first tick and after killing target
 	MEM3 = or(MEM3, KLL);
 	DIE = CTR6;

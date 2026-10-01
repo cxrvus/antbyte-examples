@@ -15,14 +15,14 @@ set layer_limit = 2;
 # set width = 187;
 
 fn bounce_ant {
-	flip = and(-INL, N_OBS, MEM6);
-	left = and(-INL, N_OBS);
+	flip = and(-INL, OBS, MEM6);
+	left = and(-INL, OBS);
 
 	ROT0 = or(flip, left);
 	ROT1 = and(-flip, left);
-	HLT = N_OBS;
+	HLT = OBS;
 
-	MEM6 = N_OBS;
+	MEM6 = OBS;
 }
 
 ant queen = 0 {
@@ -34,7 +34,7 @@ ant queen = 0 {
 ant color = 1 {
 	bounce_ant();
 
-	change0 = or(N_OBS, -or(MEM2, MEM1, MEM0));
+	change0 = or(OBS, -or(MEM2, MEM1, MEM0));
 	change1 = and(change0, RND0);
 	change2 = and(change0, RND1);
 

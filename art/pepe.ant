@@ -37,7 +37,7 @@ ant cig_part = 2 {
 }
 
 ant smoke = 4 {
-	DIE = or(SIG2, and(N_OBS, -N_ID2));
+	DIE = or(SIG2, and(OBS, -N_ID2));
 	keep = COL4;
 	paint = and(-DIE, SIG0, -keep);
 

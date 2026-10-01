@@ -13,7 +13,7 @@ ant spawner = 3 {
 	COL0 = and(MEM1, -N_COL0);
 
 	MEM1 = MEM0;
-	MEM0 = N_OBS;
+	MEM0 = OBS;
 }
 
 ant clone = 2 {

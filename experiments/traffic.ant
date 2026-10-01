@@ -8,12 +8,12 @@ ant 0b0000 {
 	SIG0 = 1;
 
 	A_ID3 = EVR0;
-	ROT1 = N_OBS;
+	ROT1 = OBS;
 }
 
 ant 0b1000 {
 	SLP0 = PRB6;
 	SLP1 = or(N_ID3, PRB7);
 	HLT = SIG0;
-	ROT1 = and(-N_ID3, -INL, N_OBS);
+	ROT1 = and(-N_ID3, -INL, OBS);
 }

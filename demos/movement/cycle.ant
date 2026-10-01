@@ -13,5 +13,5 @@ ant queen = 0 {
 ant main = 1 {
 	 (COL2, COL1, COL0) = fwd(MEM2, MEM1, MEM0);
 	 HLT = SIG;
-	 ROT1 = -N_OBS;
+	 ROT1 = -OBS;
 }

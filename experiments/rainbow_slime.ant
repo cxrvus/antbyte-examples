@@ -53,11 +53,11 @@ ant sand = 4 {
 	(last_right, last_left) = fwd(MEM1, MEM0);
 
 	# using RND0 as a tie breaker
-	(_, right1, left1, left2, _, right2, left3, right3) = dec(RND0, -N_OBS7, -N_OBS1);
+	(_, right1, left1, left2, _, right2, left3, right3) = dec(RND0, -OBS7, -OBS1);
 	right = or(right1, right2, right3);
 	left = or(left1, left2, left3);
 
-	(right, left) = fwd_and(N_OBS0, right, left);
+	(right, left) = fwd_and(OBS0, right, left);
 	right = mux(move, last_left, right);
 	left = mux(move, last_right, left);
 
