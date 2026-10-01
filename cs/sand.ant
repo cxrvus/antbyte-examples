@@ -16,60 +16,60 @@ set border_1 = obs;
 set border_2 = die;
 
 ant queen = 1 {
-	S0 = T;
+	SIG0 = CTR;
 
-	(_, right, left, _) = dec(X1, X0);
-	(last_right, -last_left) = cpy(M0);
-	R0 = or(and(left, last_right), and(right, last_left));
-	M0 = xor(M0, R0);
+	(_, right, left, _) = dec(X_IN1, X_IN0);
+	(last_right, -last_left) = cpy(MEM0);
+	ROT0 = or(and(left, last_right), and(right, last_left));
+	MEM0 = xor(MEM0, ROT0);
 
-	H = or(S0, and(-right, -left));
-	(C3, C2) = cpy(-H);
+	HLT = or(SIG0, and(-right, -left));
+	(COL3, COL2) = cpy(-HLT);
 
-	A1 = 1; AR1 = 1;
-	AR0 = or(B, left);
-	K = 1;
+	A_ID1 = 1; A_ROT1 = 1;
+	A_ROT0 = or(INL, left);
+	KLL = 1;
 }
 
 ant sand_spawner = 2 {
-	H = 1;
-	D = and(-VA20, -VA60);
-	(C3, C2) = cpy(and(-D, T4));
-	A2 = and(-D, X2);
-	AA = 1; AR0 = 1;
+	HLT = 1;
+	DIE = and(-N_ID20, -N_ID60);
+	(COL3, COL2) = cpy(and(-DIE, CTR4));
+	A_ID2 = and(-DIE, X_IN2);
+	A_LYR = 1; A_ROT0 = 1;
 
-	S1 = and(X3, P2);
+	SIG1 = and(X_IN3, PRB2);
 
-	CZ = B;
+	CLR = INL;
 }
 
 ant sand = 4 {
-	move = S0;
-	H = -move;
+	move = SIG0;
+	HLT = -move;
 
-	(last_right, last_left) = fwd(M1, M0);
+	(last_right, last_left) = fwd(MEM1, MEM0);
 
-	# using N0 as a tie breaker
-	(_, right1, left1, left2, _, right2, left3, right3) = dec(N0, -V7, -V1);
+	# using RND0 as a tie breaker
+	(_, right1, left1, left2, _, right2, left3, right3) = dec(RND0, -N_OBS7, -N_OBS1);
 	right = or(right1, right2, right3);
 	left = or(left1, left2, left3);
 
-	(right, left) = fwd_and(V0, right, left);
+	(right, left) = fwd_and(N_OBS0, right, left);
 	right = mux(move, last_left, right);
 	left = mux(move, last_right, left);
 
-	R2 = or(left, right);
-	(R0, R1) = cpy(left);
-	(M1, M0) = fwd_and(move, right, left);
+	ROT2 = or(left, right);
+	(ROT0, ROT1) = cpy(left);
+	(MEM1, MEM0) = fwd_and(move, right, left);
 
-	K = and(S1, N0, -move, -right, -left);
+	KLL = and(SIG1, RND0, -move, -right, -left);
 
-	(AA, A2, A0) = cpy(and(-K, move));
+	(A_LYR, A_ID2, A_ID0) = cpy(and(-KLL, move));
 }
 
 ant sand_color = 5 {
-	H = 1;
-	D = T7;
-	C3 = and(-B, -D);
-	(C2, C1, C0) = fwd(T6, T5, T4);
+	HLT = 1;
+	DIE = CTR7;
+	COL3 = and(-INL, -DIE);
+	(COL2, COL1, COL0) = fwd(CTR6, CTR5, CTR4);
 }

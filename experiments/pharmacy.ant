@@ -7,23 +7,23 @@ set border = cycle;
 # set border = die;
 
 fn spike {
-	CZ = 1;
-	C1 = -C1;
-	# C3 = T7;
+	CLR = 1;
+	COL1 = -COL1;
+	# COL3 = CTR7;
 
-	R1 = T2;
-	R0 = T3;
-	R2 = T7;
+	ROT1 = CTR2;
+	ROT0 = CTR3;
+	ROT2 = CTR7;
 }
 
 fn reproduce = () => spawn {
-	spawn = and(T7, -or(
-		T3,
-		T2,
-		T1,
-		# T0,
+	spawn = and(CTR7, -or(
+		CTR3,
+		CTR2,
+		CTR1,
+		# CTR0,
 	));
-	D = and(T7, T4);
+	DIE = and(CTR7, CTR4);
 }
 
 ant clone2 = 4 {
@@ -32,10 +32,10 @@ ant clone2 = 4 {
 
 ant clone = 2 {
 	spike();
-	A2 = reproduce();
+	A_ID2 = reproduce();
 }
 
 ant main = 1 {
 	spike();
-	A1 = reproduce();
+	A_ID1 = reproduce();
 }

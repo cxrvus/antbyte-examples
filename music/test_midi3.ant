@@ -2,13 +2,13 @@ set fps = 2;
 set midi_out_ch = 6;
 
 ant 0 { 
-	M = or(M, T1);
-	A0 = and(-M, -T);
-	A1 = and(-M, T);
-	S = M;
-	Y1 = N;
-	Y3 = Y1;
+	MEM = or(MEM, CTR1);
+	A_ID0 = and(-MEM, -CTR);
+	A_ID1 = and(-MEM, CTR);
+	SIG = MEM;
+	X_OUT1 = RND;
+	X_OUT3 = X_OUT1;
 }
 
-ant 1 { H = 1; Y3 = 1; Y0 = S; }
-ant 2 { H = 1; Y3 = 1; Y2 = S; }
+ant 1 { HLT = 1; X_OUT3 = 1; X_OUT0 = SIG; }
+ant 2 { HLT = 1; X_OUT3 = 1; X_OUT2 = SIG; }

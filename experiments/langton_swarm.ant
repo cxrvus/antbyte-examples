@@ -9,10 +9,10 @@ set speed = 8;
 ant main = 1 {
 	langton2();
 
-	A1 = -or(T2, T1, T0);
+	A_ID1 = -or(CTR2, CTR1, CTR0);
 }
 
 ant clone = 2 {
 	langton2();
-	D = V;
+	DIE = N_OBS;
 }

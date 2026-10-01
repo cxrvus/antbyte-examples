@@ -11,47 +11,47 @@ set {
 set { fg = none; }
 
 ant 0 {
-	spawn_cloud = T0;
-	spawn_rain = -T0;
+	spawn_cloud = CTR0;
+	spawn_rain = -CTR0;
 
-	A0 = spawn_cloud;
-	AR1 = 1;
-	AR0 = spawn_rain;
-	A1 = spawn_rain;
+	A_ID0 = spawn_cloud;
+	A_ROT1 = 1;
+	A_ROT0 = spawn_rain;
+	A_ID1 = spawn_rain;
 
-	D = V;
+	DIE = N_OBS;
 }
 
 ant cloud = 1 {
-	C2 = 0;
-	C3 = 1;
-	D = T7;
-	R2 = N0;
-	R1 = N1;
+	COL2 = 0;
+	COL3 = 1;
+	DIE = CTR7;
+	ROT2 = RND0;
+	ROT1 = RND1;
 }
 
 ant rain_spawner = 2 {
-	A2 = P3;
-	AR0 = 1;
-	AA0 = 1;
+	A_ID2 = PRB3;
+	A_ROT0 = 1;
+	A_LYR0 = 1;
 
-	C3 = 1;
+	COL3 = 1;
 }
 
 ant rain_start = 4 {
-	(A0, A2) = cpy(-C3);
+	(A_ID0, A_ID2) = cpy(-COL3);
 
-	wind = and(-M1, P4);
+	wind = and(-MEM1, PRB4);
 	left = wind;
-	right = M1;
+	right = MEM1;
 	rot_32(left, right);
-	TB = -wind;
-	M1 = wind;
+	TBK = -wind;
+	MEM1 = wind;
 }
 
 ant rain_end = 5 {
-	H = 1;
-	W1 = B;
-	C2 = B;
-	D = -B;
+	HLT = 1;
+	SLP1 = INL;
+	COL2 = INL;
+	DIE = -INL;
 }

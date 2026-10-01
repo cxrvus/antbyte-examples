@@ -4,10 +4,10 @@ set size = 64;
 set ant_limit = 1000;
 
 ant main = 1 {
-	H = -X0;
-	R1 = X1;
-	A0 = X2;
+	HLT = -X_IN0;
+	ROT1 = X_IN1;
+	A_ID0 = X_IN2;
 
-	M0 = xor(M0, X3);
-	C2 = M0;
+	MEM0 = xor(MEM0, X_IN3);
+	COL2 = MEM0;
 }

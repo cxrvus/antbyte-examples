@@ -13,26 +13,26 @@ set fg = none;
 # set { fps = 12; speed = 1; fg = mem; }
 
 ant queen = 0 {
-	R1 = or(VC4, P2);
+	ROT1 = or(N_COL4, PRB2);
 
-	(_, M1, M0) = add(M1, M0, 0, R1);
+	(_, MEM1, MEM0) = add(MEM1, MEM0, 0, ROT1);
 
-	A0 = and(-M1, -M0, CZ, P1);
-	A0 = or(A0, B);
+	A_ID0 = and(-MEM1, -MEM0, CLR, PRB1);
+	A_ID0 = or(A_ID0, INL);
 
-	AR2 = P4;
-	AA = 1; AR1 = 1;
+	A_ROT2 = PRB4;
+	A_LYR = 1; A_ROT1 = 1;
 }
 
 ant column = 1 {
-	D = and(T2, T1, T0);
+	DIE = and(CTR2, CTR1, CTR0);
 
-	(A1, AR0, AR1) = cpy(1);
-	(AM2, AM1, AM0) = fwd(T2, T1, T0);
+	(A_ID1, A_ROT0, A_ROT1) = cpy(1);
+	(A_MEM2, A_MEM1, A_MEM0) = fwd(CTR2, CTR1, CTR0);
 }
 
 ant rows = 2 {
-	D = and(T2, T1, T0);
-	CZ = 1;
-	creeper(M2, M1, M0, T2, T1, T0);
+	DIE = and(CTR2, CTR1, CTR0);
+	CLR = 1;
+	creeper(MEM2, MEM1, MEM0, CTR2, CTR1, CTR0);
 }

@@ -6,16 +6,16 @@ set bg = id;
 set fg = tile;
 
 ant 1 {
-	(-H, A0, AR, AA) = cpy(1);
-	A1 = -P3;
-	R7 = E1;
-	L = N;
+	(-HLT, A_ID0, A_ROT, A_LYR) = cpy(1);
+	A_ID1 = -PRB3;
+	ROT7 = EVR1;
+	LFT = RND;
 }
 
 ant 3 {
-	D = and(-B, E4);
-	A2 = D;
-	AA = 1;
+	DIE = and(-INL, EVR4);
+	A_ID2 = DIE;
+	A_LYR = 1;
 }
 
-# ant 4 { H = 1; }
+# ant 4 { HLT = 1; }

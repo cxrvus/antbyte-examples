@@ -7,26 +7,26 @@ set bg_filter = bin;
 
 ant main = 1 {
 	# spawn block on step 1 and cursor on step 3, then die
-	A1 = or(on(0, 1), on(1, 1));
-	(A0, D) = cpy(on(1, 1));
+	A_ID1 = or(on(0, 1), on(1, 1));
+	(A_ID0, DIE) = cpy(on(1, 1));
 }
 
-ant block = 2 { H = 1; }
+ant block = 2 { HLT = 1; }
 
 fn on_unit = (t6, t5, t4, t3, t2) => out {
 	out = and(
-		eq(T6, t6),
-		eq(T5, t5),
-		eq(T4, t4),
-		eq(T3, t3),
-		eq(T2, t2),
+		eq(CTR6, t6),
+		eq(CTR5, t5),
+		eq(CTR4, t4),
+		eq(CTR3, t3),
+		eq(CTR2, t2),
 
-		and(-T1, T0)
+		and(-CTR1, CTR0)
 	);
 }
 
 ant cursor = 3 {
-	A2 = or(
+	A_ID2 = or(
 		on_unit(0, 0, 0, 0, 0),
 		on_unit(0, 0, 1, 0, 0),
 		on_unit(0, 1, 0, 0, 1),
@@ -37,7 +37,7 @@ ant cursor = 3 {
 		0
 	);
 
-	A3 = or(
+	A_ID3 = or(
 		on_unit(0, 0, 0, 0, 1),
 		on_unit(0, 0, 0, 1, 1),
 		on_unit(0, 0, 1, 1, 0),
@@ -49,7 +49,7 @@ ant cursor = 3 {
 		0
 	);
 
-	A4 = or(
+	A_ID4 = or(
 		on_unit(0, 0, 0, 1, 0),
 		on_unit(0, 0, 1, 0, 1),
 		on_unit(0, 0, 1, 1, 1),
@@ -60,32 +60,32 @@ ant cursor = 3 {
 		0
 	);
 
-	D = on_unit(1, 0, 1, 0, 1);
+	DIE = on_unit(1, 0, 1, 0, 1);
 }
 
 fn symbol {
-	K = and(-M3, V); # kill target (if first target)
-	R0 = or(B, K); # flip on first tick and after killing target
-	M3 = or(M3, K);
-	D = T6;
+	KLL = and(-MEM3, N_OBS); # kill target (if first target)
+	ROT0 = or(INL, KLL); # flip on first tick and after killing target
+	MEM3 = or(MEM3, KLL);
+	DIE = CTR6;
 }
 
 ant dit = 4 {
 	symbol();
-	C = K;
-	H = M0;
-	M0 = or(M0, K);
+	COL = KLL;
+	HLT = MEM0;
+	MEM0 = or(MEM0, KLL);
 }
 
 ant dah = 8 { 
 	symbol();
-	(idle, M1, M0) = add(M1, M0, 0, and(M3, -M4));
-	M4 = or(M4, idle);
-	C = and(M3, -M4);
-	H = M4;
+	(idle, MEM1, MEM0) = add(MEM1, MEM0, 0, and(MEM3, -MEM4));
+	MEM4 = or(MEM4, idle);
+	COL = and(MEM3, -MEM4);
+	HLT = MEM4;
 }
 
 ant space = 16 {
 	dit();
-	C = 0;
+	COL = 0;
 }

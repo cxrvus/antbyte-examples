@@ -9,42 +9,42 @@ set start_dir = "W";
 set layer_limit = 4;
 
 fn spreader = () => c {
-	AR1 = 1;
+	A_ROT1 = 1;
 
-	# AA = P5;
-	AA = 1;
+	# A_LYR = PRB5;
+	A_LYR = 1;
 
-	(c, R1) = cpy(N1);
-	(C3, R0) = cpy(N2);
+	(c, ROT1) = cpy(RND1);
+	(COL3, ROT0) = cpy(RND2);
 
-	D = T7;
+	DIE = CTR7;
 }
 
 ant 0 {
-	A0 = T0;
-	W7 = 1;
-	D = 0;
+	A_ID0 = CTR0;
+	SLP7 = 1;
+	DIE = 0;
 	_ = spreader();
 }
 
 ant 1 {
-	A1 = 1;
-	W6 = 1;
-	C0 = spreader();
+	A_ID1 = 1;
+	SLP6 = 1;
+	COL0 = spreader();
 }
 
 ant 2 {
-	A2 = 1;
-	W4 = 1;
-	C0 = spreader();
+	A_ID2 = 1;
+	SLP4 = 1;
+	COL0 = spreader();
 }
 
 ant 4 {
-	A3 = 1;
-	W2 = 1;
-	C0 = spreader();
+	A_ID3 = 1;
+	SLP2 = 1;
+	COL0 = spreader();
 }
 
 ant 8 {
-	C0 = spreader();
+	COL0 = spreader();
 }

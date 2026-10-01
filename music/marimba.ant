@@ -9,27 +9,27 @@ set speed = 2;
 set layer_limit = 2;
 
 ant 1 {
-	(AA, A1) = cpy(B);
+	(A_LYR, A_ID1) = cpy(INL);
 
-	Y6 = 1;
-	Y0 = N0;
-	Y2 = N3;
-	Y3 = and (P1, -Y2);
-	Y4 = P2;
+	X_OUT6 = 1;
+	X_OUT0 = RND0;
+	X_OUT2 = RND3;
+	X_OUT3 = and (PRB1, -X_OUT2);
+	X_OUT4 = PRB2;
 
-	Y11 = N7;
-	Y10 = N6;
+	X_OUT11 = RND7;
+	X_OUT10 = RND6;
 
-	(C0, C1, C2, C3) = fwd(Y0, Y2, Y3, Y4);
+	(COL0, COL1, COL2, COL3) = fwd(X_OUT0, X_OUT2, X_OUT3, X_OUT4);
 }
 
 ant 2 {
-	Y0 = E1;
-	A2 = and(Y0, P3);
-	H = 1;
+	X_OUT0 = EVR1;
+	A_ID2 = and(X_OUT0, PRB3);
+	HLT = 1;
 }
 
 ant 4 {
-	(Y1, Y0) = cpy(E1);
-	D = P3;
+	(X_OUT1, X_OUT0) = cpy(EVR1);
+	DIE = PRB3;
 }

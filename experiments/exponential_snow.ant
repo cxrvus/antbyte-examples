@@ -12,10 +12,10 @@ set bg = birth_tick;
 set bg_filter = bin;
 
 ant main = 1 {
-	A0 = 1;
+	A_ID0 = 1;
 
-	(C1, R1) = cpy(N1);
-	(C2, R0) = cpy(N2);
+	(COL1, ROT1) = cpy(RND1);
+	(COL2, ROT0) = cpy(RND2);
 
-	D = T7;
+	DIE = CTR7;
 }

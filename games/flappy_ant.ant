@@ -12,85 +12,85 @@ set layer_limit = 2;
 set border = obs;
 
 ant queen = 0x00 {
-	S0 = 1; # init
+	SIG0 = 1; # init
 
-	(obs0, obs1, obs2, obs3) = dec(M1, M0);
-	last = M2;
+	(obs0, obs1, obs2, obs3) = dec(MEM1, MEM0);
+	last = MEM2;
 
-	(A1, A0) = cpy(B);
-	(A6, AR0) = cpy(and(V, obs0));	# blockade_spawner
-	(A7, AA) = cpy(and(V, obs2));	# god
-	(A5) = cpy(last);				# pipe_spawner
-	A4 = or(A6, A5);
-	AR1 = 1;
+	(A_ID1, A_ID0) = cpy(INL);
+	(A_ID6, A_ROT0) = cpy(and(N_OBS, obs0));	# blockade_spawner
+	(A_ID7, A_LYR) = cpy(and(N_OBS, obs2));	# god
+	(A_ID5) = cpy(last);				# pipe_spawner
+	A_ID4 = or(A_ID6, A_ID5);
+	A_ROT1 = 1;
 
-	D = and(last, VM47);
+	DIE = and(last, N_MEM47);
 
-	R1 = and(V, or(obs1, obs2));
-	H = or(last, and(V, obs0));
+	ROT1 = and(N_OBS, or(obs1, obs2));
+	HLT = or(last, and(N_OBS, obs0));
 	
 	# state
-	(cout, M1, M0) = add(M1, M0, 0, V);
-	last = or(last, and(M1, M0));
-	M2 = last;
+	(cout, MEM1, MEM0) = add(MEM1, MEM0, 0, N_OBS);
+	last = or(last, and(MEM1, MEM0));
+	MEM2 = last;
 }
 
 ant bird = 0x03 {
-	S7 = 1;
-	TB = 1;
+	SIG7 = 1;
+	TBK = 1;
 
-	H = or(S0, T0);
-	D = or(and(V, -M1), VA5);	# die when hitting floor or pipe
-	(A4, A1, A0) = cpy(D);		# spawn ghost
+	HLT = or(SIG0, CTR0);
+	DIE = or(and(N_OBS, -MEM1), N_ID5);	# die when hitting floor or pipe
+	(A_ID4, A_ID1, A_ID0) = cpy(DIE);		# spawn ghost
 
-	R0 = and(-S0, xor(M0, X0));
-	M0 = and(-S0, X0);
-	M1 = xor(M1, R0);
+	ROT0 = and(-SIG0, xor(MEM0, X_IN0));
+	MEM0 = and(-SIG0, X_IN0);
+	MEM1 = xor(MEM1, ROT0);
 }
 
 ant bird_ghost = 0x13 {
-	K = N; TB = 1;
-	R1 = or(P3, and(V, -VA5, M0));
-	(A4, A1, A0) = cpy(or(X0, P5));
-	M0 = V;
+	KLL = RND; TBK = 1;
+	ROT1 = or(PRB3, and(N_OBS, -N_ID5, MEM0));
+	(A_ID4, A_ID1, A_ID0) = cpy(or(X_IN0, PRB5));
+	MEM0 = N_OBS;
 }
 
 ant pipe = 0x22 { 
-	(D, K) = cpy(and(S7, V, -VA5));
-	K = 0;
-	R1 = and(-S7, P3, E3);		# random movement after bird death
+	(DIE, KLL) = cpy(and(SIG7, N_OBS, -N_ID5));
+	KLL = 0;
+	ROT1 = and(-SIG7, PRB3, EVR3);		# random movement after bird death
 }
 
 ant pipe2 = 0x2a { pipe(); }
 
 ant pipe_spawner = 0x30 {
-	D = -S7;
+	DIE = -SIG7;
 
-	spawn = and(S7, -S0, S3);
-	(A5, A1, AR0) = cpy(spawn);
-	A3 = and(spawn, or(VA36, VA56));
+	spawn = and(SIG7, -SIG0, SIG3);
+	(A_ID5, A_ID1, A_ROT0) = cpy(spawn);
+	A_ID3 = and(spawn, or(N_ID36, N_ID56));
 
-	R1 = and(-M0, -S0);
-	M0 = -S0;
+	ROT1 = and(-MEM0, -SIG0);
+	MEM0 = -SIG0;
 	
-	M7 = 1; 		# for queen
+	MEM7 = 1; 		# for queen
 }
 
 ant blockade = 0x40 {
-	D = -S7;
-	R0 = S1;
-	H = or(S0, S2, S3);
+	DIE = -SIG7;
+	ROT0 = SIG1;
+	HLT = or(SIG0, SIG2, SIG3);
 }
 
 ant blockade_spawner = 0x50 {
-	A6 = 1;
-	H = -T3;
-	D = T4;
+	A_ID6 = 1;
+	HLT = -CTR3;
+	DIE = CTR4;
 }
 
 ant god = 0x80 {
-	H = 1;
-	S1 = P3;
-	S2 = P1;
-	S3 = and(T4, T3, T2);
+	HLT = 1;
+	SIG1 = PRB3;
+	SIG2 = PRB1;
+	SIG3 = and(CTR4, CTR3, CTR2);
 }

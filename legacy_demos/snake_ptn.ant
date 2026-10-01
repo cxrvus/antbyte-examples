@@ -5,15 +5,15 @@ set border = die;
 set speed = 4;
 
 ant main = 1 {
-	C1 = 1;
+	COL1 = 1;
 
-	R1 = or(
-		and(+T3, +T2, +T1, +T0),
-		and(-T3, -T2, -T1, -T0, -B)
+	ROT1 = or(
+		and(+CTR3, +CTR2, +CTR1, +CTR0),
+		and(-CTR3, -CTR2, -CTR1, -CTR0, -INL)
 	);
 
-	R0 = or(
-		and(+T4, +T3, +T2, +T1, +T0),
-		and(-T4, -T3, -T2, -T1, -T0, -B)
+	ROT0 = or(
+		and(+CTR4, +CTR3, +CTR2, +CTR1, +CTR0),
+		and(-CTR4, -CTR3, -CTR2, -CTR1, -CTR0, -INL)
 	);
 }

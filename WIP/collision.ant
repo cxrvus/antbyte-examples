@@ -12,42 +12,42 @@ set layer_filter = 0b10;
 set bg = id;
 
 ant queen = 0 {
-	S0 = -M1;
-	S1 = -T0;
+	SIG0 = -MEM1;
+	SIG1 = -CTR0;
 
-	H = -M0;
-	M0 = B;
+	HLT = -MEM0;
+	MEM0 = INL;
 
-	A1 = B;
-	A2 = and(-M1, T6);
-	M1 = or(M1, T6);
-	AR0 = 1;
+	A_ID1 = INL;
+	A_ID2 = and(-MEM1, CTR6);
+	MEM1 = or(MEM1, CTR6);
+	A_ROT0 = 1;
 }
 
 ant player_spawner = 2 {
-	AA = 1;
-	(A1, A0) = cpy(1);
-	D = T3;
-	AR1 = 1;
+	A_LYR = 1;
+	(A_ID1, A_ID0) = cpy(1);
+	DIE = CTR3;
+	A_ROT1 = 1;
 }
 
 ant player_spawner2 = 3 {
-	A3 = 1;
-	D = T3;
+	A_ID3 = 1;
+	DIE = CTR3;
 }
 
 ant obstacle_spawner = 4 {
-	AA = 1;
-	R2 = N0;
-	R1 = N1;
-	(A2, A0) = cpy(P2);
-	D = and(T7, T6);
+	A_LYR = 1;
+	ROT2 = RND0;
+	ROT1 = RND1;
+	(A_ID2, A_ID0) = cpy(PRB2);
+	DIE = and(CTR7, CTR6);
 }
 
-ant obstacle = 5 { H = 1; }
+ant obstacle = 5 { HLT = 1; }
 
 ant player = 8 {
-	H =   or(+S0, -S1, +X1, -X0, S2);
-	R1 = and(-S0, +S1, +X1);
-	S2 = VA2;
+	HLT =   or(+SIG0, -SIG1, +X_IN1, -X_IN0, SIG2);
+	ROT1 = and(-SIG0, +SIG1, +X_IN1);
+	SIG2 = N_ID2;
 }

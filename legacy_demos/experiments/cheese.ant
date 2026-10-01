@@ -2,8 +2,8 @@ set start = top_left;
 set speed = 1000;
 
 ant main = 1 {
-	H = and(N2, N1, N0);
-	CZ = 1;
-	(C1, C0) = -fwd(C1, C0);
-	D = VC0;
+	HLT = and(RND2, RND1, RND0);
+	CLR = 1;
+	(COL1, COL0) = -fwd(COL1, COL0);
+	DIE = N_COL0;
 }

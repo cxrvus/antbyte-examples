@@ -14,73 +14,73 @@ set fg = none;
 # set fps = 1;
 
 ant queen = 0 {
-	H = M0;
-	M0 = or(M0, T1);
-	(A1, AA, AR1, AR0) = cpy(-M0);
+	HLT = MEM0;
+	MEM0 = or(MEM0, CTR1);
+	(A_ID1, A_LYR, A_ROT1, A_ROT0) = cpy(-MEM0);
 
-	S0 = -M0;
-	S1 = and(M0, P4);
-	S2 = -T0;
+	SIG0 = -MEM0;
+	SIG1 = and(MEM0, PRB4);
+	SIG2 = -CTR0;
 
-	D = and(M0, -S3);
+	DIE = and(MEM0, -SIG3);
 }
 
 ant queen2 = 2 {
-	S3 = 1;
-	H = S0;
-	(D, A1, A0) = cpy(-S0);
+	SIG3 = 1;
+	HLT = SIG0;
+	(DIE, A_ID1, A_ID0) = cpy(-SIG0);
 }
 
 ant cig_spawner = 3 {
-	S3 = 1;
-	A2 = -M0;
-	A3 = +M0;
-	M0 = or(M0, T2);
-	D = on(0, 1, 1, 0, 0, 0);
+	SIG3 = 1;
+	A_ID2 = -MEM0;
+	A_ID3 = +MEM0;
+	MEM0 = or(MEM0, CTR2);
+	DIE = on(0, 1, 1, 0, 0, 0);
 }
 
 ant filter = 4 {
-	S3 = 1;
+	SIG3 = 1;
 
-	D = and(V, -VA3, -VA2, -VA1);
-	H = or(-M0, S2);
-	(C1, C0) = cpy(and(H, -D));
+	DIE = and(N_OBS, -N_ID3, -N_ID2, -N_ID1);
+	HLT = or(-MEM0, SIG2);
+	(COL1, COL0) = cpy(and(HLT, -DIE));
 
-	R1 = and(-M0, S4);
-	M0 = or(M0, S4);
-	S4 = -V;
+	ROT1 = and(-MEM0, SIG4);
+	MEM0 = or(MEM0, SIG4);
+	SIG4 = -N_OBS;
 }
 
 ant cig = 8 {
-	H = 1;
+	HLT = 1;
 			
-	R0 = -V;
-	M0 = or(M0, -V);
-	lit = M0;
+	ROT0 = -N_OBS;
+	MEM0 = or(MEM0, -N_OBS);
+	lit = MEM0;
 
-	(A3, A2, AR0) = cpy(lit);
+	(A_ID3, A_ID2, A_ROT0) = cpy(lit);
 
-	M1 = xor(M1, P2);
-	AM1 = M1;
+	MEM1 = xor(MEM1, PRB2);
+	A_MEM1 = MEM1;
 
-	(C3, C0) = cpy(1);
-	C2 = -lit;
-	C1 = and(lit, P2);
+	(COL3, COL0) = cpy(1);
+	COL2 = -lit;
+	COL1 = and(lit, PRB2);
 
-	D = or(and(lit, S1), VA2);
-	(C3, C2, C1, C0) = fwd_and(-D, C3, C2, C1, C0);
+	DIE = or(and(lit, SIG1), N_ID2);
+	(COL3, COL2, COL1, COL0) = fwd_and(-DIE, COL3, COL2, COL1, COL0);
 }
 
 ant smoke = 12 {
-	S3 = 1;
+	SIG3 = 1;
 
-	D = and(V, -VA3);
-	paint = and(-D, S2);
-	H = paint;
-	(C3, C2, C1, C0) = fwd_and(paint, -M1, M1, M1, M1);
+	DIE = and(N_OBS, -N_ID3);
+	paint = and(-DIE, SIG2);
+	HLT = paint;
+	(COL3, COL2, COL1, COL0) = fwd_and(paint, -MEM1, MEM1, MEM1, MEM1);
 
-	turn = N0;
-	R1 = turn;
-	R0 = and(-M0, turn);
-	M0 = xor(M0, turn);
+	turn = RND0;
+	ROT1 = turn;
+	ROT0 = and(-MEM0, turn);
+	MEM0 = xor(MEM0, turn);
 }

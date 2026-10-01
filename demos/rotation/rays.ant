@@ -5,11 +5,11 @@ set border = die;
 set fg = none;
 
 ant queen = 0 {
-	(H, A, AR) = cpy(1);
-	(R2, R3, R4, R5) = fwd(N3, N2, N1, N0);
+	(HLT, A_ID, A_ROT) = cpy(1);
+	(ROT2, ROT3, ROT4, ROT5) = fwd(RND3, RND2, RND1, RND0);
 }
 
 ant ray = 1 {
-	M = or(M, T1);
-	C = M;
+	MEM = or(MEM, CTR1);
+	COL = MEM;
 }

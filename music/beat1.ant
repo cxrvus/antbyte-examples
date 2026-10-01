@@ -7,24 +7,24 @@ set layer_limit = 2;
 set layer_filter = 0b10;
 
 ant queen = 0 {
-	H = 1;
-	AA = 1;
-	A0 = B;
-	A1 = and(-A0, P3);
+	HLT = 1;
+	A_LYR = 1;
+	A_ID0 = INL;
+	A_ID1 = and(-A_ID0, PRB3);
 }
 
 ant 1 {
-	# (Y3, Y2, Y1, Y0) = fwd(T3, T2, T1, T0);
-	(Y3, Y2, Y1, Y0) = fwd(N3, 0, 0, N0);
-	Y4 = N4;
-	Y6 = 1;
-	W0 = 1;
+	# (X_OUT3, X_OUT2, X_OUT1, X_OUT0) = fwd(CTR3, CTR2, CTR1, CTR0);
+	(X_OUT3, X_OUT2, X_OUT1, X_OUT0) = fwd(RND3, 0, 0, RND0);
+	X_OUT4 = RND4;
+	X_OUT6 = 1;
+	SLP0 = 1;
 }
 
 ant 2 {
-	Y0 = and(-S1, T0);
-	Y1 = M0;
-	M0 = Y0;
-	S1 = or(Y1, Y0);
-	D = T6;
+	X_OUT0 = and(-SIG1, CTR0);
+	X_OUT1 = MEM0;
+	MEM0 = X_OUT0;
+	SIG1 = or(X_OUT1, X_OUT0);
+	DIE = CTR6;
 }

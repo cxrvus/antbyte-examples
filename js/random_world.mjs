@@ -19,7 +19,7 @@ function generateWorld() {
 	return world
 }
 
-const EXCLUDE = ['Y', 'VM', 'VA'];
+const EXCLUDE = ['X_OUT', 'N_MEM', 'N_ID'];
 
 const PINS = ALL_PINS.filter(pin => !EXCLUDE.includes(pin.code));
 const INPUTS = PINS.filter(pin => pin.io_type === "Input" || pin.io_type === null);
@@ -49,31 +49,31 @@ function distinct(array) {
 /** @param {number} index @returns {AntByte.Behavior} */
 function generateAnt(index) {
 	let filteredInputs = includeRange(INPUTS, [
-		['M', 0, 3],
-		['X', 0, 3],
-		['C', 0, 3],
-		['T', 4, 7],
-		['E', 4, 7],
-		['S', 0, 3],
-		['R', 1, 3],
-		['V', 0, 7],
+		['MEM', 0, 3],
+		['X_IN', 0, 3],
+		['COL', 0, 3],
+		['CTR', 4, 7],
+		['EVR', 4, 7],
+		['SIG', 0, 3],
+		['ROT', 1, 3],
+		['N_OBS', 0, 7],
 	]);
 
 	let filteredOutputs = includeRange(OUTPUTS, [
-		['M', 0, 3],
-		// ['Y', 0, 11],
-		['C', 0, 3],
-		['S', 0, 3],
-		['R', 0, 2],
-		['R', 5, 7],
-		['L', 0, 0],
-		['Z', 0, 0],
-		['A', 0, 3],
-		['AR', 0, 3],
-		['AA', 0, 0],
-		['D', 0, 0],
-		['K', 0, 0],
-		['W', 0, 1],
+		['MEM', 0, 3],
+		// ['X_OUT', 0, 11],
+		['COL', 0, 3],
+		['SIG', 0, 3],
+		['ROT', 0, 2],
+		['ROT', 5, 7],
+		['LFT', 0, 0],
+		['RST', 0, 0],
+		['A_ID', 0, 3],
+		['A_ROT', 0, 3],
+		['A_LYR', 0, 0],
+		['DIE', 0, 0],
+		['KLL', 0, 0],
+		['SLP', 0, 1],
 	]);
 
 	let allInputs = includeRange(INPUTS, INPUTS.map(pin => [pin.code, 0, pin.size - 1]));

@@ -15,33 +15,33 @@ set fg = none;
 
 
 ant queen = 0 {
-	S0 = 1; # initialization phase
+	SIG0 = 1; # initialization phase
 
-	A2 = on(0, 0, 0); # tail
-	A1 = on(1, 1, 0); # head
-	A3 = on(1, 1, 1); # food spawner
+	A_ID2 = on(0, 0, 0); # tail
+	A_ID1 = on(1, 1, 0); # head
+	A_ID3 = on(1, 1, 1); # food spawner
 
 	# score
-	A4 = or(on(0, 0, 1), on(0, 1, 0));
-	A0 = and(A4, on(0, 1, 0));
+	A_ID4 = or(on(0, 0, 1), on(0, 1, 0));
+	A_ID0 = and(A_ID4, on(0, 1, 0));
 
-	# stop spawning after A3
-	(A4, A3, A2, A1, A0) = fwd_and(-M0, A4, A3, A2, A1, A0);
-	H = M0;
-	M0 = or(M0, A3);
+	# stop spawning after A_ID3
+	(A_ID4, A_ID3, A_ID2, A_ID1, A_ID0) = fwd_and(-MEM0, A_ID4, A_ID3, A_ID2, A_ID1, A_ID0);
+	HLT = MEM0;
+	MEM0 = or(MEM0, A_ID3);
 
-	# stop painting after A1
-	M1 = or(M1, A1);
-	paint = -M1;
-	(C5, C1) = cpy(paint);
+	# stop painting after A_ID1
+	MEM1 = or(MEM1, A_ID1);
+	paint = -MEM1;
+	(COL5, COL1) = cpy(paint);
 
-	AA0 = or(A4, A3); AA1 = A4;
+	A_LYR0 = or(A_ID4, A_ID3); A_LYR1 = A_ID4;
 
-	D = T6;	# head start for food spawner
+	DIE = CTR6;	# head start for food spawner
 }
 
 fn score = (incr, m3i, m2i, m1i, m0i) => (cout, m3o, m2o, m1o, m0o, y3, y2, y1, y0) {
-	H = 1;
+	HLT = 1;
 
 	# scoring
 	(cout, m0o) = add(m0i, incr);
@@ -50,42 +50,42 @@ fn score = (incr, m3i, m2i, m1i, m0i) => (cout, m3o, m2o, m1o, m0o, y3, y2, y1, 
 	(cout, m3o) = add(cout, m3i);
 	(y3, y2, y1, y0) = fwd(m3o, m2o, m1o, m0o);
 
-	S7 = S7; 	# game over
-	(A4, A1, AR0) = cpy(S7);
-	D = and(S7, X4);		# restart by pressing N
+	SIG7 = SIG7; 	# game over
+	(A_ID4, A_ID1, A_ROT0) = cpy(SIG7);
+	DIE = and(SIG7, X_IN4);		# restart by pressing RND
 }
 
 ant score_lsb = 16 { # @layer = 3
-	incr = and(S2, -S0);
-	(cout, M3, M2, M1, M0, Y3, Y2, Y1, Y0) = score(incr, M3, M2, M1, M0);
-	S3 = cout;
+	incr = and(SIG2, -SIG0);
+	(cout, MEM3, MEM2, MEM1, MEM0, X_OUT3, X_OUT2, X_OUT1, X_OUT0) = score(incr, MEM3, MEM2, MEM1, MEM0);
+	SIG3 = cout;
 }
 
 ant score_msb = 17 { # @layer = 3
-	incr = S3;
-	(_win, M7, M6, M5, M4, Y7, Y6, Y5, Y4) = score(incr, M7, M6, M5, M4);
+	incr = SIG3;
+	(_win, MEM7, MEM6, MEM5, MEM4, X_OUT7, X_OUT6, X_OUT5, X_OUT4) = score(incr, MEM7, MEM6, MEM5, MEM4);
 }
 
-ant game_over = 18 { D = X4; C0 = and(CZ, xor(C0, T3)); }
+ant game_over = 18 { DIE = X_IN4; COL0 = and(CLR, xor(COL0, CTR3)); }
 
 ant head = 2 {
-	D = and(-S0, C5);	# die on intersection
-	S7 = D;				# game over on death
+	DIE = and(-SIG0, COL5);	# die on intersection
+	SIG7 = DIE;				# game over on death
 
-	H = S0;
-	W3 = -S0;
-	(C5, C1) = cpy(-S0);
+	HLT = SIG0;
+	SLP3 = -SIG0;
+	(COL5, COL1) = cpy(-SIG0);
 
-	C4 = 0; # eat food
+	COL4 = 0; # eat food
 
 	## WASD movement
 	# todo: extract to module
-	w0 = and(+M2, +M1);
-	a0 = and(+M2, -M1);
-	s0 = and(-M2, +M1);
-	d0 = and(-M2, -M1);
+	w0 = and(+MEM2, +MEM1);
+	a0 = and(+MEM2, -MEM1);
+	s0 = and(-MEM2, +MEM1);
+	d0 = and(-MEM2, -MEM1);
 
-	w1 = X0; a1 = X1; s1 = X2; d1 = X3;
+	w1 = X_IN0; a1 = X_IN1; s1 = X_IN2; d1 = X_IN3;
 	# todo: assert uniqueness
 
 	right = or(
@@ -96,47 +96,47 @@ ant head = 2 {
 	);
 
 	(r0, r1) = rot_64(left, right);
-	(C7, C6) = fwd(r0, r1);
+	(COL7, COL6) = fwd(r0, r1);
 
 	# remember rotation
-	(cout, M1) = add(M1, r1);
-	(cout, M2) = add(cout, M2, r0);
+	(cout, MEM1) = add(MEM1, r1);
+	(cout, MEM2) = add(cout, MEM2, r0);
 }
 
 ant tail = 4 {
-	D = S7;
+	DIE = SIG7;
 
-	H = or(C3, S0);
-	W3 = -S0;
-	(C5, C1) = cpy(H);
-	C3 = 0;
+	HLT = or(COL3, SIG0);
+	SLP3 = -SIG0;
+	(COL5, COL1) = cpy(HLT);
+	COL3 = 0;
 
-	(R0, R1) = fwd(C7, C6);
-	(C7, C6) = cpy(0);
+	(ROT0, ROT1) = fwd(COL7, COL6);
+	(COL7, COL6) = cpy(0);
 }
 
 ant food_spawner = 8 { # @layer = 1
-	D = S7;
+	DIE = SIG7;
 
 	# random movement
-	H = P2;
-	turn = P3;
-	M2 = xor(M2, turn);
-	(right, -left) = cpy(M2);
-	R1 = and(turn, or(right, left));
-	R0 = and(turn, left);
+	HLT = PRB2;
+	turn = PRB3;
+	MEM2 = xor(MEM2, turn);
+	(right, -left) = cpy(MEM2);
+	ROT1 = and(turn, or(right, left));
+	ROT0 = and(turn, left);
 
-	spawn = and(-S1, -S0, -M0, -C5);
-	(A3, A0, AA0) = cpy(spawn);
-	M0 = spawn;	# signal delay
+	spawn = and(-SIG1, -SIG0, -MEM0, -COL5);
+	(A_ID3, A_ID0, A_LYR0) = cpy(spawn);
+	MEM0 = spawn;	# signal delay
 }
 
 ant food = 9 { # @layer = 2;
-	H = 1;
-	S1 = 1;
-	score = and(-B, -C4);
-	(S2, C3) = cpy(+score); # score upon being eaten
-	(C4, C0) = cpy(-score);
-	D = or(score, S7);
-	C1 = 1;
+	HLT = 1;
+	SIG1 = 1;
+	score = and(-INL, -COL4);
+	(SIG2, COL3) = cpy(+score); # score upon being eaten
+	(COL4, COL0) = cpy(-score);
+	DIE = or(score, SIG7);
+	COL1 = 1;
 }

@@ -4,14 +4,14 @@ set border = cycle;
 set bg = id;
 
 ant 1 {
-	(H, AR, AA) = cpy(1);
-	(R7, A1, A0) = cpy(E1);
+	(HLT, A_ROT, A_LYR) = cpy(1);
+	(ROT7, A_ID1, A_ID0) = cpy(EVR1);
 }
 
 ant 3 {
-	D = and(-B, E5);
-	A2 = D;
-	AA = 1;
+	DIE = and(-INL, EVR5);
+	A_ID2 = DIE;
+	A_LYR = 1;
 }
 
-ant 4 { H = 1; }
+ant 4 { HLT = 1; }

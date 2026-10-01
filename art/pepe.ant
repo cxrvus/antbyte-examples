@@ -8,89 +8,89 @@ set fps = 6;
 # set fps = 2;
 
 ant queen = 0 {
-	(A3, AR0, AR1) = cpy(on(0, 0, 1, 1));
-	(A1, A0, D, ) = cpy(on(1, 1, 1, 0));
+	(A_ID3, A_ROT0, A_ROT1) = cpy(on(0, 0, 1, 1));
+	(A_ID1, A_ID0, DIE, ) = cpy(on(1, 1, 1, 0));
 }
 
-ant clk = 3 { H = 1; S0 = T0; S1 = E4; }
+ant clk = 3 { HLT = 1; SIG0 = CTR0; SIG1 = EVR4; }
 
 ant cig = 1 {
-	AM0 = B; AM2 = T2; AM1 = -or(AM0, AM2); D = AM2;
-	(A1, AR0, AR1) = cpy(1);
+	A_MEM0 = INL; A_MEM2 = CTR2; A_MEM1 = -or(A_MEM0, A_MEM2); DIE = A_MEM2;
+	(A_ID1, A_ROT0, A_ROT1) = cpy(1);
 }
 
 ant cig_part = 2 {
-	TB = 1;
+	TBK = 1;
 
-	(move, -H, R0) = cpy(S1);
-	(is_up, M3) = cpy(xor(M3, S1));
+	(move, -HLT, ROT0) = cpy(SIG1);
+	(is_up, MEM3) = cpy(xor(MEM3, SIG1));
 
-	filter = M0;
-	core = M1;
-	(brown, white, gray) = fwd_and(-move, M0, M1, M2);
+	filter = MEM0;
+	core = MEM1;
+	(brown, white, gray) = fwd_and(-move, MEM0, MEM1, MEM2);
 
-	C3 = white; C2 = or(white, gray); C1 = or(white, brown, gray);
-	C0 = or(C1, and(move, filter, is_up));
-	C4 = or(C3, C2, C1, C0);
+	COL3 = white; COL2 = or(white, gray); COL1 = or(white, brown, gray);
+	COL0 = or(COL1, and(move, filter, is_up));
+	COL4 = or(COL3, COL2, COL1, COL0);
 
-	(A2, AA, AR0, AR1) = cpy(and(core, is_up, -move));
+	(A_ID2, A_LYR, A_ROT0, A_ROT1) = cpy(and(core, is_up, -move));
 }
 
 ant smoke = 4 {
-	D = or(S2, and(V, -VA2));
-	keep = C4;
-	paint = and(-D, S0, -keep);
+	DIE = or(SIG2, and(N_OBS, -N_ID2));
+	keep = COL4;
+	paint = and(-DIE, SIG0, -keep);
 
-	H = S0;
-	C3 = or(paint, and(keep, C0));
+	HLT = SIG0;
+	COL3 = or(paint, and(keep, COL0));
 
-	turn = N0;
-	R1 = turn;
-	R0 = and(-M0, turn);
-	M0 = xor(M0, turn);
+	turn = RND0;
+	ROT1 = turn;
+	ROT0 = and(-MEM0, turn);
+	MEM0 = xor(MEM0, turn);
 }
 
 ant frog = 0x8 {
-	H = B;
-	D = T3;
+	HLT = INL;
+	DIE = CTR3;
 
 	right = or(on(0, 1, 1), on(1, 0, 1));
 	left =  or(on(1, 0, 0), on(1, 1, 0));
 	
-	A3 = and(-B, -D);
-	(A2, A1, A0) = fwd_and(A3, T2, T1, T0);
-	(AR2, -AR1) = cpy(right);
+	A_ID3 = and(-INL, -DIE);
+	(A_ID2, A_ID1, A_ID0) = fwd_and(A_ID3, CTR2, CTR1, CTR0);
+	(A_ROT2, -A_ROT1) = cpy(right);
 
 	rot_32(left, right);
 }
 
-fn line = (t2, t1, t0) => color { color = 1; C4 = 1; D = on(t2, t1, t0); }
+fn line = (t2, t1, t0) => color { color = 1; COL4 = 1; DIE = on(t2, t1, t0); }
 
-ant 0x9 { C2 = line(1, 1, 0); }
-ant 0xa { C1 = line(1, 1, 0); }
-ant 0xc { C1 = line(1, 1, 0); }
-ant 0xe { C1 = line(1, 1, 0); }
+ant 0x9 { COL2 = line(1, 1, 0); }
+ant 0xa { COL1 = line(1, 1, 0); }
+ant 0xc { COL1 = line(1, 1, 0); }
+ant 0xe { COL1 = line(1, 1, 0); }
 
 ant mouth = 0xb {
-	C4 = 1;
-	(M0, C0, -C1) = cpy(or(M0, T2));
-	(A0, D) = cpy(on(1, 1, 1));
+	COL4 = 1;
+	(MEM0, COL0, -COL1) = cpy(or(MEM0, CTR2));
+	(A_ID0, DIE) = cpy(on(1, 1, 1));
 }
 
 ant eyes = 0xd {
-	C4 = 1;
-	(t0, t1, t2, t3, t4, t5, t6, t7) = dec(T2, T1, T0);
+	COL4 = 1;
+	(t0, t1, t2, t3, t4, t5, t6, t7) = dec(CTR2, CTR1, CTR0);
 	green = or(t0, t1, t7);
 	white = or(t2, t4, t5);
-	C1 = or(white, green);
-	(C3, C2, C0) = cpy(white);
-	D = t7;
+	COL1 = or(white, green);
+	(COL3, COL2, COL0) = cpy(white);
+	DIE = t7;
 }
 
 ant ears = 0xf {
-	(C4, C1) = cpy(and(
-		-B,
+	(COL4, COL1) = cpy(and(
+		-INL,
 		line(1, 1, 1),
-		or(one(T2, T1, T0), on(1, 0, 1))
+		or(one(CTR2, CTR1, CTR0), on(1, 0, 1))
 	));
 }
