@@ -1,0 +1,34 @@
+set height = 64;
+set width = 96;
+set start_pos = bottom;
+set start_dir = "N";
+set fps = 8;
+set speed = 4;
+set border = die;
+
+fn green { COL_1 = 1; }
+
+ant queen = 0 {
+	green();
+
+	spawn_branch = and(RND_0, CLK_0);
+	A_ID_2 = spawn_branch;
+	(A_ROT_3:2) = cpy(1);
+
+	MEM_0 = xor(MEM_0, spawn_branch);
+	A_LFT = MEM_0;
+}
+
+ant branch = 4 {
+	green();
+	DIE = or(PRB_4, CTR_5);
+	(A_ID_2, A_ID_0, A_ROT_4) = cpy(CTR_3);
+	A_LFT = RND;
+}
+
+ant branch2 = 5 {
+	green();
+	DIE = or(PRB_3, CTR_3);
+	LFT = RND;
+	ROT_5 = PRB_2;
+}
