@@ -49,18 +49,17 @@ function distinct(array) {
 /** @param {number} index @returns {AntByte.Behavior} */
 function generateAnt(index) {
 	let filteredInputs = includeRange(INPUTS, [
-		['MEM', 0, 3],
-		['X_IN', 0, 3],
+		['MEM', 0, 2],
+		['X_IN', 0, 5],
 		['COL', 0, 3],
-		['CTR', 4, 7],
-		['CLK', 4, 7],
+		['CTR', 5, 7],
+		['CLK', 5, 7],
 		['SIG', 0, 3],
-		['ROT', 1, 3],
-		['OBS', 0, 7],
+		// ['OBS', 0, 2],
 	]);
 
 	let filteredOutputs = includeRange(OUTPUTS, [
-		['MEM', 0, 3],
+		['MEM', 0, 2],
 		// ['X_OUT', 0, 11],
 		['COL', 0, 3],
 		['SIG', 0, 3],
@@ -85,7 +84,8 @@ function generateAnt(index) {
 	let selectedInputs = distinct(getSubset(filteredInputs, 4).concat(randomInputs));
 	let selectedOutputs = distinct(getSubset(filteredOutputs, 16).concat(randomOutputs));
 
-	if (selectedInputs.length > 12) selectedInputs = selectedInputs.slice(0, 12);
+	let INPUT_CAP = 8;
+	if (selectedInputs.length > INPUT_CAP) selectedInputs = selectedInputs.slice(0, INPUT_CAP);
 
 	const inputCount = selectedInputs.length;
 	const outputCount = selectedOutputs.length;
@@ -116,10 +116,9 @@ function getSubset(superSet, amount) {
 
 const world = generateWorld()
 
-world.cfg = { height: 192, width: 255, speed: 8, fps: 30, keys: "asdfghjk", decay: 0x80, ant_limit: 0x400, layer_limit: 5, fg: 'layers', looping: true }
-world.cfg.border = { 0: 'obs', 1: 'wrap', 2: 'die' };
+world.cfg = { height: 192, width: 255, speed: 8, fps: 30, keys: "asdfghjk", decay: 0x80, ant_limit: 2000, layer_limit: 8, fg: 'layers', looping: true }
+world.cfg.border = { 0: 'cycle', 1: 'wrap', 2: 'die', 3: 'obs' };
 // world.cfg.midi = { out_ch: { 0: 1, 1: 2, 2: 3, 3: 4 } };
-// world.cfg.keys = "asdfghj"
 
 if (KEEP_FILES) {
 	const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-').replace('C', '-')
