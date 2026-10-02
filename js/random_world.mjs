@@ -37,7 +37,7 @@ function includeRange(pins, rules) {
 		if (pin.size == 1) return code;
 
 		const indexes = [...Array(max - min + 1).keys()];
-		return indexes.map(i => code + (i + min).toString(8));
+		return indexes.map(i => code + '_' + (i + min).toString(8));
 	})
 }
 
