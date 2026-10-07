@@ -62,8 +62,10 @@ function generateAnt(index) {
 		['MEM', 0, 2],
 		// ['X_OUT', 0, 11],
 		['COL', 0, 3],
+		['DCY', 1, 2],
+		['DCY', 6, 7],
 		['SIG', 0, 3],
-		['ROT', 0, 2],
+		['ROT', 1, 2],
 		['ROT', 5, 7],
 		['LFT', 0, 0],
 		['RST', 0, 0],
@@ -72,7 +74,7 @@ function generateAnt(index) {
 		['A_LYR', 0, 0],
 		['DIE', 0, 0],
 		['KLL', 0, 0],
-		['SLP', 0, 1],
+		['SLP', 0, 2],
 	]);
 
 	let allInputs = includeRange(INPUTS, INPUTS.map(pin => [pin.code, 0, pin.size - 1]));
@@ -116,8 +118,9 @@ function getSubset(superSet, amount) {
 
 const world = generateWorld()
 
-world.cfg = { height: 192, width: 255, speed: 8, fps: 30, keys: "asdfghjk", decay: 0x80, ant_limit: 2000, layer_limit: 8, fg: 'layers', looping: true }
-world.cfg.border = { 0: 'cycle', 1: 'wrap', 2: 'die', 3: 'obs' };
+world.cfg = { height: 192, width: 255, speed: 4, fps: 20, keys: "asdfghjk", decay: 128, ant_limit: 1500, layer_limit: 8, fg: 'layers', looping: true }
+world.cfg.border = { 0: 'die', 1: 'wrap', 2: 'wrap', 3: 'obs' };
+// world.cfg.border = { 0: 'die' };
 // world.cfg.midi = { out_ch: { 0: 1, 1: 2, 2: 3, 3: 4 } };
 
 if (KEEP_FILES) {
