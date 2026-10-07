@@ -4,7 +4,7 @@ set border = wrap;
 set bg_filter = bin;
 set speed = 32;
 
-fn dir_change = (mem, clock) => (mem_out, dir) {
+def dir_change(mem, clock) => (mem_out, dir) {
 	dir = xor(mem, clock);
 	mem_out = clock;
 }

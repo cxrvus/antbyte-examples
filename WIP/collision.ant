@@ -47,7 +47,7 @@ ant obstacle_spawner = 4 {
 ant obstacle = 5 { HLT = 1; }
 
 ant player = 8 {
-	HLT =   or(+SIG_0, -SIG_1, +X_IN_1, -X_IN_0, SIG_2);
+	HLT = or(+SIG_0, -SIG_1, +X_IN_1, -X_IN_0, SIG_2);
 	ROT_1 = and(-SIG_0, +SIG_1, +X_IN_1);
 	SIG_2 = N_ID_2;
 }

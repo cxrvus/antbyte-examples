@@ -31,7 +31,7 @@ ant queen = 0 {
 	DIE = spawn_hi_hat;
 }
 
-fn play = (note_on, y1, y0) => () {
+def play(note_on, y1, y0) {
 	HLT = or(SIG_0, SIG_1);
 	(X_OUT_1, X_OUT_0) = fwd_and(and(-SIG_0, -SIG_1, note_on), y1, y0);
 }

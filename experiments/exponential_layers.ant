@@ -8,7 +8,7 @@ set start_dir = "W";
 
 set layer_limit = 4;
 
-fn spreader = () => c {
+def spreader() => c {
 	A_ROT_1 = 1;
 
 	# A_LYR = PRB_5;

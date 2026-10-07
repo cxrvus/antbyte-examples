@@ -40,7 +40,7 @@ ant queen = 0 {
 	DIE = CTR_6;	# head start for food spawner
 }
 
-fn score = (incr, m3i, m2i, m1i, m0i) => (cout, m3o, m2o, m1o, m0o, y3, y2, y1, y0) {
+def score(incr, m3i, m2i, m1i, m0i) => (cout, m3o, m2o, m1o, m0o, y3, y2, y1, y0) {
 	HLT = 1;
 
 	# scoring

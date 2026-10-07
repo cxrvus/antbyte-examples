@@ -32,7 +32,7 @@ ant queen = 0 {
 	SLP_0 = or(A_ID_1, A_ID_2, A_ID_4);
 }
 
-fn worker { SIG_0 = 1; DIE = COL_4; }
+def worker() { SIG_0 = 1; DIE = COL_4; }
 
 ant randomizer = 0b10000 {
 	worker();
@@ -40,7 +40,7 @@ ant randomizer = 0b10000 {
 } 
 
 # uses 8 input pins
-fn neighbors = () => (eq0, eq1, eq2, eq3, eq4, eq5, eq6, eq7, eq8) {
+def neighbors() => (eq0, eq1, eq2, eq3, eq4, eq5, eq6, eq7, eq8) {
 	(w3, w2, w1, w0) = hw(
 		N_COL_00, N_COL_10, N_COL_20, N_COL_30,
 		N_COL_40, N_COL_50, N_COL_60, N_COL_70,

@@ -4,7 +4,7 @@ set border = die;
 set bg_filter = bin;
 set speed = 64;
 
-fn main = in_color => out_color {
+def main(in_color) => (out_color) {
 	CLR = 1;
 
 	out_color = -in_color;

@@ -6,7 +6,7 @@ set fps = 8;
 set speed = 4;
 set border = die;
 
-fn green { COL_1 = 1; }
+def green() { COL_1 = 1; }
 
 ant queen = 0 {
 	green();

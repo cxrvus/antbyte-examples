@@ -55,7 +55,7 @@ ant frog = 0x8 {
 	DIE = CTR_3;
 
 	right = or(on(0, 1, 1), on(1, 0, 1));
-	left =  or(on(1, 0, 0), on(1, 1, 0));
+	left = or(on(1, 0, 0), on(1, 1, 0));
 	
 	A_ID_3 = and(-INL, -DIE);
 	(A_ID_2, A_ID_1, A_ID_0) = fwd_and(A_ID_3, CTR_2, CTR_1, CTR_0);
@@ -64,7 +64,7 @@ ant frog = 0x8 {
 	rot_32(left, right);
 }
 
-fn line = (t2, t1, t0) => color { color = 1; COL_4 = 1; DIE = on(t2, t1, t0); }
+def line(t2, t1, t0) => (color) { color = 1; COL_4 = 1; DIE = on(t2, t1, t0); }
 
 ant 0x9 { COL_2 = line(1, 1, 0); }
 ant 0xa { COL_1 = line(1, 1, 0); }

@@ -13,7 +13,7 @@ ant main = 1 {
 
 ant block = 2 { HLT = 1; }
 
-fn on_unit = (t6, t5, t4, t3, t2) => out {
+def on_unit(t6, t5, t4, t3, t2) => (out) {
 	out = and(
 		eq(CTR_6, t6),
 		eq(CTR_5, t5),
@@ -63,7 +63,7 @@ ant cursor = 3 {
 	DIE = on_unit(1, 0, 1, 0, 1);
 }
 
-fn symbol {
+def symbol() {
 	KLL = and(-MEM_3, OBS); # kill target (if first target)
 	ROT_0 = or(INL, KLL); # flip on first tick and after killing target
 	MEM_3 = or(MEM_3, KLL);

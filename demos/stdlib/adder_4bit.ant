@@ -11,6 +11,6 @@ ant queen = 1 { (HLT, ROT_2, A_ID_2, A_ROT_0) = cpy(1); (DIE, A_ID_1, A_ID_0) = 
 ant adder_spawner = 5 { (SLP_0, -A_ID_3, -DIE) = cpy(INL); }
 ant adder = 8 { (COL_4, COL_3, COL_2, COL_1, COL_0) = add(N_COL_23, N_COL_22, N_COL_21, N_COL_20,, N_COL_63, N_COL_62, N_COL_61, N_COL_60); }
 
-fn rand { (COL_3, COL_2, COL_1, COL_0) = fwd_and(-INL, RND_3, RND_2, RND_1, RND_0); }
+def rand() { (COL_3, COL_2, COL_1, COL_0) = fwd_and(-INL, RND_3, RND_2, RND_1, RND_0); }
 ant rhs = 4 { rand(); rot_32(0, INL); SLP_1 = INL; }
 ant lhs = 6 { rand(); rot_32(INL, 0); }

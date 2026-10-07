@@ -6,7 +6,7 @@ set start = top_left;
 set border = cycle;
 # set border = die;
 
-fn spike {
+def spike() {
 	CLR = 1;
 	COL_1 = -COL_1;
 	# COL_3 = CTR_7;
@@ -16,7 +16,7 @@ fn spike {
 	ROT_2 = CTR_7;
 }
 
-fn reproduce = () => spawn {
+def reproduce() => spawn {
 	spawn = and(CTR_7, -or(
 		CTR_3,
 		CTR_2,

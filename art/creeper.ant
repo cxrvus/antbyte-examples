@@ -5,7 +5,7 @@ set speed = 64;
 set fps = 24;
 set fg = none;
 
-fn main = (y2, y1, y0, x2, x1, x0) => () {
+def main(y2, y1, y0, x2, x1, x0) {
 	black = or(
 		and(
 			or(

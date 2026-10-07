@@ -6,7 +6,7 @@ set size = 128;
 set border = cycle;
 set speed = 32;
 
-fn main = in_color => out_color {
+def main(in_color) => out_color {
 	out_color = langton(in_color);
 	ROT_2 = ROT_1;
 	ROT_1 = 0;

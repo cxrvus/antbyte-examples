@@ -20,7 +20,7 @@ ant queen = 0 {
 	DIE = A_ID_0;
 }
 
-fn slow { SLP_3 = 1; }
+def slow() { SLP_3 = 1; }
 
 ##### Layer 1
 
