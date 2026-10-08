@@ -1,5 +1,5 @@
 set start = top_left;
-set start_dir = "W";
+set start_dir = 4;
 set layer_limit = 2;
 set layer_filter = 0b10;
 set fg = id;

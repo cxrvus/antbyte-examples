@@ -1,7 +1,7 @@
 set {
 	fps = 8;
 	border = die;
-	start_pos = top; start_dir = "W";
+	start_pos = top; start_dir = 4;
 	width = 3; height = 32;
 	fg = tile; bg = id;
 }

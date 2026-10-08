@@ -5,7 +5,7 @@ set sleep = 5000;
 # set size = 24;
 
 set start = bottom_right;
-set start_dir = "W";
+set start_dir = 4;
 set fps = 16;
 # set fps = 4;
 

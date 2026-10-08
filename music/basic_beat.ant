@@ -1,7 +1,7 @@
 use_cfg sp404_cfg;
 
 set start_pos = top_left;
-set start_dir = "S";
+set start_dir = 2;
 set start_tick = 48;
 set width = 16;
 set height = 4;

@@ -4,7 +4,7 @@ set height = 90;
 set width = 180;
 set speed = 32;
 set fps = 24;
-set start_dir = "W";
+set start_dir = 4;
 
 set layer_limit = 4;
 
