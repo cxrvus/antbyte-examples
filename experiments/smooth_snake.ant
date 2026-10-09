@@ -1,0 +1,61 @@
+# set fps = 8;
+set speed = 16;
+set keys = "adw";
+set size = 128;
+set loop;
+set start_pos = top_right;
+set start_dir = 4;
+set fg = id;
+set euclid;
+
+set {
+	border_0 = obs;
+	border_1 = die;
+}
+
+ant queen = 0 {
+	HLT = -INL;
+	(-spawn_snake, spawn_ui) = cpy(CTR);
+	(A_ROT_2, A_LFT, A_ID_1, A_LYR) = cpy(spawn_snake);
+	(DIE, A_ID_2) = cpy(spawn_ui);
+}
+
+ant snake_spawner = 2 {
+	(DIE, A_ID_1:0) = cpy(CTR_6);
+}
+
+ant snake = 3 {
+	SIG_0 = 1;
+	COL_1 = 1;
+
+	(DCY_14:3) = cpy(1);
+	DIE = or(N_COL_1, N_COL_3);
+	# LFT = X_IN_0;
+	break = and(X_IN_2, SIG_1);
+	HLT = mux(break,, -CLK_3, -CLK_4);
+
+	(ROT_7:6) = cpy(and(
+		# or(-HLT, and(break, CLK_2)),
+		or(-HLT, CLK_2),
+		or(X_IN_1:0)
+	));
+
+}
+
+ant ui_end = 4 {
+	(A_ID_2:1, A_ROT_0) = cpy(INL);
+	COL_2 = 1;
+	COL_3 = 1;
+	DIE = OBS;
+}
+
+ant ui = 6 {
+	HLT = -CLK_2;
+	RST = 1;
+	boost = X_IN_2;
+	(ROT_0, -COL_2) = cpy(boost);
+	DIE = and(MEM_0, -SIG_0);
+	MEM_0 = or(MEM_0, SIG_0);
+	cant_boost = and(boost, OBS);
+	SIG_1 = -cant_boost;
+}
