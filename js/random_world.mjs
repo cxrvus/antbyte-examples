@@ -4,13 +4,13 @@
 import { writeFileSync } from 'fs'
 import { run, newWorld, PINS as ALL_PINS, randomInt } from "../../antbyte-js/lib.mjs"
 
-const KEEP_FILES = false;
+const KEEP_FILES = true;
 
 /** @returns {AntByte.World} */
 function generateWorld() {
 	const world = newWorld()
 
-	const antCount = randomInt(12) + 6
+	const antCount = randomInt(6) + 12
 
 	for (let i = 1; i <= antCount-1; i++) {
 		world.ants[i] = generateAnt(i)
@@ -82,7 +82,7 @@ function generateAnt(index) {
 	let selectedInputs = distinct(getSubset(filteredInputs, 8).concat(randomInputs));
 	let selectedOutputs = distinct(getSubset(filteredOutputs, 8).concat(randomOutputs));
 
-	let INPUT_CAP = 12;
+	let INPUT_CAP = 8;
 	let OUTPUT_CAP = 12;
 	if (selectedInputs.length > INPUT_CAP) selectedInputs = selectedInputs.slice(0, INPUT_CAP-1);
 	if (selectedOutputs.length > OUTPUT_CAP) selectedOutputs = selectedOutputs.slice(0, OUTPUT_CAP-1);
