@@ -4,6 +4,7 @@ set border_0 = cycle;
 set border_1 = wrap;
 
 set keys = "wasdr";
+set _keys9 = "2456 ";
 set loop;
 set start_tick = 64;
 set fg = none;
