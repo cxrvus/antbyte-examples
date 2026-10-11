@@ -6,7 +6,7 @@ set start_tick = 1;
 set fg = none;
 set decay = 64;
 
-set desc = "modified sand.ant";
+set _desc = "modified sand.ant";
 
 # set fps = 32;
 set height = 64;

@@ -1,4 +1,4 @@
-set desc = "Langton's Ant";
+set _desc = "Langton's Ant";
 set size = 64;
 set border = die;
 set bg_filter = bin;

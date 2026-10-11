@@ -1,6 +1,6 @@
 use "langton2";
 
-set desc = "Langton's Ant, but self-replicating (+other variation)";
+set _desc = "Langton's Ant, but self-replicating (+other variation)";
 
 set size = 128;
 set bg_filter = bin;

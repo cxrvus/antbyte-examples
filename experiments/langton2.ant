@@ -1,6 +1,6 @@
 use "../cs/langton";
 
-set desc = "Langton's Ant, but with ROT_2 instead of ROT_1";
+set _desc = "Langton's Ant, but with ROT_2 instead of ROT_1";
 
 set size = 128;
 set border = cycle;

@@ -1,4 +1,4 @@
-set desc = "Langton's Ant, but bigger and with border=wrap and somne decay";
+set _desc = "Langton's Ant, but bigger and with border=wrap and somne decay";
 set height = 100;
 set width = 70;
 set border = wrap;

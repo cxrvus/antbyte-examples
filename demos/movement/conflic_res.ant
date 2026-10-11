@@ -3,7 +3,7 @@ set width = 4;
 set start = top_left;
 set border = die;
 
-set desc = "randomness through mere conflict resolution";
+set _desc = "randomness through mere conflict resolution";
 
 ant queen = 0 {
 	left = and(-CTR_1, -CTR_0);
