@@ -50,7 +50,7 @@ function distinct(array) {
 function generateAnt(index) {
 	let filteredInputs = includeRange(INPUTS, [
 		['MEM', 0, 1],
-		['X_IN', 0, 4],
+		['X_IN', 0, 5],
 		['COL', 0, 3],
 		['CTR', 5, 7],
 		['CLK', 5, 7],
@@ -116,7 +116,7 @@ function getSubset(superSet, amount) {
 
 const world = generateWorld()
 
-world.cfg = { height: 192, width: 255, speed: 1, fps: 30, keys: "asdfghjk", decay: 128, ant_limit: 500, layer_limit: 8, fg: 'layers', looping: true }
+world.cfg = { height: 192, width: 255, speed: 1, fps: 30, keys: "12345670", decay: 128, ant_limit: 500, layer_limit: 8, fg: 'layers', looping: true }
 world.cfg.euclid = true;
 world.cfg.border = { 0: 'die', 1: 'wrap', 2: 'wrap', 3: 'obs' };
 // world.cfg.border = { 0: 'die' };
