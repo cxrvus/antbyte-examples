@@ -73,22 +73,22 @@ ant enemy_spawner = 7 {
 	A_LYR = 1;
 	(LFT, ROT_6:4) = fwd(RND_3:0);
 	spawn = and(PRB_5, CLK_3);
-	(enemy_id) = and(spawn, RND_4);
-	(A_ID_3:0) = fwd(spawn, 0, 0, enemy_id);
+	(enemy_id_1:0) = fwd(RND_5:4);
+	# (enemy_id_1:0) = fwd(2'2);
+	(A_ID_3:0) = fwd_and(spawn, 1, 0, enemy_id_1:0);
 	DIE = -SIG_0;
 }
 
-def enemy() => (col, dcy, die) {
+def enemy() => (col, dcy, hlt, die) {
 	col = 1;
 	dcy = 1;
+    hlt = -CLK_3;
 	COL_3 = 1;
 	die = N_COL_3;
 }
 
 ant worm = 8 {
-	(COL_2, DCY_12, DIE) = enemy();
-
-    HLT = -CLK_3;
+	(COL_2, DCY_12, HLT, _die) = enemy();
 
     ROT_5 = HLT;
     ROT_7 = and(or(N_COL_73, N_COL_13), HLT);
@@ -99,12 +99,29 @@ ant worm = 8 {
 		and(N_COL_13, -HLT)
 	); 
 
-    # DIE = and(N_COL_3, or(N_COL_63, N_COL_23), -HLT);
+    DIE = and(N_COL_3, or(N_COL_63, N_COL_23), -HLT);
 	DIE = or(DIE, -SIG_0);
 }
 
 ant laser = 9 {
-	(COL_0, DCY_13, DIE) = enemy();
+	(COL_0, DCY_13, _hlt, DIE) = enemy();
+
 	SLP_3 = 1;
 	DIE = or(DIE, CTR_7);
+}
+
+ant maggot_spawner = 10 {
+	A_LFT = RND_0;
+	A_ROT_1 = 1;
+	A_ID_5 = CLK_3;
+	DIE = CTR_6;
+}
+
+ant maggot = 32 {
+	(_col, DCY_12, HLT, DIE) = enemy();
+
+	ROT_5 = RND_0;
+	LFT = RND_1;
+	DIE = or(DIE, CTR_7);
+	SLP_4 = 1;
 }
