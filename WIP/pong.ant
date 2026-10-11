@@ -1,0 +1,18 @@
+set euclid;
+# set fps = 10;
+set bg_filter = one;
+set size = 64;
+set border = obs;
+
+ant queen = 0 {
+	A_ID_3 = 1;
+	DIE = 1;
+	ROT_6 = 1;
+}
+
+ant ball = 8 {
+	DCY = 1;
+	COL = 1;
+	ROT_2 = OBS;
+	ROT_0 = ROT_2;
+}
