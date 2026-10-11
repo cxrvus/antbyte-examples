@@ -29,13 +29,12 @@ ant snake = 3 {
 	COL_1 = 1;
 
 	(DCY_14:3) = cpy(1);
+	LFT = X_IN_0;
 	DIE = or(N_COL_1, N_COL_3);
-	# LFT = X_IN_0;
 	break = and(X_IN_2, SIG_1);
 	HLT = mux(break,, -CLK_3, -CLK_4);
 
 	(ROT_7:6) = cpy(and(
-		# or(-HLT, and(break, CLK_2)),
 		or(-HLT, CLK_2),
 		or(X_IN_1:0)
 	));
