@@ -125,7 +125,7 @@ world.cfg.border = { 0: 'die', 1: 'wrap', 2: 'wrap', 3: 'obs' };
 if (KEEP_FILES) {
 	const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-').replace('C', '-')
 	const dirname = import.meta.dirname;
-	writeFileSync(`${dirname}/../tmp/random_world-${timestamp}.ant.json`, JSON.stringify(world), 'utf-8')
+	writeFileSync(`${dirname}/../tmp/random_world-${timestamp}.rand.json`, JSON.stringify(world), 'utf-8')
 }
 
 run(world)
