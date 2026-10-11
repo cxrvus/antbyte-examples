@@ -49,51 +49,49 @@ function distinct(array) {
 /** @param {number} index @returns {AntByte.Behavior} */
 function generateAnt(index) {
 	let filteredInputs = includeRange(INPUTS, [
-		['MEM', 0, 2],
-		['X_IN', 0, 5],
+		['MEM', 0, 1],
+		['X_IN', 0, 4],
 		['COL', 0, 3],
 		['CTR', 5, 7],
 		['CLK', 5, 7],
 		['SIG', 0, 3],
-		// ['OBS', 0, 2],
+		['OBS', 0, 2],
 	]);
 
 	let filteredOutputs = includeRange(OUTPUTS, [
-		['MEM', 0, 2],
-		// ['X_OUT', 0, 11],
+		['MEM', 0, 1],
 		['COL', 0, 3],
-		['DCY', 1, 2],
 		['DCY', 6, 7],
 		['SIG', 0, 3],
-		['ROT', 1, 2],
-		['ROT', 5, 7],
+		['ROT', 1, 4],
 		['LFT', 0, 0],
-		['RST', 0, 0],
 		['A_ID', 0, 3],
-		['A_ROT', 0, 3],
+		['A_ROT', 1, 3],
 		['A_LYR', 0, 0],
 		['DIE', 0, 0],
 		['KLL', 0, 0],
-		['SLP', 0, 2],
+		// ['SLP', 0, 2],
 	]);
 
 	let allInputs = includeRange(INPUTS, INPUTS.map(pin => [pin.code, 0, pin.size - 1]));
 	let allOutputs = includeRange(OUTPUTS, OUTPUTS.map(pin => [pin.code, 0, pin.size - 1]));
 
-	let randomInputs = getSubset(allInputs, randomInt(4));
-	let randomOutputs = getSubset(allOutputs, randomInt(8));
+	let randomInputs = getSubset(allInputs, randomInt(12));
+	let randomOutputs = getSubset(allOutputs, randomInt(16));
 
-	let selectedInputs = distinct(getSubset(filteredInputs, 4).concat(randomInputs));
-	let selectedOutputs = distinct(getSubset(filteredOutputs, 16).concat(randomOutputs));
+	let selectedInputs = distinct(getSubset(filteredInputs, 8).concat(randomInputs));
+	let selectedOutputs = distinct(getSubset(filteredOutputs, 8).concat(randomOutputs));
 
-	let INPUT_CAP = 8;
-	if (selectedInputs.length > INPUT_CAP) selectedInputs = selectedInputs.slice(0, INPUT_CAP);
+	let INPUT_CAP = 12;
+	let OUTPUT_CAP = 12;
+	if (selectedInputs.length > INPUT_CAP) selectedInputs = selectedInputs.slice(0, INPUT_CAP-1);
+	if (selectedOutputs.length > OUTPUT_CAP) selectedOutputs = selectedOutputs.slice(0, OUTPUT_CAP-1);
 
 	const inputCount = selectedInputs.length;
 	const outputCount = selectedOutputs.length;
 
 	const valueCount = 2 ** inputCount;
-	const maxValue = 2 ** outputCount + 1;
+	const maxValue = 2 ** outputCount;
 
 	const logic = [];
 
@@ -118,7 +116,8 @@ function getSubset(superSet, amount) {
 
 const world = generateWorld()
 
-world.cfg = { height: 192, width: 255, speed: 4, fps: 20, keys: "asdfghjk", decay: 128, ant_limit: 1500, layer_limit: 8, fg: 'layers', looping: true }
+world.cfg = { height: 192, width: 255, speed: 1, fps: 30, keys: "asdfghjk", decay: 128, ant_limit: 500, layer_limit: 8, fg: 'layers', looping: true }
+world.cfg.euclid = true;
 world.cfg.border = { 0: 'die', 1: 'wrap', 2: 'wrap', 3: 'obs' };
 // world.cfg.border = { 0: 'die' };
 // world.cfg.midi = { out_ch: { 0: 1, 1: 2, 2: 3, 3: 4 } };
@@ -126,7 +125,7 @@ world.cfg.border = { 0: 'die', 1: 'wrap', 2: 'wrap', 3: 'obs' };
 if (KEEP_FILES) {
 	const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-').replace('C', '-')
 	const dirname = import.meta.dirname;
-	writeFileSync(`${dirname}/tmp/random_world-${timestamp}.ant.json`, JSON.stringify(world), 'utf-8')
+	writeFileSync(`${dirname}/../tmp/random_world-${timestamp}.ant.json`, JSON.stringify(world), 'utf-8')
 }
 
 run(world)
