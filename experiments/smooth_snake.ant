@@ -1,16 +1,20 @@
-# set fps = 8;
+set fps = 30;
+# set fps = 4;
+set start_tick = 300;
 set speed = 16;
-set keys = "adw";
+set keys = "465";
 set size = 128;
 set loop;
 set start_pos = top_right;
 set start_dir = 4;
-set fg = id;
+set fg = none;
 set euclid;
 
 set {
-	border_0 = obs;
-	border_1 = die;
+	border_0 = obs; 	# default: queen, UI
+	border_1 = cycle;	# snake, snake spawner
+	border_2 = cycle;	# enemy spawner
+	border_3 = cycle;	# enemies
 }
 
 ant queen = 0 {
@@ -21,16 +25,23 @@ ant queen = 0 {
 }
 
 ant snake_spawner = 2 {
-	(DIE, A_ID_1:0) = cpy(CTR_6);
+	SIG_0 = 1;
+	spawn_enemies = on(6'31);
+	spawn_snake = on(6'63);
+
+	DIE = spawn_snake;
+	(A_ID_1:0) = cpy(or(spawn_snake, spawn_enemies));
+	(A_ID_2, A_LYR) = cpy(spawn_enemies);
 }
 
 ant snake = 3 {
 	SIG_0 = 1;
 	COL_1 = 1;
+	COL_3 = 1;
 
-	(DCY_14:3) = cpy(1);
+	(DCY_13:2) = cpy(1);
 	LFT = X_IN_0;
-	DIE = or(N_COL_1, N_COL_3);
+	DIE = N_COL_3;
 	break = and(X_IN_2, SIG_1);
 	HLT = mux(break,, -CLK_3, -CLK_4);
 
@@ -53,8 +64,47 @@ ant ui = 6 {
 	RST = 1;
 	boost = X_IN_2;
 	(ROT_0, -COL_2) = cpy(boost);
-	DIE = and(MEM_0, -SIG_0);
-	MEM_0 = or(MEM_0, SIG_0);
+	DIE = -SIG_0;
 	cant_boost = and(boost, OBS);
 	SIG_1 = -cant_boost;
+}
+
+ant enemy_spawner = 7 {
+	A_LYR = 1;
+	(LFT, ROT_6:4) = fwd(RND_3:0);
+	spawn = and(PRB_5, CLK_3);
+	(enemy_id) = and(spawn, RND_4);
+	(A_ID_3:0) = fwd(spawn, 0, 0, enemy_id);
+	DIE = -SIG_0;
+}
+
+def enemy() => (col, dcy, die) {
+	col = 1;
+	dcy = 1;
+	COL_3 = 1;
+	die = N_COL_3;
+}
+
+ant worm = 8 {
+	(COL_2, DCY_12, DIE) = enemy();
+
+    HLT = -CLK_3;
+
+    ROT_5 = HLT;
+    ROT_7 = and(or(N_COL_73, N_COL_13), HLT);
+    ROT_2 = and(or(OBS, N_COL_3), -HLT);
+
+    LFT = or(
+		and(HLT, RND),
+		and(N_COL_13, -HLT)
+	); 
+
+    # DIE = and(N_COL_3, or(N_COL_63, N_COL_23), -HLT);
+	DIE = or(DIE, -SIG_0);
+}
+
+ant laser = 9 {
+	(COL_0, DCY_13, DIE) = enemy();
+	SLP_3 = 1;
+	DIE = or(DIE, CTR_7);
 }
