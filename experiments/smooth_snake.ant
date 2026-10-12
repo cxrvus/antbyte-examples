@@ -5,6 +5,7 @@ set speed = 16;
 set keys = "465";
 set size = 128;
 set loop;
+set sleep = 2000;
 set start_pos = top_right;
 set start_dir = 4;
 set fg = none;
@@ -12,7 +13,7 @@ set euclid;
 
 set {
 	border_0 = obs; 	# default: queen, UI
-	border_1 = cycle;	# snake, snake spawner
+	border_1 = die;		# snake, snake spawner
 	border_2 = cycle;	# enemy spawner
 	border_3 = cycle;	# enemies
 }
@@ -42,8 +43,6 @@ lnk can_brake(SIG_1);
 ant snake = 3 {
 	snake_alive(1);
 
-	COL_1 = 1;
-	COL_3 = 1;
 
 	(DCY_13:2) = cpy(1);
 	LFT = X_IN_0;
@@ -56,6 +55,8 @@ ant snake = 3 {
 		or(X_IN_1:0)
 	));
 
+	COL_3 = -break;
+	COL_1 = 1;
 }
 
 ant ui_end = 4 {
@@ -77,23 +78,22 @@ ant ui = 6 {
 ant enemy_spawner = 7 {
 	A_LYR = 1;
 	(LFT, ROT_6:4) = fwd(RND_3:0);
-	spawn = and(PRB_5, CLK_3);
+	spawn = and(PRB_5, CLK_2, -COL_3);
 	(enemy_id_1:0) = fwd(RND_5:4);
-	# (enemy_id_1:0) = fwd(2'2);
 	(A_ID_3:0) = fwd_and(spawn, 1, 0, enemy_id_1:0);
 	DIE = -snake_alive();
 }
 
 def enemy() => (col, dcy, hlt, die) {
+	COL_3 = 1;
 	col = 1;
 	dcy = 1;
     hlt = -CLK_3;
-	COL_3 = 1;
-	die = N_COL_3;
+	die = or(N_COL_3, -snake_alive());
 }
 
 ant worm = 8 {
-	(COL_2, DCY_12, HLT, _die) = enemy();
+	(COL_2, DCY_12, HLT, DIE) = enemy();
 
     ROT_5 = HLT;
     ROT_7 = and(or(N_COL_73, N_COL_13), HLT);
@@ -103,9 +103,6 @@ ant worm = 8 {
 		and(HLT, RND),
 		and(N_COL_13, -HLT)
 	); 
-
-    DIE = and(N_COL_3, or(N_COL_63, N_COL_23), -HLT);
-	DIE = or(DIE, -snake_alive());
 }
 
 ant laser = 9 {
