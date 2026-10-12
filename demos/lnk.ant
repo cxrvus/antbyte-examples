@@ -1,0 +1,24 @@
+
+set { fps = 8; size = 8; }
+
+# link
+lnk turn_if(ROT_1);
+
+# multiple links in link block
+lnk { 
+	rgb(COL_0:2);
+	intensity(COL_3);
+	sleep_if(SLP_3);
+	sleep_iff(SLP_71);
+}
+
+ant 0 {
+	(r, g, b) = rgb();
+	yellow = and(r, g);
+
+	sleep_if(yellow);
+	turn_if(intensity());
+
+	rgb(RND_2:0);
+	intensity(PRB_1);
+}
