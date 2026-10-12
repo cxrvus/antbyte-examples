@@ -24,8 +24,11 @@ ant queen = 0 {
 	(DIE, A_ID_2) = cpy(spawn_ui);
 }
 
+lnk snake_alive(SIG_0);
+
 ant snake_spawner = 2 {
-	SIG_0 = 1;
+	snake_alive(1);
+
 	spawn_enemies = on(6'31);
 	spawn_snake = on(6'63);
 
@@ -34,15 +37,18 @@ ant snake_spawner = 2 {
 	(A_ID_2, A_LYR) = cpy(spawn_enemies);
 }
 
+lnk can_brake(SIG_1);
+
 ant snake = 3 {
-	SIG_0 = 1;
+	snake_alive(1);
+
 	COL_1 = 1;
 	COL_3 = 1;
 
 	(DCY_13:2) = cpy(1);
 	LFT = X_IN_0;
 	DIE = N_COL_3;
-	break = and(X_IN_2, SIG_1);
+	break = and(X_IN_2, can_brake());
 	HLT = mux(break,, -CLK_3, -CLK_4);
 
 	(ROT_7:6) = cpy(and(
@@ -62,11 +68,10 @@ ant ui_end = 4 {
 ant ui = 6 {
 	HLT = -CLK_2;
 	RST = 1;
-	boost = X_IN_2;
-	(ROT_0, -COL_2) = cpy(boost);
-	DIE = -SIG_0;
-	cant_boost = and(boost, OBS);
-	SIG_1 = -cant_boost;
+	brake = X_IN_2;
+	(ROT_0, -COL_2) = cpy(brake);
+	DIE = -snake_alive();
+	can_brake(-and(brake, OBS));
 }
 
 ant enemy_spawner = 7 {
@@ -76,7 +81,7 @@ ant enemy_spawner = 7 {
 	(enemy_id_1:0) = fwd(RND_5:4);
 	# (enemy_id_1:0) = fwd(2'2);
 	(A_ID_3:0) = fwd_and(spawn, 1, 0, enemy_id_1:0);
-	DIE = -SIG_0;
+	DIE = -snake_alive();
 }
 
 def enemy() => (col, dcy, hlt, die) {
@@ -100,7 +105,7 @@ ant worm = 8 {
 	); 
 
     DIE = and(N_COL_3, or(N_COL_63, N_COL_23), -HLT);
-	DIE = or(DIE, -SIG_0);
+	DIE = or(DIE, -snake_alive());
 }
 
 ant laser = 9 {
