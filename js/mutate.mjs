@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
 // @ts-check
-/** @import { World } from "../../antbyte-js/lib" AntByte */
+/** @import { World } from "../../antbyte/js/lib" AntByte */
 
 import process from 'node:process';
 import * as fs from 'fs';
-import { randomInt } from "../../antbyte-js/lib.mjs"
+import { randomInt } from "../../antbyte/js/lib.mjs"
 
 /**
  * @typedef {{ antID: number, input: number, bit: number }} Mutation

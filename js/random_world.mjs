@@ -1,8 +1,8 @@
 // @ts-check
-/** @import * as AntByte from "../../antbyte-js/lib" AntByte */
+/** @import * as AntByte from "../../antbyte/js/lib" AntByte */
 
 import { writeFileSync } from 'fs'
-import { run, newWorld, PINS as ALL_PINS, randomInt } from "../../antbyte-js/lib.mjs"
+import { run, newWorld, PINS as ALL_PINS, randomInt } from "../../antbyte/js/lib.mjs"
 
 const KEEP_FILES = true;
 
@@ -116,8 +116,10 @@ function getSubset(superSet, amount) {
 
 const world = generateWorld()
 
-world.cfg = { height: 192, width: 255, speed: 1, fps: 30, keys: "12345670", decay: 128, ant_limit: 500, layer_limit: 8, fg: 'layers', looping: true }
+world.cfg = { height: 192, width: 255, speed: 1, fps: 30, keys: "12345670", decay: 128, ant_limit: 500, layer_limit: 8, looping: true }
 world.cfg.euclid = true;
+world.cfg.fg = 'layers',
+// @ts-ignore
 world.cfg.border = { 0: 'die', 1: 'wrap', 2: 'wrap', 3: 'obs' };
 // world.cfg.border = { 0: 'die' };
 // world.cfg.midi = { out_ch: { 0: 1, 1: 2, 2: 3, 3: 4 } };
