@@ -30,8 +30,8 @@ lnk snake_alive(SIG_0);
 ant snake_spawner = 2 {
 	snake_alive(1);
 
-	spawn_enemies = on(6'31);
-	spawn_snake = on(6'63);
+	spawn_enemies = and(-INL, -CLK_5, CLK_4);
+	spawn_snake = and(-INL, CLK_5);
 
 	DIE = spawn_snake;
 	(A_ID_1:0) = cpy(or(spawn_snake, spawn_enemies));
