@@ -9,7 +9,6 @@ lnk {
 	rgb(COL_0:2);
 	intensity(COL_3);
 	sleep_if(SLP_3);
-	sleep_iff(SLP_71);
 }
 
 ant 0 {
