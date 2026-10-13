@@ -1,0 +1,4 @@
+def lsh_and(cond, i0:7) => (o0:7) {
+	(o0:3) = fwd_and(cond, i1:4);
+	(o4:7) = fwd_and(cond, i5:7, 0);
+}
