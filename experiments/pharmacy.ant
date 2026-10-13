@@ -1,10 +1,12 @@
-set width = 256;
-set height = 128;
-set speed = 8;
-set fps = 32;
-set start = top_left;
-set border = cycle;
-# set border = die;
+cfg {
+	width = 256;
+	height = 128;
+	speed = 8;
+	fps = 32;
+	start = top_left;
+	border = cycle;
+	# border = die;
+}
 
 def spike() {
 	CLR = 1;

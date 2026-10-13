@@ -1,9 +1,11 @@
-set height = 5;
-set width = 29;
-set fps = 24;
-set start = top_left;
-set border = cycle;
-set start = left;
+cfg {
+	height = 5;
+	width = 29;
+	fps = 24;
+	start = top_left;
+	border = cycle;
+	start = left;
+}
 
 ant main = 1 {
 	A_ID_1 = INL;

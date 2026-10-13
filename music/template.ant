@@ -1,3 +1,5 @@
-set fps = 3;
-set midi_out_ch = 1;
+cfg {
+	fps = 3;
+	midi_out_ch = 1;
+}
 

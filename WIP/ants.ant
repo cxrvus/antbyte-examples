@@ -1,6 +1,8 @@
-set start = left;
-set size = 16;
-set fps = 4;
+cfg {
+	start = left;
+	size = 16;
+	fps = 4;
+}
 
 ant main = 1 {
 	A_ID_1 = on(0, 0, 0, 1);

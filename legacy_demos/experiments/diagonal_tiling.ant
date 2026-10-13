@@ -1,6 +1,8 @@
-set size = 19;
-set speed = 361;
-set fps = 12;
+cfg {
+	size = 19;
+	speed = 361;
+	fps = 12;
+}
 
 ant main = 1 {
 	paint = and(MEM_1, MEM_0);

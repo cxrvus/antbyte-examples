@@ -1,5 +1,5 @@
-set { size = 0x7f; speed = 0x800; }
-set { start = top_left; bg_filter = one; }
+cfg { size = 0x7f; speed = 0x800; }
+cfg { start = top_left; bg_filter = one; }
 
 ant 0 {
 	COL_0 = or(INL, xor(N_COL_50, N_COL_60));

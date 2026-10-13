@@ -1,6 +1,8 @@
-set size = 19;
-set fps = 12;
-set border = die;
+cfg {
+	size = 19;
+	fps = 12;
+	border = die;
+}
 
 ant queen = 0 {
 	A_ID_0 = 1;

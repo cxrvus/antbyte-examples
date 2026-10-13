@@ -1,16 +1,17 @@
 use "../art/creeper";
 
-set speed = 64;
-set size = 24;
-set decay = 64;
-# set fps = 24;
+cfg {
+	speed = 64;
+	size = 24;
+	decay = 64;
+	# fps = 24;
+	layer_limit = 2;
+	border_0 = cycle;
+	border_1 = die;
+	fg = none;
+}
 
-set layer_limit = 2;
-set border_0 = cycle;
-set border_1 = die;
-set fg = none;
-
-# set { fps = 12; speed = 1; fg = mem; }
+# cfg { fps = 12; speed = 1; fg = mem; }
 
 ant queen = 0 {
 	HLT = 1;

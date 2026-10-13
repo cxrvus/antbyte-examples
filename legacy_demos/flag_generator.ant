@@ -1,8 +1,9 @@
-set start = top_left;
-
-set width = 16;
-set height = 12;
-set speed = 16;
+cfg {
+	start = top_left;
+	width = 16;
+	height = 12;
+	speed = 16;
+}
 
 ant main = 1 {
 	MEM_0 = mux(CLK_5, MEM_0, RND_0);

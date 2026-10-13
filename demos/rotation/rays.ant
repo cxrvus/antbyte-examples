@@ -1,8 +1,10 @@
-set bg_filter = one;
-set size = 96;
-set decay = 16;
-set border = die;
-set fg = none;
+cfg {
+	bg_filter = one;
+	size = 96;
+	decay = 16;
+	border = die;
+	fg = none;
+}
 
 ant queen = 0 {
 	(HLT, A_ID, A_ROT) = cpy(1);

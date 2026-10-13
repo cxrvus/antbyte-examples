@@ -1,5 +1,7 @@
-set fps = 2;
-set midi_out_ch = 6;
+cfg {
+	fps = 2;
+	midi_out_ch = 6;
+}
 
 ant 0 { 
 	MEM = or(MEM, CTR_1);

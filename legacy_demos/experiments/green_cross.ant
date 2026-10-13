@@ -1,8 +1,10 @@
 use "../../cs/langton";
 
-set size = 96;
-set speed = 128;
-set start = top_left;
+cfg {
+	size = 96;
+	speed = 128;
+	start = top_left;
+}
 
 ant main = 1 {
 	color = langton(and(-COL_1, COL_3));

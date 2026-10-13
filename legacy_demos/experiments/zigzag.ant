@@ -1,8 +1,10 @@
-set size = 64;
-set start = left;
-set border = wrap;
-set bg_filter = bin;
-set speed = 32;
+cfg {
+	size = 64;
+	start = left;
+	border = wrap;
+	bg_filter = bin;
+	speed = 32;
+}
 
 def dir_change(mem, clock) => (mem_out, dir) {
 	dir = xor(mem, clock);

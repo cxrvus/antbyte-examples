@@ -1,14 +1,15 @@
-set size = 64;
-set start = top_left;
-set layer_limit = 2;
-set layer_filter = 0b10;
+cfg {
+	size = 64;
+	start = top_left;
+	layer_limit = 2;
+	layer_filter = 0b10;
+	fg = none;
+}
 
-set { 
+cfg { 
 	border_0 = obs;
 	border_1 = die;
 }
-
-set { fg = none; }
 
 ant 0 {
 	spawn_cloud = CTR_0;

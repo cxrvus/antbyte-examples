@@ -1,9 +1,11 @@
-set fps = 16;
-set border = wrap;
-set height = 8;
-set width = 64;
-set start = left;
-set bg_filter = bin;
+cfg {
+	fps = 16;
+	border = wrap;
+	height = 8;
+	width = 64;
+	start = left;
+	bg_filter = bin;
+}
 
 ant main = 1 {
 	# spawn block on step 1 and cursor on step 3, then die

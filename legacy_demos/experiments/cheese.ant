@@ -1,5 +1,7 @@
-set start = top_left;
-set speed = 1000;
+cfg {
+	start = top_left;
+	speed = 1000;
+}
 
 ant main = 1 {
 	HLT = and(RND_2, RND_1, RND_0);

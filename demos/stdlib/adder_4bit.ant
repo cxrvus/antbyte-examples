@@ -1,4 +1,4 @@
-set {
+cfg {
 	fps = 8;
 	border = die;
 	start_pos = top; start_dir = 4;

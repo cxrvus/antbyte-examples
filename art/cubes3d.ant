@@ -1,10 +1,11 @@
-set size = 96;
-set speed = 128;
-set fps = 24;
-set border = wrap;
-
-# set speed = 00;
-# set ticks = 23424;
+cfg {
+	size = 96;
+	speed = 128;
+	fps = 24;
+	border = wrap;
+	# speed = 00;
+	# ticks = 23424;
+}
 
 ant main = 1 {
 	CLR = 1;

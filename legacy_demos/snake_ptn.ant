@@ -1,8 +1,10 @@
-set size = 16;
-set start = top_left;
-set bg_filter = bin;
-set border = die;
-set speed = 4;
+cfg {
+	size = 16;
+	start = top_left;
+	bg_filter = bin;
+	border = die;
+	speed = 4;
+}
 
 ant main = 1 {
 	COL_1 = 1;

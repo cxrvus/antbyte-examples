@@ -1,6 +1,8 @@
-set size = 90;
-set start = top_left;
-set bg_filter = bin;
+cfg {
+	size = 90;
+	start = top_left;
+	bg_filter = bin;
+}
 
 ant main = 1 {
 	A_ID_1 = 1;

@@ -1,25 +1,25 @@
-set start = top;
-set keys = "ad e";
-set speed = 8;
-set ant_limit = 0x1000;
-set start_tick = 1;
-set fg = none;
-set decay = 64;
+cfg {
+	start = top;
+	keys = "ad e";
+	speed = 8;
+	ant_limit = 0x1000;
+	start_tick = 1;
+	fg = none;
+	decay = 64;
+	_desc = "modified sand.ant";
+	height = 64;
+	width = 128;
+}
 
-set _desc = "modified sand.ant";
+# cfg { size = 8; fps = 1; speed = 1; }
 
-# set fps = 32;
-set height = 64;
-set width = 128;
-
-# set size = 16;
-# set { size = 8; fps = 1; speed = 1; }
-
-set layer_limit = 3;
-set layer_filter = 0b10;
-set border_0 = cycle;
-set border_1 = obs;
-set border_2 = die;
+cfg {
+	layer_limit = 3;
+	layer_filter = 0b10;
+	border_0 = cycle;
+	border_1 = obs;
+	border_2 = die;
+}
 
 ant queen = 1 {
 	SIG_0 = CTR;

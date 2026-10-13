@@ -1,17 +1,19 @@
-set fps = 30;
-# set fps = 4;
-set start_tick = 300;
-set speed = 16;
-set keys = "465";
-set size = 128;
-set loop;
-set sleep = 2000;
-set start_pos = top_right;
-set start_dir = 4;
-set fg = none;
-set euclid;
+cfg {
+	fps = 30;
+	# fps = 4;
+	start_tick = 300;
+	speed = 16;
+	keys = "465";
+	size = 128;
+	loop;
+	sleep = 2000;
+	start_pos = top_right;
+	start_dir = 4;
+	fg = none;
+	euclid;
+}
 
-set {
+cfg {
 	border_0 = obs; 	# default: queen, UI
 	border_1 = die;		# snake, snake spawner
 	border_2 = cycle;	# enemy spawner

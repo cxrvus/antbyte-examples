@@ -1,14 +1,16 @@
-set start = top_left;
-set size = 64;
-set layer_limit = 3;
-set start_dir = 1;
+cfg {
+	start = top_left;
+	size = 64;
+	layer_limit = 3;
+	start_dir = 1;
 
-# set start_tick = 4000;
-# set fg = id;
-set speed = 16;
-set layer_filter = 0b10;
+	# start_tick = 4000;
+	# fg = id;
+	speed = 16;
+	layer_filter = 0b10;
+}
 
-set {
+cfg {
 	border_0 = wrap;
 	border_2 = die;
 }

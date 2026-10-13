@@ -1,9 +1,11 @@
-set size = 255;
-# set bg_filter = one;
-set speed = 4;
-set border = cycle;
-set bg = id;
-set fg = tile;
+cfg {
+	size = 255;
+	# bg_filter = one;
+	speed = 4;
+	border = cycle;
+	bg = id;
+	fg = tile;
+}
 
 ant 1 {
 	(-HLT, A_ID_0, A_ROT, A_LYR) = cpy(1);

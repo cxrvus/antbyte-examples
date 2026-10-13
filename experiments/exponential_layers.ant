@@ -1,12 +1,13 @@
-set ant_limit = 1024;
-set decay = 128;
-set height = 90;
-set width = 180;
-set speed = 32;
-set fps = 24;
-set start_dir = 4;
-
-set layer_limit = 4;
+cfg {
+	ant_limit = 1024;
+	decay = 128;
+	height = 90;
+	width = 180;
+	speed = 32;
+	fps = 24;
+	start_dir = 4;
+	layer_limit = 4;
+}
 
 def spreader() => c {
 	A_ROT_1 = 1;

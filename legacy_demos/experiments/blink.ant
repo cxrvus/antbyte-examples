@@ -1,6 +1,8 @@
-set size = 8;
-set start = top_left;
-set border = wrap;
+cfg {
+	size = 8;
+	start = top_left;
+	border = wrap;
+}
 
 ant main = 1 {
 	(A_ID_1, A_ID_0, DIE) = cpy(CTR_1);

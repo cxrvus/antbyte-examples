@@ -1,21 +1,25 @@
-set start = top_left;
-set start_dir = 4;
-set layer_limit = 2;
-set layer_filter = 0b10;
-set fg = id;
+cfg {
+	start = top_left;
+	start_dir = 4;
+	layer_limit = 2;
+	layer_filter = 0b10;
+	fg = id;
+}
 
-## Nelease
-set fps = 24;
-set bg_filter = one;
+## Release
+cfg {
+	fps = 24;
+	bg_filter = one;
+}
 
 # @settings: start_tick = speed = w*h+[?]
-set { size = 64; start_tick = 0x1000; speed = 0x1003; }
-# set { size = 32; start_tick = 0x408; speed = 0x408; }
-# set { size = 16; start_tick = 0x102; speed = 0x102; }
+cfg { size = 64; start_tick = 0x1000; speed = 0x1003; }
+# cfg { size = 32; start_tick = 0x408; speed = 0x408; }
+# cfg { size = 16; start_tick = 0x102; speed = 0x102; }
 
 ## Debug
-# set { fps = 8; speed = 1; }
-# set { fps = 16; bg_filter = lsb; fg = tile; }
+# cfg { fps = 8; speed = 1; }
+# cfg { fps = 16; bg_filter = lsb; fg = tile; }
 
 
 ant queen = 0 {

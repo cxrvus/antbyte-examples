@@ -1,18 +1,24 @@
-set width = 80;
-set height = 32;
-set loop;
-set sleep = 5000;
-# set size = 24;
+cfg {
+	width = 80;
+	height = 32;
+	loop;
+	sleep = 5000;
+	# size = 25;
+}
 
-set start = bottom_right;
-set start_dir = 4;
-set fps = 16;
-# set fps = 4;
+cfg {
+	start = bottom_right;
+	start_dir = 4;
+	fps = 16;
+	# fps = 4;
+}
 
-set layer_limit = 2;
-set layer_filter = 0b1;
-set border = die;
-# set border = wrap;
+cfg {
+	layer_limit = 2;
+	layer_filter = 0b1;
+	border = die;
+	# border = wrap;
+}
 
 ant queen = 0 {
 	spawn_sky = INL;

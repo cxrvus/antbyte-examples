@@ -1,5 +1,5 @@
-set { size = 0x7f; speed = 0xfff; }
-set { start = top_left; bg_filter = one; }
+cfg { size = 0x7f; speed = 0xfff; }
+cfg { start = top_left; bg_filter = one; }
 
 ant 0 {
 	(l, c, r) = fwd(N_COL_50, N_COL_60, N_COL_70);

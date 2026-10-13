@@ -1,7 +1,11 @@
 # Banks
-set midi_out_ch_0 = 2;
-set midi_out_offset_0 = 24;
+cfg {
+	midi_out_ch_0 = 2;
+	midi_out_offset_0 = 24;
+}
 
 # Chromatic
-set midi_out_ch_1 = 16;
-set midi_out_offset_1 = 36;
+cfg {
+	midi_out_ch_1 = 16;
+	midi_out_offset_1 = 36;
+}

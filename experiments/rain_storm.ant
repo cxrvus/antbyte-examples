@@ -1,13 +1,14 @@
-set speed = 8;
-set size = 64;
-set start_pos = top_left;
-set decay = 0x10;
-
-set layer_limit = 3;
-set sldn_1 = 8;
-set sldn_2 = 4;
-set bg = layers;
-set fg = none;
+cfg {
+	speed = 8;
+	size = 64;
+	start_pos = top_left;
+	decay = 0x10;
+	layer_limit = 3;
+	sldn_1 = 8;
+	sldn_2 = 4;
+	bg = layers;
+	fg = none;
+}
 
 ant 0 {
 	A_ID = PRB_2;

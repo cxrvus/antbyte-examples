@@ -1,7 +1,9 @@
-set start = top_left;
-set border = obs;
-set fps = 12;
-set bg = birth_tick;
+cfg {
+	start = top_left;
+	border = obs;
+	fps = 12;
+	bg = birth_tick;
+}
 
 ant 0b0000 {
 	DIE = N_ID_3;

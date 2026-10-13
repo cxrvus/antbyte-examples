@@ -1,10 +1,12 @@
-set ant_limit = 1024;
-set decay = 128;
-set height = 90;
-set width = 180;
-set border = obs;
-set speed = 32;
-set fps = 12;
+cfg {
+	ant_limit = 1024;
+	decay = 128;
+	height = 90;
+	width = 180;
+	border = obs;
+	speed = 32;
+	fps = 12;
+}
 
 ant main = 1 {
 	A_ID_0 = 1;

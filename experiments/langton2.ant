@@ -1,10 +1,11 @@
 use "../cs/langton";
 
-set _desc = "Langton's Ant, but with ROT_2 instead of ROT_1";
-
-set size = 128;
-set border = cycle;
-set speed = 32;
+cfg {
+	_desc = "Langton's Ant, but with ROT_2 instead of ROT_1";
+	size = 128;
+	border = cycle;
+	speed = 32;
+}
 
 def main(in_color) => out_color {
 	out_color = langton(in_color);

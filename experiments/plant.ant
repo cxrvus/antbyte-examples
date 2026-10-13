@@ -1,10 +1,12 @@
-set height = 64;
-set width = 96;
-set start_pos = bottom;
-set start_dir = 6;
-set fps = 8;
-set speed = 4;
-set border = die;
+cfg {
+	height = 64;
+	width = 96;
+	start_pos = bottom;
+	start_dir = 6;
+	fps = 8;
+	speed = 4;
+	border = die;
+}
 
 def green() { COL_1 = 1; }
 

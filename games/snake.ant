@@ -1,18 +1,24 @@
-set size = 16;
-set layer_limit = 4;
-set border_0 = cycle;
-set border_1 = wrap;
+cfg {
+	size = 16;
+	layer_limit = 4;
+	border_0 = cycle;
+	border_1 = wrap;
+}
 
-set keys = "wasdr";
-set _keys9 = "2456 ";
-set loop;
-set start_tick = 64;
-set fg = none;
+cfg {
+	keys = "wasdr";
+	_keys9 = "2456 ";
+	loop;
+	start_tick = 64;
+	fg = none;
+}
 
-# set fg = layers;
-# set fg = id;
-# set layer_filter = 0b1;
-# set fps = 1;
+cfg {
+	# fg = layers;
+	# fg = id;
+	# layer_filter = 0b1;
+	# fps = 1;
+}
 
 
 ant queen = 0 {

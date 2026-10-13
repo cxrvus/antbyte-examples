@@ -1,17 +1,18 @@
-set start_pos = left;
-set start_dir = 2;
-set height = 32;
-set width = 40;
-set border = obs;
-set fps = 12;
-set loop;
-set speed = 8;
-set layer_limit = 2;
-set layer_filter = 0b10;
-set fg = none;
-
-# set start_tick = 500;
-# set fps = 1;
+cfg {
+	start_pos = left;
+	start_dir = 2;
+	height = 32;
+	width = 40;
+	border = obs;
+	fps = 12;
+	loop;
+	speed = 8;
+	layer_limit = 2;
+	layer_filter = 0b10;
+	fg = none;
+	# start_tick = 500;
+	# fps = 1;
+}
 
 ant queen = 0 {
 	HLT = MEM_0;

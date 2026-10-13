@@ -1,6 +1,8 @@
-set size = 96;
-set start = top;
-set bg_filter = one;
-set speed = 4;
+cfg {
+	size = 96;
+	start = top;
+	bg_filter = one;
+	speed = 4;
+}
 
 ant 0 { ROT_7 = 1; DIE = 0; COL = 1; }

@@ -1,10 +1,11 @@
 use "langton2";
 
-set _desc = "Langton's Ant, but self-replicating (+other variation)";
-
-set size = 128;
-set bg_filter = bin;
-set speed = 8;
+cfg {
+	_desc = "Langton's Ant, but self-replicating (+other variation)";
+	size = 128;
+	bg_filter = bin;
+	speed = 8;
+}
 
 ant main = 1 {
 	langton2();

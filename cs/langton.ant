@@ -1,8 +1,10 @@
-set _desc = "Langton's Ant";
-set size = 64;
-set border = die;
-set bg_filter = bin;
-set speed = 64;
+cfg {
+	_desc = "Langton's Ant";
+	size = 64;
+	border = die;
+	bg_filter = bin;
+	speed = 64;
+}
 
 def main(in_color) => (out_color) {
 	CLR = 1;

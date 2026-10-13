@@ -1,5 +1,7 @@
-set size = 44;
-set speed = 2200;
+cfg {
+	size = 44;
+	speed = 2200;
+}
 
 ant main = 1 {
 	HLT = and(CTR_3, CTR_2, CTR_1, CTR_0);

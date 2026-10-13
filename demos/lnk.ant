@@ -1,5 +1,4 @@
-
-set { fps = 8; size = 8; }
+cfg { fps = 8; size = 8; }
 
 # link
 lnk turn_if(ROT_1);

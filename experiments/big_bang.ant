@@ -1,15 +1,16 @@
-set ant_limit = 0x1000;
-set decay = 128;
-set height = 0xff;
-set width = 0xff;
-set border = obs;
-set speed = 4;
-set fg = tile;
-set bg = layers;
-
-set layer_limit = 3;
-set border_1 = cycle;
-set border_2 = die;
+cfg {
+	ant_limit = 0x1000;
+	decay = 128;
+	height = 0xff;
+	width = 0xff;
+	border = obs;
+	speed = 4;
+	fg = tile;
+	bg = layers;
+	layer_limit = 3;
+	border_1 = cycle;
+	border_2 = die;
+}
 
 ant 0 {
 	A_ID = -or(SIG_2, SIG_1, SIG_0);

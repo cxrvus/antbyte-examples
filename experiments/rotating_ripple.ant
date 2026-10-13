@@ -1,6 +1,8 @@
-set size = 64;
-set speed = 200;
-set decay = 800;
+cfg {
+	size = 64;
+	speed = 200;
+	decay = 800;
+}
 
 ant main = 1 {
 	HLT = and(CTR_3, CTR_2, CTR_1, CTR_0);

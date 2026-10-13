@@ -1,15 +1,16 @@
-set ant_limit = 1024;
-set decay = 128;
-set height = 90;
-set width = 280;
-set border = cycle;
-set speed = 32;
-set fps = 12;
-
-set start_dir = 2;
-set start_pos = right;
-set bg = birth_tick;
-set bg_filter = bin;
+cfg {
+	ant_limit = 1024;
+	decay = 128;
+	height = 90;
+	width = 280;
+	border = cycle;
+	speed = 32;
+	fps = 12;
+	start_dir = 2;
+	start_pos = right;
+	bg = birth_tick;
+	bg_filter = bin;
+}
 
 ant main = 1 {
 	A_ID_0 = 1;

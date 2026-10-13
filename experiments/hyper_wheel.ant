@@ -1,8 +1,10 @@
-set ant_limit = 1024;
-set size = 29;
-set fps = 20;
-set start_tick = 32;
-set decay = 64;
+cfg {
+	ant_limit = 1024;
+	size = 29;
+	fps = 20;
+	start_tick = 32;
+	decay = 64;
+}
 
 ant queen = 0 {
 	(A_MEM_2, A_MEM_1, A_MEM_0) = fwd(CTR_2, CTR_1, CTR_0);

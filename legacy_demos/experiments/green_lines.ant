@@ -1,6 +1,8 @@
-set size = 128;
-set speed = 16;
-set dur = 3;
+cfg {
+	size = 128;
+	speed = 16;
+	dur = 3;
+}
 
 ant main = 1 {
 	A_ID_0 = and(CTR_3, CTR_2, CTR_1, CTR_0, RND_3, RND_2, RND_1, COL_1);

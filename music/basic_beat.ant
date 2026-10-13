@@ -1,18 +1,18 @@
 use_cfg sp404_cfg;
 
-set start_pos = top_left;
-set start_dir = 2;
-set start_tick = 48;
-set width = 16;
-set height = 4;
-
-set fps = 6;
-
-set layer_limit = 3;
-set layer_filter = 0b100;
-set border_0 = die;
-set border_1 = wrap;
-set border_2 = cycle;
+cfg {
+	start_pos = top_left;
+	start_dir = 2;
+	start_tick = 48;
+	width = 16;
+	height = 4;
+	fps = 6;
+	layer_limit = 3;
+	layer_filter = 0b100;
+	border_0 = die;
+	border_1 = wrap;
+	border_2 = cycle;
+}
 
 ant queen = 0 {
 	spawn_song = 	on(0, 0, 0, 1);

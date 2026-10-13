@@ -1,9 +1,11 @@
-set size = 8;
-set start = top_left;
-set border = wrap;
-set speed = 64;
-set fps = 24;
-set fg = none;
+cfg {
+	size = 8;
+	start = top_left;
+	border = wrap;
+	speed = 64;
+	fps = 24;
+	fg = none;
+}
 
 def main(y2, y1, y0, x2, x1, x0) {
 	black = or(

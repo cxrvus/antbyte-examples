@@ -1,18 +1,19 @@
-set height = 31;
-set width = 69;
-set border = obs;
-set start = top_left;
-set fps = 24;
-set speed = 8;
-set ticks = 1500;
-set loop;
-set sleep = 100;
-set start_dir = 5;
-set layer_limit = 2;
-
-# set speed = 0;
-# set height = 65;
-# set width = 187;
+cfg {
+	height = 31;
+	width = 69;
+	border = obs;
+	start = top_left;
+	fps = 24;
+	speed = 8;
+	ticks = 1500;
+	loop;
+	sleep = 100;
+	start_dir = 5;
+	layer_limit = 2;
+	# speed = 0;
+	# height = 65;
+	# width = 187;
+}
 
 def bounce_ant() {
 	flip = and(-INL, OBS, MEM_6);

@@ -1,10 +1,12 @@
-set _desc = "Langton's Ant, but bigger and with border=wrap and somne decay";
-set height = 100;
-set width = 70;
-set border = wrap;
-set decay = 5000;
-set bg_filter = bin;
-set speed = 64;
+cfg {
+	_desc = "Langton's Ant, but bigger and with border=wrap and somne decay";
+	height = 100;
+	width = 70;
+	border = wrap;
+	decay = 5000;
+	bg_filter = bin;
+	speed = 64;
+}
 
 def main(in_color) => out_color {
 	CLR = 1;

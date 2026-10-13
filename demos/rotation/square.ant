@@ -1,7 +1,9 @@
-set size = 0xc0;
-set speed = 4;
-set border = cycle;
-set bg = id;
+cfg {
+	size = 0xc0;
+	speed = 4;
+	border = cycle;
+	bg = id;
+}
 
 ant 1 {
 	(HLT, A_ROT, A_LYR) = cpy(1);

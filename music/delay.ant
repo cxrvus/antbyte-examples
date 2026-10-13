@@ -1,5 +1,6 @@
 use_cfg template;
-set keys = "asdf";
+
+cfg { keys = "asdf"; }
 
 ant 0 {
 	(A_MEM_3, A_MEM_2, A_MEM_1, A_MEM_0) = fwd(X_IN_3, X_IN_2, X_IN_1, X_IN_0);

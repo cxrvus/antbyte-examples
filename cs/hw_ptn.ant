@@ -1,11 +1,10 @@
-#set width = 32;
-#set height = 24;
-set size = 16;
-set start = top_left;
-set fg = tile;
-set ticks = 800;
-set speed = 16;
-# set start_tick = 0x100;
+cfg {
+	size = 16;
+	start = top_left;
+	fg = tile;
+	ticks = 800;
+	speed = 16;
+}
 
 ant main = 0 {
 	(w3, w2, w1, w0) = hw(CTR_7, CTR_6, CTR_5, CTR_4, CTR_3, CTR_2, CTR_1, CTR_0);

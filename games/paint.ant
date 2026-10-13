@@ -1,7 +1,9 @@
-set keys = "wdcf";
-set border = die;
-set size = 64;
-set ant_limit = 1000;
+cfg {
+	keys = "wdcf";
+	border = die;
+	size = 64;
+	ant_limit = 1000;
+}
 
 ant main = 1 {
 	HLT = -X_IN_0;

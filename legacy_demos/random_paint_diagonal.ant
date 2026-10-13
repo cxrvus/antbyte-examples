@@ -1,11 +1,13 @@
-set _desc = "randomly wanders in diagonal lines, generating interesting patterns!";
-set speed = 32;
-set fps = 16;
-set loop;
-set sleep = 50;
-set border = die;
-set bg_filter = bin;
-set start_dir = 1;
+cfg {
+	_desc = "randomly wanders in diagonal lines, generating interesting patterns!";
+	speed = 32;
+	fps = 16;
+	loop;
+	sleep = 50;
+	border = die;
+	bg_filter = bin;
+	start_dir = 1;
+}
 
 ant main = 1 {
 	(ROT_0, ROT_1) = fwd(RND_2, RND_1);

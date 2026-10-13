@@ -1,17 +1,20 @@
-set start_pos = left;
-set start_dir = 2;
-set height = 32;
-set width = 32;
-set border = obs;
-set fps = 12;
-set loop;
-set speed = 4;
-set layer_limit = 2;
-set layer_filter = 0b10;
-set fg = none;
+cfg {
+	start_pos = left;
+	start_dir = 2;
+	height = 32;
+	width = 32;
+	border = obs;
+	fps = 12;
+	loop;
+	speed = 4;
+	layer_limit = 2;
+	layer_filter = 0b10;
+	fg = none;
 
-# set start_tick = 500;
-# set fps = 1;
+	# start_tick = 500;
+	# fps = 1;
+}
+
 
 ant queen = 0 {
 	(A_ID_1, A_LYR, A_ROT_1, A_ROT_0) = cpy(-MEM_0);

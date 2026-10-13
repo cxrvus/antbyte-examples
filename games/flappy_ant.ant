@@ -1,15 +1,22 @@
-set start = left;
-set keys = " ";
-set fps = 20;
-set { height = 32; width = 64; }
+cfg {
+	start = left;
+	keys = " ";
+	fps = 20;
+}
 
-set bg = id;
-set fg = id;
-set fg = none;
-set start_tick = 100;
+cfg { height = 32; width = 64; }
 
-set layer_limit = 2;
-set border = obs;
+cfg {
+	bg = id;
+	fg = id;
+	fg = none;
+	start_tick = 100;
+}
+
+cfg {
+	layer_limit = 2;
+	border = obs;
+}
 
 ant queen = 0x00 {
 	SIG_0 = 1; # init
