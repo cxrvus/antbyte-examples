@@ -1,0 +1,38 @@
+use "../lib/common";
+
+cfg {
+	size = 32;
+	border = obs;  
+	fps = 16;
+	# start_tick = 143;
+} 
+
+ant 0 {
+	HLT = 1;
+
+	A_ID_0 = INL;
+	A_ROT_1 = -SIG;
+
+	(DIE, A_ID_2) = cpy(SIG);
+}
+
+
+ant 1 {
+	ROT_1 = OBS;
+
+	COL_0 = or(COL_0, and(MEM, MEM_1), and(MEM, OBS)); 
+	COL_1 = or(COL_1, and(MEM, -MEM_1), and(MEM, OBS));
+	MEM = or(MEM,OBS);
+	MEM_1 = or(and(-MEM_1, OBS), and(MEM_1, -OBS));
+
+	DIE = N_COL_0;
+	SIG = DIE;
+}
+
+ant 4 {
+	COL_2 = 1;
+	LFT = 1;
+	(ROT_0:7) = lsh_and(OBS, ROT_0:7);
+	ROT_0 = xor(ROT_0, OBS);
+	ROT_3 = or(ROT_3, INL);
+}
