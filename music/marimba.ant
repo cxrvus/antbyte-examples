@@ -1,4 +1,4 @@
-use_cfg sp404_cfg;
+cfg sp404_cfg;
 
 set midi_out_ch_1 = 13;
 set midi_out_ch_0 = 0;

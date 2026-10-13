@@ -1,4 +1,4 @@
-use_cfg sp404_cfg;
+cfg sp404_cfg;
 
 set start = top_left;
 set fps = 3;
