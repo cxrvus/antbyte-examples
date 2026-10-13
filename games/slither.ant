@@ -18,6 +18,10 @@ set {
 	border_3 = cycle;	# enemies
 }
 
+lnk {
+	spawn_chance(PRB_10);
+}
+
 ant queen = 0 {
 	HLT = -INL;
 	(-spawn_snake, spawn_ui) = cpy(CTR);
@@ -70,7 +74,7 @@ ant ui = 6 {
 	HLT = -CLK_2;
 	RST = 1;
 	brake = X_IN_2;
-	(ROT_0, -COL_2) = cpy(brake);
+	(ROT_0, -COL_2, -COL_3) = cpy(brake);
 	DIE = -snake_alive();
 	can_brake(-and(brake, OBS));
 }
@@ -78,7 +82,7 @@ ant ui = 6 {
 ant enemy_spawner = 7 {
 	A_LYR = 1;
 	(LFT, ROT_6:4) = fwd(RND_3:0);
-	spawn = and(PRB_5, CLK_2, -COL_3);
+	spawn = and(spawn_chance(), -COL_3);
 	(enemy_id_1:0) = fwd(RND_5:4);
 	(A_ID_3:0) = fwd_and(spawn, 1, 0, enemy_id_1:0);
 	DIE = -snake_alive();
@@ -93,7 +97,10 @@ def enemy() => (col, dcy, hlt, die) {
 }
 
 ant worm = 8 {
+	COL_4 = 1;
 	(COL_2, DCY_12, HLT, DIE) = enemy();
+
+	DIE = and(DIE, -N_COL_4);
 
     ROT_5 = HLT;
     ROT_7 = and(or(N_COL_73, N_COL_13), HLT);
