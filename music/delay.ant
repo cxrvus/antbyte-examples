@@ -1,4 +1,4 @@
-cfg template;
+use_cfg template;
 set keys = "asdf";
 
 ant 0 {

@@ -1,4 +1,4 @@
-cfg sp404_cfg;
+use_cfg sp404_cfg;
 
 set start_pos = top_left;
 set start_dir = 2;
