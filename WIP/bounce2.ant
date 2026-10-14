@@ -2,9 +2,9 @@ use "../lib/common";
 
 cfg {
 	size = 32;
-	border = obs;  
+	border = obs;
 	fps = 16;
-	# start_tick = 143;
+	start_tick = 143;
 } 
 
 ant 0 {
@@ -31,8 +31,15 @@ ant 1 {
 
 ant 4 {
 	COL_2 = 1;
-	LFT = 1;
+	(dir_se, dir_sw, dir_nw, dir_ne) = dec(ROT_0:1);
+	
+	LFT = -dir_sw;
+	LFT = and(LFT, OBS);
+	LFT = or(LFT, INL);
+	
+
 	(ROT_0:7) = lsh_and(OBS, ROT_0:7);
 	ROT_0 = xor(ROT_0, OBS);
-	ROT_3 = or(ROT_3, INL);
+
+	(ROT_4:3) = fwd_or(INL, ROT_4:3);
 }
