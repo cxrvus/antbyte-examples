@@ -5,7 +5,7 @@ cfg {
 	width = 0xff;
 	border = obs;
 	speed = 4;
-	fg = tile;
+	fg = none;
 	bg = layers;
 	layer_limit = 3;
 	border_1 = cycle;
