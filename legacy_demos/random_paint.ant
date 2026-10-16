@@ -3,7 +3,7 @@ cfg {
 	speed = 32;
 	fps = 16;
 	loop;
-	sleep = 50;
+	loop_delay = 50;
 	border = die;
 	bg_filter = bin;
 }

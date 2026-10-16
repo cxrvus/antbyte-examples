@@ -7,7 +7,7 @@ cfg {
 	speed = 8;
 	ticks = 1500;
 	loop;
-	sleep = 100;
+	loop_delay = 100;
 	start_dir = 5;
 	layer_limit = 2;
 	# speed = 0;

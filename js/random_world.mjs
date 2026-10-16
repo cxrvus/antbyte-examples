@@ -116,7 +116,7 @@ function getSubset(superSet, amount) {
 
 const world = generateWorld()
 
-world.cfg = { height: 192, width: 255, speed: 1, fps: 30, keys: "12345670", decay: 128, ant_limit: 500, layer_limit: 8, looping: true }
+world.cfg = { height: 192, width: 255, speed: 1, fps: 30, keys: "12345670", decay: 128, ant_limit: 500, layer_limit: 8, looping: true, loop_delay: 2000 }
 world.cfg.euclid = true;
 world.cfg.fg = 'layers',
 // @ts-ignore

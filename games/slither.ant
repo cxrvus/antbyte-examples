@@ -6,7 +6,7 @@ cfg {
 	keys = "465";
 	size = 128;
 	loop;
-	sleep = 2000;
+	loop_delay = 2000;
 	start_pos = top_right;
 	start_dir = 4;
 	fg = none;

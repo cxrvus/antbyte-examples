@@ -2,7 +2,7 @@ cfg {
 	width = 80;
 	height = 32;
 	loop;
-	sleep = 5000;
+	loop_delay = 5000;
 	# size = 25;
 }
 
