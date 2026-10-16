@@ -1,1 +1,1 @@
-ezwatch antbyte js/random_world.mjs -f
+ezwatch antbyte js/random_world.mjs -fS

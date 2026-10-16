@@ -76,8 +76,8 @@ function generateAnt(index) {
 	let allInputs = includeRange(INPUTS, INPUTS.map(pin => [pin.code, 0, pin.size - 1]));
 	let allOutputs = includeRange(OUTPUTS, OUTPUTS.map(pin => [pin.code, 0, pin.size - 1]));
 
-	let randomInputs = getSubset(allInputs, randomInt(12));
-	let randomOutputs = getSubset(allOutputs, randomInt(16));
+	let randomInputs = getSubset(allInputs, randomInt(8));
+	let randomOutputs = getSubset(allOutputs, randomInt(8));
 
 	let selectedInputs = distinct(getSubset(filteredInputs, 8).concat(randomInputs));
 	let selectedOutputs = distinct(getSubset(filteredOutputs, 8).concat(randomOutputs));
@@ -119,10 +119,10 @@ const world = generateWorld()
 world.cfg = {
 	height: 192,
 	width: 255,
-	speed: 1,
+	speed: 4,
 	fps: 30,
 	decay: 128,
-	ant_limit: 500,
+	ant_limit: 1000,
 	euclid: true,
 	fg_symbols: true,
 
