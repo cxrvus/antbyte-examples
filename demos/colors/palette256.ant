@@ -1,0 +1,11 @@
+use_cfg "../../palettes/vga";
+
+cfg { 
+	start = top_left;
+	bg_filter = all;
+	ticks = 256;
+}
+
+ant 0 {
+	(COL_7:0) = fwd(CTR_7:0);
+}

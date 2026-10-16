@@ -2,6 +2,7 @@ cfg {
 	start = left;
 	keys = " ";
 	fps = 20;
+	pal = "#8be";
 }
 
 cfg { height = 32; width = 64; }

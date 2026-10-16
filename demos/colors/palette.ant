@@ -1,0 +1,9 @@
+cfg {
+	size = 4;
+	start = top_left;
+}
+
+ant main = 1 {
+	DIE = CTR_4;
+	(COL_3:0) = fwd_and(-DIE, CTR_3:0);
+}
