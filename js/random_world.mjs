@@ -116,18 +116,33 @@ function getSubset(superSet, amount) {
 
 const world = generateWorld()
 
-world.cfg = { height: 192, width: 255, speed: 1, fps: 30, keys: "12345670", decay: 128, ant_limit: 500, layer_limit: 8, looping: true, loop_delay: 2000 }
-world.cfg.euclid = true;
-world.cfg.fg = 'layers',
-// @ts-ignore
-world.cfg.border = { 0: 'die', 1: 'wrap', 2: 'wrap', 3: 'obs' };
-// world.cfg.border = { 0: 'die' };
-// world.cfg.midi = { out_ch: { 0: 1, 1: 2, 2: 3, 3: 4 } };
+world.cfg = {
+	height: 192,
+	width: 255,
+	speed: 1,
+	fps: 30,
+	decay: 128,
+	ant_limit: 500,
+	euclid: true,
+	fg_symbols: true,
+
+	// @ts-ignore
+	fg: "id",
+	// @ts-ignore
+	border: { 0: 'die', 1: 'wrap', 2: 'wrap', 3: 'obs' },
+
+	keys: "12345670",
+	looping: true,
+	loop_delay: 2000
+};
+
+const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-').replace('C', '-');
+const worldName = `random_world-${timestamp}`;
+world.name = worldName;
 
 if (KEEP_FILES) {
-	const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-').replace('C', '-')
 	const dirname = import.meta.dirname;
-	writeFileSync(`${dirname}/../tmp/random_world-${timestamp}.rand.json`, JSON.stringify(world), 'utf-8')
+	writeFileSync(`${dirname}/../tmp/${worldName}.rand.json`, JSON.stringify(world), 'utf-8')
 }
 
 run(world)
