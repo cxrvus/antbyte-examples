@@ -1,0 +1,72 @@
+cfg {
+	border = obs;
+	size = 41;
+	speed = 0x100;
+	start_dir = 1;
+	start_pos = top_left;
+	size = 96;
+	speed = 0x100;
+
+	loop; loop_delay;
+	ticks = 0x10000;
+}
+
+ant 1 {
+	COL_0 = INL;
+	(ROT_2, LFT) = cpy(OBS);
+	(COL_1, A_ID_1, DIE, ROT_0) = cpy(and(OBS_1, OBS, OBS_7));
+}
+
+ant 2 {
+	search = -CTR_3;
+
+	DIE = -search;
+	ROT_0 = or(and(search, MEM_0), and(-OBS_4, 1));
+	ROT_1 = or(and(-CTR_0, search));
+
+	A_ID_2 = and(DIE, -and(-MEM_1, -MEM_2, -MEM_3));
+	A_ID_3 = and(DIE, -A_ID_2);
+	A_ROT_0 = A_ID_3;
+	A_MEM_1 = and(MEM_1, A_ID_2);
+	A_MEM_2 = and(MEM_2, A_ID_2);
+	A_MEM_3 = and(MEM_3, A_ID_2);
+	A_MEM_4 = and(-OBS_4, A_ID_2);
+
+	HLT = or(and(ROT_0,OBS, -ROT_1, CTR_0));
+	MEM_1 = and(or(MEM_1, and(-N_COL_3, and(CTR_0, -CTR_1, -CTR_2), -OBS)), MEM_0);
+	MEM_2 = and(or(MEM_2, and(-N_COL_3, and(CTR_0, -CTR_1, CTR_2), -OBS)), MEM_0);
+	MEM_3 = and(or(MEM_3, and(-N_COL_3, and(CTR_0, CTR_1, CTR_2), -OBS)), MEM_0);
+
+	MEM_0 = search;
+}
+
+ant 4{
+	(COL_0:3) = cpy(1);
+	HLT = CTR_1;
+	(DIE,A_ID_1, ROT_0) = cpy(CTR_2);
+ 
+	A_ROT_0 = and(CTR_2, -OBS);
+
+	fwd = and(MEM_3, or(and(-MEM_1, -MEM_2), RND_1));
+	right = and(MEM_1, -fwd, or(-MEM_2, RND_2));
+	left = and(MEM_2, -fwd, -right);
+
+	#COL_4 = -and(INL, fwd);
+	#COL_5 = -and(INL, left);
+    #COL_6 = -and(INL, right);
+
+	ROT_0 = or(and(INL, -MEM_4), OBS);
+	ROT_1 = and(INL, or(left, right));
+	LFT = and(left, MEM_4);
+}
+
+ant 8{
+	COL_4 = 1;
+
+	ROT_0 = and(or(N_COL_4, -N_COL_3), INL);
+	ROT_1 = and(INL, or(-N_COL_3, and(ROT_0, N_COL_44, )));
+	LFT = and(ROT_1, or(and(ROT_0, or(-N_COL_63, N_COL_64)), and(-ROT_0, or(-N_COL_23, N_COL_24))));
+
+	HLT = CTR_1;
+	(DIE,A_ID_1) = cpy(CTR_2);
+}
