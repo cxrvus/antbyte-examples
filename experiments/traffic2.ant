@@ -4,6 +4,7 @@ cfg {
 
 	size = 96;
 	start_tick = 9216;
+	speed = 2;
 
 	border_0 = wrap;
 	border_1 = cycle;
