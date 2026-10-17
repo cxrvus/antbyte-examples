@@ -1,0 +1,57 @@
+cfg {
+	fps = 16;
+	start = top_left;
+
+	size = 96;
+	start_tick = 9216;
+
+	border_0 = wrap;
+	border_1 = cycle;
+
+	pal_01 = "#8d8515";
+	pal_11 = "#c5bb27";
+	pal_02 = "#265da5";
+	pal_12 = "#5593e4";
+}
+
+lnk { 
+	origin(COL_4);
+	spawn_chance(PRB_1);
+	init(SIG_0);
+	clk(SIG_1);
+}
+
+ant queen = 0 {
+	(DIE, A_ID_2) = cpy(origin());
+
+	spawn_car = and(-DIE, spawn_chance(), -INL);
+	spawn_blue = and(spawn_car, RND);
+
+	(A_ID_1:0) = fwd(spawn_blue, spawn_car);
+	A_ROT_1 = spawn_blue;
+	A_LYR = -DIE;
+
+	origin(INL);
+	init(1);
+}
+
+lnk {
+	can_move(COL_3);
+	is_blue_car(ID_1);
+}
+
+def car() {
+	can_move(-OBS);
+	is_active = xor(is_blue_car(), clk());
+	should_move = and(is_active, can_move());
+	HLT = or(init(), -should_move);
+
+	(+COL_1, -COL_0) = cpy(is_blue_car());
+	DCY = 1;
+}
+
+ant yellow_car = 1 { car(); }
+
+ant blue_car = 3 { car(); }
+
+ant clock = 4 { HLT = 1; clk(CLK); }
