@@ -1,0 +1,26 @@
+cfg {
+	size = 3;
+	fps = 4;
+	fg = rot;
+	keys = "ad";
+}
+
+ant 0 {
+	last = on(4'9);
+	ROT_2 = -or(INL, last);
+	(+DIE, -HLT, -A_ID_0, +A_ID_1) = cpy(last);
+	(A_MEM_2:0) = fwd(CTR_2:0);
+}
+
+ant 1 {
+	DIE = 1;
+	HLT = 1;
+	(COL_2:0) = fwd(MEM_2:0);
+}
+
+ant 2 {
+	HLT = 1;
+	ROT_7 = or(X_IN_1:0);
+	LFT = X_IN_0;
+	(X_OUT_2:0) = fwd(N_COL_2:0);
+}
